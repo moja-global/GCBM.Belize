@@ -1,7 +1,8 @@
-# TITLE 
+# Implementation of the GCBM in Belize
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
 
-Text 
+GCBM implementation in Belize, initially with a focus on DOM modelling
+This project is based on the Standalone Template for the GCBM, downloaded from https://carbon.nfis.org/cbm
 
 ## How to Get Involved?  
 
