@@ -1,0 +1,28 @@
+﻿{
+    "SQLLoaderMapping": {
+        "name": "Stump parameters",
+        "fetch_sql": "
+            SELECT
+                SoftwoodTopProportion,
+                SoftwoodStumpProportion,
+                HardwoodTopProportion,
+                HardwoodStumpProportion
+            FROM tblAdminBoundaryDefault
+            GROUP BY
+                SoftwoodTopProportion,
+                SoftwoodStumpProportion,
+                HardwoodTopProportion,
+                HardwoodStumpProportion",
+        "load_sql": "
+            INSERT INTO stump_parameter (
+                sw_top_proportion,
+                sw_stump_proportion,
+                hw_top_proportion,
+                hw_stump_proportion)
+            VALUES (
+                @SoftwoodTopProportion,
+                @SoftwoodStumpProportion,
+                @HardwoodTopProportion,
+                @HardwoodStumpProportion)"
+    }
+}

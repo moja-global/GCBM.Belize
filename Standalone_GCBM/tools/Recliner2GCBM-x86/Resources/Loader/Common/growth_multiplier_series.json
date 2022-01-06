@@ -1,0 +1,7 @@
+﻿{
+    "SQLLoaderMapping": {
+        "name": "Growth multiplier series",
+        "fetch_sql": "SELECT description FROM growth_multiplier_series",
+        "load_sql": "INSERT INTO growth_multiplier_series (description) VALUES (@description)"
+    }
+}

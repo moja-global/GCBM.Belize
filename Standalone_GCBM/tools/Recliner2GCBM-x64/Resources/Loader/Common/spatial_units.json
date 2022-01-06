@@ -1,0 +1,34 @@
+﻿{
+    "SQLLoaderMapping": {
+        "name": "Spatial units",
+        "fetch_sql": "
+            SELECT
+                a.name AS AdminBoundaryName,
+                e.name AS EcoBoundaryName,
+                sp.historic_mean_temperature AS MeanAnnualTemp,
+                sp.return_interval AS ReturnInterval
+            FROM spatial_unit spu
+            INNER JOIN admin_boundary a
+                ON spu.admin_boundary_id = a.id
+            INNER JOIN eco_boundary e
+                ON spu.eco_boundary_id = e.id
+            INNER JOIN spinup_parameter sp
+                ON spu.spinup_parameter_id = sp.id",
+        "load_sql": "
+            INSERT INTO spatial_unit (
+                admin_boundary_id,
+                eco_boundary_id,
+                spinup_parameter_id)
+            SELECT
+                a.id,
+                e.id,
+                sp.id
+            FROM admin_boundary a,
+                 eco_boundary e,
+                 spinup_parameter sp
+            WHERE a.name = @AdminBoundaryName
+                AND e.name = @EcoBoundaryName
+                AND sp.mean_annual_temperature = @MeanAnnualTemp
+                AND sp.return_interval = @ReturnInterval"
+    }
+}

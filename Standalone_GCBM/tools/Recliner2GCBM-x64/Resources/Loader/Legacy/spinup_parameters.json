@@ -1,0 +1,34 @@
+﻿{
+    "SQLLoaderMapping": {
+        "name": "Spinup parameters",
+        "fetch_sql": "
+            SELECT
+                MeanAnnualTemp,
+                AverageAge
+            FROM tblClimateDefault c
+            INNER JOIN (
+                tblEcoBoundaryDefault e
+                INNER JOIN tblSPUDefault s
+                    ON e.EcoBoundaryID = s.EcoBoundaryID
+            ) ON c.DefaultSPUID = s.SPUID
+            WHERE Year = 1980
+            GROUP BY
+                MeanAnnualTemp,
+                AverageAge",
+        "load_sql": "
+            INSERT INTO spinup_parameter (
+                historic_disturbance_type_id,
+                return_interval,
+                max_rotations,
+                mean_annual_temperature)
+            SELECT
+                dt.id,
+                @AverageAge AS return_interval,
+                30 AS max_rotations,
+                @MeanAnnualTemp AS mean_annual_temperature
+            FROM disturbance_type dt
+            WHERE LOWER(dt.name) LIKE LOWER('wild%fire%')
+            ORDER BY dt.code
+            LIMIT 1"
+    }
+}

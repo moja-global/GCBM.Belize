@@ -1,0 +1,24 @@
+﻿{
+    "SQLLoaderMapping": {
+        "name": "Admin boundaries",
+        "fetch_sql": "
+            SELECT
+                a.name AS AdminBoundaryName,
+                sp.sw_top_proportion AS SoftwoodTopProportion,
+                sp.sw_stump_proportion AS SoftwoodStumpProportion,
+                sp.hw_top_proportion AS HardwoodTopProportion,
+                sp.hw_stump_proportion AS HardwoodStumpProportion
+            FROM admin_boundary a
+            INNER JOIN stump_parameter sp
+                ON a.stump_parameter_id = sp.id",
+        "load_sql": "
+            INSERT INTO admin_boundary (admin_region_id, stump_parameter_id, name)
+            SELECT ar.id, sp.id, @AdminBoundaryName AS name
+            FROM admin_region ar, stump_parameter sp
+            WHERE ar.name = @AdminBoundaryName
+                AND sp.sw_top_proportion = @SoftwoodTopProportion
+                AND sp.sw_stump_proportion = @SoftwoodStumpProportion
+                AND sp.hw_top_proportion = @HardwoodTopProportion
+                AND sp.hw_stump_proportion = @HardwoodStumpProportion"
+    }
+}

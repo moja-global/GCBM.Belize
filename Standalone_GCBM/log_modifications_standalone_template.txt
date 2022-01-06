@@ -1,0 +1,45 @@
+Changes made from the standalone template of the GCBM version 1.0.0
+
+
+Standalone_Belize_V0.0.1:
+
+1. Modify the yield curves (input_database/yield.csv) and create Growth_Curves.csv file using the ForestType, Distrubance and Climate classifiers
+
+2. Run the run_recliner2hcbm_gui tool to get a configuration
+2.1. Configuration: Project Type: Spatially explicit; Module Configuration: CBM Classic; AIDB Path: Path to ArchiveIndex_Beta_Install in input_database folder; Output type: SQLite; Path: path to gcbm_inpt database in input_database folder
+2.2. Added ForestType, Disturbance and CLimate classifiers on the Growth_Curves.csv file
+2.3. Selected the Growth_Curves.csv file, set the columns of the three classifiers; Growth Curve Interval set to 1; Increments in columns 4 to 154; Species in column 3
+2.4. No Transition rules configured for now
+2.5. No changes in disturbance categories (all disrturbances set as anthropogenic
+2.6. GCBM input database loaded and configuration saved in recliner2gcbm_config.json file
+
+3. Include a dummy inventory layer for belize (layers/inventory/inventory.shp)
+
+4. Configure the tiler python code (toold/tyler/tyler.py):
+4.1. Change the classifier names in the inventory layer
+4.2. Change the age attribute name
+4.3. Delete the disturbance for now
+
+5. Change the local variables to Admin boundary: British columbia nd eco_boundary to Pacific Maritime (gcbm_project/templates/variables.json)
+
+6. Change the local domain file (gcbm_project/templates/variables.json) to use 8 threads (CAREFUL HERE, THIS COULD NOT WORK IN A PROCESSING UNIT WITHOUT THIS NUMBER OF THREADS)
+
+7. Change the run_all simulations years to start from 1980 and go until 2020
+
+9. Change the attributes names in the tyler (tools/tyler/tyler.py): 
+-Resolution to 0.001 degrees (aprox 100 m)
+-Change the classifier names in the inventory layer
+-Change the age attribute name
+-Delete the disturbances for now
+
+10. Create vol to bio conversion factors, 
+- Create Generic Tropical species to replace Red Alder
+-Using a wood density of 0.47 and proportions of biomass of 70% stem wood, 10% bark, 15% branches and 5% leaves to create vol to io conversion factors
+- Sampling and non merchantable biomass set to zero
+- Values inserted into the gcbm_input database
+
+11. The ABG:BGB ratio was set to 0.37, as in the Belize BUT and the 2006 IPCC, V4, Ch 4. Table 4.4. Tropical Rainforest
+A custom python code is created to insert the values in the input database (input_database/add_root_parameter.py), 
+Values for fine and coarse root proportions are left as default
+
+Standalone_Belize_V0.0.2:

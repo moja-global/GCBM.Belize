@@ -1,0 +1,42 @@
+﻿{
+    "SQLLoaderMapping": {
+        "name": "Disturbance matrix associations",
+        "fetch_sql": "
+            SELECT
+                a.name AS AdminBoundaryName,
+                e.name AS EcoBoundaryName,
+                dt.name AS DistTypeName,
+                dm.name AS DMName
+            FROM disturbance_matrix_association dma
+            INNER JOIN spatial_unit spu
+                ON dma.spatial_unit_id = spu.id
+            INNER JOIN eco_boundary e
+                ON spu.eco_boundary_id = e.id
+            INNER JOIN admin_boundary a
+                ON spu.admin_boundary_id = a.id
+            INNER JOIN disturbance_type dt
+                ON dma.disturbance_type_id = dt.id
+            INNER JOIN disturbance_matrix dm
+                ON dma.disturbance_matrix_id = dm.id",
+        "load_sql": "
+            INSERT INTO disturbance_matrix_association (
+                spatial_unit_id,
+                disturbance_type_id,
+                disturbance_matrix_id)
+            SELECT
+                spu.id,
+                dt.id,
+                dm.id
+            FROM disturbance_type dt,
+                 disturbance_matrix dm,
+                 spatial_unit spu
+            INNER JOIN admin_boundary a
+                ON spu.admin_boundary_id = a.id
+            INNER JOIN eco_boundary e
+                ON spu.eco_boundary_id = e.id
+            WHERE a.name = @adminboundaryname
+                AND e.name = @ecoboundaryname
+                AND dt.name = @disttypename
+                AND dm.name = @dmname"
+    }
+}

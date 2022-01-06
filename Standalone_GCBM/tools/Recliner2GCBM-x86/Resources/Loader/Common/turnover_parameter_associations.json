@@ -1,0 +1,84 @@
+﻿{
+    "SQLLoaderMapping": {
+        "name": "Turnover parameters",
+        "fetch_sql": "
+            SELECT DISTINCT
+                e.name AS EcoBoundaryName,
+                g.name AS GenusName,
+                hw_foliage AS foliage,
+                stem_turnover AS stem,
+                hw_branch AS branch,
+                stem_snag,
+                branch_snag,
+                coarse_root,
+                fine_root,
+                branch_snag_split,
+                coarse_ag_split,
+                fine_ag_split
+            FROM (
+                eco_boundary e
+                INNER JOIN turnover_parameter p
+                    ON e.turnover_parameter_id = p.id
+            ), (
+                SELECT
+                    IIF(f.name LIKE 'Mixedwood', 'Hardwood', f.name) AS ForestTypeName,
+                    g.name
+                FROM forest_type f
+                INNER JOIN (
+                    genus g
+                    INNER JOIN species s
+                        ON s.genus_id = g.id
+                ) ON s.forest_type_id = f.id
+                WHERE f.name IN ('Hardwood', 'Mixedwood')
+            )
+            UNION
+            SELECT DISTINCT
+                e.name AS EcoBoundaryName,
+                g.name AS GenusName,
+                sw_foliage AS foliage,
+                stem_turnover AS stem,
+                sw_branch AS branch,
+                stem_snag,
+                branch_snag,
+                coarse_root,
+                fine_root,
+                branch_snag_split,
+                coarse_ag_split,
+                fine_ag_split
+            FROM (
+                eco_boundary e
+                INNER JOIN turnover_parameter p
+                    ON e.turnover_parameter_id = p.id
+            ), (
+                SELECT
+                    f.name AS ForestTypeName,
+                    g.name
+                FROM forest_type f
+                INNER JOIN (
+                    genus g
+                    INNER JOIN species s
+                        ON s.genus_id = g.id
+                ) ON s.forest_type_id = f.id
+                WHERE f.name = 'Softwood'
+            )",
+        "load_sql": "
+            INSERT INTO turnover_parameter_association (genus_id, eco_boundary_id, turnover_parameter_id)
+            SELECT
+                g.id AS genus_id,
+                e.id AS eco_boundary_id,
+                p.id AS turnover_parameter_id
+            FROM genus g, eco_boundary e, turnover_parameter p
+            WHERE g.name = @GenusName
+                AND e.name = @EcoBoundaryName
+                AND p.foliage = @foliage
+                AND p.stem = @stem
+                AND p.branch = @branch
+                AND p.stem_snag = @stem_snag
+                AND p.branch_snag = @branch_snag
+                AND p.coarse_root = @coarse_root
+                AND p.fine_root = @fine_root
+                AND p.branch_snag_split = @branch_snag_split
+                AND p.coarse_ag_split = @coarse_ag_split
+                AND p.fine_ag_split = @fine_ag_split"
+    }
+}

@@ -1,0 +1,15 @@
+        "landscape": {
+            "num_threads": 4,
+            "iteration_type": "BlockIndex",
+            "blocks": [
+                {
+                    "tile_index": 12674,
+                    "block_index": 51
+                }
+            ],
+            "y_pixels": 4000,
+            "provider": "RasterTiled",
+            "x_pixels": 4000,
+            "tile_size_x": 1.0,
+            "tile_size_y": 1.0
+        }

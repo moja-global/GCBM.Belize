@@ -1,0 +1,640 @@
+<2022-01-06 17:25:19.462071> (info) - Config has files: 7
+<2022-01-06 17:25:19.464323> (info) - Using Logging Configuration: C:\GCBM_UNFCCC\Belize\GCBM.Belize\Standalone_GCBM\gcbm_project\logging.conf
+<2022-01-06 17:25:19.464323> (info) - Using configurations: 
+<2022-01-06 17:25:19.464323> (info) - localdomain.json
+<2022-01-06 17:25:19.465323> (info) - pools_cbm.json
+<2022-01-06 17:25:19.465323> (info) - modules_cbm.json
+<2022-01-06 17:25:19.465712> (info) - modules_output.json
+<2022-01-06 17:25:19.465712> (info) - spinup.json
+<2022-01-06 17:25:19.465712> (info) - variables.json
+<2022-01-06 17:25:19.466295> (info) - internal_variables.json
+<2022-01-06 17:25:19.466295> (info) - Using provider configurations: 
+<2022-01-06 17:25:19.466295> (info) - provider_config.json
+<2022-01-06 17:25:19.484312> (info) - Using operation manager: 
+<2022-01-06 17:25:19.484990> (info) - spinup ON, sequencer - CBMSpinupSequencer
+<2022-01-06 17:25:19.485363> (debug) - main(235) - 	Modules:	
+<2022-01-06 17:25:19.485363> (debug) - main(237) - CBMSpinupSequencer(1), 
+<2022-01-06 17:25:19.485363> (debug) - main(237) - CBMBuildLandUnitModule(2), 
+<2022-01-06 17:25:19.485363> (debug) - main(237) - CBMGrowthModule(3), 
+<2022-01-06 17:25:19.485363> (debug) - main(237) - CBMDecayModule(4), 
+<2022-01-06 17:25:19.485363> (debug) - main(237) - TransactionManagerAfterSubmitModule(5), 
+<2022-01-06 17:25:19.485363> (debug) - main(237) - CBMSpinupDisturbanceModule(6), 
+<2022-01-06 17:25:19.485363> (debug) - main(238) - 
+<2022-01-06 17:25:19.485363> (debug) - main(239) - 	Variables:	
+<2022-01-06 17:25:19.485363> (debug) - main(241) - delay, 
+<2022-01-06 17:25:19.485363> (debug) - main(241) - minimum_rotation, 
+<2022-01-06 17:25:19.485363> (debug) - main(241) - run_delay, 
+<2022-01-06 17:25:19.485363> (debug) - main(242) - 
+<2022-01-06 17:25:19.485363> (debug) - main(243) - 	ExtVariables:	
+<2022-01-06 17:25:19.485363> (debug) - main(246) - 
+<2022-01-06 17:25:19.485363> (debug) - moja::flint::LibraryManager::LibraryManager(46) - LibraryManager: contructor no args
+<2022-01-06 17:25:19.485363> (debug) - moja::flint::LibraryManager::LoadInternalLibrary(427) - LibraryMLoadInternalLibraryanager: entered
+<2022-01-06 17:25:19.485363> (debug) - moja::flint::LibraryManager::LoadInternalLibrary(431) - LibraryMLoadInternalLibraryanager: calling AddLibrary : internal.flint
+<2022-01-06 17:25:19.485363> (debug) - moja::flint::LibraryManager::AddLibrary(78) - AddLibrary: entered : internal.flint
+<2022-01-06 17:25:19.485363> (debug) - moja::flint::LibraryManager::LoadInternalLibrary(441) - LibraryMLoadInternalLibraryanager: calling registrations
+<2022-01-06 17:25:19.485363> (debug) - moja::flint::getFlintModuleRegistrations(107) - getFlintModuleRegistrations: entered
+<2022-01-06 17:25:19.485363> (debug) - moja::flint::getFlintModuleRegistrations(166) - getFlintModuleRegistrations: exit - 20
+<2022-01-06 17:25:19.485363> (debug) - moja::flint::getFlintTransformRegistrations(171) - getFlintTransformRegistrations: entered
+<2022-01-06 17:25:19.485363> (debug) - moja::flint::getFlintTransformRegistrations(194) - getFlintTransformRegistrations: exit - 9
+<2022-01-06 17:25:19.485363> (debug) - moja::flint::getFlintFlintDataRegistrations(199) - getFlintFlintDataRegistrations: entered
+<2022-01-06 17:25:19.485363> (debug) - moja::flint::getFlintFlintDataRegistrations(219) - getFlintFlintDataRegistrations: exit - 8
+<2022-01-06 17:25:19.485363> (debug) - moja::flint::getFlintFlintDataFactoryRegistrations(224) - getFlintFlintDataFactoryRegistrations: entered
+<2022-01-06 17:25:19.485363> (debug) - moja::flint::getFlintFlintDataFactoryRegistrations(230) - getFlintFlintDataFactoryRegistrations: exit - 1
+<2022-01-06 17:25:19.485363> (debug) - moja::flint::getProviderRegistrations(235) - getProviderRegistrations: entered
+<2022-01-06 17:25:19.485363> (debug) - moja::flint::getProviderRegistrations(250) - getProviderRegistrations: exit - 2
+<2022-01-06 17:25:19.485363> (debug) - moja::flint::LibraryManager::RegisterProviders(407) - RegisterProviders: entered : internal.flint : count 2
+<2022-01-06 17:25:19.485363> (debug) - moja::flint::LibraryManager::RegisterProviders(411) - RegisterProviders: loop: 0
+<2022-01-06 17:25:19.485363> (debug) - moja::flint::LibraryManager::RegisterProviders(416) - RegisterProviders: loop: internal.flint : RasterTiled
+<2022-01-06 17:25:19.485363> (debug) - moja::flint::LibraryManager::RegisterProviders(411) - RegisterProviders: loop: 1
+<2022-01-06 17:25:19.485363> (debug) - moja::flint::LibraryManager::RegisterProviders(416) - RegisterProviders: loop: internal.flint : SQLite
+<2022-01-06 17:25:19.485363> (debug) - moja::flint::getProviderRegistrations(235) - getProviderRegistrations: entered
+<2022-01-06 17:25:19.485363> (debug) - moja::flint::getProviderRegistrations(250) - getProviderRegistrations: exit - 2
+<2022-01-06 17:25:19.485363> (debug) - moja::flint::LibraryManager::RegisterProviders(407) - RegisterProviders: entered : internal.flint : count 2
+<2022-01-06 17:25:19.485363> (debug) - moja::flint::LibraryManager::RegisterProviders(411) - RegisterProviders: loop: 0
+<2022-01-06 17:25:19.485363> (debug) - moja::flint::LibraryManager::RegisterProviders(416) - RegisterProviders: loop: internal.flint : RasterTiled
+<2022-01-06 17:25:19.485363> (debug) - moja::flint::LibraryManager::RegisterProviders(411) - RegisterProviders: loop: 1
+<2022-01-06 17:25:19.485363> (debug) - moja::flint::LibraryManager::RegisterProviders(416) - RegisterProviders: loop: internal.flint : SQLite
+<2022-01-06 17:25:19.485363> (debug) - moja::flint::LibraryManager::AddLibrary(78) - AddLibrary: entered : moja.modules.cbm
+<2022-01-06 17:25:19.530263> (info) - GCBM version: 1.0.0
+<2022-01-06 17:25:19.531258> (debug) - moja::flint::LibraryManager::AddLibrary(78) - AddLibrary: entered : moja.modules.gdal
+<2022-01-06 17:25:19.586372> (debug) - moja::flint::LibraryManager::RegisterProviders(407) - RegisterProviders: entered : moja.modules.gdal : count 1
+<2022-01-06 17:25:19.586372> (debug) - moja::flint::LibraryManager::RegisterProviders(411) - RegisterProviders: loop: 0
+<2022-01-06 17:25:19.586372> (debug) - moja::flint::LibraryManager::RegisterProviders(416) - RegisterProviders: loop: moja.modules.gdal : RasterTiledGDAL
+<2022-01-06 17:25:19.586372> (debug) - moja::flint::LibraryManager::AddLibrary(78) - AddLibrary: entered : moja.modules.zipper
+<2022-01-06 17:25:19.596423> (debug) - moja::flint::LibraryManager::RegisterProviders(407) - RegisterProviders: entered : moja.modules.zipper : count 1
+<2022-01-06 17:25:19.596423> (debug) - moja::flint::LibraryManager::RegisterProviders(411) - RegisterProviders: loop: 0
+<2022-01-06 17:25:19.596423> (debug) - moja::flint::LibraryManager::RegisterProviders(416) - RegisterProviders: loop: moja.modules.zipper : RasterTiledZipper
+<2022-01-06 17:25:19.601084> (info) -   0:Queuing tile: ( 26010) 1 of 2
+<2022-01-06 17:25:19.602081> (info) -   0:Queuing tile: ( 26011) 2 of 2
+<2022-01-06 17:25:19.602081> (info) -   0:Total Blocks queued for simulation: 200
+<2022-01-06 17:25:19.603078> (info) -   0:Run ID = 'c4689958-6f2e-11ec-a976-d85ed3239840'
+<2022-01-06 17:25:19.603229> (info) -   0:Threads created for processing: 8
+<2022-01-06 17:25:19.603229> (debug) - moja::flint::LibraryManager::LibraryManager(57) - LibraryManager: contructor no args
+<2022-01-06 17:25:19.603229> (debug) - moja::flint::LibraryManager::LoadInternalLibrary(427) - LibraryMLoadInternalLibraryanager: entered
+<2022-01-06 17:25:19.603229> (debug) - moja::flint::LibraryManager::LoadInternalLibrary(431) - LibraryMLoadInternalLibraryanager: calling AddLibrary : internal.flint
+<2022-01-06 17:25:19.603229> (debug) - moja::flint::LibraryManager::AddLibrary(78) - AddLibrary: entered : internal.flint
+<2022-01-06 17:25:19.603229> (debug) - moja::flint::LibraryManager::LoadInternalLibrary(441) - LibraryMLoadInternalLibraryanager: calling registrations
+<2022-01-06 17:25:19.603229> (debug) - moja::flint::getFlintModuleRegistrations(107) - getFlintModuleRegistrations: entered
+<2022-01-06 17:25:19.603229> (debug) - moja::flint::getFlintModuleRegistrations(166) - getFlintModuleRegistrations: exit - 20
+<2022-01-06 17:25:19.603229> (debug) - moja::flint::getFlintTransformRegistrations(171) - getFlintTransformRegistrations: entered
+<2022-01-06 17:25:19.603229> (debug) - moja::flint::getFlintTransformRegistrations(194) - getFlintTransformRegistrations: exit - 9
+<2022-01-06 17:25:19.603229> (debug) - moja::flint::getFlintFlintDataRegistrations(199) - getFlintFlintDataRegistrations: entered
+<2022-01-06 17:25:19.603229> (debug) - moja::flint::getFlintFlintDataRegistrations(219) - getFlintFlintDataRegistrations: exit - 8
+<2022-01-06 17:25:19.603229> (debug) - moja::flint::getFlintFlintDataFactoryRegistrations(224) - getFlintFlintDataFactoryRegistrations: entered
+<2022-01-06 17:25:19.603229> (debug) - moja::flint::getFlintFlintDataFactoryRegistrations(230) - getFlintFlintDataFactoryRegistrations: exit - 1
+<2022-01-06 17:25:19.603229> (debug) - moja::flint::getProviderRegistrations(235) - getProviderRegistrations: entered
+<2022-01-06 17:25:19.603229> (debug) - moja::flint::getProviderRegistrations(250) - getProviderRegistrations: exit - 2
+<2022-01-06 17:25:19.603229> (debug) - moja::flint::LibraryManager::RegisterProviders(407) - RegisterProviders: entered : internal.flint : count 2
+<2022-01-06 17:25:19.603229> (debug) - moja::flint::LibraryManager::RegisterProviders(411) - RegisterProviders: loop: 0
+<2022-01-06 17:25:19.603229> (debug) - moja::flint::LibraryManager::RegisterProviders(416) - RegisterProviders: loop: internal.flint : RasterTiled
+<2022-01-06 17:25:19.603229> (debug) - moja::flint::LibraryManager::RegisterProviders(411) - RegisterProviders: loop: 1
+<2022-01-06 17:25:19.603229> (debug) - moja::flint::LibraryManager::RegisterProviders(416) - RegisterProviders: loop: internal.flint : SQLite
+<2022-01-06 17:25:19.603229> (debug) - moja::flint::getProviderRegistrations(235) - getProviderRegistrations: entered
+<2022-01-06 17:25:19.603229> (debug) - moja::flint::getProviderRegistrations(250) - getProviderRegistrations: exit - 2
+<2022-01-06 17:25:19.603229> (debug) - moja::flint::LibraryManager::RegisterProviders(407) - RegisterProviders: entered : internal.flint : count 2
+<2022-01-06 17:25:19.603229> (debug) - moja::flint::LibraryManager::RegisterProviders(411) - RegisterProviders: loop: 0
+<2022-01-06 17:25:19.603229> (debug) - moja::flint::LibraryManager::RegisterProviders(416) - RegisterProviders: loop: internal.flint : RasterTiled
+<2022-01-06 17:25:19.603229> (debug) - moja::flint::LibraryManager::RegisterProviders(411) - RegisterProviders: loop: 1
+<2022-01-06 17:25:19.603229> (debug) - moja::flint::LibraryManager::RegisterProviders(416) - RegisterProviders: loop: internal.flint : SQLite
+<2022-01-06 17:25:19.603229> (debug) - moja::flint::LibraryManager::AddLibrary(78) - AddLibrary: entered : moja.modules.cbm
+<2022-01-06 17:25:19.604228> (info) - GCBM version: 1.0.0
+<2022-01-06 17:25:19.604228> (debug) - moja::flint::LibraryManager::AddLibrary(78) - AddLibrary: entered : moja.modules.gdal
+<2022-01-06 17:25:19.604228> (debug) - moja::flint::LibraryManager::RegisterProviders(407) - RegisterProviders: entered : moja.modules.gdal : count 1
+<2022-01-06 17:25:19.604228> (debug) - moja::flint::LibraryManager::RegisterProviders(411) - RegisterProviders: loop: 0
+<2022-01-06 17:25:19.604228> (debug) - moja::flint::LibraryManager::RegisterProviders(416) - RegisterProviders: loop: moja.modules.gdal : RasterTiledGDAL
+<2022-01-06 17:25:19.604228> (debug) - moja::flint::LibraryManager::AddLibrary(78) - AddLibrary: entered : moja.modules.zipper
+<2022-01-06 17:25:19.605225> (debug) - moja::flint::LibraryManager::RegisterProviders(407) - RegisterProviders: entered : moja.modules.zipper : count 1
+<2022-01-06 17:25:19.605225> (debug) - moja::flint::LibraryManager::RegisterProviders(411) - RegisterProviders: loop: 0
+<2022-01-06 17:25:19.605225> (debug) - moja::flint::LibraryManager::RegisterProviders(416) - RegisterProviders: loop: moja.modules.zipper : RasterTiledZipper
+<2022-01-06 17:25:19.606223> (info) - 100:Run ID = 'c4689958-6f2e-11ec-a976-d85ed3239840'
+<2022-01-06 17:25:19.606223> (info) - 100:Thread Created
+<2022-01-06 17:25:19.606223> (debug) - moja::flint::LibraryManager::LibraryManager(57) - LibraryManager: contructor no args
+<2022-01-06 17:25:19.606223> (debug) - moja::flint::LibraryManager::LoadInternalLibrary(427) - LibraryMLoadInternalLibraryanager: entered
+<2022-01-06 17:25:19.606223> (debug) - moja::flint::LibraryManager::LoadInternalLibrary(431) - LibraryMLoadInternalLibraryanager: calling AddLibrary : internal.flint
+<2022-01-06 17:25:19.606223> (debug) - moja::flint::LibraryManager::AddLibrary(78) - AddLibrary: entered : internal.flint
+<2022-01-06 17:25:19.606223> (debug) - moja::flint::LibraryManager::LoadInternalLibrary(441) - LibraryMLoadInternalLibraryanager: calling registrations
+<2022-01-06 17:25:19.606223> (debug) - moja::flint::getFlintModuleRegistrations(107) - getFlintModuleRegistrations: entered
+<2022-01-06 17:25:19.606223> (debug) - moja::flint::getFlintModuleRegistrations(166) - getFlintModuleRegistrations: exit - 20
+<2022-01-06 17:25:19.606223> (debug) - moja::flint::getFlintTransformRegistrations(171) - getFlintTransformRegistrations: entered
+<2022-01-06 17:25:19.606223> (debug) - moja::flint::getFlintTransformRegistrations(194) - getFlintTransformRegistrations: exit - 9
+<2022-01-06 17:25:19.606223> (debug) - moja::flint::getFlintFlintDataRegistrations(199) - getFlintFlintDataRegistrations: entered
+<2022-01-06 17:25:19.606223> (debug) - moja::flint::getFlintFlintDataRegistrations(219) - getFlintFlintDataRegistrations: exit - 8
+<2022-01-06 17:25:19.606223> (debug) - moja::flint::getFlintFlintDataFactoryRegistrations(224) - getFlintFlintDataFactoryRegistrations: entered
+<2022-01-06 17:25:19.606223> (debug) - moja::flint::getFlintFlintDataFactoryRegistrations(230) - getFlintFlintDataFactoryRegistrations: exit - 1
+<2022-01-06 17:25:19.607220> (debug) - moja::flint::getProviderRegistrations(235) - getProviderRegistrations: entered
+<2022-01-06 17:25:19.607220> (debug) - moja::flint::getProviderRegistrations(250) - getProviderRegistrations: exit - 2
+<2022-01-06 17:25:19.607220> (debug) - moja::flint::LibraryManager::RegisterProviders(407) - RegisterProviders: entered : internal.flint : count 2
+<2022-01-06 17:25:19.607220> (debug) - moja::flint::LibraryManager::RegisterProviders(411) - RegisterProviders: loop: 0
+<2022-01-06 17:25:19.607220> (debug) - moja::flint::LibraryManager::RegisterProviders(416) - RegisterProviders: loop: internal.flint : RasterTiled
+<2022-01-06 17:25:19.607220> (debug) - moja::flint::LibraryManager::RegisterProviders(411) - RegisterProviders: loop: 1
+<2022-01-06 17:25:19.607220> (debug) - moja::flint::LibraryManager::RegisterProviders(416) - RegisterProviders: loop: internal.flint : SQLite
+<2022-01-06 17:25:19.607220> (debug) - moja::flint::getProviderRegistrations(235) - getProviderRegistrations: entered
+<2022-01-06 17:25:19.607220> (debug) - moja::flint::getProviderRegistrations(250) - getProviderRegistrations: exit - 2
+<2022-01-06 17:25:19.607220> (debug) - moja::flint::LibraryManager::RegisterProviders(407) - RegisterProviders: entered : internal.flint : count 2
+<2022-01-06 17:25:19.607220> (debug) - moja::flint::LibraryManager::RegisterProviders(411) - RegisterProviders: loop: 0
+<2022-01-06 17:25:19.607220> (debug) - moja::flint::LibraryManager::RegisterProviders(416) - RegisterProviders: loop: internal.flint : RasterTiled
+<2022-01-06 17:25:19.607220> (debug) - moja::flint::LibraryManager::RegisterProviders(411) - RegisterProviders: loop: 1
+<2022-01-06 17:25:19.607220> (debug) - moja::flint::LibraryManager::RegisterProviders(416) - RegisterProviders: loop: internal.flint : SQLite
+<2022-01-06 17:25:19.607220> (debug) - moja::flint::LibraryManager::AddLibrary(78) - AddLibrary: entered : moja.modules.cbm
+<2022-01-06 17:25:19.607220> (info) - GCBM version: 1.0.0
+<2022-01-06 17:25:19.607220> (debug) - moja::flint::LibraryManager::AddLibrary(78) - AddLibrary: entered : moja.modules.gdal
+<2022-01-06 17:25:19.608217> (debug) - moja::flint::LibraryManager::RegisterProviders(407) - RegisterProviders: entered : moja.modules.gdal : count 1
+<2022-01-06 17:25:19.608217> (debug) - moja::flint::LibraryManager::RegisterProviders(411) - RegisterProviders: loop: 0
+<2022-01-06 17:25:19.608217> (debug) - moja::flint::LibraryManager::RegisterProviders(416) - RegisterProviders: loop: moja.modules.gdal : RasterTiledGDAL
+<2022-01-06 17:25:19.608217> (debug) - moja::flint::LibraryManager::AddLibrary(78) - AddLibrary: entered : moja.modules.zipper
+<2022-01-06 17:25:19.608217> (debug) - moja::flint::LibraryManager::RegisterProviders(407) - RegisterProviders: entered : moja.modules.zipper : count 1
+<2022-01-06 17:25:19.608217> (debug) - moja::flint::LibraryManager::RegisterProviders(411) - RegisterProviders: loop: 0
+<2022-01-06 17:25:19.608217> (debug) - moja::flint::LibraryManager::RegisterProviders(416) - RegisterProviders: loop: moja.modules.zipper : RasterTiledZipper
+<2022-01-06 17:25:19.609215> (info) - 101:Run ID = 'c4689958-6f2e-11ec-a976-d85ed3239840'
+<2022-01-06 17:25:19.609215> (info) - 101:Thread Created
+<2022-01-06 17:25:19.610213> (debug) - moja::flint::LibraryManager::LibraryManager(57) - LibraryManager: contructor no args
+<2022-01-06 17:25:19.610213> (debug) - moja::flint::LibraryManager::LoadInternalLibrary(427) - LibraryMLoadInternalLibraryanager: entered
+<2022-01-06 17:25:19.610213> (debug) - moja::flint::LibraryManager::LoadInternalLibrary(431) - LibraryMLoadInternalLibraryanager: calling AddLibrary : internal.flint
+<2022-01-06 17:25:19.610213> (debug) - moja::flint::LibraryManager::AddLibrary(78) - AddLibrary: entered : internal.flint
+<2022-01-06 17:25:19.610213> (debug) - moja::flint::LibraryManager::LoadInternalLibrary(441) - LibraryMLoadInternalLibraryanager: calling registrations
+<2022-01-06 17:25:19.610213> (debug) - moja::flint::getFlintModuleRegistrations(107) - getFlintModuleRegistrations: entered
+<2022-01-06 17:25:19.610213> (debug) - moja::flint::getFlintModuleRegistrations(166) - getFlintModuleRegistrations: exit - 20
+<2022-01-06 17:25:19.610213> (debug) - moja::flint::getFlintTransformRegistrations(171) - getFlintTransformRegistrations: entered
+<2022-01-06 17:25:19.610213> (debug) - moja::flint::getFlintTransformRegistrations(194) - getFlintTransformRegistrations: exit - 9
+<2022-01-06 17:25:19.610213> (debug) - moja::flint::getFlintFlintDataRegistrations(199) - getFlintFlintDataRegistrations: entered
+<2022-01-06 17:25:19.610213> (debug) - moja::flint::getFlintFlintDataRegistrations(219) - getFlintFlintDataRegistrations: exit - 8
+<2022-01-06 17:25:19.610213> (debug) - moja::flint::getFlintFlintDataFactoryRegistrations(224) - getFlintFlintDataFactoryRegistrations: entered
+<2022-01-06 17:25:19.610213> (debug) - moja::flint::getFlintFlintDataFactoryRegistrations(230) - getFlintFlintDataFactoryRegistrations: exit - 1
+<2022-01-06 17:25:19.610213> (debug) - moja::flint::getProviderRegistrations(235) - getProviderRegistrations: entered
+<2022-01-06 17:25:19.610213> (debug) - moja::flint::getProviderRegistrations(250) - getProviderRegistrations: exit - 2
+<2022-01-06 17:25:19.610213> (debug) - moja::flint::LibraryManager::RegisterProviders(407) - RegisterProviders: entered : internal.flint : count 2
+<2022-01-06 17:25:19.610213> (debug) - moja::flint::LibraryManager::RegisterProviders(411) - RegisterProviders: loop: 0
+<2022-01-06 17:25:19.610213> (debug) - moja::flint::LibraryManager::RegisterProviders(416) - RegisterProviders: loop: internal.flint : RasterTiled
+<2022-01-06 17:25:19.610213> (debug) - moja::flint::LibraryManager::RegisterProviders(411) - RegisterProviders: loop: 1
+<2022-01-06 17:25:19.610213> (debug) - moja::flint::LibraryManager::RegisterProviders(416) - RegisterProviders: loop: internal.flint : SQLite
+<2022-01-06 17:25:19.610213> (debug) - moja::flint::getProviderRegistrations(235) - getProviderRegistrations: entered
+<2022-01-06 17:25:19.610213> (debug) - moja::flint::getProviderRegistrations(250) - getProviderRegistrations: exit - 2
+<2022-01-06 17:25:19.610213> (debug) - moja::flint::LibraryManager::RegisterProviders(407) - RegisterProviders: entered : internal.flint : count 2
+<2022-01-06 17:25:19.610213> (debug) - moja::flint::LibraryManager::RegisterProviders(411) - RegisterProviders: loop: 0
+<2022-01-06 17:25:19.610213> (debug) - moja::flint::LibraryManager::RegisterProviders(416) - RegisterProviders: loop: internal.flint : RasterTiled
+<2022-01-06 17:25:19.610213> (debug) - moja::flint::LibraryManager::RegisterProviders(411) - RegisterProviders: loop: 1
+<2022-01-06 17:25:19.610213> (debug) - moja::flint::LibraryManager::RegisterProviders(416) - RegisterProviders: loop: internal.flint : SQLite
+<2022-01-06 17:25:19.610213> (debug) - moja::flint::LibraryManager::AddLibrary(78) - AddLibrary: entered : moja.modules.cbm
+<2022-01-06 17:25:19.610213> (info) - GCBM version: 1.0.0
+<2022-01-06 17:25:19.611209> (debug) - moja::flint::LibraryManager::AddLibrary(78) - AddLibrary: entered : moja.modules.gdal
+<2022-01-06 17:25:19.611209> (debug) - moja::flint::LibraryManager::RegisterProviders(407) - RegisterProviders: entered : moja.modules.gdal : count 1
+<2022-01-06 17:25:19.611209> (debug) - moja::flint::LibraryManager::RegisterProviders(411) - RegisterProviders: loop: 0
+<2022-01-06 17:25:19.611209> (debug) - moja::flint::LibraryManager::RegisterProviders(416) - RegisterProviders: loop: moja.modules.gdal : RasterTiledGDAL
+<2022-01-06 17:25:19.611209> (debug) - moja::flint::LibraryManager::AddLibrary(78) - AddLibrary: entered : moja.modules.zipper
+<2022-01-06 17:25:19.611209> (debug) - moja::flint::LibraryManager::RegisterProviders(407) - RegisterProviders: entered : moja.modules.zipper : count 1
+<2022-01-06 17:25:19.611209> (debug) - moja::flint::LibraryManager::RegisterProviders(411) - RegisterProviders: loop: 0
+<2022-01-06 17:25:19.611209> (debug) - moja::flint::LibraryManager::RegisterProviders(416) - RegisterProviders: loop: moja.modules.zipper : RasterTiledZipper
+<2022-01-06 17:25:19.612207> (info) - 102:Run ID = 'c4689958-6f2e-11ec-a976-d85ed3239840'
+<2022-01-06 17:25:19.613205> (info) - 102:Thread Created
+<2022-01-06 17:25:19.614309> (debug) - moja::flint::LibraryManager::LibraryManager(57) - LibraryManager: contructor no args
+<2022-01-06 17:25:19.614309> (debug) - moja::flint::LibraryManager::LoadInternalLibrary(427) - LibraryMLoadInternalLibraryanager: entered
+<2022-01-06 17:25:19.614309> (debug) - moja::flint::LibraryManager::LoadInternalLibrary(431) - LibraryMLoadInternalLibraryanager: calling AddLibrary : internal.flint
+<2022-01-06 17:25:19.614309> (debug) - moja::flint::LibraryManager::AddLibrary(78) - AddLibrary: entered : internal.flint
+<2022-01-06 17:25:19.614309> (debug) - moja::flint::LibraryManager::LoadInternalLibrary(441) - LibraryMLoadInternalLibraryanager: calling registrations
+<2022-01-06 17:25:19.614309> (debug) - moja::flint::getFlintModuleRegistrations(107) - getFlintModuleRegistrations: entered
+<2022-01-06 17:25:19.614309> (debug) - moja::flint::getFlintModuleRegistrations(166) - getFlintModuleRegistrations: exit - 20
+<2022-01-06 17:25:19.614309> (debug) - moja::flint::getFlintTransformRegistrations(171) - getFlintTransformRegistrations: entered
+<2022-01-06 17:25:19.614309> (debug) - moja::flint::getFlintTransformRegistrations(194) - getFlintTransformRegistrations: exit - 9
+<2022-01-06 17:25:19.614309> (debug) - moja::flint::getFlintFlintDataRegistrations(199) - getFlintFlintDataRegistrations: entered
+<2022-01-06 17:25:19.614309> (debug) - moja::flint::getFlintFlintDataRegistrations(219) - getFlintFlintDataRegistrations: exit - 8
+<2022-01-06 17:25:19.614309> (debug) - moja::flint::getFlintFlintDataFactoryRegistrations(224) - getFlintFlintDataFactoryRegistrations: entered
+<2022-01-06 17:25:19.614309> (debug) - moja::flint::getFlintFlintDataFactoryRegistrations(230) - getFlintFlintDataFactoryRegistrations: exit - 1
+<2022-01-06 17:25:19.614309> (debug) - moja::flint::getProviderRegistrations(235) - getProviderRegistrations: entered
+<2022-01-06 17:25:19.614309> (debug) - moja::flint::getProviderRegistrations(250) - getProviderRegistrations: exit - 2
+<2022-01-06 17:25:19.614309> (debug) - moja::flint::LibraryManager::RegisterProviders(407) - RegisterProviders: entered : internal.flint : count 2
+<2022-01-06 17:25:19.614309> (debug) - moja::flint::LibraryManager::RegisterProviders(411) - RegisterProviders: loop: 0
+<2022-01-06 17:25:19.614309> (debug) - moja::flint::LibraryManager::RegisterProviders(416) - RegisterProviders: loop: internal.flint : RasterTiled
+<2022-01-06 17:25:19.614309> (debug) - moja::flint::LibraryManager::RegisterProviders(411) - RegisterProviders: loop: 1
+<2022-01-06 17:25:19.614309> (debug) - moja::flint::LibraryManager::RegisterProviders(416) - RegisterProviders: loop: internal.flint : SQLite
+<2022-01-06 17:25:19.614309> (debug) - moja::flint::getProviderRegistrations(235) - getProviderRegistrations: entered
+<2022-01-06 17:25:19.614309> (debug) - moja::flint::getProviderRegistrations(250) - getProviderRegistrations: exit - 2
+<2022-01-06 17:25:19.614309> (debug) - moja::flint::LibraryManager::RegisterProviders(407) - RegisterProviders: entered : internal.flint : count 2
+<2022-01-06 17:25:19.614309> (debug) - moja::flint::LibraryManager::RegisterProviders(411) - RegisterProviders: loop: 0
+<2022-01-06 17:25:19.614309> (debug) - moja::flint::LibraryManager::RegisterProviders(416) - RegisterProviders: loop: internal.flint : RasterTiled
+<2022-01-06 17:25:19.614309> (debug) - moja::flint::LibraryManager::RegisterProviders(411) - RegisterProviders: loop: 1
+<2022-01-06 17:25:19.614309> (debug) - moja::flint::LibraryManager::RegisterProviders(416) - RegisterProviders: loop: internal.flint : SQLite
+<2022-01-06 17:25:19.614309> (debug) - moja::flint::LibraryManager::AddLibrary(78) - AddLibrary: entered : moja.modules.cbm
+<2022-01-06 17:25:19.615307> (info) - GCBM version: 1.0.0
+<2022-01-06 17:25:19.615307> (debug) - moja::flint::LibraryManager::AddLibrary(78) - AddLibrary: entered : moja.modules.gdal
+<2022-01-06 17:25:19.615307> (debug) - moja::flint::LibraryManager::RegisterProviders(407) - RegisterProviders: entered : moja.modules.gdal : count 1
+<2022-01-06 17:25:19.615307> (debug) - moja::flint::LibraryManager::RegisterProviders(411) - RegisterProviders: loop: 0
+<2022-01-06 17:25:19.615307> (debug) - moja::flint::LibraryManager::RegisterProviders(416) - RegisterProviders: loop: moja.modules.gdal : RasterTiledGDAL
+<2022-01-06 17:25:19.615307> (debug) - moja::flint::LibraryManager::AddLibrary(78) - AddLibrary: entered : moja.modules.zipper
+<2022-01-06 17:25:19.616304> (debug) - moja::flint::LibraryManager::RegisterProviders(407) - RegisterProviders: entered : moja.modules.zipper : count 1
+<2022-01-06 17:25:19.616304> (debug) - moja::flint::LibraryManager::RegisterProviders(411) - RegisterProviders: loop: 0
+<2022-01-06 17:25:19.616304> (debug) - moja::flint::LibraryManager::RegisterProviders(416) - RegisterProviders: loop: moja.modules.zipper : RasterTiledZipper
+<2022-01-06 17:25:19.617303> (info) - 103:Run ID = 'c4689958-6f2e-11ec-a976-d85ed3239840'
+<2022-01-06 17:25:19.617303> (info) - 103:Thread Created
+<2022-01-06 17:25:19.617303> (debug) - moja::flint::LibraryManager::LibraryManager(57) - LibraryManager: contructor no args
+<2022-01-06 17:25:19.617303> (debug) - moja::flint::LibraryManager::LoadInternalLibrary(427) - LibraryMLoadInternalLibraryanager: entered
+<2022-01-06 17:25:19.617303> (debug) - moja::flint::LibraryManager::LoadInternalLibrary(431) - LibraryMLoadInternalLibraryanager: calling AddLibrary : internal.flint
+<2022-01-06 17:25:19.617303> (debug) - moja::flint::LibraryManager::AddLibrary(78) - AddLibrary: entered : internal.flint
+<2022-01-06 17:25:19.617303> (debug) - moja::flint::LibraryManager::LoadInternalLibrary(441) - LibraryMLoadInternalLibraryanager: calling registrations
+<2022-01-06 17:25:19.617303> (debug) - moja::flint::getFlintModuleRegistrations(107) - getFlintModuleRegistrations: entered
+<2022-01-06 17:25:19.617303> (debug) - moja::flint::getFlintModuleRegistrations(166) - getFlintModuleRegistrations: exit - 20
+<2022-01-06 17:25:19.617303> (debug) - moja::flint::getFlintTransformRegistrations(171) - getFlintTransformRegistrations: entered
+<2022-01-06 17:25:19.617303> (debug) - moja::flint::getFlintTransformRegistrations(194) - getFlintTransformRegistrations: exit - 9
+<2022-01-06 17:25:19.617303> (debug) - moja::flint::getFlintFlintDataRegistrations(199) - getFlintFlintDataRegistrations: entered
+<2022-01-06 17:25:19.617303> (debug) - moja::flint::getFlintFlintDataRegistrations(219) - getFlintFlintDataRegistrations: exit - 8
+<2022-01-06 17:25:19.617303> (debug) - moja::flint::getFlintFlintDataFactoryRegistrations(224) - getFlintFlintDataFactoryRegistrations: entered
+<2022-01-06 17:25:19.617303> (debug) - moja::flint::getFlintFlintDataFactoryRegistrations(230) - getFlintFlintDataFactoryRegistrations: exit - 1
+<2022-01-06 17:25:19.617303> (debug) - moja::flint::getProviderRegistrations(235) - getProviderRegistrations: entered
+<2022-01-06 17:25:19.617303> (debug) - moja::flint::getProviderRegistrations(250) - getProviderRegistrations: exit - 2
+<2022-01-06 17:25:19.617303> (debug) - moja::flint::LibraryManager::RegisterProviders(407) - RegisterProviders: entered : internal.flint : count 2
+<2022-01-06 17:25:19.617303> (debug) - moja::flint::LibraryManager::RegisterProviders(411) - RegisterProviders: loop: 0
+<2022-01-06 17:25:19.617303> (debug) - moja::flint::LibraryManager::RegisterProviders(416) - RegisterProviders: loop: internal.flint : RasterTiled
+<2022-01-06 17:25:19.617303> (debug) - moja::flint::LibraryManager::RegisterProviders(411) - RegisterProviders: loop: 1
+<2022-01-06 17:25:19.617303> (debug) - moja::flint::LibraryManager::RegisterProviders(416) - RegisterProviders: loop: internal.flint : SQLite
+<2022-01-06 17:25:19.617303> (debug) - moja::flint::getProviderRegistrations(235) - getProviderRegistrations: entered
+<2022-01-06 17:25:19.617303> (debug) - moja::flint::getProviderRegistrations(250) - getProviderRegistrations: exit - 2
+<2022-01-06 17:25:19.617303> (debug) - moja::flint::LibraryManager::RegisterProviders(407) - RegisterProviders: entered : internal.flint : count 2
+<2022-01-06 17:25:19.617303> (debug) - moja::flint::LibraryManager::RegisterProviders(411) - RegisterProviders: loop: 0
+<2022-01-06 17:25:19.618299> (debug) - moja::flint::LibraryManager::RegisterProviders(416) - RegisterProviders: loop: internal.flint : RasterTiled
+<2022-01-06 17:25:19.618299> (debug) - moja::flint::LibraryManager::RegisterProviders(411) - RegisterProviders: loop: 1
+<2022-01-06 17:25:19.618299> (debug) - moja::flint::LibraryManager::RegisterProviders(416) - RegisterProviders: loop: internal.flint : SQLite
+<2022-01-06 17:25:19.618299> (debug) - moja::flint::LibraryManager::AddLibrary(78) - AddLibrary: entered : moja.modules.cbm
+<2022-01-06 17:25:19.618299> (info) - GCBM version: 1.0.0
+<2022-01-06 17:25:19.619297> (debug) - moja::flint::LibraryManager::AddLibrary(78) - AddLibrary: entered : moja.modules.gdal
+<2022-01-06 17:25:19.619297> (debug) - moja::flint::LibraryManager::RegisterProviders(407) - RegisterProviders: entered : moja.modules.gdal : count 1
+<2022-01-06 17:25:19.619297> (debug) - moja::flint::LibraryManager::RegisterProviders(411) - RegisterProviders: loop: 0
+<2022-01-06 17:25:19.619297> (debug) - moja::flint::LibraryManager::RegisterProviders(416) - RegisterProviders: loop: moja.modules.gdal : RasterTiledGDAL
+<2022-01-06 17:25:19.619297> (debug) - moja::flint::LibraryManager::AddLibrary(78) - AddLibrary: entered : moja.modules.zipper
+<2022-01-06 17:25:19.620294> (debug) - moja::flint::LibraryManager::RegisterProviders(407) - RegisterProviders: entered : moja.modules.zipper : count 1
+<2022-01-06 17:25:19.620294> (debug) - moja::flint::LibraryManager::RegisterProviders(411) - RegisterProviders: loop: 0
+<2022-01-06 17:25:19.620294> (debug) - moja::flint::LibraryManager::RegisterProviders(416) - RegisterProviders: loop: moja.modules.zipper : RasterTiledZipper
+<2022-01-06 17:25:19.621291> (info) - 104:Run ID = 'c4689958-6f2e-11ec-a976-d85ed3239840'
+<2022-01-06 17:25:19.621291> (info) - 104:Thread Created
+<2022-01-06 17:25:19.621291> (debug) - moja::flint::LibraryManager::LibraryManager(57) - LibraryManager: contructor no args
+<2022-01-06 17:25:19.621291> (debug) - moja::flint::LibraryManager::LoadInternalLibrary(427) - LibraryMLoadInternalLibraryanager: entered
+<2022-01-06 17:25:19.621291> (debug) - moja::flint::LibraryManager::LoadInternalLibrary(431) - LibraryMLoadInternalLibraryanager: calling AddLibrary : internal.flint
+<2022-01-06 17:25:19.621291> (debug) - moja::flint::LibraryManager::AddLibrary(78) - AddLibrary: entered : internal.flint
+<2022-01-06 17:25:19.621291> (debug) - moja::flint::LibraryManager::LoadInternalLibrary(441) - LibraryMLoadInternalLibraryanager: calling registrations
+<2022-01-06 17:25:19.621291> (debug) - moja::flint::getFlintModuleRegistrations(107) - getFlintModuleRegistrations: entered
+<2022-01-06 17:25:19.621291> (debug) - moja::flint::getFlintModuleRegistrations(166) - getFlintModuleRegistrations: exit - 20
+<2022-01-06 17:25:19.621291> (debug) - moja::flint::getFlintTransformRegistrations(171) - getFlintTransformRegistrations: entered
+<2022-01-06 17:25:19.621291> (debug) - moja::flint::getFlintTransformRegistrations(194) - getFlintTransformRegistrations: exit - 9
+<2022-01-06 17:25:19.621291> (debug) - moja::flint::getFlintFlintDataRegistrations(199) - getFlintFlintDataRegistrations: entered
+<2022-01-06 17:25:19.621291> (debug) - moja::flint::getFlintFlintDataRegistrations(219) - getFlintFlintDataRegistrations: exit - 8
+<2022-01-06 17:25:19.621291> (debug) - moja::flint::getFlintFlintDataFactoryRegistrations(224) - getFlintFlintDataFactoryRegistrations: entered
+<2022-01-06 17:25:19.621291> (debug) - moja::flint::getFlintFlintDataFactoryRegistrations(230) - getFlintFlintDataFactoryRegistrations: exit - 1
+<2022-01-06 17:25:19.621291> (debug) - moja::flint::getProviderRegistrations(235) - getProviderRegistrations: entered
+<2022-01-06 17:25:19.621291> (debug) - moja::flint::getProviderRegistrations(250) - getProviderRegistrations: exit - 2
+<2022-01-06 17:25:19.621291> (debug) - moja::flint::LibraryManager::RegisterProviders(407) - RegisterProviders: entered : internal.flint : count 2
+<2022-01-06 17:25:19.621291> (debug) - moja::flint::LibraryManager::RegisterProviders(411) - RegisterProviders: loop: 0
+<2022-01-06 17:25:19.621291> (debug) - moja::flint::LibraryManager::RegisterProviders(416) - RegisterProviders: loop: internal.flint : RasterTiled
+<2022-01-06 17:25:19.621291> (debug) - moja::flint::LibraryManager::RegisterProviders(411) - RegisterProviders: loop: 1
+<2022-01-06 17:25:19.621291> (debug) - moja::flint::LibraryManager::RegisterProviders(416) - RegisterProviders: loop: internal.flint : SQLite
+<2022-01-06 17:25:19.621291> (debug) - moja::flint::getProviderRegistrations(235) - getProviderRegistrations: entered
+<2022-01-06 17:25:19.621291> (debug) - moja::flint::getProviderRegistrations(250) - getProviderRegistrations: exit - 2
+<2022-01-06 17:25:19.621291> (debug) - moja::flint::LibraryManager::RegisterProviders(407) - RegisterProviders: entered : internal.flint : count 2
+<2022-01-06 17:25:19.621291> (debug) - moja::flint::LibraryManager::RegisterProviders(411) - RegisterProviders: loop: 0
+<2022-01-06 17:25:19.621291> (debug) - moja::flint::LibraryManager::RegisterProviders(416) - RegisterProviders: loop: internal.flint : RasterTiled
+<2022-01-06 17:25:19.621291> (debug) - moja::flint::LibraryManager::RegisterProviders(411) - RegisterProviders: loop: 1
+<2022-01-06 17:25:19.621291> (debug) - moja::flint::LibraryManager::RegisterProviders(416) - RegisterProviders: loop: internal.flint : SQLite
+<2022-01-06 17:25:19.621291> (debug) - moja::flint::LibraryManager::AddLibrary(78) - AddLibrary: entered : moja.modules.cbm
+<2022-01-06 17:25:19.622288> (info) - GCBM version: 1.0.0
+<2022-01-06 17:25:19.622288> (debug) - moja::flint::LibraryManager::AddLibrary(78) - AddLibrary: entered : moja.modules.gdal
+<2022-01-06 17:25:19.622288> (debug) - moja::flint::LibraryManager::RegisterProviders(407) - RegisterProviders: entered : moja.modules.gdal : count 1
+<2022-01-06 17:25:19.622288> (debug) - moja::flint::LibraryManager::RegisterProviders(411) - RegisterProviders: loop: 0
+<2022-01-06 17:25:19.622288> (debug) - moja::flint::LibraryManager::RegisterProviders(416) - RegisterProviders: loop: moja.modules.gdal : RasterTiledGDAL
+<2022-01-06 17:25:19.622288> (debug) - moja::flint::LibraryManager::AddLibrary(78) - AddLibrary: entered : moja.modules.zipper
+<2022-01-06 17:25:19.623286> (debug) - moja::flint::LibraryManager::RegisterProviders(407) - RegisterProviders: entered : moja.modules.zipper : count 1
+<2022-01-06 17:25:19.623286> (debug) - moja::flint::LibraryManager::RegisterProviders(411) - RegisterProviders: loop: 0
+<2022-01-06 17:25:19.623286> (debug) - moja::flint::LibraryManager::RegisterProviders(416) - RegisterProviders: loop: moja.modules.zipper : RasterTiledZipper
+<2022-01-06 17:25:19.624283> (info) - 105:Run ID = 'c4689958-6f2e-11ec-a976-d85ed3239840'
+<2022-01-06 17:25:19.624283> (info) - 105:Thread Created
+<2022-01-06 17:25:19.624758> (debug) - moja::flint::LibraryManager::LibraryManager(57) - LibraryManager: contructor no args
+<2022-01-06 17:25:19.624758> (debug) - moja::flint::LibraryManager::LoadInternalLibrary(427) - LibraryMLoadInternalLibraryanager: entered
+<2022-01-06 17:25:19.624758> (debug) - moja::flint::LibraryManager::LoadInternalLibrary(431) - LibraryMLoadInternalLibraryanager: calling AddLibrary : internal.flint
+<2022-01-06 17:25:19.624758> (debug) - moja::flint::LibraryManager::AddLibrary(78) - AddLibrary: entered : internal.flint
+<2022-01-06 17:25:19.624758> (debug) - moja::flint::LibraryManager::LoadInternalLibrary(441) - LibraryMLoadInternalLibraryanager: calling registrations
+<2022-01-06 17:25:19.624758> (debug) - moja::flint::getFlintModuleRegistrations(107) - getFlintModuleRegistrations: entered
+<2022-01-06 17:25:19.624758> (debug) - moja::flint::getFlintModuleRegistrations(166) - getFlintModuleRegistrations: exit - 20
+<2022-01-06 17:25:19.624758> (debug) - moja::flint::getFlintTransformRegistrations(171) - getFlintTransformRegistrations: entered
+<2022-01-06 17:25:19.624758> (debug) - moja::flint::getFlintTransformRegistrations(194) - getFlintTransformRegistrations: exit - 9
+<2022-01-06 17:25:19.624758> (debug) - moja::flint::getFlintFlintDataRegistrations(199) - getFlintFlintDataRegistrations: entered
+<2022-01-06 17:25:19.624758> (debug) - moja::flint::getFlintFlintDataRegistrations(219) - getFlintFlintDataRegistrations: exit - 8
+<2022-01-06 17:25:19.624758> (debug) - moja::flint::getFlintFlintDataFactoryRegistrations(224) - getFlintFlintDataFactoryRegistrations: entered
+<2022-01-06 17:25:19.624758> (debug) - moja::flint::getFlintFlintDataFactoryRegistrations(230) - getFlintFlintDataFactoryRegistrations: exit - 1
+<2022-01-06 17:25:19.624758> (debug) - moja::flint::getProviderRegistrations(235) - getProviderRegistrations: entered
+<2022-01-06 17:25:19.624758> (debug) - moja::flint::getProviderRegistrations(250) - getProviderRegistrations: exit - 2
+<2022-01-06 17:25:19.624758> (debug) - moja::flint::LibraryManager::RegisterProviders(407) - RegisterProviders: entered : internal.flint : count 2
+<2022-01-06 17:25:19.624758> (debug) - moja::flint::LibraryManager::RegisterProviders(411) - RegisterProviders: loop: 0
+<2022-01-06 17:25:19.624758> (debug) - moja::flint::LibraryManager::RegisterProviders(416) - RegisterProviders: loop: internal.flint : RasterTiled
+<2022-01-06 17:25:19.624758> (debug) - moja::flint::LibraryManager::RegisterProviders(411) - RegisterProviders: loop: 1
+<2022-01-06 17:25:19.624758> (debug) - moja::flint::LibraryManager::RegisterProviders(416) - RegisterProviders: loop: internal.flint : SQLite
+<2022-01-06 17:25:19.624758> (debug) - moja::flint::getProviderRegistrations(235) - getProviderRegistrations: entered
+<2022-01-06 17:25:19.624758> (debug) - moja::flint::getProviderRegistrations(250) - getProviderRegistrations: exit - 2
+<2022-01-06 17:25:19.624758> (debug) - moja::flint::LibraryManager::RegisterProviders(407) - RegisterProviders: entered : internal.flint : count 2
+<2022-01-06 17:25:19.624758> (debug) - moja::flint::LibraryManager::RegisterProviders(411) - RegisterProviders: loop: 0
+<2022-01-06 17:25:19.624758> (debug) - moja::flint::LibraryManager::RegisterProviders(416) - RegisterProviders: loop: internal.flint : RasterTiled
+<2022-01-06 17:25:19.624758> (debug) - moja::flint::LibraryManager::RegisterProviders(411) - RegisterProviders: loop: 1
+<2022-01-06 17:25:19.624758> (debug) - moja::flint::LibraryManager::RegisterProviders(416) - RegisterProviders: loop: internal.flint : SQLite
+<2022-01-06 17:25:19.624758> (debug) - moja::flint::LibraryManager::AddLibrary(78) - AddLibrary: entered : moja.modules.cbm
+<2022-01-06 17:25:19.624758> (info) - GCBM version: 1.0.0
+<2022-01-06 17:25:19.624758> (debug) - moja::flint::LibraryManager::AddLibrary(78) - AddLibrary: entered : moja.modules.gdal
+<2022-01-06 17:25:19.625800> (debug) - moja::flint::LibraryManager::RegisterProviders(407) - RegisterProviders: entered : moja.modules.gdal : count 1
+<2022-01-06 17:25:19.625800> (debug) - moja::flint::LibraryManager::RegisterProviders(411) - RegisterProviders: loop: 0
+<2022-01-06 17:25:19.625800> (debug) - moja::flint::LibraryManager::RegisterProviders(416) - RegisterProviders: loop: moja.modules.gdal : RasterTiledGDAL
+<2022-01-06 17:25:19.625800> (debug) - moja::flint::LibraryManager::AddLibrary(78) - AddLibrary: entered : moja.modules.zipper
+<2022-01-06 17:25:19.625800> (debug) - moja::flint::LibraryManager::RegisterProviders(407) - RegisterProviders: entered : moja.modules.zipper : count 1
+<2022-01-06 17:25:19.625800> (debug) - moja::flint::LibraryManager::RegisterProviders(411) - RegisterProviders: loop: 0
+<2022-01-06 17:25:19.625800> (debug) - moja::flint::LibraryManager::RegisterProviders(416) - RegisterProviders: loop: moja.modules.zipper : RasterTiledZipper
+<2022-01-06 17:25:19.627786> (info) - 106:Run ID = 'c4689958-6f2e-11ec-a976-d85ed3239840'
+<2022-01-06 17:25:19.627786> (info) - 106:Thread Created
+<2022-01-06 17:25:19.627786> (debug) - moja::flint::LibraryManager::LibraryManager(57) - LibraryManager: contructor no args
+<2022-01-06 17:25:19.627786> (debug) - moja::flint::LibraryManager::LoadInternalLibrary(427) - LibraryMLoadInternalLibraryanager: entered
+<2022-01-06 17:25:19.627786> (debug) - moja::flint::LibraryManager::LoadInternalLibrary(431) - LibraryMLoadInternalLibraryanager: calling AddLibrary : internal.flint
+<2022-01-06 17:25:19.627786> (debug) - moja::flint::LibraryManager::AddLibrary(78) - AddLibrary: entered : internal.flint
+<2022-01-06 17:25:19.627786> (debug) - moja::flint::LibraryManager::LoadInternalLibrary(441) - LibraryMLoadInternalLibraryanager: calling registrations
+<2022-01-06 17:25:19.627786> (debug) - moja::flint::getFlintModuleRegistrations(107) - getFlintModuleRegistrations: entered
+<2022-01-06 17:25:19.627786> (debug) - moja::flint::getFlintModuleRegistrations(166) - getFlintModuleRegistrations: exit - 20
+<2022-01-06 17:25:19.627786> (debug) - moja::flint::getFlintTransformRegistrations(171) - getFlintTransformRegistrations: entered
+<2022-01-06 17:25:19.627786> (debug) - moja::flint::getFlintTransformRegistrations(194) - getFlintTransformRegistrations: exit - 9
+<2022-01-06 17:25:19.627786> (debug) - moja::flint::getFlintFlintDataRegistrations(199) - getFlintFlintDataRegistrations: entered
+<2022-01-06 17:25:19.627786> (debug) - moja::flint::getFlintFlintDataRegistrations(219) - getFlintFlintDataRegistrations: exit - 8
+<2022-01-06 17:25:19.627786> (debug) - moja::flint::getFlintFlintDataFactoryRegistrations(224) - getFlintFlintDataFactoryRegistrations: entered
+<2022-01-06 17:25:19.627786> (debug) - moja::flint::getFlintFlintDataFactoryRegistrations(230) - getFlintFlintDataFactoryRegistrations: exit - 1
+<2022-01-06 17:25:19.627786> (debug) - moja::flint::getProviderRegistrations(235) - getProviderRegistrations: entered
+<2022-01-06 17:25:19.627786> (debug) - moja::flint::getProviderRegistrations(250) - getProviderRegistrations: exit - 2
+<2022-01-06 17:25:19.627786> (debug) - moja::flint::LibraryManager::RegisterProviders(407) - RegisterProviders: entered : internal.flint : count 2
+<2022-01-06 17:25:19.627786> (debug) - moja::flint::LibraryManager::RegisterProviders(411) - RegisterProviders: loop: 0
+<2022-01-06 17:25:19.627786> (debug) - moja::flint::LibraryManager::RegisterProviders(416) - RegisterProviders: loop: internal.flint : RasterTiled
+<2022-01-06 17:25:19.627786> (debug) - moja::flint::LibraryManager::RegisterProviders(411) - RegisterProviders: loop: 1
+<2022-01-06 17:25:19.627786> (debug) - moja::flint::LibraryManager::RegisterProviders(416) - RegisterProviders: loop: internal.flint : SQLite
+<2022-01-06 17:25:19.627786> (debug) - moja::flint::getProviderRegistrations(235) - getProviderRegistrations: entered
+<2022-01-06 17:25:19.627786> (debug) - moja::flint::getProviderRegistrations(250) - getProviderRegistrations: exit - 2
+<2022-01-06 17:25:19.627786> (debug) - moja::flint::LibraryManager::RegisterProviders(407) - RegisterProviders: entered : internal.flint : count 2
+<2022-01-06 17:25:19.627786> (debug) - moja::flint::LibraryManager::RegisterProviders(411) - RegisterProviders: loop: 0
+<2022-01-06 17:25:19.627786> (debug) - moja::flint::LibraryManager::RegisterProviders(416) - RegisterProviders: loop: internal.flint : RasterTiled
+<2022-01-06 17:25:19.627786> (debug) - moja::flint::LibraryManager::RegisterProviders(411) - RegisterProviders: loop: 1
+<2022-01-06 17:25:19.627786> (debug) - moja::flint::LibraryManager::RegisterProviders(416) - RegisterProviders: loop: internal.flint : SQLite
+<2022-01-06 17:25:19.627786> (debug) - moja::flint::LibraryManager::AddLibrary(78) - AddLibrary: entered : moja.modules.cbm
+<2022-01-06 17:25:19.628779> (info) - GCBM version: 1.0.0
+<2022-01-06 17:25:19.628779> (debug) - moja::flint::LibraryManager::AddLibrary(78) - AddLibrary: entered : moja.modules.gdal
+<2022-01-06 17:25:19.628779> (debug) - moja::flint::LibraryManager::RegisterProviders(407) - RegisterProviders: entered : moja.modules.gdal : count 1
+<2022-01-06 17:25:19.628779> (debug) - moja::flint::LibraryManager::RegisterProviders(411) - RegisterProviders: loop: 0
+<2022-01-06 17:25:19.628779> (debug) - moja::flint::LibraryManager::RegisterProviders(416) - RegisterProviders: loop: moja.modules.gdal : RasterTiledGDAL
+<2022-01-06 17:25:19.628779> (debug) - moja::flint::LibraryManager::AddLibrary(78) - AddLibrary: entered : moja.modules.zipper
+<2022-01-06 17:25:19.629776> (debug) - moja::flint::LibraryManager::RegisterProviders(407) - RegisterProviders: entered : moja.modules.zipper : count 1
+<2022-01-06 17:25:19.629776> (debug) - moja::flint::LibraryManager::RegisterProviders(411) - RegisterProviders: loop: 0
+<2022-01-06 17:25:19.629776> (debug) - moja::flint::LibraryManager::RegisterProviders(416) - RegisterProviders: loop: moja.modules.zipper : RasterTiledZipper
+<2022-01-06 17:25:19.630777> (info) - 107:Run ID = 'c4689958-6f2e-11ec-a976-d85ed3239840'
+<2022-01-06 17:25:19.630777> (info) - 107:Thread Created
+<2022-01-06 17:25:19.630777> (info) - modules loaded: 
+<2022-01-06 17:25:19.630777> (info) - 	library: internal.flint, module name: TransactionManagerAfterSubmitModule
+<2022-01-06 17:25:19.630777> (info) - 	library: moja.modules.cbm, module name: CBMAgeIndicators
+<2022-01-06 17:25:19.630777> (info) - 	library: moja.modules.cbm, module name: CBMAggregatorLandUnitData
+<2022-01-06 17:25:19.631742> (info) - 	library: moja.modules.cbm, module name: CBMAggregatorSQLiteWriter
+<2022-01-06 17:25:19.632060> (info) - 	library: moja.modules.cbm, module name: CBMBuildLandUnitModule
+<2022-01-06 17:25:19.632060> (info) - 	library: moja.modules.cbm, module name: CBMDecayModule
+<2022-01-06 17:25:19.632060> (info) - 	library: moja.modules.cbm, module name: CBMDisturbanceEventModule
+<2022-01-06 17:25:19.633058> (info) - 	library: moja.modules.cbm, module name: CBMGrowthModule
+<2022-01-06 17:25:19.633058> (info) - 	library: moja.modules.cbm, module name: CBMLandClassTransitionModule
+<2022-01-06 17:25:19.633058> (info) - 	library: moja.modules.cbm, module name: CBMSequencer
+<2022-01-06 17:25:19.633058> (info) - 	library: moja.modules.cbm, module name: CBMTransitionRulesModule
+<2022-01-06 17:25:19.635554> (info) - 	library: moja.modules.gdal, module name: WriteVariableGeotiff
+<2022-01-06 17:25:19.635554> (info) - Operation manager: Simple, Version: 1.0, Config: (Kahan[OFF], ZeroTransfers[OFF], AllowNegativeTransfers[ON], WarnNegativeTransfers[OFF])
+<2022-01-06 17:25:19.639234> (info) - 104:Thread Started 
+<2022-01-06 17:25:19.639234> (info) - 100:Thread Started 
+<2022-01-06 17:25:19.639234> (info) - 105:Thread Started 
+<2022-01-06 17:25:19.639234> (info) - 106:Thread Started 
+<2022-01-06 17:25:19.639234> (info) - 101:Thread Started 
+<2022-01-06 17:25:19.639234> (info) - 107:Thread Started 
+<2022-01-06 17:25:19.639234> (info) - 102:Thread Started 
+<2022-01-06 17:25:19.639234> (info) - 103:Thread Started 
+<2022-01-06 17:25:19.831762> (info) - 105: Stats level [Block]: Record [  199 of   200]: Index [( 26010,  1)]: Time(ms) [Total:       40, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   244910]
+<2022-01-06 17:25:19.833757> (info) - 104: Stats level [Block]: Record [  198 of   200]: Index [( 26010,  2)]: Time(ms) [Total:       37, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   269329]
+<2022-01-06 17:25:19.833757> (info) - 101: Stats level [Block]: Record [  200 of   200]: Index [( 26010,  0)]: Time(ms) [Total:       42, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   234050]
+<2022-01-06 17:25:19.834754> (info) - 107: Stats level [Block]: Record [  197 of   200]: Index [( 26010,  3)]: Time(ms) [Total:       34, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   288484]
+<2022-01-06 17:25:19.837745> (info) - 106: Stats level [Block]: Record [  194 of   200]: Index [( 26010,  6)]: Time(ms) [Total:       35, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   282730]
+<2022-01-06 17:25:19.838743> (info) - 103: Stats level [Block]: Record [  193 of   200]: Index [( 26010,  7)]: Time(ms) [Total:       35, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   282526]
+<2022-01-06 17:25:19.840738> (info) - 100: Stats level [Block]: Record [  196 of   200]: Index [( 26010,  4)]: Time(ms) [Total:       41, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   242734]
+<2022-01-06 17:25:19.841735> (info) - 102: Stats level [Block]: Record [  195 of   200]: Index [( 26010,  5)]: Time(ms) [Total:       40, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   245601]
+<2022-01-06 17:25:19.868663> (info) - 104: Stats level [Block]: Record [  189 of   200]: Index [( 26010, 11)]: Time(ms) [Total:       33, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   302273]
+<2022-01-06 17:25:19.871655> (info) - 101: Stats level [Block]: Record [  191 of   200]: Index [( 26010,  9)]: Time(ms) [Total:       36, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   271490]
+<2022-01-06 17:25:19.871655> (info) - 106: Stats level [Block]: Record [  188 of   200]: Index [( 26010, 12)]: Time(ms) [Total:       33, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   298296]
+<2022-01-06 17:25:19.874647> (info) - 100: Stats level [Block]: Record [  186 of   200]: Index [( 26010, 14)]: Time(ms) [Total:       33, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   303020]
+<2022-01-06 17:25:19.874647> (info) - 107: Stats level [Block]: Record [  190 of   200]: Index [( 26010, 10)]: Time(ms) [Total:       39, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   255668]
+<2022-01-06 17:25:19.878637> (info) - 103: Stats level [Block]: Record [  187 of   200]: Index [( 26010, 13)]: Time(ms) [Total:       39, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   253949]
+<2022-01-06 17:25:19.879634> (info) - 105: Stats level [Block]: Record [  192 of   200]: Index [( 26010,  8)]: Time(ms) [Total:       46, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   213455]
+<2022-01-06 17:25:19.886615> (info) - 102: Stats level [Block]: Record [  185 of   200]: Index [( 26010, 15)]: Time(ms) [Total:       44, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   224887]
+<2022-01-06 17:25:19.902572> (info) - 104: Stats level [Block]: Record [  184 of   200]: Index [( 26010, 16)]: Time(ms) [Total:       33, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   295829]
+<2022-01-06 17:25:19.908556> (info) - 100: Stats level [Block]: Record [  180 of   200]: Index [( 26010, 20)]: Time(ms) [Total:       33, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   302267]
+<2022-01-06 17:25:19.914540> (info) - 101: Stats level [Block]: Record [  183 of   200]: Index [( 26010, 17)]: Time(ms) [Total:       42, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   233306]
+<2022-01-06 17:25:19.915538> (info) - 106: Stats level [Block]: Record [  182 of   200]: Index [( 26010, 18)]: Time(ms) [Total:       43, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   231248]
+<2022-01-06 17:25:19.919527> (info) - 103: Stats level [Block]: Record [  179 of   200]: Index [( 26010, 21)]: Time(ms) [Total:       40, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   245598]
+<2022-01-06 17:25:19.922519> (info) - 107: Stats level [Block]: Record [  181 of   200]: Index [( 26010, 19)]: Time(ms) [Total:       47, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   210249]
+<2022-01-06 17:25:19.928503> (info) - 105: Stats level [Block]: Record [  178 of   200]: Index [( 26010, 22)]: Time(ms) [Total:       47, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   209363]
+<2022-01-06 17:25:19.938477> (info) - 102: Stats level [Block]: Record [  177 of   200]: Index [( 26010, 23)]: Time(ms) [Total:       51, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   195893]
+<2022-01-06 17:25:19.942466> (info) - 100: Stats level [Block]: Record [  175 of   200]: Index [( 26010, 25)]: Time(ms) [Total:       33, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   302526]
+<2022-01-06 17:25:19.946455> (info) - 104: Stats level [Block]: Record [  176 of   200]: Index [( 26010, 24)]: Time(ms) [Total:       43, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   231188]
+<2022-01-06 17:25:19.959578> (info) - 106: Stats level [Block]: Record [  173 of   200]: Index [( 26010, 27)]: Time(ms) [Total:       43, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   230692]
+<2022-01-06 17:25:19.964564> (info) - 101: Stats level [Block]: Record [  174 of   200]: Index [( 26010, 26)]: Time(ms) [Total:       49, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   202580]
+<2022-01-06 17:25:19.966559> (info) - 103: Stats level [Block]: Record [  172 of   200]: Index [( 26010, 28)]: Time(ms) [Total:       46, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   214726]
+<2022-01-06 17:25:19.967556> (info) - 105: Stats level [Block]: Record [  170 of   200]: Index [( 26010, 30)]: Time(ms) [Total:       38, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   256913]
+<2022-01-06 17:25:19.971546> (info) - 102: Stats level [Block]: Record [  169 of   200]: Index [( 26010, 31)]: Time(ms) [Total:       32, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   307808]
+<2022-01-06 17:25:19.977530> (info) - 100: Stats level [Block]: Record [  168 of   200]: Index [( 26010, 32)]: Time(ms) [Total:       34, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   287430]
+<2022-01-06 17:25:19.989498> (info) - 104: Stats level [Block]: Record [  167 of   200]: Index [( 26010, 33)]: Time(ms) [Total:       42, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   235407]
+<2022-01-06 17:25:19.992490> (info) - 106: Stats level [Block]: Record [  166 of   200]: Index [( 26010, 34)]: Time(ms) [Total:       32, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   303519]
+<2022-01-06 17:25:19.999471> (info) - 103: Stats level [Block]: Record [  164 of   200]: Index [( 26010, 36)]: Time(ms) [Total:       32, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   307149]
+<2022-01-06 17:25:20.003460> (info) - 105: Stats level [Block]: Record [  163 of   200]: Index [( 26010, 37)]: Time(ms) [Total:       35, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   279727]
+<2022-01-06 17:25:20.010442> (info) - 101: Stats level [Block]: Record [  165 of   200]: Index [( 26010, 35)]: Time(ms) [Total:       45, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   220571]
+<2022-01-06 17:25:20.017423> (info) - 102: Stats level [Block]: Record [  162 of   200]: Index [( 26010, 38)]: Time(ms) [Total:       45, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   217882]
+<2022-01-06 17:25:20.032383> (info) - 104: Stats level [Block]: Record [  160 of   200]: Index [( 26010, 40)]: Time(ms) [Total:       42, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   233597]
+<2022-01-06 17:25:20.035376> (info) - 103: Stats level [Block]: Record [  158 of   200]: Index [( 26010, 42)]: Time(ms) [Total:       35, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   283984]
+<2022-01-06 17:25:20.035376> (info) - 106: Stats level [Block]: Record [  159 of   200]: Index [( 26010, 41)]: Time(ms) [Total:       42, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   234793]
+<2022-01-06 17:25:20.048341> (info) - 105: Stats level [Block]: Record [  157 of   200]: Index [( 26010, 43)]: Time(ms) [Total:       44, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   226178]
+<2022-01-06 17:25:20.050335> (info) - 101: Stats level [Block]: Record [  156 of   200]: Index [( 26010, 44)]: Time(ms) [Total:       39, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   252190]
+<2022-01-06 17:25:20.061306> (info) - 102: Stats level [Block]: Record [  155 of   200]: Index [( 26010, 45)]: Time(ms) [Total:       43, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   231073]
+<2022-01-06 17:25:20.066292> (info) - 104: Stats level [Block]: Record [  154 of   200]: Index [( 26010, 46)]: Time(ms) [Total:       33, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   301242]
+<2022-01-06 17:25:20.069284> (info) - 103: Stats level [Block]: Record [  153 of   200]: Index [( 26010, 47)]: Time(ms) [Total:       33, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   297777]
+<2022-01-06 17:25:20.070282> (info) - 106: Stats level [Block]: Record [  152 of   200]: Index [( 26010, 48)]: Time(ms) [Total:       33, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   302223]
+<2022-01-06 17:25:20.089231> (info) - 105: Stats level [Block]: Record [  151 of   200]: Index [( 26010, 49)]: Time(ms) [Total:       40, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   246783]
+<2022-01-06 17:25:20.091227> (info) - 101: Stats level [Block]: Record [  150 of   200]: Index [( 26010, 50)]: Time(ms) [Total:       40, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   246596]
+<2022-01-06 17:25:20.102196> (info) - 102: Stats level [Block]: Record [  149 of   200]: Index [( 26010, 51)]: Time(ms) [Total:       40, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   246556]
+<2022-01-06 17:25:20.104191> (info) - 106: Stats level [Block]: Record [  146 of   200]: Index [( 26010, 54)]: Time(ms) [Total:       32, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   303797]
+<2022-01-06 17:25:20.112170> (info) - 104: Stats level [Block]: Record [  148 of   200]: Index [( 26010, 52)]: Time(ms) [Total:       45, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   219262]
+<2022-01-06 17:25:20.113167> (info) - 103: Stats level [Block]: Record [  147 of   200]: Index [( 26010, 53)]: Time(ms) [Total:       43, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   230387]
+<2022-01-06 17:25:20.128127> (info) - 105: Stats level [Block]: Record [  145 of   200]: Index [( 26010, 55)]: Time(ms) [Total:       38, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   256610]
+<2022-01-06 17:25:20.141093> (info) - 101: Stats level [Block]: Record [  144 of   200]: Index [( 26010, 56)]: Time(ms) [Total:       49, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   201827]
+<2022-01-06 17:25:20.143087> (info) - 102: Stats level [Block]: Record [  143 of   200]: Index [( 26010, 57)]: Time(ms) [Total:       39, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   250941]
+<2022-01-06 17:25:20.153060> (info) - 104: Stats level [Block]: Record [  141 of   200]: Index [( 26010, 59)]: Time(ms) [Total:       39, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   251085]
+<2022-01-06 17:25:20.153060> (info) - 106: Stats level [Block]: Record [  142 of   200]: Index [( 26010, 58)]: Time(ms) [Total:       49, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   203299]
+<2022-01-06 17:25:20.158047> (info) - 103: Stats level [Block]: Record [  140 of   200]: Index [( 26010, 60)]: Time(ms) [Total:       43, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   228623]
+<2022-01-06 17:25:20.167024> (info) - 105: Stats level [Block]: Record [  139 of   200]: Index [( 26010, 61)]: Time(ms) [Total:       38, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   260946]
+<2022-01-06 17:25:20.178992> (info) - 101: Stats level [Block]: Record [  138 of   200]: Index [( 26010, 62)]: Time(ms) [Total:       36, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   271597]
+<2022-01-06 17:25:20.179988> (info) - 102: Stats level [Block]: Record [  137 of   200]: Index [( 26010, 63)]: Time(ms) [Total:       36, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   274451]
+<2022-01-06 17:25:20.185972> (info) - 104: Stats level [Block]: Record [  136 of   200]: Index [( 26010, 64)]: Time(ms) [Total:       32, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   304872]
+<2022-01-06 17:25:20.186970> (info) - 106: Stats level [Block]: Record [  135 of   200]: Index [( 26010, 65)]: Time(ms) [Total:       32, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   304090]
+<2022-01-06 17:25:20.193951> (info) - 103: Stats level [Block]: Record [  134 of   200]: Index [( 26010, 66)]: Time(ms) [Total:       34, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   293559]
+<2022-01-06 17:25:20.212901> (info) - 105: Stats level [Block]: Record [  133 of   200]: Index [( 26010, 67)]: Time(ms) [Total:       44, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   223087]
+<2022-01-06 17:25:20.212901> (info) - 102: Stats level [Block]: Record [  131 of   200]: Index [( 26010, 69)]: Time(ms) [Total:       32, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   308720]
+<2022-01-06 17:25:20.220880> (info) - 104: Stats level [Block]: Record [  130 of   200]: Index [( 26010, 70)]: Time(ms) [Total:       34, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   290690]
+<2022-01-06 17:25:20.221877> (info) - 106: Stats level [Block]: Record [  129 of   200]: Index [( 26010, 71)]: Time(ms) [Total:       34, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   289226]
+<2022-01-06 17:25:20.229855> (info) - 103: Stats level [Block]: Record [  128 of   200]: Index [( 26010, 72)]: Time(ms) [Total:       34, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   286770]
+<2022-01-06 17:25:20.233844> (info) - 101: Stats level [Block]: Record [  132 of   200]: Index [( 26010, 68)]: Time(ms) [Total:       54, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   183177]
+<2022-01-06 17:25:20.249801> (info) - 102: Stats level [Block]: Record [  127 of   200]: Index [( 26010, 73)]: Time(ms) [Total:       36, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   275643]
+<2022-01-06 17:25:20.253791> (info) - 105: Stats level [Block]: Record [  126 of   200]: Index [( 26010, 74)]: Time(ms) [Total:       39, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   251038]
+<2022-01-06 17:25:20.253791> (info) - 104: Stats level [Block]: Record [  125 of   200]: Index [( 26010, 75)]: Time(ms) [Total:       32, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   309506]
+<2022-01-06 17:25:20.267754> (info) - 106: Stats level [Block]: Record [  124 of   200]: Index [( 26010, 76)]: Time(ms) [Total:       45, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   219195]
+<2022-01-06 17:25:20.275732> (info) - 101: Stats level [Block]: Record [  122 of   200]: Index [( 26010, 78)]: Time(ms) [Total:       41, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   242989]
+<2022-01-06 17:25:20.276729> (info) - 103: Stats level [Block]: Record [  123 of   200]: Index [( 26010, 77)]: Time(ms) [Total:       46, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   213053]
+<2022-01-06 17:25:20.283711> (info) - 102: Stats level [Block]: Record [  121 of   200]: Index [( 26010, 79)]: Time(ms) [Total:       33, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   296710]
+<2022-01-06 17:25:20.286703> (info) - 104: Stats level [Block]: Record [  119 of   200]: Index [( 26010, 81)]: Time(ms) [Total:       32, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   309916]
+<2022-01-06 17:25:20.298671> (info) - 105: Stats level [Block]: Record [  120 of   200]: Index [( 26010, 80)]: Time(ms) [Total:       44, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   223960]
+<2022-01-06 17:25:20.318617> (info) - 102: Stats level [Block]: Record [  115 of   200]: Index [( 26010, 85)]: Time(ms) [Total:       33, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   295821]
+<2022-01-06 17:25:20.318617> (info) - 104: Stats level [Block]: Record [  114 of   200]: Index [( 26010, 86)]: Time(ms) [Total:       31, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   313206]
+<2022-01-06 17:25:20.322607> (info) - 106: Stats level [Block]: Record [  118 of   200]: Index [( 26010, 82)]: Time(ms) [Total:       54, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   184808]
+<2022-01-06 17:25:20.325599> (info) - 101: Stats level [Block]: Record [  117 of   200]: Index [( 26010, 83)]: Time(ms) [Total:       49, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   202042]
+<2022-01-06 17:25:20.327594> (info) - 103: Stats level [Block]: Record [  116 of   200]: Index [( 26010, 84)]: Time(ms) [Total:       50, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   198331]
+<2022-01-06 17:25:20.340559> (info) - 105: Stats level [Block]: Record [  113 of   200]: Index [( 26010, 87)]: Time(ms) [Total:       41, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   243230]
+<2022-01-06 17:25:20.361503> (info) - 103: Stats level [Block]: Record [  108 of   200]: Index [( 26010, 92)]: Time(ms) [Total:       33, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   295651]
+<2022-01-06 17:25:20.364495> (info) - 104: Stats level [Block]: Record [  111 of   200]: Index [( 26010, 89)]: Time(ms) [Total:       44, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   222472]
+<2022-01-06 17:25:20.368484> (info) - 102: Stats level [Block]: Record [  112 of   200]: Index [( 26010, 88)]: Time(ms) [Total:       49, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   203161]
+<2022-01-06 17:25:20.374468> (info) - 106: Stats level [Block]: Record [  110 of   200]: Index [( 26010, 90)]: Time(ms) [Total:       51, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   194962]
+<2022-01-06 17:25:20.374468> (info) - 101: Stats level [Block]: Record [  109 of   200]: Index [( 26010, 91)]: Time(ms) [Total:       47, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   209215]
+<2022-01-06 17:25:20.375466> (info) - 105: Stats level [Block]: Record [  107 of   200]: Index [( 26010, 93)]: Time(ms) [Total:       34, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   290263]
+<2022-01-06 17:25:20.397407> (info) - 104: Stats level [Block]: Record [  105 of   200]: Index [( 26010, 95)]: Time(ms) [Total:       32, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   307842]
+<2022-01-06 17:25:20.403391> (info) - 103: Stats level [Block]: Record [  106 of   200]: Index [( 26010, 94)]: Time(ms) [Total:       40, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   247151]
+<2022-01-06 17:25:20.408377> (info) - 106: Stats level [Block]: Record [  103 of   200]: Index [( 26010, 97)]: Time(ms) [Total:       33, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   294225]
+<2022-01-06 17:25:20.410372> (info) - 102: Stats level [Block]: Record [  104 of   200]: Index [( 26010, 96)]: Time(ms) [Total:       41, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   239084]
+<2022-01-06 17:25:20.415359> (info) - 101: Stats level [Block]: Record [  102 of   200]: Index [( 26010, 98)]: Time(ms) [Total:       40, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   245456]
+<2022-01-06 17:25:20.429322> (info) - 105: Stats level [Block]: Record [  101 of   200]: Index [( 26010, 99)]: Time(ms) [Total:       51, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   193162]
+<2022-01-06 17:25:20.441290> (info) - 103: Stats level [Block]: Record [   99 of   200]: Index [( 26011,  1)]: Time(ms) [Total:       37, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   266008]
+<2022-01-06 17:25:20.444282> (info) - 104: Stats level [Block]: Record [  100 of   200]: Index [( 26011,  0)]: Time(ms) [Total:       46, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   216243]
+<2022-01-06 17:25:20.443285> (info) - 102: Stats level [Block]: Record [   97 of   200]: Index [( 26011,  3)]: Time(ms) [Total:       32, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   304251]
+<2022-01-06 17:25:20.448272> (info) - 106: Stats level [Block]: Record [   98 of   200]: Index [( 26011,  2)]: Time(ms) [Total:       39, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   255398]
+<2022-01-06 17:25:20.471209> (info) - 101: Stats level [Block]: Record [   96 of   200]: Index [( 26011,  4)]: Time(ms) [Total:       55, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   181140]
+<2022-01-06 17:25:20.475199> (info) - 103: Stats level [Block]: Record [   94 of   200]: Index [( 26011,  6)]: Time(ms) [Total:       32, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   305224]
+<2022-01-06 17:25:20.478191> (info) - 102: Stats level [Block]: Record [   93 of   200]: Index [( 26011,  7)]: Time(ms) [Total:       32, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   305823]
+<2022-01-06 17:25:20.478191> (info) - 104: Stats level [Block]: Record [   92 of   200]: Index [( 26011,  8)]: Time(ms) [Total:       33, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   301968]
+<2022-01-06 17:25:20.485173> (info) - 105: Stats level [Block]: Record [   95 of   200]: Index [( 26011,  5)]: Time(ms) [Total:       56, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   178430]
+<2022-01-06 17:25:20.494149> (info) - 106: Stats level [Block]: Record [   91 of   200]: Index [( 26011,  9)]: Time(ms) [Total:       45, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   220558]
+<2022-01-06 17:25:20.509108> (info) - 103: Stats level [Block]: Record [   89 of   200]: Index [( 26011, 11)]: Time(ms) [Total:       32, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   306783]
+<2022-01-06 17:25:20.512100> (info) - 104: Stats level [Block]: Record [   87 of   200]: Index [( 26011, 13)]: Time(ms) [Total:       32, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   307054]
+<2022-01-06 17:25:20.516091> (info) - 102: Stats level [Block]: Record [   88 of   200]: Index [( 26011, 12)]: Time(ms) [Total:       37, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   267703]
+<2022-01-06 17:25:20.522074> (info) - 101: Stats level [Block]: Record [   90 of   200]: Index [( 26011, 10)]: Time(ms) [Total:       50, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   199747]
+<2022-01-06 17:25:20.527060> (info) - 105: Stats level [Block]: Record [   86 of   200]: Index [( 26011, 14)]: Time(ms) [Total:       40, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   246094]
+<2022-01-06 17:25:20.541023> (info) - 106: Stats level [Block]: Record [   85 of   200]: Index [( 26011, 15)]: Time(ms) [Total:       45, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   217578]
+<2022-01-06 17:25:20.543018> (info) - 103: Stats level [Block]: Record [   84 of   200]: Index [( 26011, 16)]: Time(ms) [Total:       32, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   307511]
+<2022-01-06 17:25:20.547007> (info) - 104: Stats level [Block]: Record [   83 of   200]: Index [( 26011, 17)]: Time(ms) [Total:       34, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   290246]
+<2022-01-06 17:25:20.559972> (info) - 102: Stats level [Block]: Record [   82 of   200]: Index [( 26011, 18)]: Time(ms) [Total:       43, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   228497]
+<2022-01-06 17:25:20.564959> (info) - 101: Stats level [Block]: Record [   81 of   200]: Index [( 26011, 19)]: Time(ms) [Total:       42, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   236288]
+<2022-01-06 17:25:20.581914> (info) - 103: Stats level [Block]: Record [   78 of   200]: Index [( 26011, 22)]: Time(ms) [Total:       38, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   258199]
+<2022-01-06 17:25:20.592884> (info) - 104: Stats level [Block]: Record [   77 of   200]: Index [( 26011, 23)]: Time(ms) [Total:       45, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   220182]
+<2022-01-06 17:25:20.596874> (info) - 102: Stats level [Block]: Record [   76 of   200]: Index [( 26011, 24)]: Time(ms) [Total:       36, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   273939]
+<2022-01-06 17:25:20.609839> (info) - 101: Stats level [Block]: Record [   75 of   200]: Index [( 26011, 25)]: Time(ms) [Total:       44, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   222273]
+<2022-01-06 17:25:20.625796> (info) - 103: Stats level [Block]: Record [   74 of   200]: Index [( 26011, 26)]: Time(ms) [Total:       43, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   229087]
+<2022-01-06 17:25:20.634773> (info) - 104: Stats level [Block]: Record [   73 of   200]: Index [( 26011, 27)]: Time(ms) [Total:       41, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   242969]
+<2022-01-06 17:25:20.637764> (info) - 102: Stats level [Block]: Record [   72 of   200]: Index [( 26011, 28)]: Time(ms) [Total:       40, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   248775]
+<2022-01-06 17:25:20.645743> (info) - 101: Stats level [Block]: Record [   71 of   200]: Index [( 26011, 29)]: Time(ms) [Total:       34, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   290064]
+<2022-01-06 17:25:20.671674> (info) - 104: Stats level [Block]: Record [   69 of   200]: Index [( 26011, 31)]: Time(ms) [Total:       35, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   280047]
+<2022-01-06 17:25:20.672671> (info) - 102: Stats level [Block]: Record [   68 of   200]: Index [( 26011, 32)]: Time(ms) [Total:       33, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   296865]
+<2022-01-06 17:25:20.696607> (info) - 101: Stats level [Block]: Record [   67 of   200]: Index [( 26011, 33)]: Time(ms) [Total:       50, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   196513]
+<2022-01-06 17:25:20.705583> (info) - 104: Stats level [Block]: Record [   66 of   200]: Index [( 26011, 34)]: Time(ms) [Total:       33, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   301894]
+<2022-01-06 17:25:20.712565> (info) - 102: Stats level [Block]: Record [   65 of   200]: Index [( 26011, 35)]: Time(ms) [Total:       39, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   251706]
+<2022-01-06 17:25:20.739493> (info) - 104: Stats level [Block]: Record [   63 of   200]: Index [( 26011, 37)]: Time(ms) [Total:       32, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   303891]
+<2022-01-06 17:25:20.742486> (info) - 101: Stats level [Block]: Record [   64 of   200]: Index [( 26011, 36)]: Time(ms) [Total:       44, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   226567]
+<2022-01-06 17:25:20.756447> (info) - 102: Stats level [Block]: Record [   62 of   200]: Index [( 26011, 38)]: Time(ms) [Total:       42, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   234617]
+<2022-01-06 17:25:20.773402> (info) - 104: Stats level [Block]: Record [   61 of   200]: Index [( 26011, 39)]: Time(ms) [Total:       32, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   305224]
+<2022-01-06 17:25:20.807311> (info) - 104: Stats level [Block]: Record [   58 of   200]: Index [( 26011, 42)]: Time(ms) [Total:       32, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   304944]
+<2022-01-06 17:25:20.852191> (info) - 104: Stats level [Block]: Record [   57 of   200]: Index [( 26011, 43)]: Time(ms) [Total:       42, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   237569]
+<2022-01-06 17:25:20.902059> (info) - 104: Stats level [Block]: Record [   56 of   200]: Index [( 26011, 44)]: Time(ms) [Total:       48, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   205887]
+<2022-01-06 17:25:20.920009> (info) - 106: Stats level [Block]: Record [   79 of   200]: Index [( 26011, 21)]: Time(ms) [Total:      379, Processed:       51]: Units [Total:    10000, Processed:        1, NotProcessed:     9999, Errors:        0, LU/second:    26367]
+<2022-01-06 17:25:20.951924> (info) - 104: Stats level [Block]: Record [   55 of   200]: Index [( 26011, 45)]: Time(ms) [Total:       47, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   209703]
+<2022-01-06 17:25:25.329218> (info) - 104: Stats level [Block]: Record [   53 of   200]: Index [( 26011, 47)]: Time(ms) [Total:       33, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   300207]
+<2022-01-06 17:25:25.333208> (info) - 106: Stats level [Block]: Record [   54 of   200]: Index [( 26011, 46)]: Time(ms) [Total:       38, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   259441]
+<2022-01-06 17:25:25.371107> (info) - 104: Stats level [Block]: Record [   52 of   200]: Index [( 26011, 48)]: Time(ms) [Total:       41, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   241943]
+<2022-01-06 17:25:25.375096> (info) - 106: Stats level [Block]: Record [   51 of   200]: Index [( 26011, 49)]: Time(ms) [Total:       39, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   256381]
+<2022-01-06 17:25:25.408009> (info) - 104: Stats level [Block]: Record [   50 of   200]: Index [( 26011, 50)]: Time(ms) [Total:       35, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   278120]
+<2022-01-06 17:25:25.411000> (info) - 106: Stats level [Block]: Record [   49 of   200]: Index [( 26011, 51)]: Time(ms) [Total:       33, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   295105]
+<2022-01-06 17:25:25.443913> (info) - 104: Stats level [Block]: Record [   48 of   200]: Index [( 26011, 52)]: Time(ms) [Total:       36, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   277649]
+<2022-01-06 17:25:25.446904> (info) - 106: Stats level [Block]: Record [   47 of   200]: Index [( 26011, 53)]: Time(ms) [Total:       35, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   283508]
+<2022-01-06 17:25:25.487796> (info) - 106: Stats level [Block]: Record [   45 of   200]: Index [( 26011, 55)]: Time(ms) [Total:       40, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   247391]
+<2022-01-06 17:25:25.489790> (info) - 104: Stats level [Block]: Record [   46 of   200]: Index [( 26011, 54)]: Time(ms) [Total:       44, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   222852]
+<2022-01-06 17:25:25.525853> (info) - 104: Stats level [Block]: Record [   43 of   200]: Index [( 26011, 57)]: Time(ms) [Total:       35, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   283322]
+<2022-01-06 17:25:25.537819> (info) - 106: Stats level [Block]: Record [   44 of   200]: Index [( 26011, 56)]: Time(ms) [Total:       48, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   205918]
+<2022-01-06 17:25:25.564747> (info) - 104: Stats level [Block]: Record [   42 of   200]: Index [( 26011, 58)]: Time(ms) [Total:       38, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   262569]
+<2022-01-06 17:25:25.579708> (info) - 106: Stats level [Block]: Record [   41 of   200]: Index [( 26011, 59)]: Time(ms) [Total:       40, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   247139]
+<2022-01-06 17:25:25.601648> (info) - 104: Stats level [Block]: Record [   40 of   200]: Index [( 26011, 60)]: Time(ms) [Total:       35, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   280190]
+<2022-01-06 17:25:25.627580> (info) - 106: Stats level [Block]: Record [   39 of   200]: Index [( 26011, 61)]: Time(ms) [Total:       47, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   212495]
+<2022-01-06 17:25:25.651515> (info) - 104: Stats level [Block]: Record [   38 of   200]: Index [( 26011, 62)]: Time(ms) [Total:       48, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   204436]
+<2022-01-06 17:25:25.667472> (info) - 106: Stats level [Block]: Record [   37 of   200]: Index [( 26011, 63)]: Time(ms) [Total:       38, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   260177]
+<2022-01-06 17:25:25.695399> (info) - 104: Stats level [Block]: Record [   36 of   200]: Index [( 26011, 64)]: Time(ms) [Total:       43, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   232406]
+<2022-01-06 17:25:25.720331> (info) - 106: Stats level [Block]: Record [   35 of   200]: Index [( 26011, 65)]: Time(ms) [Total:       51, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   194883]
+<2022-01-06 17:25:25.740277> (info) - 104: Stats level [Block]: Record [   34 of   200]: Index [( 26011, 66)]: Time(ms) [Total:       43, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   231175]
+<2022-01-06 17:25:25.763217> (info) - 106: Stats level [Block]: Record [   33 of   200]: Index [( 26011, 67)]: Time(ms) [Total:       42, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   236718]
+<2022-01-06 17:25:25.776182> (info) - 104: Stats level [Block]: Record [   32 of   200]: Index [( 26011, 68)]: Time(ms) [Total:       34, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   287018]
+<2022-01-06 17:25:25.802114> (info) - 106: Stats level [Block]: Record [   31 of   200]: Index [( 26011, 69)]: Time(ms) [Total:       37, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   264620]
+<2022-01-06 17:25:25.825051> (info) - 104: Stats level [Block]: Record [   30 of   200]: Index [( 26011, 70)]: Time(ms) [Total:       47, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   209810]
+<2022-01-06 17:25:25.844000> (info) - 106: Stats level [Block]: Record [   29 of   200]: Index [( 26011, 71)]: Time(ms) [Total:       40, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   244511]
+<2022-01-06 17:25:25.869931> (info) - 104: Stats level [Block]: Record [   28 of   200]: Index [( 26011, 72)]: Time(ms) [Total:       44, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   226126]
+<2022-01-06 17:25:25.878907> (info) - 106: Stats level [Block]: Record [   27 of   200]: Index [( 26011, 73)]: Time(ms) [Total:       33, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   296955]
+<2022-01-06 17:25:25.906832> (info) - 104: Stats level [Block]: Record [   26 of   200]: Index [( 26011, 74)]: Time(ms) [Total:       35, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   278726]
+<2022-01-06 17:25:25.912817> (info) - 106: Stats level [Block]: Record [   25 of   200]: Index [( 26011, 75)]: Time(ms) [Total:       33, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   301640]
+<2022-01-06 17:25:25.950716> (info) - 106: Stats level [Block]: Record [   23 of   200]: Index [( 26011, 77)]: Time(ms) [Total:       36, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   271822]
+<2022-01-06 17:25:25.952710> (info) - 104: Stats level [Block]: Record [   24 of   200]: Index [( 26011, 76)]: Time(ms) [Total:       42, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   237046]
+<2022-01-06 17:25:26.004571> (info) - 106: Stats level [Block]: Record [   22 of   200]: Index [( 26011, 78)]: Time(ms) [Total:       52, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   188754]
+<2022-01-06 17:25:26.005569> (info) - 104: Stats level [Block]: Record [   21 of   200]: Index [( 26011, 79)]: Time(ms) [Total:       52, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   191861]
+<2022-01-06 17:25:26.040475> (info) - 106: Stats level [Block]: Record [   20 of   200]: Index [( 26011, 80)]: Time(ms) [Total:       34, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   287151]
+<2022-01-06 17:25:26.042470> (info) - 104: Stats level [Block]: Record [   19 of   200]: Index [( 26011, 81)]: Time(ms) [Total:       35, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   281837]
+<2022-01-06 17:25:26.079371> (info) - 104: Stats level [Block]: Record [   17 of   200]: Index [( 26011, 83)]: Time(ms) [Total:       36, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   274914]
+<2022-01-06 17:25:26.080368> (info) - 106: Stats level [Block]: Record [   18 of   200]: Index [( 26011, 82)]: Time(ms) [Total:       39, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   256013]
+<2022-01-06 17:25:26.113282> (info) - 104: Stats level [Block]: Record [   16 of   200]: Index [( 26011, 84)]: Time(ms) [Total:       33, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   299338]
+<2022-01-06 17:25:26.119264> (info) - 106: Stats level [Block]: Record [   15 of   200]: Index [( 26011, 85)]: Time(ms) [Total:       37, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   265168]
+<2022-01-06 17:25:26.153174> (info) - 106: Stats level [Block]: Record [   13 of   200]: Index [( 26011, 87)]: Time(ms) [Total:       33, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   299563]
+<2022-01-06 17:25:26.156166> (info) - 104: Stats level [Block]: Record [   14 of   200]: Index [( 26011, 86)]: Time(ms) [Total:       42, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   236196]
+<2022-01-06 17:25:26.194064> (info) - 104: Stats level [Block]: Record [   11 of   200]: Index [( 26011, 89)]: Time(ms) [Total:       36, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   272214]
+<2022-01-06 17:25:26.200049> (info) - 106: Stats level [Block]: Record [   12 of   200]: Index [( 26011, 88)]: Time(ms) [Total:       45, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   222195]
+<2022-01-06 17:25:26.232960> (info) - 104: Stats level [Block]: Record [   10 of   200]: Index [( 26011, 90)]: Time(ms) [Total:       36, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   270509]
+<2022-01-06 17:25:26.234955> (info) - 106: Stats level [Block]: Record [    9 of   200]: Index [( 26011, 91)]: Time(ms) [Total:       34, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   290419]
+<2022-01-06 17:25:26.268864> (info) - 104: Stats level [Block]: Record [    8 of   200]: Index [( 26011, 92)]: Time(ms) [Total:       34, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   288915]
+<2022-01-06 17:25:26.268864> (info) - 106: Stats level [Block]: Record [    7 of   200]: Index [( 26011, 93)]: Time(ms) [Total:       33, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   298434]
+<2022-01-06 17:25:26.304768> (info) - 106: Stats level [Block]: Record [    5 of   200]: Index [( 26011, 95)]: Time(ms) [Total:       34, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   293602]
+<2022-01-06 17:25:26.308758> (info) - 104: Stats level [Block]: Record [    6 of   200]: Index [( 26011, 94)]: Time(ms) [Total:       39, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   256062]
+<2022-01-06 17:25:26.343664> (info) - 104: Stats level [Block]: Record [    3 of   200]: Index [( 26011, 97)]: Time(ms) [Total:       34, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   293212]
+<2022-01-06 17:25:26.342668> (info) - 106: Stats level [Block]: Record [    4 of   200]: Index [( 26011, 96)]: Time(ms) [Total:       37, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   265948]
+<2022-01-06 17:25:26.379569> (info) - 104: Stats level [Block]: Record [    1 of   200]: Index [( 26011, 99)]: Time(ms) [Total:       34, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   288317]
+<2022-01-06 17:25:26.380566> (info) - 104:Thread Finished 
+<2022-01-06 17:25:26.380566> (info) - 106: Stats level [Block]: Record [    2 of   200]: Index [( 26011, 98)]: Time(ms) [Total:       36, Processed:        0]: Units [Total:    10000, Processed:        0, NotProcessed:    10000, Errors:        0, LU/second:   276287]
+<2022-01-06 17:25:26.381563> (info) - 106:Thread Finished 
+<2022-01-06 17:25:59.848499> (info) - 107: Stats level [Block]: Record [  171 of   200]: Index [( 26010, 29)]: Time(ms) [Total:    39925, Processed:    25905]: Units [Total:    10000, Processed:     1828, NotProcessed:     8172, Errors:        0, LU/second:      250]
+<2022-01-06 17:26:04.616748> (info) - 107:Thread Finished 
+<2022-01-06 17:26:10.250542> (info) - 102: Stats level [Block]: Record [   59 of   200]: Index [( 26011, 41)]: Time(ms) [Total:    49493, Processed:    31065]: Units [Total:    10000, Processed:     2237, NotProcessed:     7763, Errors:        0, LU/second:      202]
+<2022-01-06 17:26:15.687972> (info) - 102:Thread Finished 
+<2022-01-06 17:26:35.253391> (info) - 100: Stats level [Block]: Record [  161 of   200]: Index [( 26010, 39)]: Time(ms) [Total:    75276, Processed:    71265]: Units [Total:    10000, Processed:     5538, NotProcessed:     4462, Errors:        0, LU/second:      132]
+<2022-01-06 17:26:40.697831> (info) - 100:Thread Finished 
+<2022-01-06 17:26:48.415420> (info) - 105: Stats level [Block]: Record [   80 of   200]: Index [( 26011, 20)]: Time(ms) [Total:    87887, Processed:    57268]: Units [Total:    10000, Processed:     4787, NotProcessed:     5213, Errors:        0, LU/second:      113]
+<2022-01-06 17:26:54.097199> (info) - 105:Thread Finished 
+<2022-01-06 17:26:55.739208> (info) - 101: Stats level [Block]: Record [   60 of   200]: Index [( 26011, 40)]: Time(ms) [Total:    94995, Processed:    70292]: Units [Total:    10000, Processed:     5640, NotProcessed:     4360, Errors:        0, LU/second:      105]
+<2022-01-06 17:27:01.274211> (info) - 101:Thread Finished 
+<2022-01-06 17:27:13.134623> (info) - 103: Stats level [Block]: Record [   70 of   200]: Index [( 26011, 30)]: Time(ms) [Total:   112507, Processed:    82706]: Units [Total:    10000, Processed:     7389, NotProcessed:     2611, Errors:        0, LU/second:       88]
+<2022-01-06 17:27:17.518468> (info) - 103:Thread Finished 
+<2022-01-06 17:27:17.519464> (info) -   0:Summary of processing by Tile
+<2022-01-06 17:27:17.520463> (info) -   0: Stats level [Tile]: Index [( 26010)]: Time(sec) [Total:   119000, Processed:    97000]: Units [Total:  1000000, Processed:     7366, NotProcessed:   992634, Errors:        0, LU/second:     8394]
+<2022-01-06 17:27:17.520463> (info) -   0: Stats level [Tile]: Index [( 26011)]: Time(sec) [Total:   349000, Processed:   241000]: Units [Total:  1000000, Processed:    20054, NotProcessed:   979946, Errors:        0, LU/second:     2865]
+<2022-01-06 17:27:17.520463> (info) -   0:Summary of processing for full run
+<2022-01-06 17:27:17.521460> (info) -   0: Stats level [Global]: Time(sec) [Total:   468000, Processed:   338000]: Units [Total:  2000000, Processed:    27420, NotProcessed:  1972580, Errors:        0, LU/second:     4272]
+<2022-01-06 17:27:17.521804> (info) -   0:Start Time           : 01/06/22 17:25:19 Pacific SA Daylight Time
+<2022-01-06 17:27:17.521804> (info) -   0:Finish Time          : 01/06/22 17:27:17 Pacific SA Daylight Time
+<2022-01-06 17:27:17.522803> (info) -   0:Total Time (seconds) : 117
+<2022-01-06 17:27:17.522803> (info) -   0:Effective All LU/millisecond:             16
+<2022-01-06 17:27:17.522803> (info) -   0:Effective All LU/second:               17094
+<2022-01-06 17:27:17.522803> (info) -   0:Effective Processed LU/millisecond:        0
+<2022-01-06 17:27:17.522803> (info) -   0:Effective Processed LU/second:           234
+<2022-01-06 17:27:17.522803> (info) - Loading results into output\gcbm_output.db
+<2022-01-06 17:27:17.668003> (info) - Loading DateDimension
+<2022-01-06 17:27:17.677978> (info) - Loading PoolDimension
+<2022-01-06 17:27:17.688948> (info) - Loading LandClassDimension
+<2022-01-06 17:27:17.698921> (info) - Loading ModuleInfoDimension
+<2022-01-06 17:27:17.709398> (info) - Loading AgeClassDimension
+<2022-01-06 17:27:17.719371> (info) - Loading LocationDimension
+<2022-01-06 17:27:17.729344> (info) - Loading DisturbanceTypeDimension
+<2022-01-06 17:27:17.729344> (info) - Loading DisturbanceDimension
+<2022-01-06 17:27:17.729344> (info) - Loading Pools
+<2022-01-06 17:27:17.755275> (info) - Loading Fluxes
+<2022-01-06 17:27:17.783201> (info) - Loading ErrorDimension
+<2022-01-06 17:27:17.784197> (info) - Loading LocationErrorDimension
+<2022-01-06 17:27:17.785195> (info) - Loading AgeArea
+<2022-01-06 17:27:17.796165> (info) - SQLite insert complete.

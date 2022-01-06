@@ -1,0 +1,48 @@
+{
+    "tile_size": 1.0,
+    "block_size": 0.1,
+    "tiles": [
+        {
+            "x": -90,
+            "y": 18,
+            "index": 26010
+        },
+        {
+            "x": -89,
+            "y": 18,
+            "index": 26011
+        }
+    ],
+    "pixel_size": 0.001,
+    "layers": [
+        {
+            "name": "initial_age",
+            "type": "VectorLayer"
+        },
+        {
+            "name": "mean_annual_temperature",
+            "type": "VectorLayer"
+        },
+        {
+            "name": "ForestType",
+            "type": "VectorLayer",
+            "tags": [
+                "classifier"
+            ]
+        },
+        {
+            "name": "Disturbanc",
+            "type": "VectorLayer",
+            "tags": [
+                "classifier"
+            ]
+        },
+        {
+            "name": "Climate",
+            "type": "VectorLayer",
+            "tags": [
+                "classifier"
+            ]
+        }
+    ]
+}

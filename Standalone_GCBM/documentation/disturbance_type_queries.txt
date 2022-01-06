@@ -1,0 +1,43 @@
+-- Queries for the GCBM SQLite input database
+
+-- List available disturbance types for the spatial unit.
+SELECT DISTINCT dt.name AS disturbance_type
+FROM disturbance_type dt
+INNER JOIN disturbance_matrix_association dma
+    ON dt.id = dma.disturbance_type_id
+INNER JOIN spatial_unit spu
+    ON dma.spatial_unit_id = spu.id
+INNER JOIN admin_boundary a
+    ON spu.admin_boundary_id = a.id
+INNER JOIN eco_boundary e
+    ON spu.eco_boundary_id = e.id
+WHERE LOWER(a.name) LIKE LOWER('British Columbia') -- The default admin boundary for the sample project.
+    AND LOWER(e.name) LIKE LOWER('Taiga Plains')   -- The default eco boundary for the sample project.
+ORDER BY dt.id;
+
+-- List available disturbance matrices for the spatial unit.
+SELECT
+    dt.name,
+    src.name AS from_pool,
+    dst.name AS to_pool,
+    dmv.proportion
+FROM disturbance_type dt
+INNER JOIN disturbance_matrix_association dma
+    ON dt.id = dma.disturbance_type_id
+INNER JOIN disturbance_matrix dm
+    ON dm.id = dma.disturbance_matrix_id
+INNER JOIN disturbance_matrix_value dmv
+    ON dm.id = dmv.disturbance_matrix_id
+INNER JOIN pool src
+    ON dmv.source_pool_id = src.id
+INNER JOIN pool dst
+    ON dmv.sink_pool_id = dst.id
+INNER JOIN spatial_unit spu
+    ON dma.spatial_unit_id = spu.id
+INNER JOIN admin_boundary a
+    ON spu.admin_boundary_id = a.id
+INNER JOIN eco_boundary e
+    ON spu.eco_boundary_id = e.id
+WHERE LOWER(a.name) LIKE LOWER('British Columbia') -- The default admin boundary for the sample project.
+    AND LOWER(e.name) LIKE LOWER('Taiga Plains')   -- The default eco boundary for the sample project.
+ORDER BY dt.id;

@@ -1,0 +1,7 @@
+﻿{
+    "SQLLoaderMapping": {
+        "name": "Eco regions",
+        "fetch_sql": "SELECT name AS EcoBoundaryName FROM eco_boundary",
+        "load_sql": "INSERT INTO eco_region (name) VALUES (@EcoBoundaryName)"
+    }
+}

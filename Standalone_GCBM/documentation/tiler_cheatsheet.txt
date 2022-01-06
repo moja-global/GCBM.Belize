@@ -1,0 +1,270 @@
+#==============================================================================#
+# Miscellaneous helper functions                                               #
+#==============================================================================#
+
+'''
+Scans for layers in a directory matching a particular pattern, i.e. "fire*.tif".
+Returns a list of filenames in natural sort order: if the filenames are consistent
+and contain a year, they will generally be returned in chronological order.
+
+:param path: the path to scan
+:param filter: the filter to apply, i.e. "fire*.tif"
+'''
+from glob import glob
+def scan_for_layers(path, filter):
+    return sorted(glob(os.path.join(path, filter)),
+                  key=os.path.basename)
+
+'''
+Reads a UTF8-encoded CSV file and converts it to a dictionary using a specified
+key column and one or more value columns. Use this for reading in external lookup
+tables containing non-ASCII / international characters. Python 2.7 only.
+
+:param csv_file: path to the CSV file to read
+:param key_col: column name to use as dictionary key
+:param value_cols: column name or list of column names for dictionary values
+'''
+import csv
+def csv_to_dict(csv_file, key_col, value_cols):
+    attribute_table = open(csv_file, "rb")
+    reader = csv.DictReader(attribute_table)
+    
+    if isinstance(value_cols, list):
+        return {unicode(row[key_col], "utf-8"): [unicode(row[value_col], "utf-8")
+                                                 for value_col in value_cols]
+                for row in reader}
+        
+    return {unicode(row[key_col], "utf-8"): unicode(row[value_cols], "utf-8")
+            for row in reader}
+
+
+#==============================================================================#
+# Raster layers                                                                #
+#==============================================================================#
+
+# Simple raster layer.
+RasterLayer("forest_age.tif", name="initial_age")
+
+# Raster layer where the nodata value was not explicitly set, but the value 255
+# means "no data".
+RasterLayer("species.tif", nodata_value=255)
+
+# Raster layer with a single-value attribute table.
+RasterLayer("stratum.tif", attributes=["Stratum"], attribute_table={
+    1: ["Stratum A"],
+    2: ["Stratum B"],
+    5: ["Stratum C"]
+})
+
+# Raster layer with a multi-value attribute table.
+RasterLayer("spatial_units.tif", attributes=["Admin", "Eco"], attribute_table={
+    1: ["British Columbia", "Montane Cordillera"]
+    2: ["Alberta", "Boreal Plains"]
+    3: ["Quebec", "Atlantic Maritime"]
+})
+
+'''
+Raster layer with an external multi-value attribute table that looks like:
+    value, thing1, thing2
+        1,      A,      B
+        2,      C,      D
+
+Also using the csv_to_dict function at the top of this file.
+'''
+RasterLayer(r"layers\things.tif",
+            attributes=["thing1", "thing2"],
+            attribute_table=csv_to_dict("things.csv", "value", ["thing1", "thing2"]))
+
+
+#==============================================================================#
+# Vector layers                                                                #
+#==============================================================================#
+
+# Simple vector layer - single attribute.
+VectorLayer("admin_boundary", "PSPUS_2016.shp", Attribute("AdminBou_1"))
+
+# Simple vector layer - multiple attributes.
+VectorLayer("disturbances", "all_disturbances.shp",
+            [Attribute("dist_year"), Attribute("dist_type")])
+
+# Simple vector layer - single numeric attribute.
+VectorLayer("initial_age", r"layers\input\inventory.shp", Attribute("age"), raw=True)
+
+# Selecting a layer out of a multi-layer vector format, i.e. ESRI FileGeoDatabase.
+VectorLayer("mean_annual_temperature", "climate.gdb", Attribute("mean"),
+            layer="annual_temperatures", raw=True)
+
+# Vector layer using substitution table for original attribute values.
+VectorLayer("Insect_1990", os.path.join("..", "raw", "pests90.shp"),
+            Attribute("DistType", substitutions={
+                "IBB_T": "Western Balsam bark beetle - Trace",
+                "IBB_M": "Western Balsam bark beetle - Moderate",
+                "IBB_S": "Western Balsam bark beetle - Severe",
+                "IBS_T": "Spruce beetle - Trace",
+                "IBS_M": "Spruce beetle - Moderate",
+                "IBS_S": "Spruce beetle - Severe",
+                "MPB_T": "Mountain Pine Beetle - Trace",
+                "MPB_M": "Mountain Pine Beetle - Moderate",
+                "MPB_S": "Mountain Pine Beetle - Severe"}))
+
+# Vector layer filtered for a particular attribute value - only matching polygons
+# will be rasterized.
+VectorLayer("disturbances_1990", "all_disturbances.shp", [
+    Attribute("dist_year", filter=ValueFilter(1990)),
+    Attribute("dist_type")])
+
+
+#==============================================================================#
+# Bounding box                                                                 #
+# ---                                                                          #
+# The bounding box defines the study area of a simulation as well as the pixel #
+# resolution. All other layers are cropped, reprojected, and resampled to the  #
+# bounding box.                                                                #
+#==============================================================================#
+
+# Vector (simple): all polygons with a non-null value for the "PolyID" attribute
+# using the coarsest supported resolution.
+bbox = BoundingBox(
+    VectorLayer("bbox", "inventory.shp", Attribute("PolyID")),
+    pixel_size=0.01)
+
+# Vector (with optional filter): all polygons with "British Columbia" in the
+# "province" attribute.
+bbox = BoundingBox(
+    VectorLayer("bbox", "canada.shp",
+                Attribute("province", filter=ValueFilter("British Columbia"))),
+    pixel_size=0.00025)
+
+# Raster: spatial extent of raster, with nodata pixels clipped out.
+bbox = BoundingBox(RasterLayer("my_study_area.tif"), pixel_size=0.00025)
+
+
+#==============================================================================#
+# Disturbance layers                                                           #
+# ---                                                                          #
+# A disturbance layer uses a VectorLayer or RasterLayer definition along with  #
+# some extra disturbance information.                                          #
+#==============================================================================#
+
+# Disturbance layers require some supporting code for building transition rules.
+# ------------------------------------------------------------------------------
+mgr = SharedTransitionRuleManager()
+mgr.start()
+rule_manager = mgr.TransitionRuleManager("transition_rules.csv")
+# Tile layers...
+rule_manager.write_rules()
+# ------------------------------------------------------------------------------
+
+# Simple raster disturbance layer: year and type of disturbance are known, pixel
+# value is disturbed (1) / not disturbed (nodata/other).
+DisturbanceLayer(rule_manager,
+                 RasterLayer("projected_fire_2053.tif",
+                             attributes=["disturbed"],
+                             attribute_table={1: [1]}),
+                 year=2053,
+                 disturbance_type="Wild Fire")
+
+# Simple vector disturbance layer: year and disturbance type are already included
+# in the correct format in the attribute table.
+DisturbanceLayer(rule_manager,
+                 VectorLayer("disturbances", "disturbances.shp", [
+                     Attribute("year"),
+                     Attribute("dist_type")]),
+                 year=Attribute("year"),
+                 disturbance_type=Attribute("dist_type"))
+
+# Simple disturbance layer with a stand-replacing transition rule.
+DisturbanceLayer(rule_manager,
+                 VectorLayer("disturbances", "disturbances.shp", [
+                     Attribute("year"),
+                     Attribute("dist_type")]),
+                 year=Attribute("year"),
+                 disturbance_type=Attribute("dist_type"),
+                 transition=TransitionRule(
+                     regen_delay=0,
+                     age_after=0,
+                     classifiers={
+                         "some_classifier": "?"
+                     }))
+
+# A series of raster disturbance layers where the disturbance type is known and
+# the year is encoded in a consistent part of the filename, i.e.
+# disturbance_layers\
+#   fires_1990.tif
+#   fires_1991.tif
+#   ...
+#
+# Uses the scan_for_layers helper function at the top of this file.
+for layer_path in scan_for_layers("disturbance_layers", "fires_*.tif"):
+    # Extract the year from the filename.
+    layer_name = os.path.basename(os.path.splitext(layer_path)[0])
+    year = layer_name[-4:]
+    
+    layers.append(DisturbanceLayer(
+        rule_manager,
+        RasterLayer(
+            os.path.abspath(layer_path),
+            attributes=["disturbed"],
+            attribute_table={
+                1: [1]
+            }),
+        year=year,
+        disturbance_type="Wild Fire"))
+
+# Filter a vector layer containing multiple years of disturbance by each year in
+# the simulation period. Output is a rasterized layer per year of disturbance for
+# the time period of interest.
+for year in range(2010, 2020):
+    layers.append(DisturbanceLayer(
+        rule_manager,
+        VectorLayer("disturbances_{}".format(year), "disturbances.shp", [
+            Attribute("year", filter=ValueFilter(year)),
+            Attribute("dist_type")]),
+        year=Attribute("year"),
+        disturbance_type=Attribute("dist_type")))
+
+
+#==============================================================================#
+# Timeseries layers                                                            #
+# ---                                                                          #
+# A contiguous (in terms of time) stack of layers can be combined together     #
+# into a single FLINT-format timeseries layer for use by modules that support  #
+# reading from a timeseries. When a module reads from a timeseries, it gets    #
+# the relevant value for the current simulation timestep - or if the           #
+# simulation timestep is outside the bounds of the timeseries, the nearest     #
+# endpoint value is used.                                                      #
+#                                                                              #
+# For GCBM simulations, a timeseries layer can be used for mean annual         #
+# temperature, which influences decay rates.                                   #
+#==============================================================================#
+
+# Timeseries layers require a different tiler class.
+tiler_3d = CompressingTiler3D(bbox)
+
+# Typical mean annual temperature stack in raster format.
+mat_layers = scan_for_layers("climate", "tmean*.tif")
+layers_3d = [
+    RegularStackLayer(
+        name="mean_annual_temperature",
+        layers=[RasterLayer(os.path.abspath(path), nodata_value=GDALHelper.uint32_range[1])
+                for path in mat_layers],
+        requested_pixel_size=0.00025,
+        data_type=gdal.GDT_Float32,
+        years=len(mat_layers),
+        steps_per_year=1,
+        tags=["mat"]),
+]
+
+'''
+Tiling regular (2D) and timeseries (3D) layers in the same tiler script using the
+standalone project template requires the study_area.json file to be written out
+manually in order for the scripts to correctly update the GCBM configuration file.
+'''
+study_area = tiler.tile(layers)
+study_area_3d = tiler_3d.tile(layers_3d)
+if "layers" in study_area and "layers" in study_area_3d:
+    study_area["layers"] += study_area_3d["layers"] 
+
+with io.open("study_area.json", "w", encoding="utf8") as study_area_file:
+    study_area_file.write(json.dumps(study_area, indent=4, ensure_ascii=False))
+# ---

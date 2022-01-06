@@ -1,0 +1,7 @@
+﻿{
+    "SQLLoaderMapping": {
+        "name": "Forest types",
+        "fetch_sql": "SELECT * FROM tblForestTypeDefault",
+        "load_sql": "INSERT INTO forest_type (name) VALUES (@ForestTypeName)"
+    }
+}

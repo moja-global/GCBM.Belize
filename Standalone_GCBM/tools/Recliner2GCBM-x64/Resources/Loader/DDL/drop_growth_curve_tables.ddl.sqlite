@@ -1,0 +1,4 @@
+DROP TABLE growth_curve_component_value;
+DROP TABLE growth_curve_component;
+DROP TABLE growth_curve_classifier_value;
+DROP TABLE growth_curve;

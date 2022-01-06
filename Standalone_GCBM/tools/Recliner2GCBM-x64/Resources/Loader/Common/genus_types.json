@@ -1,0 +1,7 @@
+﻿{
+    "SQLLoaderMapping": {
+        "name": "Genus types",
+        "fetch_sql": "SELECT name AS GenusName FROM genus",
+        "load_sql": "INSERT INTO genus (name) VALUES (@GenusName)"
+    }
+}

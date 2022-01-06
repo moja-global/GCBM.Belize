@@ -1,0 +1,12 @@
+﻿{
+    "SQLLoaderMapping": {
+        "name": "Growth multiplier series",
+        "fetch_sql": "
+            SELECT DISTINCT disttypename AS Description
+            FROM tblGrowthMultiplierDefault gm
+            INNER JOIN tblDisturbanceTypeDefault dt
+                ON gm.DefaultDisturbanceTypeID = dt.DistTypeID
+            WHERE gm.GrowthMultiplier <> 1",
+        "load_sql": "INSERT INTO growth_multiplier_series (description) VALUES (@Description)"
+    }
+}

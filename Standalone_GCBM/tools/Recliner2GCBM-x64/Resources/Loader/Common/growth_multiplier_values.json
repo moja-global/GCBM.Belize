@@ -1,0 +1,31 @@
+﻿{
+    "SQLLoaderMapping": {
+        "name": "Growth multiplier values",
+        "fetch_sql": "
+            SELECT
+                gm.description AS SeriesName,
+                ft.name AS ForestTypeName,
+                gmv.time_step AS TimeStep,
+                gmv.value AS GrowthMultiplier
+            FROM growth_multiplier_value gmv
+            INNER JOIN growth_multiplier_series gm
+                ON gmv.growth_multiplier_series_id = gm.id
+            INNER JOIN forest_type ft
+                ON gmv.forest_type_id = ft.id",
+        "load_sql": "
+            INSERT INTO growth_multiplier_value (
+                growth_multiplier_series_id,
+                forest_type_id,
+                time_step,
+                value)
+            SELECT
+                gm.id,
+                ft.id,
+                @TimeStep AS time_step,
+                @GrowthMultiplier AS value
+            FROM growth_multiplier_series gm,
+                 forest_type ft
+            WHERE gm.description = @SeriesName
+                AND ft.name = @ForestTypeName"
+    }
+}

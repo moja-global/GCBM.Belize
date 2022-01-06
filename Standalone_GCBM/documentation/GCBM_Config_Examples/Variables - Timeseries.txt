@@ -1,0 +1,34 @@
+{
+    "Variables": {
+        "mean_annual_temperature": {
+            "transform": {
+                "library": "internal.flint",
+                "type": "TimeSeriesIdxFromFlintDataTransform",
+                "provider": "RasterTiled",
+                "data_id": "mean_annual_temperature",
+                "sub_same": "true",
+                "start_year": 0,
+                "data_per_year": 1,
+                "n_years": 10
+            }
+        }
+    }
+}
+
+{
+    "Variables": {
+        "mean_annual_temperature": {
+            "transform": {
+                "library": "internal.flint",
+                "type": "TimeSeriesIdxFromFlintDataTransform",
+                "provider": "RasterTiled",
+                "data_id": "tmean",
+                "sub_same": "true",
+                "origin": "calendar",
+                "start_year": 1990,
+                "data_per_year": 1,
+                "n_years": 26
+            }
+        }
+    }
+}

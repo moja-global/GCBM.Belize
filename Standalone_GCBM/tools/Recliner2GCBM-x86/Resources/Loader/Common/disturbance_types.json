@@ -1,0 +1,21 @@
+﻿{
+    "SQLLoaderMapping": {
+        "name": "Disturbance types",
+        "fetch_sql": "
+            SELECT
+                dt.name AS DistTypeName,
+                dt.code AS DistTypeCode,
+                lc.code AS LandClass
+            FROM disturbance_type dt
+            LEFT JOIN land_class lc
+                ON dt.transition_land_class_id = lc.id",
+        "load_sql": "
+            INSERT INTO disturbance_type (name, code, transition_land_class_id, disturbance_category_id)
+            SELECT DISTINCT
+                @DistTypeName AS name,
+                @DistTypeCode AS code,
+                (SELECT lc.id FROM land_class lc WHERE lc.code = @LandClass) AS land_class_id,
+				(SELECT dc.id FROM disturbance_category dc WHERE dc.code = 'A') AS disturbance_category_id
+            FROM land_class"
+    }
+}

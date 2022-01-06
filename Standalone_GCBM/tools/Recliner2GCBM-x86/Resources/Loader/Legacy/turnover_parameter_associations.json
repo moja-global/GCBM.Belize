@@ -1,0 +1,66 @@
+﻿{
+    "SQLLoaderMapping": {
+        "name": "Turnover parameters",
+        "fetch_sql": "
+            SELECT DISTINCT
+                EcoBoundaryName,
+                IIF(g.canfi_code < 0, 'Unspecified broad-leaved species', g.GenusName) AS GenusName,
+                HardwoodFoliageFallRate AS foliage, StemAnnualTurnOverRate AS stem,
+                HardwoodBranchTurnOverRate AS branch, HardwoodStemSnagToDOM AS stem_snag,
+                HardwoodBranchSnagToDOM AS branch_snag, 0.02 AS coarse_root, 0.641 AS fine_root,
+                0.25 AS branch_snag_split, 0.5 AS coarse_ag_split, 0.5 AS fine_ag_split
+            FROM tblEcoBoundaryDefault, (
+                SELECT
+                    IIF(f.ForestTypeName LIKE 'Mixedwood', 'Hardwood', f.ForestTypeName) AS ForestTypeName,
+                    g.GenusName,
+                    g.CanFI_Code
+                FROM tblForestTypeDefault f
+                INNER JOIN (
+                    tblGenusTypeDefault g
+                    INNER JOIN tblSpeciesTypeDefault s
+                        ON s.GenusID = g.GenusID
+                ) ON s.ForestTypeID = f.ForestTypeID
+                WHERE f.ForestTypeName IN ('Hardwood', 'Mixedwood')
+            )
+            UNION
+            SELECT DISTINCT
+                EcoBoundaryName,
+                IIF(g.canfi_code < 0, 'Unspecified conifirs', g.GenusName) AS GenusName,
+                SoftwoodFoliageFallRate AS foliage, StemAnnualTurnOverRate AS stem,
+                SoftwoodBranchTurnOverRate AS branch, SoftwoodStemSnagToDOM AS stem_snag,
+                SoftwoodBranchSnagToDOM AS branch_snag, 0.02 AS coarse_root, 0.641 AS fine_root,
+                0.25 AS branch_snag_split, 0.5 AS coarse_ag_split, 0.5 AS fine_ag_split
+            FROM tblEcoBoundaryDefault, (
+                SELECT
+                    f.ForestTypeName,
+                    g.GenusName,
+                    g.CanFI_Code
+                FROM tblForestTypeDefault f
+                INNER JOIN (
+                    tblGenusTypeDefault g
+                    INNER JOIN tblSpeciesTypeDefault s
+                        ON s.GenusID = g.GenusID
+                ) ON s.ForestTypeID = f.ForestTypeID
+                WHERE f.ForestTypeName = 'Softwood'
+            )",
+        "load_sql": "
+            INSERT INTO turnover_parameter_association (genus_id, eco_boundary_id, turnover_parameter_id)
+            SELECT
+                g.id AS genus_id,
+                e.id AS eco_boundary_id,
+                p.id AS turnover_parameter_id
+            FROM genus g, eco_boundary e, turnover_parameter p
+            WHERE g.name = @GenusName
+                AND e.name = @EcoBoundaryName
+                AND p.foliage = @foliage
+                AND p.stem = @stem
+                AND p.branch = @branch
+                AND p.stem_snag = @stem_snag
+                AND p.branch_snag = @branch_snag
+                AND p.coarse_root = @coarse_root
+                AND p.fine_root = @fine_root
+                AND p.branch_snag_split = @branch_snag_split
+                AND p.coarse_ag_split = @coarse_ag_split
+                AND p.fine_ag_split = @fine_ag_split"
+    }
+}

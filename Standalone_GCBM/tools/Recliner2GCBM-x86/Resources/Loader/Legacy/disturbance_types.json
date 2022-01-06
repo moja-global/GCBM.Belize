@@ -1,0 +1,36 @@
+﻿{
+    "SQLLoaderMapping": {
+        "name": "Disturbance types",
+        "fetch_sql": "
+            SELECT
+                DistTypeID,
+                DistTypeName,
+                IIF(LCASE(DistTypeName) = LCASE('deforestation'), 'OL',
+                    IIF(LCASE(DistTypeName) LIKE LCASE('deforestation%agriculture%'), 'CL',
+                        IIF(    LCASE(DistTypeName) LIKE LCASE('deforestation%hydro%reservoir%')
+                            OR  LCASE(DistTypeName) LIKE LCASE('deforestation%urban%flooded%')
+                            OR  LCASE(DistTypeName) LIKE LCASE('deforestation%peat%'), 'WL',
+                            IIF(    LCASE(DistTypeName) LIKE LCASE('deforestation%forestry%')
+                                OR  LCASE(DistTypeName) LIKE LCASE('deforestation%hydro%right%of%way%')
+                                OR  LCASE(DistTypeName) LIKE LCASE('deforestation%industry%')
+                                OR  LCASE(DistTypeName) LIKE LCASE('deforestation%oil and gas%')
+                                OR  LCASE(DistTypeName) LIKE LCASE('deforestation%recreation%')
+                                OR  LCASE(DistTypeName) LIKE LCASE('deforestation%urban%salvage%')
+                                OR  LCASE(DistTypeName) LIKE LCASE('deforestation%mining%')
+                                OR  LCASE(DistTypeName) LIKE LCASE('deforestation%municipal%')
+                                OR  LCASE(DistTypeName) LIKE LCASE('deforestation%transportation%'), 'SL',
+                                IIF(LCASE(DistTypeName) LIKE LCASE('afforestation%'), 'FL', 'N/A'))))
+                ) AS LandClass FROM tblDisturbanceTypeDefault",
+        "load_sql": "
+            INSERT INTO disturbance_type (name, code, transition_land_class_id, disturbance_category_id)
+            SELECT DISTINCT
+                @DistTypeName AS name,
+                @DistTypeID AS code,
+                CASE
+                    WHEN @LandClass = 'N/A' THEN NULL
+                    ELSE (SELECT lc.id FROM land_class lc WHERE lc.code = @LandClass)
+                END AS land_class_id,
+				(SELECT dc.id FROM disturbance_category dc WHERE dc.code = 'A') AS disturbance_category_id
+            FROM land_class"
+    }
+}

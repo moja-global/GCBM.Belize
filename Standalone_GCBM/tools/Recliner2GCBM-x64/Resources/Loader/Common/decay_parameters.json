@@ -1,0 +1,37 @@
+﻿{
+    "SQLLoaderMapping": {
+        "name": "Decay (DOM) parameters",
+        "fetch_sql": "
+            SELECT
+                p.name AS SoilPoolName,
+                d.base_decay_rate AS OrganicMatterDecayRate,
+                d.reference_temp AS ReferenceTemp,
+                d.q10 AS Q10,
+                d.prop_to_atmosphere AS PropToAtmosphere,
+                d.max_rate AS MaxDecayRate
+            FROM decay_parameter d
+            INNER JOIN dom_pool dp
+                ON d.dom_pool_id = dp.id
+            INNER JOIN pool p
+                ON dp.pool_id = p.id",
+        "load_sql": "
+            INSERT INTO decay_parameter (
+                dom_pool_id,
+                base_decay_rate,
+                reference_temp,
+                q10,
+                prop_to_atmosphere,
+                max_rate)
+            SELECT
+                dp.id,
+                @OrganicMatterDecayRate AS OrganicMatterDecayRate,
+                @ReferenceTemp AS ReferenceTemp,
+                @Q10 AS Q10,
+                @PropToAtmosphere AS PropToAtmosphere,
+                @MaxDecayRate AS MaxDecayRate
+            FROM dom_pool dp
+            INNER JOIN pool p
+                ON dp.pool_id = p.id
+            WHERE p.name = @SoilPoolName"
+    }
+}

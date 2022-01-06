@@ -1,0 +1,27 @@
+{   
+    "Libraries": {
+        "moja.modules.gdal": "external"
+    }
+}
+
+{
+	"Modules": {
+        "WriteVariableGeotiff": {
+            "enabled": true,
+            "order": 11,
+            "library": "moja.modules.gdal",
+            "settings": {
+                "items": [
+                    {
+                        "data_name": "Age",
+                        "enabled": true,
+                        "variable_data_type": "Int16",
+                        "on_notification": "OutputStep",
+                        "variable_name": "age"
+                    }
+                ],
+                "output_path": "output"
+            }
+        }
+    }
+}

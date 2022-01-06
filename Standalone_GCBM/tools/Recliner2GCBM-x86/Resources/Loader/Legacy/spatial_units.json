@@ -1,0 +1,37 @@
+﻿{
+    "SQLLoaderMapping": {
+        "name": "Spatial units",
+        "fetch_sql": "
+            SELECT
+                TRIM(a.AdminBoundaryName) AS AdminBoundaryName,
+                TRIM(e.EcoBoundaryName) AS EcoBoundaryName,
+                c.MeanAnnualTemp,
+                e.AverageAge
+            FROM tblEcoBoundaryDefault e
+            INNER JOIN (
+                tblAdminBoundaryDefault a
+                INNER JOIN (
+                    tblClimateDefault c
+                    INNER JOIN tblSPUDefault s
+                        ON c.DefaultSPUID = s.SPUID
+                ) ON a.AdminBoundaryID = s.AdminBoundaryID
+            ) ON e.EcoBoundaryID = s.EcoBoundaryID
+            WHERE c.Year = 1980",
+        "load_sql": "
+            INSERT INTO spatial_unit (
+                admin_boundary_id,
+                eco_boundary_id,
+                spinup_parameter_id)
+            SELECT
+                a.id,
+                e.id,
+                sp.id
+            FROM admin_boundary a,
+                 eco_boundary e,
+                 spinup_parameter sp
+            WHERE a.name = @AdminBoundaryName
+                AND e.name = @EcoBoundaryName
+                AND sp.mean_annual_temperature = @MeanAnnualTemp
+                AND sp.return_interval = @AverageAge"
+    }
+}

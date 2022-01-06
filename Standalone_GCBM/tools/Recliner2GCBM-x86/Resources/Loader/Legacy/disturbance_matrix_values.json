@@ -1,0 +1,103 @@
+﻿{
+    "SQLLoaderMapping": {
+        "name": "Disturbance matrix values",
+        "fetch_sql": "
+            SELECT
+                dm.DMID & '_' & dm.Name AS DMName,
+                IIF(src_lookup.sqlite_name IS NOT NULL, src_lookup.sqlite_name, src.description) AS SourcePoolName,
+                IIF(snk_lookup.sqlite_name IS NOT NULL, snk_lookup.sqlite_name, snk.description) AS SinkPoolName,
+                dmv.Proportion
+            FROM tblDM dm
+            INNER JOIN (
+                (
+                    tblSinkName snk
+                    LEFT JOIN (
+                              SELECT 1 AS aidb_code,  'SoftwoodMerch' AS sqlite_name FROM tblSinkName
+                        UNION SELECT 2 AS aidb_code,  'SoftwoodFoliage' AS sqlite_name FROM tblSinkName
+                        UNION SELECT 3 AS aidb_code,  'SoftwoodOther' AS sqlite_name FROM tblSinkName
+                        UNION SELECT 5 AS aidb_code,  'SoftwoodCoarseRoots' AS sqlite_name FROM tblSinkName
+                        UNION SELECT 6 AS aidb_code,  'SoftwoodFineRoots' AS sqlite_name FROM tblSinkName
+                        UNION SELECT 7 AS aidb_code,  'HardwoodMerch' AS sqlite_name FROM tblSinkName
+                        UNION SELECT 8 AS aidb_code,  'HardwoodFoliage' AS sqlite_name FROM tblSinkName
+                        UNION SELECT 9 AS aidb_code,  'HardwoodOther' AS sqlite_name FROM tblSinkName
+                        UNION SELECT 11 AS aidb_code, 'HardwoodCoarseRoots' AS sqlite_name FROM tblSinkName
+                        UNION SELECT 12 AS aidb_code, 'HardwoodFineRoots' AS sqlite_name FROM tblSinkName
+                        UNION SELECT 13 AS aidb_code, 'AboveGroundVeryFastSoil' AS sqlite_name FROM tblSinkName
+                        UNION SELECT 14 AS aidb_code, 'BelowGroundVeryFastSoil' AS sqlite_name FROM tblSinkName
+                        UNION SELECT 15 AS aidb_code, 'AboveGroundFastSoil' AS sqlite_name FROM tblSinkName
+                        UNION SELECT 16 AS aidb_code, 'BelowGroundFastSoil' AS sqlite_name FROM tblSinkName
+                        UNION SELECT 17 AS aidb_code, 'MediumSoil' AS sqlite_name FROM tblSinkName
+                        UNION SELECT 18 AS aidb_code, 'AboveGroundSlowSoil' AS sqlite_name FROM tblSinkName
+                        UNION SELECT 19 AS aidb_code, 'BelowGroundSlowSoil' AS sqlite_name FROM tblSinkName
+                        UNION SELECT 20 AS aidb_code, 'SoftwoodStemSnag' AS sqlite_name FROM tblSinkName 
+                        UNION SELECT 21 AS aidb_code, 'SoftwoodBranchSnag' AS sqlite_name FROM tblSinkName 
+                        UNION SELECT 22 AS aidb_code, 'HardwoodStemSnag' AS sqlite_name FROM tblSinkName 
+                        UNION SELECT 23 AS aidb_code, 'HardwoodBranchSnag' AS sqlite_name FROM tblSinkName 
+                        UNION SELECT 24 AS aidb_code, 'BlackCarbon' AS sqlite_name FROM tblSinkName 
+                        UNION SELECT 25 AS aidb_code, 'Peat' AS sqlite_name FROM tblSinkName 
+                        UNION SELECT 26 AS aidb_code, 'CO2' AS sqlite_name FROM tblSinkName 
+                        UNION SELECT 27 AS aidb_code, 'CH4' AS sqlite_name FROM tblSinkName 
+                        UNION SELECT 28 AS aidb_code, 'CO' AS sqlite_name FROM tblSinkName 
+                        UNION SELECT 29 AS aidb_code, 'NO2' AS sqlite_name FROM tblSinkName 
+                        UNION SELECT 30 AS aidb_code, 'Products' AS sqlite_name FROM tblSinkName
+                    ) AS snk_lookup
+                        ON snk.column = snk_lookup.aidb_code
+                ) INNER JOIN (
+                    (
+                        tblSourceName src
+                        LEFT JOIN (
+                                  SELECT 1 AS aidb_code,  'SoftwoodMerch' AS sqlite_name FROM tblSourceName 
+                            UNION SELECT 2 AS aidb_code,  'SoftwoodFoliage' AS sqlite_name FROM tblSourceName 
+                            UNION SELECT 3 AS aidb_code,  'SoftwoodOther' AS sqlite_name FROM tblSourceName 
+                            UNION SELECT 5 AS aidb_code,  'SoftwoodCoarseRoots' AS sqlite_name FROM tblSourceName 
+                            UNION SELECT 6 AS aidb_code,  'SoftwoodFineRoots' AS sqlite_name FROM tblSourceName 
+                            UNION SELECT 7 AS aidb_code,  'HardwoodMerch' AS sqlite_name FROM tblSourceName 
+                            UNION SELECT 8 AS aidb_code,  'HardwoodFoliage' AS sqlite_name FROM tblSourceName 
+                            UNION SELECT 9 AS aidb_code,  'HardwoodOther' AS sqlite_name FROM tblSourceName 
+                            UNION SELECT 11 AS aidb_code, 'HardwoodCoarseRoots' AS sqlite_name FROM tblSourceName 
+                            UNION SELECT 12 AS aidb_code, 'HardwoodFineRoots' AS sqlite_name FROM tblSourceName 
+                            UNION SELECT 13 AS aidb_code, 'AboveGroundVeryFastSoil' AS sqlite_name FROM tblSourceName 
+                            UNION SELECT 14 AS aidb_code, 'BelowGroundVeryFastSoil' AS sqlite_name FROM tblSourceName 
+                            UNION SELECT 15 AS aidb_code, 'AboveGroundFastSoil' AS sqlite_name FROM tblSourceName 
+                            UNION SELECT 16 AS aidb_code, 'BelowGroundFastSoil' AS sqlite_name FROM tblSourceName 
+                            UNION SELECT 17 AS aidb_code, 'MediumSoil' AS sqlite_name FROM tblSourceName 
+                            UNION SELECT 18 AS aidb_code, 'AboveGroundSlowSoil' AS sqlite_name FROM tblSourceName 
+                            UNION SELECT 19 AS aidb_code, 'BelowGroundSlowSoil' AS sqlite_name FROM tblSourceName 
+                            UNION SELECT 20 AS aidb_code, 'SoftwoodStemSnag' AS sqlite_name FROM tblSourceName 
+                            UNION SELECT 21 AS aidb_code, 'SoftwoodBranchSnag' AS sqlite_name FROM tblSourceName 
+                            UNION SELECT 22 AS aidb_code, 'HardwoodStemSnag' AS sqlite_name FROM tblSourceName 
+                            UNION SELECT 23 AS aidb_code, 'HardwoodBranchSnag' AS sqlite_name FROM tblSourceName 
+                            UNION SELECT 24 AS aidb_code, 'BlackCarbon' AS sqlite_name FROM tblSourceName 
+                            UNION SELECT 25 AS aidb_code, 'Peat' AS sqlite_name FROM tblSourceName
+                        ) AS src_lookup
+                            ON src.row = src_lookup.aidb_code
+                    ) INNER JOIN tblDMValuesLookup dmv
+                        ON src.Row = dmv.DMRow
+                ) ON snk.Column = dmv.DMColumn
+            ) ON dm.DMID = dmv.DMID
+                AND dm.DMStructureID = src.DMStructureID
+                AND dm.DMStructureID = snk.DMStructureID",
+        "load_sql": "
+            INSERT INTO disturbance_matrix_value (
+                disturbance_matrix_id,
+                source_pool_id,
+                sink_pool_id,
+                proportion)
+            SELECT
+                dm.id,
+                src.id,
+                snk.id,
+                @Proportion AS proportion
+            FROM disturbance_matrix dm,
+                 pool snk,
+                 pool src
+            WHERE dm.name = @DMName
+                AND src.name = @SourcePoolName
+                AND snk.name = @SinkPoolName
+            GROUP BY
+                dm.id,
+                snk.id,
+                src.id,
+                proportion"
+    }
+}

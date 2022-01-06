@@ -1,0 +1,16 @@
+﻿{
+    "SQLLoaderMapping": {
+        "name": "Species types",
+        "fetch_sql": "
+            SELECT DISTINCT Description AS PoolName
+            FROM tblSinkName
+            WHERE dmstructureid = 2
+                AND column > 30
+            UNION
+            SELECT DISTINCT Description AS PoolName
+            FROM tblSourceName
+            WHERE dmstructureid = 2
+                AND row > 25",
+        "load_sql": "INSERT INTO pool (name) VALUES (@PoolName)"
+    }
+}

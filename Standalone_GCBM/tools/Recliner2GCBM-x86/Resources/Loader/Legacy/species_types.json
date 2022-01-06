@@ -1,0 +1,22 @@
+﻿{
+    "SQLLoaderMapping": {
+        "name": "Species types",
+        "fetch_sql": "
+            SELECT
+                s.SpeciesTypeName,
+                IIF(f.ForestTypeName LIKE 'Mixedwood', 'Hardwood', f.ForestTypeName) AS ForestTypeName,
+                g.GenusName
+            FROM tblForestTypeDefault f
+            INNER JOIN (
+                tblGenusTypeDefault g
+                INNER JOIN tblSpeciesTypeDefault s
+                    ON s.GenusID = g.GenusID
+            ) ON s.ForestTypeID = f.ForestTypeID",
+        "load_sql": "
+            INSERT INTO species (forest_type_id, genus_id, name)
+            SELECT f.id, g.id, @SpeciesTypeName AS name
+            FROM forest_type f, genus g
+            WHERE f.name = @ForestTypeName
+                AND g.name = @GenusName"
+    }
+}

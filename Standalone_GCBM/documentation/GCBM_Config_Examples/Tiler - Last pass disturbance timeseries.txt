@@ -1,0 +1,36 @@
+Last pass disturbance timeseries is autoconfigured in GCBM with Feb. 2019 and later
+versions of update_gcbm_config.py. For this to work, tile last pass disturbance layers
+the same way as disturbance layers, but include the tag "last_pass_disturbance".
+
+For example:
+
+        # Last pass disturbance timeseries for spinup
+        for i in range(1, 4, 1):
+            layers.append(DisturbanceLayer(
+                rule_manager,
+                VectorLayer("spinup_disturbances_{}".format(i),
+                            os.path.join(layer_root, "spinup_disturbances", "spinup_disturbances.shp"),
+                            [
+                                Attribute("lastpass_{}".format(i))
+                            ]),
+                year=Attribute("lastpass_{}".format(i)),
+                disturbance_type="Wild Fire",
+                tags=["last_pass_disturbance"]))
+
+GCBM configuration looks like:
+
+    "SpinupVariables": {
+        "last_pass_disturbance_timeseries": {
+            "transform": {
+                "allow_nulls": "true",
+                "type": "CompositeTransform",
+                "library": "internal.flint",
+                "vars": [
+                    "spinup_disturbances_2",
+                    "spinup_disturbances_1",
+                    "spinup_disturbances_3"
+                ],
+                "format": "long"
+            }
+        }
+    },

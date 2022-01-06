@@ -1,0 +1,27 @@
+﻿{
+    "SQLLoaderMapping": {
+        "name": "Species types",
+        "fetch_sql": "
+            SELECT
+                s.name AS SpeciesTypeName,
+                f.name AS ForestTypeName,
+                g.name AS GenusName
+            FROM species s
+            INNER JOIN forest_type f
+                ON s.forest_type_id = f.id
+            INNER JOIN genus g
+                ON s.genus_id = g.id",
+        "load_sql": "
+            INSERT INTO species (
+                forest_type_id,
+                genus_id,
+                name)
+            SELECT
+                f.id,
+                g.id,
+                @SpeciesTypeName AS name
+            FROM forest_type f, genus g
+            WHERE f.name = @ForestTypeName
+                AND g.name = @GenusName"
+    }
+}

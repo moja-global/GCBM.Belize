@@ -1,0 +1,14 @@
+        "landscape": {
+            "num_threads": 4,
+            "tiles": [
+                {
+                    "x": -106,
+                    "y": 55
+                }
+            ],
+            "y_pixels": 4000,
+            "provider": "RasterTiled",
+            "x_pixels": 4000,
+            "tile_size_x": 1.0,
+            "tile_size_y": 1.0
+        }

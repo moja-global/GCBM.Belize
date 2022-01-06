@@ -1,0 +1,377 @@
+CREATE TABLE classifier_value (
+  id             SERIAL NOT NULL, 
+  classifier_id int4 NOT NULL, 
+  value         varchar(255) NOT NULL, 
+  description   varchar(255) NOT NULL, 
+  PRIMARY KEY (id), 
+  CONSTRAINT u_cv_classifier_id_value 
+    UNIQUE (classifier_id, value));
+CREATE TABLE classifier (
+  id    SERIAL NOT NULL, 
+  name text NOT NULL, 
+  PRIMARY KEY (id));
+CREATE TABLE spatial_unit (
+  id                      SERIAL NOT NULL, 
+  admin_boundary_id      int4 NOT NULL, 
+  eco_boundary_id        int4 NOT NULL, 
+  root_parameter_id      int4 NOT NULL, 
+  climate_time_series_id int4 NOT NULL, 
+  PRIMARY KEY (id));
+CREATE TABLE admin_boundary (
+  id                  SERIAL NOT NULL, 
+  name               varchar(255) NOT NULL, 
+  admin_region_id    int4 NOT NULL, 
+  stump_parameter_id int4 NOT NULL, 
+  PRIMARY KEY (id));
+CREATE TABLE eco_boundary (
+  id                     SERIAL NOT NULL, 
+  name                  varchar(255) NOT NULL, 
+  eco_region_id         int4 NOT NULL, 
+  turnover_parameter_id int4 NOT NULL, 
+  PRIMARY KEY (id));
+CREATE TABLE disturbance_matrix (
+  id    SERIAL NOT NULL, 
+  name text NOT NULL UNIQUE, 
+  PRIMARY KEY (id));
+CREATE TABLE disturbance_matrix_value (
+  disturbance_matrix_id int4 NOT NULL, 
+  source_pool_id        int4 NOT NULL, 
+  sink_pool_id          int4 NOT NULL, 
+  proportion            float8 NOT NULL, 
+  PRIMARY KEY (disturbance_matrix_id, 
+  source_pool_id, 
+  sink_pool_id));
+CREATE TABLE pool (
+  id    SERIAL NOT NULL, 
+  name text NOT NULL UNIQUE, 
+  PRIMARY KEY (id));
+CREATE TABLE decay_parameter (
+  dom_pool_id        int4 NOT NULL, 
+  base_decay_rate    float8 NOT NULL, 
+  reference_temp     float8 NOT NULL, 
+  q10                float8 NOT NULL, 
+  prop_to_atmosphere float8 NOT NULL, 
+  max_rate           float8 NOT NULL, 
+  PRIMARY KEY (dom_pool_id));
+CREATE TABLE spinup_parameter (
+  id                            SERIAL NOT NULL, 
+  historic_disturbance_type_id int4 NOT NULL, 
+  last_disturbance_type_id     int4 NOT NULL, 
+  growth_curve_id              int4 NOT NULL, 
+  return_interval              int4 NOT NULL, 
+  max_rotations                int4 NOT NULL, 
+  mean_annual_temperature      float8 NOT NULL, 
+  delay                        int4 NOT NULL, 
+  PRIMARY KEY (id));
+CREATE TABLE dom_pool (
+  id       SERIAL NOT NULL, 
+  pool_id int4 NOT NULL UNIQUE, 
+  PRIMARY KEY (id));
+CREATE TABLE transition (
+  id                  SERIAL NOT NULL, 
+  age                int4 NOT NULL, 
+  transition_type_id int4 NOT NULL, 
+  PRIMARY KEY (id));
+CREATE TABLE transition_classifier_value (
+  transition_id       int4 NOT NULL, 
+  classifier_value_id int4 NOT NULL, 
+  PRIMARY KEY (transition_id, 
+  classifier_value_id));
+CREATE TABLE land_class (
+  id                  SERIAL NOT NULL, 
+  code               text NOT NULL UNIQUE, 
+  description        text NOT NULL, 
+  is_forest          bool NOT NULL, 
+  years_to_permanent int4 NOT NULL, 
+  PRIMARY KEY (id));
+CREATE TABLE admin_region (
+  id    SERIAL NOT NULL, 
+  name varchar(255) NOT NULL, 
+  PRIMARY KEY (id));
+CREATE TABLE eco_region (
+  id    SERIAL NOT NULL, 
+  name varchar(255) NOT NULL, 
+  PRIMARY KEY (id));
+CREATE TABLE disturbance_type (
+  id                        SERIAL NOT NULL, 
+  name                     varchar(255) NOT NULL, 
+  code                     int4, 
+  transition_land_class_id int4, 
+  PRIMARY KEY (id));
+CREATE TABLE disturbance_matrix_association (
+  spatial_unit_id       int4 NOT NULL, 
+  disturbance_type_id   int4 NOT NULL, 
+  disturbance_matrix_id int4 NOT NULL, 
+  PRIMARY KEY (spatial_unit_id, 
+  disturbance_type_id));
+CREATE TABLE forest_type (
+  id    SERIAL NOT NULL, 
+  name varchar(255) NOT NULL, 
+  PRIMARY KEY (id));
+CREATE TABLE genus (
+  id    SERIAL NOT NULL, 
+  name varchar(255) NOT NULL, 
+  PRIMARY KEY (id));
+CREATE TABLE species (
+  id              SERIAL NOT NULL, 
+  name           varchar(255) NOT NULL, 
+  forest_type_id int4 NOT NULL, 
+  genus_id       int4 NOT NULL, 
+  PRIMARY KEY (id));
+CREATE TABLE vol_to_bio_factor (
+  id                  SERIAL NOT NULL, 
+  a                  float8 NOT NULL, 
+  b                  float8 NOT NULL, 
+  a_nonmerch         float8 NOT NULL, 
+  b_nonmerch         float8 NOT NULL, 
+  k_nonmerch         float8 NOT NULL, 
+  cap_nonmerch       float8 NOT NULL, 
+  a_sap              float8 NOT NULL, 
+  b_sap              float8 NOT NULL, 
+  k_sap              float8 NOT NULL, 
+  cap_sap            float8 NOT NULL, 
+  a1                 float8 NOT NULL, 
+  a2                 float8 NOT NULL, 
+  a3                 float8 NOT NULL, 
+  b1                 float8 NOT NULL, 
+  b2                 float8 NOT NULL, 
+  b3                 float8 NOT NULL, 
+  c1                 float8 NOT NULL, 
+  c2                 float8 NOT NULL, 
+  c3                 float8 NOT NULL, 
+  min_volume         float8 NOT NULL, 
+  max_volume         float8 NOT NULL, 
+  low_stemwood_prop  float8 NOT NULL, 
+  high_stemwood_prop float8 NOT NULL, 
+  low_stembark_prop  float8 NOT NULL, 
+  high_stembark_prop float8 NOT NULL, 
+  low_branches_prop  float8 NOT NULL, 
+  high_branches_prop float8 NOT NULL, 
+  low_foliage_prop   float8 NOT NULL, 
+  high_foliage_prop  float8 NOT NULL, 
+  PRIMARY KEY (id), 
+  CONSTRAINT u_vol_to_bio_factors 
+    UNIQUE (a, b, a_nonmerch, b_nonmerch, k_nonmerch, cap_nonmerch, a_sap, b_sap, k_sap, cap_sap, a1, a2, a3, b1, b2, b3, c1, c2, c3, min_volume, max_volume, low_stemwood_prop, high_stemwood_prop, low_stembark_prop, high_stembark_prop, low_branches_prop, high_branches_prop, low_foliage_prop, high_foliage_prop));
+CREATE TABLE vol_to_bio_factor_association (
+  spatial_unit_id      int4 NOT NULL, 
+  species_id           int4 NOT NULL, 
+  vol_to_bio_factor_id int4 NOT NULL, 
+  PRIMARY KEY (spatial_unit_id, 
+  species_id));
+CREATE TABLE growth_curve (
+  id           SERIAL NOT NULL, 
+  description varchar(255) NOT NULL, 
+  PRIMARY KEY (id));
+CREATE TABLE growth_curve_component (
+  id               SERIAL NOT NULL, 
+  growth_curve_id int4 NOT NULL, 
+  species_id      int4 NOT NULL, 
+  PRIMARY KEY (id), 
+  CONSTRAINT u_gcc_growth_curve_id_species_id 
+    UNIQUE (growth_curve_id, species_id));
+CREATE TABLE growth_curve_component_value (
+  growth_curve_component_id int4 NOT NULL, 
+  age                       int4 NOT NULL, 
+  merchantable_volume       float8 NOT NULL, 
+  PRIMARY KEY (growth_curve_component_id, 
+  age));
+CREATE TABLE growth_curve_classifier_value (
+  growth_curve_id     int4 NOT NULL, 
+  classifier_value_id int4 NOT NULL, 
+  PRIMARY KEY (growth_curve_id, 
+  classifier_value_id));
+CREATE TABLE root_parameter (
+  id     SERIAL NOT NULL, 
+  hw_a  float8 NOT NULL, 
+  sw_a  float8 NOT NULL, 
+  hw_b  float8 NOT NULL, 
+  frp_a float8 NOT NULL, 
+  frp_b float8 NOT NULL, 
+  frp_c float8 NOT NULL, 
+  PRIMARY KEY (id), 
+  CONSTRAINT u_root_parameters 
+    UNIQUE (hw_a, sw_a, hw_b, frp_a, frp_b, frp_c));
+CREATE TABLE growth_multiplier_series (
+  id           SERIAL NOT NULL, 
+  description varchar(255) NOT NULL UNIQUE, 
+  PRIMARY KEY (id));
+CREATE TABLE growth_multiplier_value (
+  growth_multiplier_series_id int4 NOT NULL, 
+  forest_type_id              int4 NOT NULL, 
+  time_step                   int4 NOT NULL, 
+  value                       float8 NOT NULL, 
+  PRIMARY KEY (growth_multiplier_series_id, 
+  forest_type_id, 
+  time_step));
+CREATE TABLE stump_parameter (
+  id                   SERIAL NOT NULL, 
+  sw_top_proportion   float8 NOT NULL, 
+  sw_stump_proportion float8 NOT NULL, 
+  hw_top_proportion   float8 NOT NULL, 
+  hw_stump_proportion float8 NOT NULL, 
+  PRIMARY KEY (id), 
+  CONSTRAINT u_stump_parameters 
+    UNIQUE (sw_top_proportion, sw_stump_proportion, hw_top_proportion, hw_stump_proportion));
+CREATE TABLE turnover_parameter (
+  id                 SERIAL NOT NULL, 
+  sw_foliage        float8 NOT NULL, 
+  hw_foliage        float8 NOT NULL, 
+  stem_turnover     float8 NOT NULL, 
+  sw_branch         float8 NOT NULL, 
+  hw_branch         float8 NOT NULL, 
+  branch_snag_split float8 NOT NULL, 
+  stem_snag         float8 NOT NULL, 
+  branch_snag       float8 NOT NULL, 
+  coarse_root       float8 NOT NULL, 
+  fine_root         float8 NOT NULL, 
+  coarse_ag_split   float8 NOT NULL, 
+  fine_ag_split     float8 NOT NULL, 
+  PRIMARY KEY (id));
+CREATE TABLE inventory (
+  id               SERIAL NOT NULL, 
+  spatial_unit_id int4 NOT NULL, 
+  land_class_id   int4 NOT NULL, 
+  age             int4 NOT NULL, 
+  area            float8 NOT NULL, 
+  PRIMARY KEY (id));
+CREATE TABLE disturbance_event (
+  id                   SERIAL NOT NULL, 
+  disturbance_type_id int4 NOT NULL, 
+  spatial_unit_id     int4 NOT NULL, 
+  t_year              int4 NOT NULL, 
+  PRIMARY KEY (id));
+CREATE TABLE inventory_spinup (
+  inventory_id        int4 NOT NULL, 
+  spinup_parameter_id int4 NOT NULL, 
+  PRIMARY KEY (inventory_id));
+CREATE TABLE disturbance_event_growth_multiplier_series (
+  disturbance_event_id        int4 NOT NULL, 
+  growth_multiplier_series_id int4 NOT NULL, 
+  PRIMARY KEY (disturbance_event_id));
+CREATE TABLE disturbance_event_classifier_value (
+  disturbance_event_id int4 NOT NULL, 
+  classifier_value_id  int4 NOT NULL, 
+  PRIMARY KEY (disturbance_event_id, 
+  classifier_value_id));
+CREATE TABLE disturbance_event_transition (
+  disturbance_event_id int4 NOT NULL, 
+  transition_id        int4 NOT NULL, 
+  PRIMARY KEY (disturbance_event_id, 
+  transition_id));
+CREATE TABLE climate_time_series (
+  id  SERIAL NOT NULL, 
+  PRIMARY KEY (id));
+CREATE TABLE climate (
+  id                       SERIAL NOT NULL, 
+  climate_time_series_id  int4 NOT NULL, 
+  t_year                  int4 NOT NULL, 
+  mean_annual_temperature float8 NOT NULL, 
+  PRIMARY KEY (id), 
+  CONSTRAINT u_c_climate_time_series_id_t_year 
+    UNIQUE (climate_time_series_id, t_year));
+CREATE TABLE inventory_classifier_value (
+  inventory_id        int4 NOT NULL, 
+  classifier_value_id int4 NOT NULL, 
+  PRIMARY KEY (inventory_id, 
+  classifier_value_id));
+CREATE TABLE transition_type (
+  id    SERIAL NOT NULL, 
+  name varchar(255) NOT NULL, 
+  PRIMARY KEY (id));
+CREATE TABLE transition_rule (
+  id                   SERIAL NOT NULL, 
+  transition_id       int4 NOT NULL, 
+  disturbance_type_id int4 NOT NULL, 
+  PRIMARY KEY (id), 
+  CONSTRAINT transition_rule_unique_transition_id_disturbance_type_id 
+    UNIQUE (transition_id, disturbance_type_id));
+CREATE TABLE transition_rule_classifier_value (
+  transition_rule_id  int4 NOT NULL, 
+  classifier_value_id int4 NOT NULL, 
+  PRIMARY KEY (transition_rule_id, 
+  classifier_value_id));
+ALTER TABLE classifier_value ADD CONSTRAINT FKclassifier300971 FOREIGN KEY (classifier_id) REFERENCES classifier (id);
+ALTER TABLE spatial_unit ADD CONSTRAINT FKspatial_un81858 FOREIGN KEY (admin_boundary_id) REFERENCES admin_boundary (id);
+ALTER TABLE spatial_unit ADD CONSTRAINT FKspatial_un151880 FOREIGN KEY (eco_boundary_id) REFERENCES eco_boundary (id);
+ALTER TABLE disturbance_matrix_value ADD CONSTRAINT FKdisturbanc908436 FOREIGN KEY (disturbance_matrix_id) REFERENCES disturbance_matrix (id);
+ALTER TABLE dom_pool ADD CONSTRAINT FKdom_pool100654 FOREIGN KEY (pool_id) REFERENCES pool (id);
+ALTER TABLE decay_parameter ADD CONSTRAINT FKdecay_para499097 FOREIGN KEY (dom_pool_id) REFERENCES dom_pool (id);
+ALTER TABLE transition_classifier_value ADD CONSTRAINT FKtransition782045 FOREIGN KEY (transition_id) REFERENCES transition (id);
+ALTER TABLE transition_classifier_value ADD CONSTRAINT FKtransition523994 FOREIGN KEY (classifier_value_id) REFERENCES classifier_value (id);
+ALTER TABLE admin_boundary ADD CONSTRAINT FKadmin_boun128552 FOREIGN KEY (admin_region_id) REFERENCES admin_region (id);
+ALTER TABLE eco_boundary ADD CONSTRAINT FKeco_bounda642370 FOREIGN KEY (eco_region_id) REFERENCES eco_region (id);
+ALTER TABLE disturbance_type ADD CONSTRAINT FKdisturbanc683852 FOREIGN KEY (transition_land_class_id) REFERENCES land_class (id);
+ALTER TABLE spinup_parameter ADD CONSTRAINT FKspinup_par248097 FOREIGN KEY (historic_disturbance_type_id) REFERENCES disturbance_type (id);
+ALTER TABLE disturbance_matrix_association ADD CONSTRAINT FKdisturbanc369899 FOREIGN KEY (disturbance_matrix_id) REFERENCES disturbance_matrix (id);
+ALTER TABLE disturbance_matrix_association ADD CONSTRAINT FKdisturbanc537172 FOREIGN KEY (disturbance_type_id) REFERENCES disturbance_type (id);
+ALTER TABLE disturbance_matrix_association ADD CONSTRAINT FKdisturbanc537158 FOREIGN KEY (spatial_unit_id) REFERENCES spatial_unit (id);
+ALTER TABLE species ADD CONSTRAINT FKspecies67490 FOREIGN KEY (forest_type_id) REFERENCES forest_type (id);
+ALTER TABLE species ADD CONSTRAINT FKspecies44996 FOREIGN KEY (genus_id) REFERENCES genus (id);
+ALTER TABLE vol_to_bio_factor_association ADD CONSTRAINT FKvol_to_bio635224 FOREIGN KEY (spatial_unit_id) REFERENCES spatial_unit (id);
+ALTER TABLE vol_to_bio_factor_association ADD CONSTRAINT FKvol_to_bio788751 FOREIGN KEY (species_id) REFERENCES species (id);
+ALTER TABLE vol_to_bio_factor_association ADD CONSTRAINT FKvol_to_bio319345 FOREIGN KEY (vol_to_bio_factor_id) REFERENCES vol_to_bio_factor (id);
+ALTER TABLE growth_curve_component ADD CONSTRAINT FKgrowth_cur390751 FOREIGN KEY (growth_curve_id) REFERENCES growth_curve (id);
+ALTER TABLE growth_curve_component ADD CONSTRAINT FKgrowth_cur695407 FOREIGN KEY (species_id) REFERENCES species (id);
+ALTER TABLE growth_curve_component_value ADD CONSTRAINT FKgrowth_cur357779 FOREIGN KEY (growth_curve_component_id) REFERENCES growth_curve_component (id);
+ALTER TABLE growth_curve_classifier_value ADD CONSTRAINT FKgrowth_cur645979 FOREIGN KEY (classifier_value_id) REFERENCES classifier_value (id);
+ALTER TABLE growth_curve_classifier_value ADD CONSTRAINT FKgrowth_cur819391 FOREIGN KEY (growth_curve_id) REFERENCES growth_curve (id);
+ALTER TABLE growth_multiplier_value ADD CONSTRAINT FKgrowth_mul599219 FOREIGN KEY (growth_multiplier_series_id) REFERENCES growth_multiplier_series (id);
+ALTER TABLE spatial_unit ADD CONSTRAINT FKspatial_un360868 FOREIGN KEY (root_parameter_id) REFERENCES root_parameter (id);
+ALTER TABLE admin_boundary ADD CONSTRAINT FKadmin_boun575930 FOREIGN KEY (stump_parameter_id) REFERENCES stump_parameter (id);
+ALTER TABLE eco_boundary ADD CONSTRAINT FKeco_bounda278424 FOREIGN KEY (turnover_parameter_id) REFERENCES turnover_parameter (id);
+ALTER TABLE inventory ADD CONSTRAINT FKinventory1648 FOREIGN KEY (spatial_unit_id) REFERENCES spatial_unit (id);
+ALTER TABLE disturbance_event ADD CONSTRAINT FKdisturbanc472862 FOREIGN KEY (disturbance_type_id) REFERENCES disturbance_type (id);
+ALTER TABLE disturbance_event ADD CONSTRAINT FKdisturbanc472876 FOREIGN KEY (spatial_unit_id) REFERENCES spatial_unit (id);
+ALTER TABLE inventory_spinup ADD CONSTRAINT FKinventory_299999 FOREIGN KEY (inventory_id) REFERENCES inventory (id);
+ALTER TABLE inventory_spinup ADD CONSTRAINT FKinventory_466362 FOREIGN KEY (spinup_parameter_id) REFERENCES spinup_parameter (id);
+ALTER TABLE disturbance_event_growth_multiplier_series ADD CONSTRAINT FKdisturbanc767859 FOREIGN KEY (growth_multiplier_series_id) REFERENCES growth_multiplier_series (id);
+ALTER TABLE disturbance_event_growth_multiplier_series ADD CONSTRAINT FKdisturbanc542961 FOREIGN KEY (disturbance_event_id) REFERENCES disturbance_event (id);
+ALTER TABLE disturbance_event_classifier_value ADD CONSTRAINT FKdisturbanc792853 FOREIGN KEY (disturbance_event_id) REFERENCES disturbance_event (id);
+ALTER TABLE disturbance_event_classifier_value ADD CONSTRAINT FKdisturbanc527235 FOREIGN KEY (classifier_value_id) REFERENCES classifier_value (id);
+ALTER TABLE disturbance_event_transition ADD CONSTRAINT FKdisturbanc594804 FOREIGN KEY (transition_id) REFERENCES transition (id);
+ALTER TABLE disturbance_event_transition ADD CONSTRAINT FKdisturbanc314748 FOREIGN KEY (disturbance_event_id) REFERENCES disturbance_event (id);
+ALTER TABLE climate ADD CONSTRAINT FKclimate798951 FOREIGN KEY (climate_time_series_id) REFERENCES climate_time_series (id);
+ALTER TABLE spatial_unit ADD CONSTRAINT FKspatial_un443183 FOREIGN KEY (climate_time_series_id) REFERENCES climate_time_series (id);
+ALTER TABLE inventory ADD CONSTRAINT FKinventory814571 FOREIGN KEY (land_class_id) REFERENCES land_class (id);
+ALTER TABLE inventory_classifier_value ADD CONSTRAINT FKinventory_757840 FOREIGN KEY (inventory_id) REFERENCES inventory (id);
+ALTER TABLE inventory_classifier_value ADD CONSTRAINT FKinventory_172865 FOREIGN KEY (classifier_value_id) REFERENCES classifier_value (id);
+ALTER TABLE spinup_parameter ADD CONSTRAINT FKspinup_par758714 FOREIGN KEY (last_disturbance_type_id) REFERENCES disturbance_type (id);
+ALTER TABLE spinup_parameter ADD CONSTRAINT FKspinup_par11832 FOREIGN KEY (growth_curve_id) REFERENCES growth_curve (id);
+ALTER TABLE disturbance_matrix_value ADD CONSTRAINT FKdisturbanc593721 FOREIGN KEY (source_pool_id) REFERENCES pool (id);
+ALTER TABLE disturbance_matrix_value ADD CONSTRAINT FKdisturbanc690552 FOREIGN KEY (sink_pool_id) REFERENCES pool (id);
+ALTER TABLE growth_multiplier_value ADD CONSTRAINT FKgrowth_mul912544 FOREIGN KEY (forest_type_id) REFERENCES forest_type (id);
+ALTER TABLE transition ADD CONSTRAINT FKtransition855177 FOREIGN KEY (transition_type_id) REFERENCES transition_type (id);
+ALTER TABLE transition_rule ADD CONSTRAINT FKtransition716879 FOREIGN KEY (transition_id) REFERENCES transition (id);
+ALTER TABLE transition_rule ADD CONSTRAINT FKtransition22953 FOREIGN KEY (disturbance_type_id) REFERENCES disturbance_type (id);
+ALTER TABLE transition_rule_classifier_value ADD CONSTRAINT FKtransition547697 FOREIGN KEY (transition_rule_id) REFERENCES transition_rule (id);
+ALTER TABLE transition_rule_classifier_value ADD CONSTRAINT FKtransition508068 FOREIGN KEY (classifier_value_id) REFERENCES classifier_value (id);
+CREATE INDEX classifier_value_classifier_id 
+  ON classifier_value (classifier_id);
+CREATE INDEX classifier_value_value 
+  ON classifier_value (value);
+CREATE INDEX classifier_id 
+  ON classifier (id);
+CREATE UNIQUE INDEX classifier_name 
+  ON classifier (name);
+CREATE UNIQUE INDEX admin_boundary_name 
+  ON admin_boundary (name);
+CREATE UNIQUE INDEX eco_boundary_name 
+  ON eco_boundary (name);
+CREATE UNIQUE INDEX admin_region_name 
+  ON admin_region (name);
+CREATE UNIQUE INDEX eco_region_name 
+  ON eco_region (name);
+CREATE UNIQUE INDEX disturbance_type_name 
+  ON disturbance_type (name);
+CREATE INDEX disturbance_type_code 
+  ON disturbance_type (code);
+CREATE UNIQUE INDEX forest_type_name 
+  ON forest_type (name);
+CREATE UNIQUE INDEX genus_name 
+  ON genus (name);
+CREATE UNIQUE INDEX species_name 
+  ON species (name);
+CREATE UNIQUE INDEX transition_type_name 
+  ON transition_type (name);
+CREATE INDEX transition_rule_id 
+  ON transition_rule (id);

@@ -1,0 +1,26 @@
+﻿{
+    "SQLLoaderMapping": {
+        "name": "Turnover parameters",
+        "fetch_sql": "
+            SELECT DISTINCT
+                HardwoodFoliageFallRate AS foliage, StemAnnualTurnOverRate AS stem,
+                HardwoodBranchTurnOverRate AS branch, HardwoodStemSnagToDOM AS stem_snag,
+                HardwoodBranchSnagToDOM AS branch_snag, 0.02 AS coarse_root, 0.641 AS fine_root,
+                0.25 AS branch_snag_split, 0.5 AS coarse_ag_split, 0.5 AS fine_ag_split
+            FROM tblEcoBoundaryDefault
+            UNION
+            SELECT DISTINCT
+                SoftwoodFoliageFallRate AS foliage, StemAnnualTurnOverRate AS stem,
+                SoftwoodBranchTurnOverRate AS branch, SoftwoodStemSnagToDOM AS stem_snag,
+                SoftwoodBranchSnagToDOM AS branch_snag, 0.02 AS coarse_root, 0.641 AS fine_root,
+                0.25 AS branch_snag_split, 0.5 AS coarse_ag_split, 0.5 AS fine_ag_split
+            FROM tblEcoBoundaryDefault",
+        "load_sql": "
+            INSERT INTO turnover_parameter (
+                foliage, stem, branch, stem_snag, branch_snag, coarse_root, fine_root,
+                branch_snag_split, coarse_ag_split, fine_ag_split)
+            VALUES (
+                @foliage, @stem, @branch, @stem_snag, @branch_snag, @coarse_root, @fine_root,
+                @branch_snag_split, @coarse_ag_split, @fine_ag_split)"
+    }
+}

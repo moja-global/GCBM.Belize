@@ -1,0 +1,40 @@
+﻿{
+    "SQLLoaderMapping": {
+        "name": "Disturbance matrix values",
+        "fetch_sql": "
+            SELECT
+                dm.name AS DMName,
+                src.name AS SourcePoolName,
+                snk.name AS SinkPoolName,
+                dmv.proportion AS Proportion
+            FROM disturbance_matrix dm
+            INNER JOIN disturbance_matrix_value dmv
+                ON dmv.disturbance_matrix_id = dm.id
+            INNER JOIN pool src
+                ON dmv.source_pool_id = src.id
+            INNER JOIN pool snk
+                ON dmv.sink_pool_id = snk.id",
+        "load_sql": "
+            INSERT INTO disturbance_matrix_value (
+                disturbance_matrix_id,
+                source_pool_id,
+                sink_pool_id,
+                proportion)
+            SELECT
+                dm.id,
+                src.id,
+                snk.id,
+                @Proportion AS proportion
+            FROM disturbance_matrix dm,
+                 pool snk,
+                 pool src
+            WHERE dm.name = @DMName
+                AND src.name = @SourcePoolName
+                AND snk.name = @SinkPoolName
+            GROUP BY
+                dm.id,
+                snk.id,
+                src.id,
+                proportion"
+    }
+}

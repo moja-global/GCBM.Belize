@@ -1,0 +1,12 @@
+﻿{
+    "StaticLoaderMapping": {
+        "name": "Static pool data",
+        "table": "transition_type",
+        "fields": [ "name" ],
+        "data": [
+            [ "absolute" ],
+            [ "relative" ],
+            [ "yield" ]
+        ]
+    }
+}

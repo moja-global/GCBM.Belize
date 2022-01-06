@@ -1,0 +1,13 @@
+﻿{
+    "InternalLoaderMapping": {
+        "name": "DOM pools",
+        "sql": "
+            INSERT INTO dom_pool (pool_id)
+            SELECT id
+            FROM pool
+            WHERE name IN (
+                'AboveGroundVeryFastSoil', 'BelowGroundVeryFastSoil', 'AboveGroundFastSoil',
+                'BelowGroundFastSoil', 'MediumSoil', 'AboveGroundSlowSoil', 'BelowGroundSlowSoil',
+                'SoftwoodStemSnag', 'SoftwoodBranchSnag', 'HardwoodStemSnag', 'HardwoodBranchSnag')"
+    }
+}

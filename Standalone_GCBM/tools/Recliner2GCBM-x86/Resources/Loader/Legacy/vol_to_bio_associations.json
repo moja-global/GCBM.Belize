@@ -1,0 +1,103 @@
+﻿{
+    "SQLLoaderMapping": {
+        "name": "Volume to biomass parameter associations",
+        "fetch_sql": "
+            SELECT
+                TRIM(a.AdminBoundaryName) AS AdminBoundaryName, TRIM(e.EcoBoundaryName) AS EcoBoundaryName, sp.SpeciesTypeName, all_v2b_params.A,
+                all_v2b_params.B, all_v2b_params.a_nonmerch, all_v2b_params.b_nonmerch,
+                all_v2b_params.k_nonmerch, all_v2b_params.cap_nonmerch, all_v2b_params.a_sap,
+                all_v2b_params.b_sap, all_v2b_params.k_sap, all_v2b_params.cap_sap, all_v2b_params.a1,
+                all_v2b_params.a2, all_v2b_params.a3, all_v2b_params.b1, all_v2b_params.b2,
+                all_v2b_params.b3, all_v2b_params.c1, all_v2b_params.c2, all_v2b_params.c3,
+                all_v2b_params.min_volume, all_v2b_params.max_volume, all_v2b_params.low_stemwood_prop,
+                all_v2b_params.high_stemwood_prop, all_v2b_params.low_stembark_prop,
+                all_v2b_params.high_stembark_prop, all_v2b_params.low_branches_prop,
+                all_v2b_params.high_branches_prop, all_v2b_params.low_foliage_prop,
+                all_v2b_params.high_foliage_prop
+            FROM tblSpeciesTypeDefault sp
+            INNER JOIN (
+                tblAdminBoundaryDefault a
+                INNER JOIN (
+                    tblEcoBoundaryDefault e
+                    INNER JOIN (
+                        tblSPUDefault s
+                        INNER JOIN (
+                            (
+                                SELECT
+                                    1 AS origin, v.DefaultSPUID, v.DefaultSpeciesTypeID, v.A, v.B,
+                                    v.a_nonmerch, v.b_nonmerch, v.k_nonmerch, v.cap_nonmerch, v.a_sap,
+                                    v.b_sap, v.k_sap, v.cap_sap, v.a1, v.a2, v.a3, v.b1, v.b2, v.b3,
+                                    v.c1, v.c2, v.c3, v.min_volume, v.max_volume, v.low_stemwood_prop,
+                                    v.high_stemwood_prop, v.low_stembark_prop, v.high_stembark_prop,
+                                    v.low_branches_prop, v.high_branches_prop, v.low_foliage_prop,
+                                    v.high_foliage_prop
+                                FROM tblBioTotalStemwoodSpeciesTypeDefault v
+                                UNION
+                                SELECT
+                                    2 AS origin, v.DefaultSPUID, s.SpeciesTypeID, v.A, v.B, v.a_nonmerch,
+                                    v.b_nonmerch, v.k_nonmerch, v.cap_nonmerch, v.a_sap, v.b_sap, v.k_sap,
+                                    v.cap_sap, v.a1, v.a2, v.a3, v.b1, v.b2, v.b3, v.c1, v.c2, v.c3,
+                                    v.min_volume, v.max_volume, v.low_stemwood_prop, v.high_stemwood_prop,
+                                    v.low_stembark_prop, v.high_stembark_prop, v.low_branches_prop,
+                                    v.high_branches_prop, v.low_foliage_prop, v.high_foliage_prop
+                                FROM tblBioTotalStemwoodGenusDefault v
+                                INNER JOIN tblSpeciesTypeDefault s
+                                    ON v.DefaultGenusID = s.GenusID
+                                UNION
+                                SELECT
+                                    3 AS origin, v.DefaultSPUID, s.SpeciesTypeID, v.A, v.B, v.a_nonmerch,
+                                    v.b_nonmerch, v.k_nonmerch, v.cap_nonmerch, v.a_sap, v.b_sap, v.k_sap,
+                                    v.cap_sap, v.a1, v.a2, v.a3, v.b1, v.b2, v.b3, v.c1, v.c2, v.c3,
+                                    v.min_volume, v.max_volume, v.low_stemwood_prop, v.high_stemwood_prop,
+                                    v.low_stembark_prop, v.high_stembark_prop, v.low_branches_prop,
+                                    v.high_branches_prop, v.low_foliage_prop, v.high_foliage_prop
+                                FROM tblBioTotalStemwoodForestTypeDefault v
+                                INNER JOIN tblSpeciesTypeDefault s
+                                    ON v.DefaultForestTypeID = s.ForestTypeID
+                            ) AS all_v2b_params
+                            INNER JOIN (
+                                SELECT MIN(v2b_options.origin) AS origin, defaultspuid, defaultspeciestypeid
+                                FROM (
+                                    SELECT 1 AS origin, DefaultSPUID, DefaultSpeciesTypeID
+                                    FROM tblBioTotalStemwoodSpeciesTypeDefault
+                                    UNION
+                                    SELECT 2 AS origin, DefaultSPUID, SpeciesTypeID
+                                    FROM tblBioTotalStemwoodGenusDefault v
+                                    INNER JOIN tblSpeciesTypeDefault s
+                                        ON v.DefaultGenusID = s.GenusID
+                                UNION
+                                    SELECT 3 AS origin, DefaultSPUID, SpeciesTypeID
+                                    FROM tblBioTotalStemwoodForestTypeDefault v
+                                    INNER JOIN tblSpeciesTypeDefault s
+                                        ON v.DefaultForestTypeID = s.ForestTypeID
+                                ) AS v2b_options
+                                GROUP BY defaultspuid, defaultspeciestypeid
+                            ) AS best_v2b_params
+                                ON all_v2b_params.origin = best_v2b_params.origin
+                                AND all_v2b_params.defaultspuid = best_v2b_params.defaultspuid
+                                AND all_v2b_params.defaultspeciestypeid = best_v2b_params.defaultspeciestypeid
+                        ) ON s.SPUID = all_v2b_params.DefaultSPUID
+                    ) ON e.EcoBoundaryID = s.EcoBoundaryID
+                ) ON a.AdminBoundaryID = s.AdminBoundaryID
+            ) ON sp.SpeciesTypeID = all_v2b_params.DefaultSpeciesTypeID",
+        "load_sql": "
+            INSERT INTO vol_to_bio_factor_association (spatial_unit_id, species_id, vol_to_bio_factor_id, root_parameter_id)
+            SELECT spu.id, s.id, v.id, 1
+            FROM species s, vol_to_bio_factor v, spatial_unit spu
+            INNER JOIN admin_boundary a
+                ON spu.admin_boundary_id = a.id
+            INNER JOIN eco_boundary e
+                ON spu.eco_boundary_id = e.id
+            WHERE s.name = @SpeciesTypeName
+                AND a.name = @AdminBoundaryName AND e.name = @EcoBoundaryName AND v.a = @A AND v.b = @B
+                AND v.a_nonmerch = @a_nonmerch AND v.b_nonmerch = @b_nonmerch AND v.k_nonmerch = @k_nonmerch
+                AND v.cap_nonmerch = @cap_nonmerch AND v.a_sap = @a_sap AND v.b_sap = @b_sap AND v.k_sap = @k_sap
+                AND v.cap_sap = @cap_sap AND v.a1 = @a1 AND v.a2 = @a2 AND v.a3 = @a3 AND v.b1 = @b1 AND v.b2 = @b2
+                AND v.b3 = @b3 AND v.c1 = @c1 AND v.c2 = @c2 AND v.c3 = @c3 AND v.min_volume = @min_volume
+                AND v.max_volume = @max_volume AND v.low_stemwood_prop = @low_stemwood_prop
+                AND v.high_stemwood_prop = @high_stemwood_prop AND v.low_stembark_prop = @low_stembark_prop
+                AND v.high_stembark_prop = @high_stembark_prop AND v.low_branches_prop = @low_branches_prop
+                AND v.high_branches_prop = @high_branches_prop AND v.low_foliage_prop = @low_foliage_prop
+                AND v.high_foliage_prop = @high_foliage_prop"
+    }
+}

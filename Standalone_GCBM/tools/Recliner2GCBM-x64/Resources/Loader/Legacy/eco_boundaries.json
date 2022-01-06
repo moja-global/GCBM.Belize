@@ -1,0 +1,17 @@
+﻿{
+    "SQLLoaderMapping": {
+        "name": "Eco boundaries",
+        "fetch_sql": "
+            SELECT TRIM(e.EcoBoundaryName) AS EcoBoundaryName
+            FROM tblEcoBoundaryDefault e",
+        "load_sql": "
+            INSERT INTO eco_boundary (
+                eco_region_id,
+                name)
+            SELECT
+                er.id,
+                @EcoBoundaryName AS name
+            FROM eco_region er
+            WHERE er.name = @EcoBoundaryName"
+    }
+}

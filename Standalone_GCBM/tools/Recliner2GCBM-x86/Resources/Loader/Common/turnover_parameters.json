@@ -1,0 +1,38 @@
+﻿{
+    "SQLLoaderMapping": {
+        "name": "Turnover parameters",
+        "fetch_sql": "
+            SELECT DISTINCT
+                hw_foliage AS foliage,
+                stem_turnover AS stem,
+                hw_branch AS branch,
+                stem_snag,
+                branch_snag,
+                coarse_root,
+                fine_root,
+                branch_snag_split,
+                coarse_ag_split,
+                fine_ag_split
+            FROM turnover_parameter
+            UNION
+            SELECT DISTINCT
+                sw_foliage AS foliage,
+                stem_turnover AS stem,
+                sw_branch AS branch,
+                stem_snag,
+                branch_snag,
+                coarse_root,
+                fine_root,
+                branch_snag_split,
+                coarse_ag_split,
+                fine_ag_split
+            FROM turnover_parameter",
+        "load_sql": "
+            INSERT INTO turnover_parameter (
+                foliage, stem, branch, stem_snag, branch_snag, coarse_root, fine_root,
+                branch_snag_split, coarse_ag_split, fine_ag_split)
+            VALUES (
+                @foliage, @stem, @branch, @stem_snag, @branch_snag, @coarse_root, @fine_root,
+                @branch_snag_split, @coarse_ag_split, @fine_ag_split)"
+    }
+}

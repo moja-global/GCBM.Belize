@@ -1,0 +1,10 @@
+﻿{
+    "StaticLoaderMapping": {
+        "name": "Root parameters",
+        "table": "root_parameter",
+        "fields": [ "hw_a", "sw_a", "hw_b", "frp_a", "frp_b", "frp_c" ],
+        "data": [
+            [ 1.576, 0.222, 0.615, 0.072, 0.354, -0.060211946105009633911368015414258 ]
+        ]
+    }
+}

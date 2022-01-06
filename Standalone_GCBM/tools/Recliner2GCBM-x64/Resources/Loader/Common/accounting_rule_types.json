@@ -1,0 +1,14 @@
+﻿{
+    "StaticLoaderMapping": {
+        "name": "Accounting rule types",
+        "table": "accounting_rule_type",
+        "fields": [ "name", "spinup" ],
+        "data": [
+            [ "years_since_last_pass_disturbance", true  ],
+            [ "years_since_disturbance",           false ],
+            [ "ag_biomass",                        false ],
+            [ "total_biomass",                     false ],
+            [ "total_eco",                         false ]
+        ]
+    }
+}

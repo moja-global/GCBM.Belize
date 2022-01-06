@@ -1,0 +1,24 @@
+﻿{
+    "SQLLoaderMapping": {
+        "name": "Spinup parameters",
+        "fetch_sql": "
+            SELECT
+                historic_mean_temperature AS MeanAnnualTemp,
+                return_interval AS ReturnInterval
+            FROM spinup_parameter",
+        "load_sql": "
+            INSERT INTO spinup_parameter (
+                historic_disturbance_type_id,
+                return_interval,
+                max_rotations,
+                mean_annual_temperature)
+            SELECT
+                dt.id,
+                @ReturnInterval AS return_interval,
+                30 AS max_rotations,
+                @MeanAnnualTemp AS mean_annual_temperature
+            FROM disturbance_type dt
+            WHERE dt.name = 'Wild Fire'
+                OR dt.name = 'Wildfire'"
+    }
+}

@@ -1,0 +1,6 @@
+01/06 17:25:14 Processing layers...
+01/06 17:25:15 Processing layer: Disturbanc
+01/06 17:25:15 Processing layer: Climate
+01/06 17:25:15 Processing layer: initial_age
+01/06 17:25:15 Processing layer: mean_annual_temperature
+01/06 17:25:15 Processing layer: ForestType

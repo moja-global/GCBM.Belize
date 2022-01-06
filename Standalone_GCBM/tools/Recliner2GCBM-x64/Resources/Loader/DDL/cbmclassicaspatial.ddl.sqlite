@@ -1,0 +1,377 @@
+CREATE TABLE classifier_value (
+  id             INTEGER NOT NULL, 
+  classifier_id integer(10) NOT NULL, 
+  value         varchar(255) NOT NULL, 
+  description   varchar(255) NOT NULL, 
+  PRIMARY KEY (id), 
+  CONSTRAINT u_cv_classifier_id_value 
+    UNIQUE (classifier_id, value), 
+  FOREIGN KEY(classifier_id) REFERENCES classifier(id));
+CREATE TABLE classifier (
+  id    INTEGER NOT NULL, 
+  name clob NOT NULL, 
+  PRIMARY KEY (id));
+CREATE TABLE spatial_unit (
+  id                      INTEGER NOT NULL, 
+  admin_boundary_id      integer(10) NOT NULL, 
+  eco_boundary_id        integer(10) NOT NULL, 
+  root_parameter_id      integer(10) NOT NULL, 
+  climate_time_series_id integer(10) NOT NULL, 
+  PRIMARY KEY (id), 
+  FOREIGN KEY(admin_boundary_id) REFERENCES admin_boundary(id), 
+  FOREIGN KEY(eco_boundary_id) REFERENCES eco_boundary(id), 
+  FOREIGN KEY(root_parameter_id) REFERENCES root_parameter(id), 
+  FOREIGN KEY(climate_time_series_id) REFERENCES climate_time_series(id));
+CREATE TABLE admin_boundary (
+  id                  INTEGER NOT NULL, 
+  name               varchar(255) NOT NULL, 
+  admin_region_id    integer(10) NOT NULL, 
+  stump_parameter_id integer(10) NOT NULL, 
+  PRIMARY KEY (id), 
+  FOREIGN KEY(admin_region_id) REFERENCES admin_region(id), 
+  FOREIGN KEY(stump_parameter_id) REFERENCES stump_parameter(id));
+CREATE TABLE eco_boundary (
+  id                     INTEGER NOT NULL, 
+  name                  varchar(255) NOT NULL, 
+  eco_region_id         integer(10) NOT NULL, 
+  turnover_parameter_id integer(10) NOT NULL, 
+  PRIMARY KEY (id), 
+  FOREIGN KEY(eco_region_id) REFERENCES eco_region(id), 
+  FOREIGN KEY(turnover_parameter_id) REFERENCES turnover_parameter(id));
+CREATE TABLE disturbance_matrix (
+  id    INTEGER NOT NULL, 
+  name clob NOT NULL UNIQUE, 
+  PRIMARY KEY (id));
+CREATE TABLE disturbance_matrix_value (
+  disturbance_matrix_id integer(10) NOT NULL, 
+  source_pool_id        integer(10) NOT NULL, 
+  sink_pool_id          integer(10) NOT NULL, 
+  proportion            double(10) NOT NULL, 
+  PRIMARY KEY (disturbance_matrix_id, 
+  source_pool_id, 
+  sink_pool_id), 
+  FOREIGN KEY(disturbance_matrix_id) REFERENCES disturbance_matrix(id), 
+  FOREIGN KEY(source_pool_id) REFERENCES pool(id), 
+  FOREIGN KEY(sink_pool_id) REFERENCES pool(id));
+CREATE TABLE pool (
+  id    INTEGER NOT NULL, 
+  name clob NOT NULL UNIQUE, 
+  PRIMARY KEY (id));
+CREATE TABLE decay_parameter (
+  dom_pool_id        integer(10) NOT NULL, 
+  base_decay_rate    double(10) NOT NULL, 
+  reference_temp     double(10) NOT NULL, 
+  q10                double(10) NOT NULL, 
+  prop_to_atmosphere double(10) NOT NULL, 
+  max_rate           double(10) NOT NULL, 
+  PRIMARY KEY (dom_pool_id), 
+  FOREIGN KEY(dom_pool_id) REFERENCES dom_pool(id));
+CREATE TABLE spinup_parameter (
+  id                            INTEGER NOT NULL, 
+  historic_disturbance_type_id integer(10) NOT NULL, 
+  last_disturbance_type_id     integer(10) NOT NULL, 
+  growth_curve_id              integer(10) NOT NULL, 
+  return_interval              integer(10) NOT NULL, 
+  max_rotations                integer(10) NOT NULL, 
+  mean_annual_temperature      double(10) NOT NULL, 
+  delay                        integer(10) NOT NULL, 
+  PRIMARY KEY (id), 
+  FOREIGN KEY(historic_disturbance_type_id) REFERENCES disturbance_type(id), 
+  FOREIGN KEY(last_disturbance_type_id) REFERENCES disturbance_type(id), 
+  FOREIGN KEY(growth_curve_id) REFERENCES growth_curve(id));
+CREATE TABLE dom_pool (
+  id       INTEGER NOT NULL, 
+  pool_id integer(10) NOT NULL UNIQUE, 
+  PRIMARY KEY (id), 
+  FOREIGN KEY(pool_id) REFERENCES pool(id));
+CREATE TABLE transition (
+  id                  INTEGER NOT NULL, 
+  age                integer(10) NOT NULL, 
+  transition_type_id integer(10) NOT NULL, 
+  PRIMARY KEY (id), 
+  FOREIGN KEY(transition_type_id) REFERENCES transition_type(id));
+CREATE TABLE transition_classifier_value (
+  transition_id       integer(10) NOT NULL, 
+  classifier_value_id integer(10) NOT NULL, 
+  PRIMARY KEY (transition_id, 
+  classifier_value_id), 
+  FOREIGN KEY(transition_id) REFERENCES transition(id), 
+  FOREIGN KEY(classifier_value_id) REFERENCES classifier_value(id));
+CREATE TABLE land_class (
+  id                  INTEGER NOT NULL, 
+  code               clob NOT NULL UNIQUE, 
+  description        clob NOT NULL, 
+  is_forest          integer NOT NULL, 
+  years_to_permanent integer(10) NOT NULL, 
+  PRIMARY KEY (id));
+CREATE TABLE admin_region (
+  id    INTEGER NOT NULL, 
+  name varchar(255) NOT NULL, 
+  PRIMARY KEY (id));
+CREATE TABLE eco_region (
+  id    INTEGER NOT NULL, 
+  name varchar(255) NOT NULL, 
+  PRIMARY KEY (id));
+CREATE TABLE disturbance_type (
+  id                        INTEGER NOT NULL, 
+  name                     varchar(255) NOT NULL, 
+  code                     integer(10), 
+  transition_land_class_id integer(10), 
+  PRIMARY KEY (id), 
+  FOREIGN KEY(transition_land_class_id) REFERENCES land_class(id));
+CREATE TABLE disturbance_matrix_association (
+  spatial_unit_id       integer(10) NOT NULL, 
+  disturbance_type_id   integer(10) NOT NULL, 
+  disturbance_matrix_id integer(10) NOT NULL, 
+  PRIMARY KEY (spatial_unit_id, 
+  disturbance_type_id), 
+  FOREIGN KEY(disturbance_matrix_id) REFERENCES disturbance_matrix(id), 
+  FOREIGN KEY(disturbance_type_id) REFERENCES disturbance_type(id), 
+  FOREIGN KEY(spatial_unit_id) REFERENCES spatial_unit(id));
+CREATE TABLE forest_type (
+  id    INTEGER NOT NULL, 
+  name varchar(255) NOT NULL, 
+  PRIMARY KEY (id));
+CREATE TABLE genus (
+  id    INTEGER NOT NULL, 
+  name varchar(255) NOT NULL, 
+  PRIMARY KEY (id));
+CREATE TABLE species (
+  id              INTEGER NOT NULL, 
+  name           varchar(255) NOT NULL, 
+  forest_type_id integer(10) NOT NULL, 
+  genus_id       integer(10) NOT NULL, 
+  PRIMARY KEY (id), 
+  FOREIGN KEY(forest_type_id) REFERENCES forest_type(id), 
+  FOREIGN KEY(genus_id) REFERENCES genus(id));
+CREATE TABLE vol_to_bio_factor (
+  id                  INTEGER NOT NULL, 
+  a                  double(10) NOT NULL, 
+  b                  double(10) NOT NULL, 
+  a_nonmerch         double(10) NOT NULL, 
+  b_nonmerch         double(10) NOT NULL, 
+  k_nonmerch         double(10) NOT NULL, 
+  cap_nonmerch       double(10) NOT NULL, 
+  a_sap              double(10) NOT NULL, 
+  b_sap              double(10) NOT NULL, 
+  k_sap              double(10) NOT NULL, 
+  cap_sap            double(10) NOT NULL, 
+  a1                 double(10) NOT NULL, 
+  a2                 double(10) NOT NULL, 
+  a3                 double(10) NOT NULL, 
+  b1                 double(10) NOT NULL, 
+  b2                 double(10) NOT NULL, 
+  b3                 double(10) NOT NULL, 
+  c1                 double(10) NOT NULL, 
+  c2                 double(10) NOT NULL, 
+  c3                 double(10) NOT NULL, 
+  min_volume         double(10) NOT NULL, 
+  max_volume         double(10) NOT NULL, 
+  low_stemwood_prop  double(10) NOT NULL, 
+  high_stemwood_prop double(10) NOT NULL, 
+  low_stembark_prop  double(10) NOT NULL, 
+  high_stembark_prop double(10) NOT NULL, 
+  low_branches_prop  double(10) NOT NULL, 
+  high_branches_prop double(10) NOT NULL, 
+  low_foliage_prop   double(10) NOT NULL, 
+  high_foliage_prop  double(10) NOT NULL, 
+  PRIMARY KEY (id), 
+  CONSTRAINT u_vol_to_bio_factors 
+    UNIQUE (a, b, a_nonmerch, b_nonmerch, k_nonmerch, cap_nonmerch, a_sap, b_sap, k_sap, cap_sap, a1, a2, a3, b1, b2, b3, c1, c2, c3, min_volume, max_volume, low_stemwood_prop, high_stemwood_prop, low_stembark_prop, high_stembark_prop, low_branches_prop, high_branches_prop, low_foliage_prop, high_foliage_prop));
+CREATE TABLE vol_to_bio_factor_association (
+  spatial_unit_id      integer(10) NOT NULL, 
+  species_id           integer(10) NOT NULL, 
+  vol_to_bio_factor_id integer(10) NOT NULL, 
+  PRIMARY KEY (spatial_unit_id, 
+  species_id), 
+  FOREIGN KEY(spatial_unit_id) REFERENCES spatial_unit(id), 
+  FOREIGN KEY(species_id) REFERENCES species(id), 
+  FOREIGN KEY(vol_to_bio_factor_id) REFERENCES vol_to_bio_factor(id));
+CREATE TABLE growth_curve (
+  id           INTEGER NOT NULL, 
+  description varchar(255) NOT NULL, 
+  PRIMARY KEY (id));
+CREATE TABLE growth_curve_component (
+  id               INTEGER NOT NULL, 
+  growth_curve_id integer(10) NOT NULL, 
+  species_id      integer(10) NOT NULL, 
+  PRIMARY KEY (id), 
+  CONSTRAINT u_gcc_growth_curve_id_species_id 
+    UNIQUE (growth_curve_id, species_id), 
+  FOREIGN KEY(growth_curve_id) REFERENCES growth_curve(id), 
+  FOREIGN KEY(species_id) REFERENCES species(id));
+CREATE TABLE growth_curve_component_value (
+  growth_curve_component_id integer(10) NOT NULL, 
+  age                       integer(10) NOT NULL, 
+  merchantable_volume       double(10) NOT NULL, 
+  PRIMARY KEY (growth_curve_component_id, 
+  age), 
+  FOREIGN KEY(growth_curve_component_id) REFERENCES growth_curve_component(id));
+CREATE TABLE growth_curve_classifier_value (
+  growth_curve_id     integer(10) NOT NULL, 
+  classifier_value_id integer(10) NOT NULL, 
+  PRIMARY KEY (growth_curve_id, 
+  classifier_value_id), 
+  FOREIGN KEY(classifier_value_id) REFERENCES classifier_value(id), 
+  FOREIGN KEY(growth_curve_id) REFERENCES growth_curve(id));
+CREATE TABLE root_parameter (
+  id     INTEGER NOT NULL, 
+  hw_a  double(10) NOT NULL, 
+  sw_a  double(10) NOT NULL, 
+  hw_b  double(10) NOT NULL, 
+  frp_a double(10) NOT NULL, 
+  frp_b double(10) NOT NULL, 
+  frp_c double(10) NOT NULL, 
+  PRIMARY KEY (id), 
+  CONSTRAINT u_root_parameters 
+    UNIQUE (hw_a, sw_a, hw_b, frp_a, frp_b, frp_c));
+CREATE TABLE growth_multiplier_series (
+  id           INTEGER NOT NULL, 
+  description varchar(255) NOT NULL UNIQUE, 
+  PRIMARY KEY (id));
+CREATE TABLE growth_multiplier_value (
+  growth_multiplier_series_id integer(10) NOT NULL, 
+  forest_type_id              integer(10) NOT NULL, 
+  time_step                   integer(10) NOT NULL, 
+  value                       double(10) NOT NULL, 
+  PRIMARY KEY (growth_multiplier_series_id, 
+  forest_type_id, 
+  time_step), 
+  FOREIGN KEY(growth_multiplier_series_id) REFERENCES growth_multiplier_series(id), 
+  FOREIGN KEY(forest_type_id) REFERENCES forest_type(id));
+CREATE TABLE stump_parameter (
+  id                   INTEGER NOT NULL, 
+  sw_top_proportion   double(10) NOT NULL, 
+  sw_stump_proportion double(10) NOT NULL, 
+  hw_top_proportion   double(10) NOT NULL, 
+  hw_stump_proportion double(10) NOT NULL, 
+  PRIMARY KEY (id), 
+  CONSTRAINT u_stump_parameters 
+    UNIQUE (sw_top_proportion, sw_stump_proportion, hw_top_proportion, hw_stump_proportion));
+CREATE TABLE turnover_parameter (
+  id                 INTEGER NOT NULL, 
+  sw_foliage        double(10) NOT NULL, 
+  hw_foliage        double(10) NOT NULL, 
+  stem_turnover     double(10) NOT NULL, 
+  sw_branch         double(10) NOT NULL, 
+  hw_branch         double(10) NOT NULL, 
+  branch_snag_split double(10) NOT NULL, 
+  stem_snag         double(10) NOT NULL, 
+  branch_snag       double(10) NOT NULL, 
+  coarse_root       double(10) NOT NULL, 
+  fine_root         double(10) NOT NULL, 
+  coarse_ag_split   double(10) NOT NULL, 
+  fine_ag_split     double(10) NOT NULL, 
+  PRIMARY KEY (id));
+CREATE TABLE inventory (
+  id               INTEGER NOT NULL, 
+  spatial_unit_id integer(10) NOT NULL, 
+  land_class_id   integer(10) NOT NULL, 
+  age             integer(10) NOT NULL, 
+  area            double(10) NOT NULL, 
+  PRIMARY KEY (id), 
+  FOREIGN KEY(spatial_unit_id) REFERENCES spatial_unit(id), 
+  FOREIGN KEY(land_class_id) REFERENCES land_class(id));
+CREATE TABLE disturbance_event (
+  id                   INTEGER NOT NULL, 
+  disturbance_type_id integer(10) NOT NULL, 
+  spatial_unit_id     integer(10) NOT NULL, 
+  t_year              integer(10) NOT NULL, 
+  PRIMARY KEY (id), 
+  FOREIGN KEY(disturbance_type_id) REFERENCES disturbance_type(id), 
+  FOREIGN KEY(spatial_unit_id) REFERENCES spatial_unit(id));
+CREATE TABLE inventory_spinup (
+  inventory_id        integer(10) NOT NULL, 
+  spinup_parameter_id integer(10) NOT NULL, 
+  PRIMARY KEY (inventory_id), 
+  FOREIGN KEY(inventory_id) REFERENCES inventory(id), 
+  FOREIGN KEY(spinup_parameter_id) REFERENCES spinup_parameter(id));
+CREATE TABLE disturbance_event_growth_multiplier_series (
+  disturbance_event_id        integer(10) NOT NULL, 
+  growth_multiplier_series_id integer(10) NOT NULL, 
+  PRIMARY KEY (disturbance_event_id), 
+  FOREIGN KEY(growth_multiplier_series_id) REFERENCES growth_multiplier_series(id), 
+  FOREIGN KEY(disturbance_event_id) REFERENCES disturbance_event(id));
+CREATE TABLE disturbance_event_classifier_value (
+  disturbance_event_id integer(10) NOT NULL, 
+  classifier_value_id  integer(10) NOT NULL, 
+  PRIMARY KEY (disturbance_event_id, 
+  classifier_value_id), 
+  FOREIGN KEY(disturbance_event_id) REFERENCES disturbance_event(id), 
+  FOREIGN KEY(classifier_value_id) REFERENCES classifier_value(id));
+CREATE TABLE disturbance_event_transition (
+  disturbance_event_id integer(10) NOT NULL, 
+  transition_id        integer(10) NOT NULL, 
+  PRIMARY KEY (disturbance_event_id, 
+  transition_id), 
+  FOREIGN KEY(transition_id) REFERENCES transition(id), 
+  FOREIGN KEY(disturbance_event_id) REFERENCES disturbance_event(id));
+CREATE TABLE climate_time_series (
+  id  INTEGER NOT NULL, 
+  PRIMARY KEY (id));
+CREATE TABLE climate (
+  id                       INTEGER NOT NULL, 
+  climate_time_series_id  integer(10) NOT NULL, 
+  t_year                  integer(10) NOT NULL, 
+  mean_annual_temperature double(10) NOT NULL, 
+  PRIMARY KEY (id), 
+  CONSTRAINT u_c_climate_time_series_id_t_year 
+    UNIQUE (climate_time_series_id, t_year), 
+  FOREIGN KEY(climate_time_series_id) REFERENCES climate_time_series(id));
+CREATE TABLE inventory_classifier_value (
+  inventory_id        integer(10) NOT NULL, 
+  classifier_value_id integer(10) NOT NULL, 
+  PRIMARY KEY (inventory_id, 
+  classifier_value_id), 
+  FOREIGN KEY(inventory_id) REFERENCES inventory(id), 
+  FOREIGN KEY(classifier_value_id) REFERENCES classifier_value(id));
+CREATE TABLE transition_type (
+  id    INTEGER NOT NULL, 
+  name varchar(255) NOT NULL, 
+  PRIMARY KEY (id));
+CREATE TABLE transition_rule (
+  id                   INTEGER NOT NULL, 
+  transition_id       integer(10) NOT NULL, 
+  disturbance_type_id integer(10) NOT NULL, 
+  PRIMARY KEY (id), 
+  CONSTRAINT transition_rule_unique_transition_id_disturbance_type_id 
+    UNIQUE (transition_id, disturbance_type_id), 
+  FOREIGN KEY(transition_id) REFERENCES transition(id), 
+  FOREIGN KEY(disturbance_type_id) REFERENCES disturbance_type(id));
+CREATE TABLE transition_rule_classifier_value (
+  transition_rule_id  integer NOT NULL, 
+  classifier_value_id integer(10) NOT NULL, 
+  PRIMARY KEY (transition_rule_id, 
+  classifier_value_id), 
+  FOREIGN KEY(transition_rule_id) REFERENCES transition_rule(id), 
+  FOREIGN KEY(classifier_value_id) REFERENCES classifier_value(id));
+CREATE INDEX classifier_value_classifier_id 
+  ON classifier_value (classifier_id);
+CREATE INDEX classifier_value_value 
+  ON classifier_value (value);
+CREATE INDEX classifier_id 
+  ON classifier (id);
+CREATE UNIQUE INDEX classifier_name 
+  ON classifier (name);
+CREATE UNIQUE INDEX admin_boundary_name 
+  ON admin_boundary (name);
+CREATE UNIQUE INDEX eco_boundary_name 
+  ON eco_boundary (name);
+CREATE UNIQUE INDEX admin_region_name 
+  ON admin_region (name);
+CREATE UNIQUE INDEX eco_region_name 
+  ON eco_region (name);
+CREATE UNIQUE INDEX disturbance_type_name 
+  ON disturbance_type (name);
+CREATE INDEX disturbance_type_code 
+  ON disturbance_type (code);
+CREATE UNIQUE INDEX forest_type_name 
+  ON forest_type (name);
+CREATE UNIQUE INDEX genus_name 
+  ON genus (name);
+CREATE UNIQUE INDEX species_name 
+  ON species (name);
+CREATE UNIQUE INDEX transition_type_name 
+  ON transition_type (name);
+CREATE INDEX transition_rule_id 
+  ON transition_rule (id);

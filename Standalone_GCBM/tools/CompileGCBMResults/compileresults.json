@@ -1,0 +1,482 @@
+{
+    "pool_collections": {
+        "All biomass": [
+            "SoftwoodMerch", "SoftwoodFoliage", "SoftwoodOther", "SoftwoodCoarseRoots",
+            "SoftwoodFineRoots", "HardwoodMerch", "HardwoodFoliage", "HardwoodOther",
+            "HardwoodCoarseRoots", "HardwoodFineRoots", "AboveGroundVeryFastSoil",
+            "BelowGroundVeryFastSoil", "AboveGroundFastSoil", "BelowGroundFastSoil",
+            "MediumSoil", "AboveGroundSlowSoil", "BelowGroundSlowSoil", "SoftwoodStemSnag",
+            "SoftwoodBranchSnag", "HardwoodStemSnag", "HardwoodBranchSnag"],
+        "CO2": ["CO2"],
+        "CH4": ["CH4"],
+        "CO": ["CO"],
+        "Gases": ["CO2", "CH4", "CO"],
+        "Live biomass": [
+            "SoftwoodMerch", "SoftwoodFoliage", "SoftwoodOther", "SoftwoodCoarseRoots",
+            "SoftwoodFineRoots", "HardwoodMerch", "HardwoodFoliage", "HardwoodOther",
+            "HardwoodCoarseRoots", "HardwoodFineRoots"],
+        "DOM": [
+            "AboveGroundVeryFastSoil", "BelowGroundVeryFastSoil", "AboveGroundFastSoil",
+            "BelowGroundFastSoil", "MediumSoil", "AboveGroundSlowSoil", "BelowGroundSlowSoil",
+            "SoftwoodStemSnag", "SoftwoodBranchSnag", "HardwoodStemSnag", "HardwoodBranchSnag"],
+        "Litterfall inputs": [
+            "SoftwoodFoliage", "SoftwoodFineRoots", "SoftwoodCoarseRoots", "HardwoodFoliage",
+            "HardwoodFineRoots", "HardwoodCoarseRoots"],
+        "Litterfall pools": [
+            "AboveGroundVeryFastSoil", "BelowGroundVeryFastSoil","AboveGroundFastSoil",
+            "BelowGroundFastSoil"],
+        "Mortality inputs": ["SoftwoodMerch", "SoftwoodOther", "HardwoodMerch", "HardwoodOther"],
+        "Mortality pools": [
+            "AboveGroundFastSoil", "BelowGroundFastSoil", "MediumSoil", "AboveGroundSlowSoil",
+            "BelowGroundSlowSoil", "SoftwoodStemSnag", "SoftwoodBranchSnag", "HardwoodStemSnag",
+            "HardwoodBranchSnag"],
+        "Soil": ["BelowGroundVeryFastSoil", "BelowGroundSlowSoil"],
+        "Litter": ["AboveGroundVeryFastSoil", "AboveGroundFastSoil", "AboveGroundSlowSoil"],
+        "Deadwood": [
+            "BelowGroundFastSoil", "MediumSoil", "SoftwoodStemSnag", "SoftwoodBranchSnag",
+            "HardwoodStemSnag", "HardwoodBranchSnag"],
+        "DissolvedOrganicCarbon": ["DissolvedOrganicCarbon"],
+        "Softwood biomass": [
+            "SoftwoodMerch", "SoftwoodFoliage", "SoftwoodOther", "SoftwoodCoarseRoots",
+            "SoftwoodFineRoots"],
+        "Hardwood biomass": [
+            "HardwoodMerch", "HardwoodFoliage", "HardwoodOther", "HardwoodCoarseRoots",
+            "HardwoodFineRoots"],
+        "Snags": ["SoftwoodStemSnag", "SoftwoodBranchSnag", "HardwoodStemSnag", "HardwoodBranchSnag"],
+        "Merch": ["SoftwoodMerch", "HardwoodMerch"],
+        "SWMerch": ["SoftwoodMerch"],
+        "HWMerch": ["HardwoodMerch"],
+        "Stem snag": ["SoftwoodStemSnag", "HardwoodStemSnag"],
+        "Foliage": ["SoftwoodFoliage", "HardwoodFoliage"],
+        "VFastAG": ["AboveGroundVeryFastSoil"],
+        "Other": ["SoftwoodOther", "HardwoodOther"],
+        "Other litter": ["AboveGroundFastSoil", "BelowGroundFastSoil", "SoftwoodBranchSnag", "HardwoodBranchSnag"],
+        "Coarse roots": ["SoftwoodCoarseRoots", "HardwoodCoarseRoots"],
+        "Fast soil": ["AboveGroundFastSoil", "BelowGroundFastSoil"],
+        "Fine roots": ["SoftwoodFineRoots", "HardwoodFineRoots"],
+        "Very fast soil": ["AboveGroundVeryFastSoil", "BelowGroundVeryFastSoil"],
+        "VFastBG": ["BelowGroundVeryFastSoil"],
+        "FastAG": ["AboveGroundFastSoil"],
+        "FastBG": ["BelowGroundFastSoil"],
+        "Medium": ["MediumSoil"],
+        "SlowAG": ["AboveGroundSlowSoil"],
+        "SlowBG": ["BelowGroundSlowSoil"],
+        "SWStemSnag": ["SoftwoodStemSnag"],
+        "SWBranchSnag": ["SoftwoodBranchSnag"],
+        "HWStemSnag": ["HardwoodStemSnag"],
+        "HWBranchSnag": ["HardwoodBranchSnag"],
+        "Aboveground live biomass": [
+            "SoftwoodMerch", "SoftwoodFoliage", "SoftwoodOther",
+            "HardwoodMerch", "HardwoodFoliage", "HardwoodOther"],
+        "Merch/Other": ["SoftwoodMerch", "SoftwoodOther", "HardwoodMerch", "HardwoodOther"],
+        "Belowground live biomass": [
+            "SoftwoodCoarseRoots", "SoftwoodFineRoots", "HardwoodCoarseRoots", "HardwoodFineRoots"],
+        "Atmosphere": ["Atmosphere"],
+        "Products": ["Products"],
+        "BlackCarbon": ["BlackCarbon"],
+        "Peat": ["Peat"],
+        "Fine litter": [
+            "AboveGroundFastSoil", "BelowGroundFastSoil",
+            "AboveGroundVeryFastSoil", "BelowGroundVeryFastSoil"],
+        "Merch litter": ["MediumSoil", "AboveGroundSlowSoil", "SoftwoodStemSnag", "HardwoodStemSnag"]
+    },
+    "fluxes": {
+        "CO2Production": {
+            "source": "Disturbance",
+            "from": "All biomass",
+            "to": "CO2"
+        },
+        "CH4Production": {
+            "source": "Disturbance",
+            "from": "All biomass",
+            "to": "CH4"
+        },
+        "COProduction": {
+            "source": "Disturbance",
+            "from": "All biomass",
+            "to": "CO"
+        },
+        "BioCO2Emission": {
+            "source": "Combined",
+            "from": "Live biomass",
+            "to": "CO2"
+        },
+        "BioCH4Emission": {
+            "source": "Combined",
+            "from": "Live biomass",
+            "to": "CH4"
+        },
+        "BioCOEmission": {
+            "source": "Combined",
+            "from": "Live biomass",
+            "to": "CO"
+        },
+        "DOMCO2Emission": {
+            "source": "Combined",
+            "from": "DOM",
+            "to": "CO2"
+        },
+        "DOMCH4Emission": {
+            "source": "Combined",
+            "from": "DOM",
+            "to": "CH4"
+        },
+        "DOMCOEmission": {
+            "source": "Combined",
+            "from": "DOM",
+            "to": "CO"
+        },
+        "DOMCO2Emission - Disturbance": {
+            "source": "Disturbance",
+            "from": "DOM",
+            "to": "CO2"
+        },
+        "DOMCH4Emission - Disturbance": {
+            "source": "Disturbance",
+            "from": "DOM",
+            "to": "CH4"
+        },
+        "DOMCOEmission - Disturbance": {
+            "source": "Disturbance",
+            "from": "DOM",
+            "to": "CO"
+        },
+        "DOMCO2Emission - Annual Process": {
+            "source": "Annual Process",
+            "from": "DOM",
+            "to": "CO2"
+        },
+        "DOMCH4Emission - Annual Process": {
+            "source": "Annual Process",
+            "from": "DOM",
+            "to": "CH4"
+        },
+        "DOMCOEmission - Annual Process": {
+            "source": "Annual Process",
+            "from": "DOM",
+            "to": "CO"
+        },
+        "SoftProduction": {
+            "source": "Disturbance",
+            "from": "Softwood biomass",
+            "to": "Products"
+        },
+        "HardProduction": {
+            "source": "Disturbance",
+            "from": "Hardwood biomass",
+            "to": "Products"
+        },
+        "DOMProduction": {
+            "source": "Disturbance",
+            "from": "DOM",
+            "to": "Products"
+        },
+        "BiomassToDOM": {
+            "source": "Combined",
+            "from": "Live biomass",
+            "to": "DOM"
+        },
+        "Litterfall - Annual Process": {
+            "source": "Annual Process",
+            "from": "Litterfall inputs",
+            "to": "Litterfall pools"
+        },
+        "Mortality - Annual Process": {
+            "source": "Annual Process",
+            "from": "Mortality inputs",
+            "to": "Mortality pools"
+        },
+        "Litterfall - Combined": {
+            "source": "Combined",
+            "from": "Litterfall inputs",
+            "to": "Litterfall pools"
+        },
+        "Mortality - Combined": {
+            "source": "Combined",
+            "from": "Mortality inputs",
+            "to": "Mortality pools"
+        },
+        "MerchLitterInput": {
+            "source": "Combined",
+            "from": "Merch",
+            "to": "Merch litter"
+        },
+        "FolLitterInput": {
+            "source": "Combined",
+            "from": "Foliage",
+            "to": "Very fast soil"
+        },
+        "OthLitterInput": {
+            "source": "Combined",
+            "from": "Other",
+            "to": "Other litter"
+        },
+        "CoarseLitterInput": {
+            "source": "Combined",
+            "from": "Coarse roots",
+            "to": "Fast soil"
+        },
+        "FineLitterInput": {
+            "source": "Combined",
+            "from": "Fine roots",
+            "to": "Fine litter"
+        },
+        "VFastAGToAir": {
+            "source": "Combined",
+            "from": "VFastAG",
+            "to": "Gases"
+        },
+        "VFastBGToAir": {
+            "source": "Combined",
+            "from": "VFastBG",
+            "to": "Gases"
+        },
+        "FastAGToAir": {
+            "source": "Combined",
+            "from": "FastAG",
+            "to": "Gases"
+        },
+        "FastBGToAir": {
+            "source": "Combined",
+            "from": "FastBG",
+            "to": "Gases"
+        },
+        "MediumToAir": {
+            "source": "Combined",
+            "from": "Medium",
+            "to": "Gases"
+        },
+        "SlowAGToAir": {
+            "source": "Combined",
+            "from": "SlowAG",
+            "to": "Gases"
+        },
+        "SlowBGToAir": {
+            "source": "Combined",
+            "from": "SlowBG",
+            "to": "Gases"
+        },
+        "SWStemSnagToAir": {
+            "source": "Combined",
+            "from": "SWStemSnag",
+            "to": "Gases"
+        },
+        "SWBranchSnagToAir": {
+            "source": "Combined",
+            "from": "SWBranchSnag",
+            "to": "Gases"
+        },
+        "HWStemSnagToAir": {
+            "source": "Combined",
+            "from": "HWStemSnag",
+            "to": "Gases"
+        },
+        "HWBranchSnagToAir": {
+            "source": "Combined",
+            "from": "HWBranchSnag",
+            "to": "Gases"
+        },
+        "MerchToAir": {
+            "source": "Disturbance",
+            "from": "Merch",
+            "to": "Gases"
+        },
+        "FolToAir": {
+            "source": "Disturbance",
+            "from": "Foliage",
+            "to": "Gases"
+        },
+        "OthToAir": {
+            "source": "Disturbance",
+            "from": "Other",
+            "to": "Gases"
+        },
+        "CoarseToAir": {
+            "source": "Disturbance",
+            "from": "Coarse roots",
+            "to": "Gases"
+        },
+        "FineToAir": {
+            "source": "Disturbance",
+            "from": "Fine roots",
+            "to": "Gases"
+        },
+        "BlackCarbonToAir": {
+            "source": "Combined",
+            "from": "BlackCarbon",
+            "to": "Gases"
+        },
+        "PeatToAir": {
+            "source": "Combined",
+            "from": "Peat",
+            "to": "Gases"
+        },
+        "GrossGrowth_AG": {
+            "source": "Annual Process",
+            "from": "Atmosphere",
+            "to": "Aboveground live biomass"
+        },
+        "GrossGrowth_BG": {
+            "source": "Annual Process",
+            "from": "Atmosphere",
+            "to": "Belowground live biomass"
+        },
+        "MerchSnagInput": {
+            "source": "Disturbance",
+            "from": "Merch",
+            "to": "Stem snag"
+        },
+        "SnagToProducts": {
+            "source": "Disturbance",
+            "from": "Stem snag",
+            "to": "Products"
+        }
+    },
+    "flux_collections": {
+        "Litterfall - Annual Process": ["Litterfall - Annual Process"],
+        "Mortality - Annual Process": ["Mortality - Annual Process"],
+        "Litterfall - Combined": ["Litterfall - Combined"],
+        "Mortality - Combined": ["Mortality - Combined"],
+        "Gross Growth": ["GrossGrowth_AG", "GrossGrowth_BG"],
+        "Ecosystem Removals": [
+            "BioCO2Emission", "BioCH4Emission", "BioCOEmission", "DOMCO2Emission", "DOMCH4Emission",
+            "DOMCOEmission", "SoftProduction", "HardProduction", "DOMProduction"],
+        "Biomass Removals": [
+            "BioCO2Emission", "BioCH4Emission", "BioCOEmission", "SoftProduction", "HardProduction",
+            "BiomassToDOM"],
+        "DOM Removals": ["DOMCO2Emission", "DOMCH4Emission", "DOMCOEmission", "DOMProduction"],
+        "DOM Emissions": ["DOMCO2Emission", "DOMCH4Emission", "DOMCOEmission"],
+        "DOM Emissions - Annual Process": [
+            "DOMCO2Emission - Annual Process", "DOMCH4Emission - Annual Process",
+            "DOMCOEmission - Annual Process"],
+        "DOM Emissions - Disturbance": [
+            "DOMCO2Emission - Disturbance", "DOMCH4Emission - Disturbance",
+            "DOMCOEmission - Disturbance"],
+        "BiomassToDOM": ["BiomassToDOM"],
+        "Decomposition Releases": [
+            "DOMCO2Emission - Annual Process", "DOMCH4Emission - Annual Process",
+            "DOMCOEmission - Annual Process"],
+        "All Production": ["SoftProduction", "HardProduction", "DOMProduction"],
+        "Live Production": ["SoftProduction", "HardProduction"],
+        "DOMProduction": ["DOMProduction"],
+        "SoftProduction": ["SoftProduction"],
+        "HardProduction": ["HardProduction"],
+        "Disturbance Emissions and DOM Annual Process Emissions": [
+            "SoftProduction", "HardProduction", "DOMProduction", "DOMCO2Emission", "DOMCH4Emission",
+            "DOMCOEmission", "BioCO2Emission", "BioCH4Emission", "BioCOEmission"],
+        "Deadwood to Air": [
+            "FastAGToAir", "FastBGToAir", "MediumToAir", "SWStemSnagToAir", "SWBranchSnagToAir",
+            "HWStemSnagToAir", "HWBranchSnagToAir"],
+        "Litter to Air": ["VFastAGToAir", "SlowAGToAir"],
+        "Soil to Air": ["VFastBGToAir", "SlowBGToAir", "BlackCarbonToAir"],
+        "All Emissions": [
+            "BioCO2Emission", "BioCH4Emission", "BioCOEmission", "DOMCO2Emission",
+            "DOMCH4Emission", "DOMCOEmission"],
+        "Biomass Emissions": ["BioCO2Emission", "BioCH4Emission", "BioCOEmission"],
+        "CO2 Emissions": ["BioCO2Emission", "DOMCO2Emission"],
+        "CO Emissions": ["BioCOEmission", "DOMCOEmission"],
+        "CH4 Emissions": ["BioCH4Emission", "DOMCH4Emission"],
+        "Annual Mortality": ["Mortality - Annual Process"],
+        "Annual Litterfall": ["Litterfall - Annual Process"]
+    },
+    "stock_changes": {
+        "Delta Total Ecosystem": {
+            "+": ["Gross Growth"],
+            "-": ["Ecosystem Removals"]
+        },
+        "Delta Total Biomass": {
+            "+": ["Gross Growth"],
+            "-": ["Biomass Removals"]
+        },
+        "Delta Total DOM": {
+            "+": ["BiomassToDOM"],
+            "-": ["DOM Removals"]
+        },
+        "NPP": {
+            "+": ["Gross Growth"]
+        },
+        "NEP": {
+            "+": ["Gross Growth"],
+            "-": ["DOM Emissions - Annual Process"]
+        },
+        "NBP": {
+            "+": ["Gross Growth"],
+            "-": ["Disturbance Emissions and DOM Annual Process Emissions"]
+        },
+        "Total Detrital Transfers": {
+            "+": ["BiomassToDOM"]
+        },
+        "Annual Litterfall": {
+            "+": ["Litterfall - Annual Process"]
+        },
+        "Annual Mortality": {
+            "+": ["Mortality - Annual Process"]
+        },
+        "Total Litterfall": {
+            "+": ["Litterfall - Combined"]
+        },
+        "Total Mortality": {
+            "+": ["Mortality - Combined"]
+        },
+        "Decomposition Releases": {
+            "+": ["Decomposition Releases"]
+        },
+        "Total Harvest (Biomass + Snags)": {
+            "+": ["All Production"]
+        },
+        "Total Harvest (Biomass)": {
+            "+": ["Live Production"]
+        },
+        "Total Harvest (Snags)": {
+            "+": ["DOMProduction"]
+        },
+        "Softwood Harvest (Biomass)": {
+            "+": ["SoftProduction"]
+        },
+        "Hardwood Harvest (Biomass)": {
+            "+": ["HardProduction"]
+        },
+        "Deadwood to Atmosphere": {
+            "+": ["Deadwood to Air"]
+        },
+        "Soil to Atmosphere": {
+            "+": ["Soil to Air"]
+        },
+        "Total Emissions": {
+            "+": ["All Emissions"]
+        },
+        "Total Biomass Emissions": {
+            "+": ["Biomass Emissions"]
+        },
+        "Total DOM Emissions": {
+            "+": ["DOM Emissions"]
+        },
+        "Total CO2 Emissions": {
+            "+": ["CO2 Emissions"]
+        },
+        "Total CO Emissions": {
+            "+": ["CO Emissions"]
+        },
+        "Total CH4 Emissions": {
+            "+": ["CH4 Emissions"]
+        },
+        "Disturbance Losses": {
+            "+": ["Biomass Emissions", "DOM Emissions - Disturbance", "All Production"]
+        },
+        "Rh": {
+            "+": ["DOM Emissions - Annual Process"]
+        }
+    },
+    "pool_indicators": {
+        "Total Ecosystem": "All biomass",
+        "Total Biomass": "Live biomass",
+        "Merch/Other": "Merch/Other",
+        "Aboveground Biomass": "Aboveground live biomass",
+        "Belowground Biomass": "Belowground live biomass",
+        "Deadwood": "Deadwood",
+        "Litter": "Litter",
+        "Soil Carbon": "Soil",
+        "Dissolved Organic Carbon": "DissolvedOrganicCarbon",
+        "Total Snag Biomass": "Snags"
+    }
+}

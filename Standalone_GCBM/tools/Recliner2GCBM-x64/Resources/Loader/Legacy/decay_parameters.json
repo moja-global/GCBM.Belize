@@ -1,0 +1,46 @@
+﻿{
+    "SQLLoaderMapping": {
+        "name": "Decay (DOM) parameters",
+        "fetch_sql": "
+            SELECT
+                s.SoilPoolName,
+                d.OrganicMatterDecayRate,
+                d.ReferenceTemp,
+                d.Q10,
+                d.PropToAtmosphere,
+                d.MaxDecayRate_soft AS MaxDecayRate
+            FROM tblDOMParametersDefault d
+            INNER JOIN (
+                      SELECT 0 AS SoilPoolID,  'AboveGroundVeryFastSoil' AS SoilPoolName FROM tblSourceName
+                UNION SELECT 1 AS SoilPoolID,  'BelowGroundVeryFastSoil' AS SoilPoolName FROM tblSourceName
+                UNION SELECT 2 AS SoilPoolID,  'AboveGroundFastSoil' AS SoilPoolName FROM tblSourceName
+                UNION SELECT 3 AS SoilPoolID,  'BelowGroundFastSoil' AS SoilPoolName FROM tblSourceName
+                UNION SELECT 4 AS SoilPoolID,  'MediumSoil' AS SoilPoolName FROM tblSourceName
+                UNION SELECT 5 AS SoilPoolID,  'AboveGroundSlowSoil' AS SoilPoolName FROM tblSourceName
+                UNION SELECT 6 AS SoilPoolID,  'BelowGroundSlowSoil' AS SoilPoolName FROM tblSourceName
+                UNION SELECT 7 AS SoilPoolID,  'SoftwoodStemSnag' AS SoilPoolName FROM tblSourceName
+                UNION SELECT 8 AS SoilPoolID,  'SoftwoodBranchSnag' AS SoilPoolName FROM tblSourceName
+                UNION SELECT 9 AS SoilPoolID,  'HardwoodStemSnag' AS SoilPoolName FROM tblSourceName
+                UNION SELECT 10 AS SoilPoolID, 'HardwoodBranchSnag' AS SoilPoolName FROM tblSourceName
+            ) AS s ON d.SoilPoolID = s.SoilPoolID",
+        "load_sql": "
+            INSERT INTO decay_parameter (
+                dom_pool_id,
+                base_decay_rate,
+                reference_temp,
+                q10,
+                prop_to_atmosphere,
+                max_rate)
+            SELECT
+                dp.id,
+                @OrganicMatterDecayRate AS OrganicMatterDecayRate,
+                @ReferenceTemp AS ReferenceTemp,
+                @Q10 AS Q10,
+                @PropToAtmosphere AS PropToAtmosphere,
+                @MaxDecayRate AS MaxDecayRate
+            FROM dom_pool dp
+            INNER JOIN pool p
+                ON dp.pool_id = p.id
+            WHERE p.name = @SoilPoolName"
+    }
+}

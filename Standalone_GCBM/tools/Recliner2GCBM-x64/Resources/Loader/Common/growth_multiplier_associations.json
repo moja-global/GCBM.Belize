@@ -1,0 +1,25 @@
+﻿{
+    "SQLLoaderMapping": {
+        "name": "Growth multiplier associations",
+        "fetch_sql": "
+            SELECT
+                dt.name AS DistTypeName,
+                gm.description AS GrowthMultiplierSeries
+            FROM disturbance_type_growth_multiplier_series dt_gm
+            INNER JOIN disturbance_type dt
+                ON dt_gm.disturbance_type_id = dt.id
+            INNER JOIN growth_multiplier_series gm
+                ON dt_gm.growth_multiplier_series_id = gm.id",
+        "load_sql": "
+            INSERT INTO growth_multiplier_series_association (
+                disturbance_type_id,
+                growth_multiplier_series_id)
+            SELECT
+                dt.id,
+                gm.id
+            FROM disturbance_type dt,
+                 growth_multiplier_series gm
+            WHERE dt.name = @DistTypeName
+                AND gm.description = @GrowthMultiplierSeries"
+    }
+}

@@ -1,0 +1,13 @@
+Reporting tables
+===
+
+v_disturbance_indicators
+--
+This table records actual area and carbon disturbed, in contrast with v_flux_indicators
+where the area column records the total area of the classifier set, of which a disturbance
+usually only affects a subset.
+
+Pixels where a disturbance occurred but there were no associated fluxes do not have their
+area recorded in v_disturbance_indicators, although the model tracks the total disturbed
+area (fluxes or not) in DisturbanceDimension. An example of how this might happen is a
+softwood pixel disturbed by an insect with only hardwood pools in its disturbance matrix.

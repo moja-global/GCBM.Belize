@@ -1,0 +1,11 @@
+﻿{
+    "StaticLoaderMapping": {
+        "name": "Disturbance categories",
+        "table": "disturbance_category",
+        "fields": [ "code", "description" ],
+        "data": [
+            [ "A", "Anthropogenic influence" ],
+            [ "N", "Naturally disturbed"     ],
+        ]
+    }
+}

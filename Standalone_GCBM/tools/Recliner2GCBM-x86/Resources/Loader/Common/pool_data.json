@@ -1,0 +1,38 @@
+﻿{
+    "StaticLoaderMapping": {
+        "name": "Static pool data",
+        "table": "pool",
+        "fields": [ "name" ],
+        "data": [
+            [ "SoftwoodMerch" ],
+            [ "SoftwoodFoliage" ],
+            [ "SoftwoodOther" ],
+            [ "SoftwoodCoarseRoots" ],
+            [ "SoftwoodFineRoots" ],
+            [ "HardwoodMerch" ],
+            [ "HardwoodFoliage" ],
+            [ "HardwoodOther" ],
+            [ "HardwoodCoarseRoots" ],
+            [ "HardwoodFineRoots" ],
+            [ "AboveGroundVeryFastSoil" ],
+            [ "BelowGroundVeryFastSoil" ],
+            [ "AboveGroundFastSoil" ],
+            [ "BelowGroundFastSoil" ],
+            [ "MediumSoil" ],
+            [ "AboveGroundSlowSoil" ],
+            [ "BelowGroundSlowSoil" ],
+            [ "SoftwoodStemSnag" ],
+            [ "SoftwoodBranchSnag" ],
+            [ "HardwoodStemSnag" ],
+            [ "HardwoodBranchSnag" ],
+            [ "CO2" ],
+            [ "CH4" ],
+            [ "CO" ],
+            [ "NO2" ],
+            [ "Products" ],
+            [ "Atmosphere" ],
+            [ "BlackCarbon" ],
+            [ "Peat" ]
+        ]
+    }
+}

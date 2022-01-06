@@ -1,0 +1,7 @@
+﻿{
+    "SQLLoaderMapping": {
+        "name": "Disturbance matrix names",
+        "fetch_sql": "SELECT DMID & '_' & Name AS DMName from tblDM",
+        "load_sql": "INSERT INTO disturbance_matrix (name) VALUES (@DMName)"
+    }
+}

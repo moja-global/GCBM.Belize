@@ -1,0 +1,16 @@
+﻿{
+    "StaticLoaderMapping": {
+        "name": "Static land class data",
+        "table": "land_class",
+        "fields": [ "code", "description", "is_forest", "years_to_permanent" ],
+        "data": [
+            [ "FL",  "Forest land",           1, 20 ],
+            [ "UFL", "Unmanaged forest land", 1, 20 ],
+            [ "CL",  "Cropland",              0, 20 ],
+            [ "GL",  "Grassland",             0, 20 ],
+            [ "WL",  "Wetland",               0, 10 ],
+            [ "SL",  "Settlements",           0, 20 ],
+            [ "OL",  "Other land",            0, 20 ]
+        ]
+    }
+}

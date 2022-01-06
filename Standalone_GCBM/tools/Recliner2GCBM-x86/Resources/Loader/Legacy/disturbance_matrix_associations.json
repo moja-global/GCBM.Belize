@@ -1,0 +1,87 @@
+﻿{
+    "SQLLoaderMapping": {
+        "name": "Disturbance matrix associations",
+        "fetch_sql": "
+            SELECT
+                TRIM(a.adminboundaryname) AS adminboundaryname,
+                TRIM(e.ecoboundaryname) AS ecoboundaryname,
+                dtd.disttypename, 
+                dm.dmid & '_' & dm.name AS dmname
+            FROM tbladminboundarydefault a
+            INNER JOIN (
+                tblecoboundarydefault e
+                INNER JOIN (
+                    tblspudefault spu
+                    INNER JOIN (
+                        tbldisturbancetypedefault dtd
+                        INNER JOIN (
+                            tbldm dm
+                            INNER JOIN tbldmassociationdefault dma
+                                ON dm.dmid = dma.dmid
+                        ) ON dtd.disttypeid = dma.defaultdisturbancetypeid
+                    ) ON spu.ecoboundaryid = dma.defaultecoboundaryid
+                ) ON spu.ecoboundaryid = e.ecoboundaryid
+            ) ON spu.adminboundaryid = a.adminboundaryid
+            WHERE dma.annualorder = 1
+                AND (a.adminboundaryname & e.ecoboundaryname & dtd.disttypename) NOT IN (
+                    SELECT a.adminboundaryname & e.ecoboundaryname & dtd.disttypename
+                    FROM tbladminboundarydefault a
+                    INNER JOIN (
+                        tblecoboundarydefault e
+                        INNER JOIN (
+                            tblspudefault spu
+                            INNER JOIN (
+                                tbldisturbancetypedefault dtd
+                                INNER JOIN (
+                                    tbldm dm
+                                    INNER JOIN tbldmassociationspudefault dma
+                                        ON dm.dmid = dma.dmid
+                                ) ON dtd.disttypeid = dma.defaultdisturbancetypeid
+                            ) ON spu.spuid = dma.spuid
+                        ) ON spu.ecoboundaryid = e.ecoboundaryid
+                    ) ON spu.adminboundaryid = a.adminboundaryid
+                    WHERE dma.annualorder = 1)
+            UNION
+            SELECT
+                TRIM(a.adminboundaryname) AS adminboundaryname,
+                TRIM(e.ecoboundaryname) AS ecoboundaryname,
+                dtd.disttypename,
+                dm.dmid & '_' & dm.name AS dmname
+            FROM tbladminboundarydefault a
+            INNER JOIN (
+                tblecoboundarydefault e
+                INNER JOIN (
+                    tblspudefault spu
+                    INNER JOIN (
+                        tbldisturbancetypedefault dtd
+                        INNER JOIN (
+                            tbldm dm
+                            INNER JOIN tbldmassociationspudefault dma
+                                ON dm.dmid = dma.dmid
+                        ) ON dtd.disttypeid = dma.defaultdisturbancetypeid
+                    ) ON spu.spuid = dma.spuid
+                ) ON spu.ecoboundaryid = e.ecoboundaryid
+            ) ON spu.adminboundaryid = a.adminboundaryid
+            WHERE dma.annualorder = 1",
+        "load_sql": "
+            INSERT INTO disturbance_matrix_association (
+                spatial_unit_id,
+                disturbance_type_id,
+                disturbance_matrix_id)
+            SELECT
+                spu.id,
+                dt.id,
+                dm.id
+            FROM disturbance_type dt,
+                 disturbance_matrix dm,
+                 spatial_unit spu
+            INNER JOIN admin_boundary a
+                ON spu.admin_boundary_id = a.id
+            INNER JOIN eco_boundary e
+                ON spu.eco_boundary_id = e.id
+            WHERE a.name = @adminboundaryname
+                AND e.name = @ecoboundaryname
+                AND dt.name = @disttypename
+                AND dm.name = @dmname"
+    }
+}
