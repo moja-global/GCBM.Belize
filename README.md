@@ -1,8 +1,19 @@
 # Implementation of the GCBM in Belize
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
 
-GCBM implementation in Belize, initially with a focus on DOM modelling
+GCBM implementation in Belize, initially with a focus on DOM modelling.
+
 This project is based on the Standalone Template for the GCBM, downloaded from https://carbon.nfis.org/cbm
+
+**Disclaimer:** The calculations performed in this repository are not official and do not represent the Government of Belize in any way.
+
+## Installation instructions
+
+1. Clone the repository
+
+2. Download the installation tools from "releases" (https://github.com/moja-global/GCBM.Belize/releases/tag/install_tools) and unzip them into Standalone_GCBM/tools folder
+
+The installation instuctions are located in Standalone_GCBM/readme.txt
 
 ## How to Get Involved?  
 
