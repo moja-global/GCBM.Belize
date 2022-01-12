@@ -7,19 +7,9 @@
         "RasterTiled": {
             "layers": [
                 {
-                    "name": "initial_age",
-                    "layer_path": "..\\layers\\tiled\\initial_age_moja.tiff",
-                    "layer_prefix": "initial_age_moja"
-                },
-                {
-                    "name": "Disturbanc",
-                    "layer_path": "..\\layers\\tiled\\Disturbanc_moja.tiff",
-                    "layer_prefix": "Disturbanc_moja"
-                },
-                {
-                    "name": "ForestType",
-                    "layer_path": "..\\layers\\tiled\\ForestType_moja.tiff",
-                    "layer_prefix": "ForestType_moja"
+                    "name": "mean_annual_temperature",
+                    "layer_path": "..\\layers\\tiled\\mean_annual_temperature_moja.tiff",
+                    "layer_prefix": "mean_annual_temperature_moja"
                 },
                 {
                     "name": "Climate",
@@ -27,9 +17,19 @@
                     "layer_prefix": "Climate_moja"
                 },
                 {
-                    "name": "mean_annual_temperature",
-                    "layer_path": "..\\layers\\tiled\\mean_annual_temperature_moja.tiff",
-                    "layer_prefix": "mean_annual_temperature_moja"
+                    "name": "Disturbanc",
+                    "layer_path": "..\\layers\\tiled\\Disturbanc_moja.tiff",
+                    "layer_prefix": "Disturbanc_moja"
+                },
+                {
+                    "name": "initial_age",
+                    "layer_path": "..\\layers\\tiled\\initial_age_moja.tiff",
+                    "layer_prefix": "initial_age_moja"
+                },
+                {
+                    "name": "ForestType",
+                    "layer_path": "..\\layers\\tiled\\ForestType_moja.tiff",
+                    "layer_prefix": "ForestType_moja"
                 }
             ],
             "blockLonSize": 0.1,

@@ -1,0 +1,12 @@
+﻿Parameter_ID,dom_pool_id,base_decay_rate,reference_temp,q10,prop_to_atmosphere,max_rate,Source
+D1,1,0.50125,10,1,0.829999983,1,"Eaton and Lawrence 2006. Tropical dry forest in Yucatan peninsula. A silgle decomposition rate constant is reported for 4 species, that were averaged. prop_to atmosphere from GCBM"
+D2,2,0.015,10,2.650000095,1,1,GCBM
+D3,3,1.119,10,3.06,0.814999998,1,"Salinas, N., et al. ""The sensitivity of tropical leaf litter decomposition to temperature: results from a large‐scale leaf translocation experiment along an elevation gradient in Peruvian forests."" New phytologist 189.4 (2011): 967-977. prop_to atmosphere from GCBM"
+D4,4,0.1435,10,2,0.829999983,1,GCBM
+D5,5,0.0033,10,1,1,1,GCBM
+D6,6,0.27,10,2.013753,0.829999983,1,"Silver, Whendee L., and Ryan K. Miya. ""Global patterns in root decomposition: comparisons of climate and litter quality effects."" Oecologia 129.3 (2001): 407-419. prop_to atmosphere from GCBM"
+D7,7,0.07175,10,2,0.829999983,1,GCBM
+D8,8,0.0187,10,2,0.829999983,1,GCBM
+D9,9,0.059,10,2.59,0.829999983,0.066,"Harmon, Mark E., et al. ""Release of coarse woody detritus-related carbon: a synthesis across forest biomes."" Carbon balance and management 15.1 (2020): 1-21. prop_to atmosphere from GCBM"
+D10,10,0.07175,10,2,0.829999983,1,GCBM
+D11,11,0.013,10,0.509,0.829999983,1,"Harmon, Mark E., et al. ""Release of coarse woody detritus-related carbon: a synthesis across forest biomes."" Carbon balance and management 15.1 (2020): 1-21."

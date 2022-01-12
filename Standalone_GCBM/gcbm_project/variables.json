@@ -123,9 +123,9 @@
                 "type": "CompositeTransform",
                 "library": "internal.flint",
                 "vars": [
+                    "Climate",
                     "Disturbanc",
-                    "ForestType",
-                    "Climate"
+                    "ForestType"
                 ]
             }
         },
@@ -210,6 +210,14 @@
                 "provider": "SQLite"
             }
         },
+        "Climate": {
+            "transform": {
+                "library": "internal.flint",
+                "type": "LocationIdxFromFlintDataTransform",
+                "provider": "RasterTiled",
+                "data_id": "Climate"
+            }
+        },
         "Disturbanc": {
             "transform": {
                 "library": "internal.flint",
@@ -224,14 +232,6 @@
                 "type": "LocationIdxFromFlintDataTransform",
                 "provider": "RasterTiled",
                 "data_id": "ForestType"
-            }
-        },
-        "Climate": {
-            "transform": {
-                "library": "internal.flint",
-                "type": "LocationIdxFromFlintDataTransform",
-                "provider": "RasterTiled",
-                "data_id": "Climate"
             }
         }
     }
