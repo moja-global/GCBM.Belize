@@ -1,8 +1,5 @@
+Found layer: LifeZone_moja.tiff
 Found layer: mean_annual_temperature_moja.tiff
-Found layer: Climate_moja.tiff
-Found layer: Disturbanc_moja.tiff
-Found layer: initial_age_moja.tiff
-Found layer: ForestType_moja.tiff
 Study area configuration updated: C:\GCBM_UNFCCC\Belize\GCBM.Belize\Standalone_GCBM\gcbm_project\localdomain.json
 Disturbance configuration updated: C:\GCBM_UNFCCC\Belize\GCBM.Belize\Standalone_GCBM\gcbm_project\modules_cbm.json
 Variable configuration updated: C:\GCBM_UNFCCC\Belize\GCBM.Belize\Standalone_GCBM\gcbm_project\variables.json

@@ -46,6 +46,13 @@ echo Creating Generic species and adding vol to bio factors
 echo Modify root parameters
 "%GCBM_PYTHON%\python.exe" input_database\modify_root_parameters.py input_database\gcbm_input.db
 
+echo Modify decay parameters
+"%GCBM_PYTHON%\python.exe" input_database\modify_decay_parameters.py input_database\gcbm_input.db
+
+echo Modify spinup parameters
+"%GCBM_PYTHON%\python.exe" input_database\modify_spinup_parameters.py input_database\gcbm_input.db
+
+
 REM Configure GCBM.
 echo Updating GCBM configuration...
 "%GCBM_PYTHON%\python.exe" tools\tiler\update_gcbm_config.py --layer_root layers\tiled --template_path gcbm_project\templates --output_path gcbm_project --input_db_path input_database\gcbm_input.db --start_year %SIMULATION_START_YEAR% --end_year %SIMULATION_END_YEAR% --log_path logs

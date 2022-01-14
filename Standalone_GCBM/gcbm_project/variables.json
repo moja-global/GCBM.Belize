@@ -13,14 +13,7 @@
         "enable_moss": false,
         "admin_boundary": "British Columbia",
         "eco_boundary": "Pacific Maritime",
-        "initial_age": {
-            "transform": {
-                "library": "internal.flint",
-                "type": "LocationIdxFromFlintDataTransform",
-                "provider": "RasterTiled",
-                "data_id": "initial_age"
-            }
-        },
+        "initial_age": 0,
         "initial_historic_land_class": "FL",
         "initial_current_land_class": "FL",
         "age_class_range": 20,
@@ -123,9 +116,7 @@
                 "type": "CompositeTransform",
                 "library": "internal.flint",
                 "vars": [
-                    "Climate",
-                    "Disturbanc",
-                    "ForestType"
+                    "LifeZone"
                 ]
             }
         },
@@ -210,28 +201,12 @@
                 "provider": "SQLite"
             }
         },
-        "Climate": {
+        "LifeZone": {
             "transform": {
                 "library": "internal.flint",
                 "type": "LocationIdxFromFlintDataTransform",
                 "provider": "RasterTiled",
-                "data_id": "Climate"
-            }
-        },
-        "Disturbanc": {
-            "transform": {
-                "library": "internal.flint",
-                "type": "LocationIdxFromFlintDataTransform",
-                "provider": "RasterTiled",
-                "data_id": "Disturbanc"
-            }
-        },
-        "ForestType": {
-            "transform": {
-                "library": "internal.flint",
-                "type": "LocationIdxFromFlintDataTransform",
-                "provider": "RasterTiled",
-                "data_id": "ForestType"
+                "data_id": "LifeZone"
             }
         }
     }

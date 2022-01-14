@@ -15,12 +15,12 @@
         "type": "spatial_tiled",
         "landscape": {
             "provider": "RasterTiled",
-            "num_threads": 4,
+            "num_threads": 16,
             "tiles": [],
             "x_pixels": 1000,
             "y_pixels": 1000,
-            "tile_size_x": 1.0,
-            "tile_size_y": 1.0
+            "tile_size_x": 10.0,
+            "tile_size_y": 10.0
         }
     }
 }

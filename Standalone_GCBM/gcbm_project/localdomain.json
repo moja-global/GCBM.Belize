@@ -15,21 +15,51 @@
         "type": "spatial_tiled",
         "landscape": {
             "provider": "RasterTiled",
-            "num_threads": 8,
+            "num_threads": 16,
             "tiles": [
+                {
+                    "x": -90,
+                    "y": 16,
+                    "index": 26730
+                },
+                {
+                    "x": -90,
+                    "y": 17,
+                    "index": 26370
+                },
                 {
                     "x": -90,
                     "y": 18,
                     "index": 26010
                 },
                 {
+                    "x": -90,
+                    "y": 19,
+                    "index": 25650
+                },
+                {
+                    "x": -89,
+                    "y": 16,
+                    "index": 26731
+                },
+                {
+                    "x": -89,
+                    "y": 17,
+                    "index": 26371
+                },
+                {
                     "x": -89,
                     "y": 18,
                     "index": 26011
+                },
+                {
+                    "x": -89,
+                    "y": 19,
+                    "index": 25651
                 }
             ],
-            "x_pixels": 1000,
-            "y_pixels": 1000,
+            "x_pixels": 100,
+            "y_pixels": 100,
             "tile_size_x": 1.0,
             "tile_size_y": 1.0
         }

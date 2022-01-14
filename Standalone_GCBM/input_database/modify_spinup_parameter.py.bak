@@ -1,0 +1,36 @@
+import logging
+import os
+import sqlite3
+import sys
+from argparse import ArgumentParser
+
+if __name__ == "__main__":
+    logging.basicConfig(stream=sys.stdout, level=logging.INFO, format="%(message)s")
+    # argument: gcbm database
+    parser = ArgumentParser(description="Change the spinup parameters")
+    parser.add_argument("input_db_path", help="GCBM input database path", type=os.path.abspath)
+    args = parser.parse_args()
+    
+    if not os.path.exists(args.input_db_path):
+        sys.exit("File not found: {}".format(args.input_db_path))
+    
+    with sqlite3.connect(args.input_db_path) as conn:
+            
+        
+        logging.info("Changing the spinup parameters")
+
+        # My growth curves have a Red Alter in the species parameter, the id of the red alder is 118, I will replace it with my custom id (8001)
+        conn.execute(
+            """
+            UPDATE growth_curve_component
+            SET spinup_parameter_id = 7001
+            WHERE id IN (36)
+            """)
+            
+            
+        # Create a new species, I will call it "Generic Tropical", ID = 8001, Forest type = 3 (Hardwood) and Genus = 12 (Other broad-leaves species)
+        conn.execute(
+            """
+            INSERT INTO species (id, historic_disturbance_type_id, return_interval, max_rotatios, mean_annual_temperature)
+            VALUES (7001, 'Generic Tropical', 10, 30, 25)
+            """)

@@ -121,24 +121,10 @@
   },
   "ClassifierSet": [
     {
-      "Name": "ForestType",
+      "Name": "LifeZone",
       "Path": "Growth_Curves.csv",
       "Page": 0,
       "Column": 0,
-      "Header": true
-    },
-    {
-      "Name": "Disturbanc",
-      "Path": "Growth_Curves.csv",
-      "Page": 0,
-      "Column": 1,
-      "Header": true
-    },
-    {
-      "Name": "Climate",
-      "Path": "Growth_Curves.csv",
-      "Page": 0,
-      "Column": 2,
       "Header": true
     }
   ],
@@ -146,22 +132,14 @@
     "Path": "Growth_Curves.csv",
     "Page": 0,
     "Header": true,
-    "SpeciesCol": 3,
-    "IncrementStartCol": 4,
-    "IncrementEndCol": 154,
+    "SpeciesCol": 1,
+    "IncrementStartCol": 2,
+    "IncrementEndCol": 201,
     "Interval": 1,
     "Classifiers": [
       {
-        "Name": "ForestType",
+        "Name": "LifeZone",
         "Column": 0
-      },
-      {
-        "Name": "Disturbanc",
-        "Column": 1
-      },
-      {
-        "Name": "Climate",
-        "Column": 2
       }
     ]
   },
@@ -176,29 +154,13 @@
     "RuleDisturbanceTypeCol": null,
     "Classifiers": [
       {
-        "Name": "ForestType",
-        "Column": null
-      },
-      {
-        "Name": "Disturbanc",
-        "Column": null
-      },
-      {
-        "Name": "Climate",
+        "Name": "LifeZone",
         "Column": null
       }
     ],
     "RuleClassifiers": [
       {
-        "Name": "ForestType",
-        "Column": null
-      },
-      {
-        "Name": "Disturbanc",
-        "Column": null
-      },
-      {
-        "Name": "Climate",
+        "Name": "LifeZone",
         "Column": null
       }
     ]

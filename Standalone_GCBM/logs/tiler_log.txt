@@ -1,6 +1,6 @@
-01/12 12:47:01 Processing layers...
-01/12 12:47:02 Processing layer: Disturbanc
-01/12 12:47:02 Processing layer: initial_age
-01/12 12:47:02 Processing layer: Climate
-01/12 12:47:02 Processing layer: ForestType
-01/12 12:47:02 Processing layer: mean_annual_temperature
+01/13 19:48:46 Processing layers...
+01/13 19:48:47 Processing layer: mean_annual_temperature
+01/13 19:48:47 Processing layer: initial_age
+01/13 19:48:47 initial_age is empty - skipping
+01/13 19:48:47 Layer 'initial_age' is empty - skipping.
+01/13 19:48:47 Processing layer: LifeZone

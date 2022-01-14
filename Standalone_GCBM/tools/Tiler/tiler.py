@@ -39,8 +39,8 @@ if __name__ == "__main__":
             VectorLayer(
                 "bbox",
                 os.path.join(layer_root, "inventory", "inventory.shp"),
-                Attribute("Id")),
-            pixel_size=0.001)
+                Attribute("value")),
+            pixel_size=0.01)
                     
         tiler = GdalTiler2D(bbox, use_bounding_box_resolution=True)
 
@@ -54,9 +54,7 @@ if __name__ == "__main__":
         reporting_classifier_tag = "reporting_classifier"
         
         classifier_layers = [
-            VectorLayer("ForestType", os.path.join(layer_root, "inventory", "inventory.shp"), Attribute("ForestType"), tags=[classifier_tag]),
-            VectorLayer("Disturbanc", os.path.join(layer_root, "inventory", "inventory.shp"), Attribute("Disturbanc"), tags=[classifier_tag]),
-            VectorLayer("Climate", os.path.join(layer_root, "inventory", "inventory.shp"), Attribute("Climate"), tags=[classifier_tag]),
+            VectorLayer("LifeZone", os.path.join(layer_root, "inventory", "inventory.shp"), Attribute("LifeZone"), tags=[classifier_tag]),
         ]
         
         # Set up default transition rule for disturbance events: preserve existing stand classifiers.
@@ -64,14 +62,12 @@ if __name__ == "__main__":
 
         layers = [
             # Age - layer name must be "initial_age" so that the script can update the GCBM configuration file.
-            VectorLayer("initial_age", os.path.join(layer_root, "inventory", "inventory.shp"), Attribute("Age"),
+            VectorLayer("initial_age", os.path.join(layer_root, "inventory", "inventory.shp"), Attribute("Edad"),
                         data_type=gdal.GDT_Int16, raw=True),
             
             # Temperature - layer name must be "mean_annual_temperature" so that the scripts can
             # update the GCBM configuration file.
-            VectorLayer("mean_annual_temperature",
-                        os.path.join(layer_root, "inventory", "inventory.shp"), Attribute("AnnualTemp"),
-                        data_type=gdal.GDT_Float32, raw=True),
+            RasterLayer(os.path.join(layer_root, "environment", "Belize-BioClim30s_Temperature.tif"), name="mean_annual_temperature"),
         ] + classifier_layers
         
         '''
