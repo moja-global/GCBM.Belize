@@ -19,7 +19,7 @@ if __name__ == "__main__":
         logging.info("Modifying decay parameters")
         
         # Replace current decay parameters with new ones (tropical environment)
-        df = pandas.read_csv("input_database/Decay_Parameters_Belize.csv")
+        df = pandas.read_csv("input_database/custom_parameters/decay_parameters.csv")
         
         #Keep the column names that we need
         df = df[['dom_pool_id', 'base_decay_rate', 'reference_temp','q10','prop_to_atmosphere','max_rate']]

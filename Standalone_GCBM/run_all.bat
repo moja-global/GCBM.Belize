@@ -49,6 +49,9 @@ echo Modify root parameters
 REM echo Modify decay parameters
 REM "%GCBM_PYTHON%\python.exe" input_database\modify_decay_parameters.py input_database\gcbm_input.db
 
+REM echo Modify turnover parameters
+REM "%GCBM_PYTHON%\python.exe" input_database\modify_turnover_parameters.py input_database\gcbm_input.db
+
 REM echo Modify spinup parameters
 REM "%GCBM_PYTHON%\python.exe" input_database\modify_spinup_parameters.py input_database\gcbm_input.db
 
