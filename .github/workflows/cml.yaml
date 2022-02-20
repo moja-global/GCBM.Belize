@@ -19,7 +19,7 @@ jobs:
 
           git clone -b gcbm-container https://github.com/moja-global/flint.cloud
           
-          cd GCBM.belize
+          cd GCBM.Belize
           
           rm -r Standalone_GCBM/gcbm_project/output
  
