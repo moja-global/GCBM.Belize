@@ -23,7 +23,9 @@ jobs:
           
           rm -r Standalone_GCBM/gcbm_project/output
  
-          # docker-compose build
+          ls 
+          
+          docker-compose build
           
           # docker-compose up -d
           
