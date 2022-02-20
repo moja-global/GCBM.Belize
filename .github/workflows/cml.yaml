@@ -8,6 +8,9 @@ jobs:
  
     steps:
       - uses: actions/checkout@v2
+        with:
+          ref: gcbm-container
+
       - uses: actions/setup-python@v2
         with:
           python-version: '3.x'
@@ -24,7 +27,7 @@ jobs:
           rm -r Standalone_GCBM/gcbm_project/output
  
           ls 
-          
+
           docker-compose build
           
           # docker-compose up -d
