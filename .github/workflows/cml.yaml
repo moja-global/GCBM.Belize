@@ -21,7 +21,7 @@ jobs:
           
           cd GCBM.Belize
           
-          # rm -r Standalone_GCBM/gcbm_project/output
+          rm -r Standalone_GCBM/gcbm_project/output
  
           # docker-compose build
           
