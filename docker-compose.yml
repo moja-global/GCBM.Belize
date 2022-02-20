@@ -4,7 +4,7 @@ services:
     # this dep is missing
     # image: ghcr.io/moja-global/rest_api_gcbm:latest
     build:
-      context: ../FLINT.cloud/rest_api_gcbm/
+      context: ../FLINT.cloud/local/rest_api_gcbm/
       args:
         NUM_CPU: 16
         BUILD_TYPE: RELEASE
