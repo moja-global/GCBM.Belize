@@ -15,16 +15,24 @@ jobs:
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run:
-          cd ..
+          cd ../
+
           git clone -b gcbm-container https://github.com/moja-global/flint.cloud
+          
           cd gcbm.belize
+          
           rm -r Standalone_GCBM/gcbm_project/output
  
           docker-compose build
+          
           docker-compose up -d
+          
           docker exec -it gcbm-belize /bin/bash
+          
           cd /server/gcbm_project
           
           nohup /opt/gcbm/moja.cli --config_file gcbm_config.cfg --config_provider provider_config.json
+          
           mv nohup.out report.md
+          
           cml-send-comment report.md
