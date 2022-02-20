@@ -20,13 +20,11 @@ jobs:
         run:
           cd ../
 
-          git clone -b gcbm-container https://github.com/moja-global/flint.cloud
+          git clone -b gcbm-container https://github.com/moja-global/FLINT.cloud
           
           cd GCBM.Belize
           
           rm -r Standalone_GCBM/gcbm_project/output
- 
-          ls 
 
           docker-compose build
           
