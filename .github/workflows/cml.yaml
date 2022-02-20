@@ -5,8 +5,8 @@ on: [push]
 jobs:
   run:
     runs-on: [ubuntu-latest]
- 
     steps:
+      - uses: iterative/setup-cml@v1
       - uses: actions/checkout@v2
         with:
           ref: gcbm-container
@@ -17,25 +17,24 @@ jobs:
       - name: cml_run
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run:
-          cd ../
-
-          git clone -b gcbm-container https://github.com/moja-global/FLINT.cloud
+        run: |
+        
+          echo "[1/5] Pulling image"
           
-          cd GCBM.Belize
+          docker pull ghcr.io/harshcasper/flint.gcbm-cloud:latest
           
-          rm -r Standalone_GCBM/gcbm_project/output
-
-          docker-compose build
+          echo "[2/5] Remove output"
           
-          # docker-compose up -d
+          rm -rf Standalone_GCBM/gcbm_project/output
           
-          # docker exec -it gcbm-belize /bin/bash
+          echo "[3/5] Create and run container, and execute commands"
           
-          # cd /server/gcbm_project
+          docker run -d -v "$(pwd)/Standalone_GCBM":/server -p 8080:8080 --name gcbm-belize ghcr.io/harshcasper/flint.gcbm-cloud
           
-          # nohup /opt/gcbm/moja.cli --config_file gcbm_config.cfg --config_provider provider_config.json
+          echo "[4/5] Docker execute commands"
           
-          # mv nohup.out report.md
+          docker exec gcbm-belize /bin/bash -c "cd /server/gcbm_project && /opt/gcbm/moja.cli --config_file gcbm_config.cfg --config_provider provider_config.json &> temp.md && exit"
           
-          # cml-send-comment report.md
+          echo "[5/5] Send the report as a comment"
+          
+          cml-send-comment  Standalone_GCBM/gcbm_project/temp.md
