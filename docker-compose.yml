@@ -1,9 +1,13 @@
 version: "3.8"
 services:
   gbcm:
-    # this is missing a dep
-    #image: ghcr.io/moja-global/rest_api_gcbm:master
-    build: ../FLINT.cloud/rest_api_gcbm/
+    # this dep is missing
+    # image: ghcr.io/moja-global/rest_api_gcbm:latest
+    build:
+      context: ../FLINT.cloud/rest_api_gcbm/
+      args:
+        NUM_CPU: 16
+        BUILD_TYPE: RELEASE
     ports:
       - "8080:8080"
     container_name: gcbm-belize
