@@ -33,7 +33,7 @@ jobs:
           
           echo "[4/5] Docker execute commands"
           
-          docker exec gcbm-belize /bin/bash -c "cd /server/gcbm_project && /opt/gcbm/moja.cli --config_file gcbm_config.cfg --config_provider provider_config.json &> temp.md && exit"
+          docker exec gcbm-belize /bin/bash -c "cd /server/gcbm_project && /opt/gcbm/moja.cli --config_file gcbm_config.cfg --config_provider provider_config.json &> temp.md"
           
           echo "[5/5] Send the report as a comment"
           
