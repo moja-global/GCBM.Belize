@@ -5,13 +5,13 @@ on: [push]
 jobs:
   generate_cml_report:
     runs-on: ubuntu-latest
-    container: 
-      image: ghcr.io/moja-global/rest_api_gcbm:master
-      ports:
-        - 8080:8080
-      volumes:
-        - Standalone_GCBM:/server
-      options: --name gcbm-belize
+    # container: 
+    #   image: ghcr.io/moja-global/rest_api_gcbm:master
+    #   ports:
+    #     - 8080:8080
+    #   volumes:
+    #     - Standalone_GCBM:/server
+    #   options: --name gcbm-belize
     steps:
       - name: Install NPM
         id: install_npm
@@ -33,7 +33,8 @@ jobs:
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-
+          echo $(pwd)
+          
           echo "[1/3] Remove output"
           
           /bin/bash -c "rm -rf Standalone_GCBM/gcbm_project/output"
