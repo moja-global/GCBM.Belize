@@ -9,10 +9,12 @@ jobs:
       image: ghcr.io/moja-global/rest_api_gcbm:master
       ports:
         - 8080:8080
-      volumes:
-        - /home/runner/work/GCBM.Belize/Standalone_GCBM:/server
-      options: --name gcbm-belize
+      options: -v "$(pwd)/Standalone_GCBM":/server --name gcbm-belize
     steps:
+      - name: Remove GCBM output
+        id: remove_gcbm_output
+        run: |
+          rm -rf Standalone_GCBM/gcbm_project/output
       - name: Install NPM # Need this for the CML setup
         id: install_npm
         run: |
@@ -32,15 +34,11 @@ jobs:
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-
-          echo "[1/3] Remove output"
           
-          /bin/bash -c "rm -rf Standalone_GCBM/gcbm_project/output"
-          
-          echo "[2/3] Docker execute commands"
+          echo "[1/2] Docker execute commands"
           
           /bin/bash -c "cd /server/gcbm_project && /opt/gcbm/moja.cli --config_file gcbm_config.cfg --config_provider provider_config.json &> temp.md"
           
-          echo "[3/3] Send the report as a comment"
+          echo "[2/2] Send the report as a comment"
           
           cml-send-comment  Standalone_GCBM/gcbm_project/temp.md
