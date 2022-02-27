@@ -26,16 +26,20 @@ jobs:
       - name: Setup CML
         id: setup_cml
         uses: iterative/setup-cml@v1
-      # - name: Checkout gcbm-container branch
-      #   id : checkout_gcbm_container_branch
-      #   uses: actions/checkout@v2
-      #   with:
-      #     ref: gcbm-container
+      - name: Checkout gcbm-container branch
+        id : checkout_gcbm_container_branch
+        uses: actions/checkout@v2
+        with:
+          ref: gcbm-container
       - name: Run CML
         id: run_cml
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+
+          echo $(pwd)
+
+          ls /server/
           
           echo "[1/2] Docker execute commands"
           
