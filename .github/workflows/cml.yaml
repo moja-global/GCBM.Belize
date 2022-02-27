@@ -43,7 +43,7 @@ jobs:
           
           echo "[1/2] Docker execute commands"
           
-          sh -c "cd /server/gcbm_project && /opt/gcbm/moja.cli --config_file gcbm_config.cfg --config_provider provider_config.json &> temp.md"
+          /bin/bash -c "cd /server/gcbm_project && /opt/gcbm/moja.cli --config_file gcbm_config.cfg --config_provider provider_config.json &> temp.md"
           
           echo "[2/2] Send the report as a comment"
           
