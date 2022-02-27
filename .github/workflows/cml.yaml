@@ -4,7 +4,6 @@ on: [push]
  
 jobs:
   generate_cml_report:
-    runs-on: [ubuntu-latest]
     container: 
       image: ghcr.io/moja-global/rest_api_gcbm:master
       ports:
@@ -28,7 +27,7 @@ jobs:
         run: |
           echo "[1/3] Remove output"
           
-          rm -rf Standalone_GCBM/gcbm_project/output
+          /bin/bash -c "rm -rf Standalone_GCBM/gcbm_project/output"
           
           echo "[2/3] Docker execute commands"
           
