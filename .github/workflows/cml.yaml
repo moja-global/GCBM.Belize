@@ -17,6 +17,14 @@ jobs:
       - name: Setup Node # Need this for the CML setup
         id: setup_node
         uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - name: NPM install
+        id: npm_install
+        run: npm install
+      - name: NPM test
+        id: npm_test
+        run: npm test
       - name: Setup CML
         id: setup_cml
         uses: iterative/setup-cml@v1
