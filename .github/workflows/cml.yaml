@@ -4,6 +4,7 @@ on: [push]
  
 jobs:
   generate_cml_report:
+    runs-on: ubuntu-latest
     container: 
       image: ghcr.io/moja-global/rest_api_gcbm:master
       ports:
