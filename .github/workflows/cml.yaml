@@ -9,7 +9,7 @@ jobs:
       image: ghcr.io/moja-global/rest_api_gcbm:master
       ports:
         - 8080:8080
-      options: -v "$(pwd)/Standalone_GCBM":/server --name gcbm-belize
+      options: -v $(pwd)/Standalone_GCBM:/server --name gcbm-belize
     steps:
       - name: Remove GCBM output
         id: remove_gcbm_output
