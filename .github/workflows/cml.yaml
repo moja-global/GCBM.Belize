@@ -5,21 +5,20 @@ on: [push]
 jobs:
   generate_cml_report:
     runs-on: ubuntu-latest
-    # container: 
-    #   image: ghcr.io/moja-global/rest_api_gcbm:master
-    #   ports:
-    #     - 8080:8080
-    #   volumes:
-    #     - Standalone_GCBM:/server
-    #   options: --name gcbm-belize
+    container: 
+      image: ghcr.io/moja-global/rest_api_gcbm:master
+      ports:
+        - 8080:8080
+      volumes:
+        - /home/runner/work/GCBM.Belize/GCBM.Belize/Standalone_GCBM:/server
+      options: --name gcbm-belize
     steps:
-      # - name: Install NPM
-      #   id: install_npm
-      #   run: |
-      #     apt-get update
-      #     apt-get upgrade -y
-      #     apt-get install -y nodejs npm
-
+      - name: Install NPM
+        id: install_npm
+        run: |
+          apt-get update
+          apt-get upgrade -y
+          apt-get install -y nodejs npm
       - name: Setup CML
         id: setup_cml
         uses: iterative/setup-cml@v1
@@ -33,7 +32,6 @@ jobs:
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          echo $(pwd)
 
           echo "[1/3] Remove output"
           
