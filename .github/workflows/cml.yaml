@@ -1,40 +1,39 @@
-name: test-run
+name: Generate CML Report
  
 on: [push]
  
 jobs:
-  run:
+  generate_cml_report:
     runs-on: [ubuntu-latest]
+    container: 
+      image: ghcr.io/moja-global/rest_api_gcbm:master
+      ports:
+        - 8080:8080
+      volumes:
+        - $(pwd)/Standalone_GCBM:/server
+      options: --name gcbm-belize
     steps:
-      - uses: iterative/setup-cml@v1
-      - uses: actions/checkout@v2
+      - name: Setup CML
+        id: setup_cml
+        uses: iterative/setup-cml@v1
+      - name: Checkout gcbm-container branch
+        id : checkout_gcbm_container_branch
+        uses: actions/checkout@v2
         with:
           ref: gcbm-container
-
-      - uses: actions/setup-python@v2
-        with:
-          python-version: '3.x'
-      - name: cml_run
+      - name: Run CML
+        id: run_cml
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-        
-          echo "[1/5] Pulling image"
-          
-          docker pull ghcr.io/harshcasper/flint.gcbm-cloud:latest
-          
-          echo "[2/5] Remove output"
+          echo "[1/3] Remove output"
           
           rm -rf Standalone_GCBM/gcbm_project/output
           
-          echo "[3/5] Create and run container, and execute commands"
+          echo "[2/3] Docker execute commands"
           
-          docker run -d -v "$(pwd)/Standalone_GCBM":/server -p 8080:8080 --name gcbm-belize ghcr.io/harshcasper/flint.gcbm-cloud
+          /bin/bash -c "cd /server/gcbm_project && /opt/gcbm/moja.cli --config_file gcbm_config.cfg --config_provider provider_config.json &> temp.md"
           
-          echo "[4/5] Docker execute commands"
-          
-          docker exec gcbm-belize /bin/bash -c "cd /server/gcbm_project && /opt/gcbm/moja.cli --config_file gcbm_config.cfg --config_provider provider_config.json &> temp.md"
-          
-          echo "[5/5] Send the report as a comment"
+          echo "[3/3] Send the report as a comment"
           
           cml-send-comment  Standalone_GCBM/gcbm_project/temp.md
