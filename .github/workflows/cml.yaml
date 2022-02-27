@@ -10,7 +10,7 @@ jobs:
       ports:
         - 8080:8080
       volumes:
-        - $(pwd)/Standalone_GCBM:/server
+        - Standalone_GCBM:/server
       options: --name gcbm-belize
     steps:
       - name: Setup CML
