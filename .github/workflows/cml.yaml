@@ -34,11 +34,9 @@ jobs:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
 
-          ls
-
           echo "[1/2] Docker execute commands"
           
-          /opt/gcbm/moja.cli --config_file ./Standalone_GCBM/gcbm_project/gcbm_config.cfg --config_provider ./Standalone_GCBM/gcbm_project/provider_config.json &> temp.md
+          /bin/bash -c "/opt/gcbm/moja.cli --config_file Standalone_GCBM/gcbm_project/gcbm_config.cfg --config_provider Standalone_GCBM/gcbm_project/provider_config.json &> temp.md"
           
           echo "[2/2] Send the report as a comment"
           
