@@ -7,30 +7,36 @@ This project is based on the Standalone Template for the GCBM, downloaded from h
 
 **Disclaimer:** The calculations performed in this repository are not official and do not represent the Government of Belize in any way.
 
-## Installation instructions
+## Installation and usage instructions
 
 1. Clone the repository
 
-2. Download the installation tools from "releases" (https://github.com/moja-global/GCBM.Belize/releases/tag/install_tools) and unzip them into Standalone_GCBM/tools folder
+2. Download the installation tools from releases: [install_tools](https://github.com/moja-global/GCBM.Belize/releases/tag/install_tools), and unzip them into Standalone_GCBM/tools folder.
 
-The installation instuctions are located in Standalone_GCBM/readme.txt
+3. Follow the installation instructions, located in Standalone_GCBM/readme.txt
+
+4. Modify the Standalone_GCBM/run_all.bat file to activate or deactivate the custom parameter modifications (explained below), as default, all custom configurations are enabled
+
+4. Execute the run_all.bat
+
+This codebase was tested using a Windows 10 system, the Standalone_GCBM/readme.txt file contains further explanation on the GCBM usage, and tutorials on the model can be found in the moja.global [Youtube Channel](https://www.youtube.com/channel/UCfQUrrNP1Xf-Fv4c8uHYXhQ)
 
 
 ## Custom configuration for Belize
 
 This implementation of the GCBM includes several parameter changes, that were included to adapt the model to Belize´s local conditions
 
-the Standalone_GCBM/run_all.bat file includes all the steps that were taken to adapt the model, as default, all parameter changes are enabled.
+the Standalone_GCBM/run_all.bat file includes all the steps that were taken to adapt the model:
 
-1. A custom Generic Tropical species in created (input_database\add_species_vol_to_bio.py) using a linear volume to biomass conversion factor and proportions of stem, bark, foliage and branges extracted from local literature. 
+1. A custom Generic Tropical species in created (input_database\add_species_vol_to_bio.py) using a linear volume to biomass conversion factor and proportions of stem, bark, foliage and branches extracted from local literature. 
 
 2. A custom set of root parameters (to convert from AGB to BGB) is applied (input_database\modify_root_parameters.py)
 
-3. A set of decay parameters that was compiled from the scientific literature (input_database\custom_parameters\decay parameters.py) and is used to mofidy the default ones (input_database\modify_decay_parameters.py)
+3. A set of decay parameters that was compiled from the scientific literature (input_database\custom_parameters\decay parameters.py) and is used to mofify the default ones (input_database\modify_decay_parameters.py)
 
 4. A sensitive turnover parameter (tree mortality) was modified (input_database\modify_turnover_parameters.py)
 
-5. The disturbance regime of the spinup procedure was changed to "Generic mortality 40%" every 10 years to refect the effect of Hurracaines in Belize (input_database\modify_spinup_parameters.py)
+5. The disturbance regime of the spinup procedure was changed to "Generic mortality 40%" every 10 years to reflect the effect of Hurricanes in Belize (input_database\modify_spinup_parameters.py)
 
 Steps 3, 4 and 5 can be enabled/disabled in the run_all.bat file to perform a sensitivity analysis on the DOM pools
 
