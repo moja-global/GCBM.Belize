@@ -2,8 +2,8 @@
 
 REM *************************** USER CONFIGURATION ***************************
 REM Set simulation start and end years.
-set SIMULATION_START_YEAR=1920
-set SIMULATION_END_YEAR=2020
+set SIMULATION_START_YEAR=1900
+set SIMULATION_END_YEAR=2050
 
 REM Set Python path - change this to your Python installation directory.
 set GCBM_PYTHON=C:\Python37
@@ -50,10 +50,10 @@ REM echo Modify decay parameters
 REM "%GCBM_PYTHON%\python.exe" input_database\modify_decay_parameters.py input_database\gcbm_input.db
 
 REM echo Modify turnover parameters
-REM "%GCBM_PYTHON%\python.exe" input_database\modify_turnover_parameters.py input_database\gcbm_input.db
+"%GCBM_PYTHON%\python.exe" input_database\modify_turnover_parameters.py input_database\gcbm_input.db
 
 REM echo Modify spinup parameters
-REM "%GCBM_PYTHON%\python.exe" input_database\modify_spinup_parameters.py input_database\gcbm_input.db
+"%GCBM_PYTHON%\python.exe" input_database\modify_spinup_parameters.py input_database\gcbm_input.db
 
 
 REM Configure GCBM.
