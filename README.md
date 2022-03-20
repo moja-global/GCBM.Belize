@@ -21,7 +21,6 @@ This project is based on the Standalone Template for the GCBM, downloaded from h
 
 This codebase was tested using a Windows 10 system, the Standalone_GCBM/readme.txt file contains further explanation on the GCBM usage, and tutorials on the model can be found in the moja.global [Youtube Channel](https://www.youtube.com/channel/UCfQUrrNP1Xf-Fv4c8uHYXhQ)
 
-
 ## Custom configuration for Belize
 
 This implementation of the GCBM includes several parameter changes, that were included to adapt the model to Belize´s local conditions
@@ -40,6 +39,13 @@ the Standalone_GCBM/run_all.bat file includes all the steps that were taken to a
 
 Steps 3, 4 and 5 can be enabled/disabled in the run_all.bat file to perform a sensitivity analysis on the DOM pools
 
+## Postprocessing and sensitivity analysis
+
+Postprocessing codes using R are included in the Postprocessing folder for reference purposes.
+
+If you are going to use this coded, we recommend to use [Rstudio](https://www.rstudio.com/) and open the Postprocessing/GCBM_Belize_Sensitivity.Rproj file, the [renv](https://rstudio.github.io/renv/articles/renv.html) package was used for library management, and a renv.lock file with the required packages is included
+
+In order to perform sensitivity analysis, the Standalone_GCBM folder can be duplicated with another name (e.g. Standalone_GCBM_decaymod) and the run_all.bat can me modified and run. Then, the Postprocessing/Summarize_DOM_Stocks.R code has to be modified to generate graphs and tables with this new configuration (instructions in the code)
 
 ## How to Get Involved?  
 
