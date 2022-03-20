@@ -46,16 +46,13 @@ echo Creating Generic species and adding vol to bio factors
 echo Modify root parameters
 "%GCBM_PYTHON%\python.exe" input_database\modify_root_parameters.py input_database\gcbm_input.db
 
-
-REM Create new species
-
-echo Modify decay parameters
+REM echo Modify decay parameters
 "%GCBM_PYTHON%\python.exe" input_database\modify_decay_parameters.py input_database\gcbm_input.db
 
-echo Modify turnover parameters
+REM echo Modify turnover parameters
 "%GCBM_PYTHON%\python.exe" input_database\modify_turnover_parameters.py input_database\gcbm_input.db
 
-echo Modify spinup parameters
+REM echo Modify spinup parameters
 "%GCBM_PYTHON%\python.exe" input_database\modify_spinup_parameters.py input_database\gcbm_input.db
 
 

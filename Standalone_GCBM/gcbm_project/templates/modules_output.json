@@ -199,7 +199,7 @@
                             }
                         ],
                         "data_name": "Decomp_Releases",
-                        "enabled": true,
+                        "enabled": false,
                         "on_notification": "OutputStep"
                     },
                     {
@@ -627,7 +627,7 @@
                             ]
                         },
                         "data_name": "Total_CO2_Emissions",
-                        "enabled": true,
+                        "enabled": false,
                         "on_notification": "OutputStep"
                     },
                     {
@@ -789,7 +789,7 @@
                             ]
                         },
                         "data_name": "Bio_To_DOM_From_Disturbances",
-                        "enabled": true,
+                        "enabled": false,
                         "on_notification": "OutputStep"
                     }
                 ],
