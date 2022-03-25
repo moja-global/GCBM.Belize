@@ -34,6 +34,10 @@ jobs:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
 
+          echo $(ls)
+          echo $GITHUB_WORKSPACE
+          echo $(ls $GITHUB_WORKSPACE)
+          
           echo "[1/2] Docker execute commands"
           
           /bin/bash -c "/opt/gcbm/moja.cli --config_file $GITHUB_WORKSPACE/Standalone_GCBM/gcbm_project/gcbm_config.cfg --config_provider $GITHUB_WORKSPACE/Standalone_GCBM/gcbm_project/provider_config.json &> temp.md"
