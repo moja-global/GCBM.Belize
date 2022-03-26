@@ -1,0 +1,5 @@
+simplejson==3.17.6
+SQLAlchemy==1.4.32
+future==0.18.2
+gdal==3.4.2
+psutil==5.9.0
