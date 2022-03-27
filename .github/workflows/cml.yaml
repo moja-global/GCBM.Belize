@@ -30,6 +30,9 @@ jobs:
       - name: Install simplejson
         id: install_simplejson
         run: pip install simplejson
+      - name: Install sqlalchemy
+        id: install_sqlalchemy
+        run: pip install sqlalchemy      
       - name: Run Moja CLI
         id: run_moja_cli
         run: |
