@@ -43,6 +43,8 @@ jobs:
           
           /opt/gcbm/moja.cli --config_file gcbm_config.cfg --config_provider provider_config.json &> temp.md
           
+          echo $(ls)
+          
           echo "[2/2] Send the report as a comment"
           
-          cml-send-comment  temp.md
+          cml-send-comment temp.md
