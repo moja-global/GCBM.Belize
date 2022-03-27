@@ -49,5 +49,7 @@ jobs:
         id: cml_upload_report
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: cml-send-comment temp.md
+        run: |
+          echo $(ls)
+          cml-send-comment temp.md
 
