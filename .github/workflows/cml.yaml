@@ -41,7 +41,7 @@ jobs:
           
           echo "[1/2] Docker execute commands"
           
-          opt/gcbm/moja.cli --config_file gcbm_config.cfg --config_provider provider_config.json &>temp.md
+          /opt/gcbm/moja.cli --config_file gcbm_config.cfg --config_provider provider_config.json &>temp.md
           
           echo $(ls)
           
