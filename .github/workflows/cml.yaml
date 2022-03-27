@@ -36,19 +36,14 @@ jobs:
       - name: Run Moja CLI
         id: run_moja_cli
         run: |
-        
-          echo "[0/3] Change permissions"
-          chmod 664 Standalone_GCBM/gcbm_project/
           echo "[1/3] Change working directory to gcbm_project"
           cd Standalone_GCBM/gcbm_project
           
           echo "[2/3] Run Moja CLI"
           /opt/gcbm/moja.cli --config_file gcbm_config.cfg --config_provider provider_config.json &> temp.md
-          chmod 664 output/gcbm_output.db
-          chmod 664 output/compiled_gcbm_output.db
-          echo $(ls)
-          echo "[3/3] Compile GCBM Results"
-          python3 ../tools/CompileGCBMResults/compileresults.py sqlite:///output/gcbm_output.db --output_db sqlite:///output/compiled_gcbm_output.db
+          
+#           echo "[3/3] Compile GCBM Results"
+#           python3 ../tools/CompileGCBMResults/compileresults.py sqlite:///output/gcbm_output.db --output_db sqlite:///output/compiled_gcbm_output.db
 
       - name: CML Upload Report
         id: cml_upload_report
