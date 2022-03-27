@@ -20,6 +20,7 @@ jobs:
           apt-get update
           apt-get upgrade -y
           apt-get install -y nodejs npm
+          node -v
       - name: Setup CML
         id: setup_cml
         uses: iterative/setup-cml@v1
