@@ -27,6 +27,9 @@ jobs:
         uses: actions/checkout@v2
         with:
           ref: gcbm-container
+      - name: Install simplejson
+        id: install_simplejson
+        run: pip install simplejson
       - name: Run Moja CLI
         id: run_moja_cli
         run: |
