@@ -32,20 +32,12 @@ jobs:
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-
-          echo $(ls)
-          echo $GITHUB_WORKSPACE
-          echo $(ls $GITHUB_WORKSPACE)
+        
+          echo "[1/3] Change working directory to gcbm_project"
           cd Standalone_GCBM/gcbm_project
           
-          touch temp.md
-          
-          echo "[1/2] Docker execute commands"
-          
+          echo "[2/3] Run Moja CLI"
           /opt/gcbm/moja.cli --config_file gcbm_config.cfg --config_provider provider_config.json &>temp.md
-          
-          echo $(ls)
-          
-          echo "[2/2] Send the report as a comment"
-          
+
+          echo "[3/3] Send the error report as a comment"
           cml-send-comment temp.md
