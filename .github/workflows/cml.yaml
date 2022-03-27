@@ -45,7 +45,8 @@ jobs:
           echo "[2/3] Run Moja CLI"
           /opt/gcbm/moja.cli --config_file gcbm_config.cfg --config_provider provider_config.json &> temp.md
           chmod 664 output/gcbm_output.db
-          
+          chmod 664 output/compiled_gcbm_output.db
+          echo $(ls)
           echo "[3/3] Compile GCBM Results"
           python3 ../tools/CompileGCBMResults/compileresults.py sqlite:///output/gcbm_output.db --output_db sqlite:///output/compiled_gcbm_output.db
 
