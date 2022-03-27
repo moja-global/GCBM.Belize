@@ -50,6 +50,5 @@ jobs:
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          echo $(ls)
-          cml-send-comment temp.md
+          cml-send-comment Standalone_GCBM/gcbm_project/temp.md
 
