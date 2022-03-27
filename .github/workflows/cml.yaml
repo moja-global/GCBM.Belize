@@ -6,7 +6,7 @@ jobs:
   generate_cml_report:
     runs-on: ubuntu-latest
     container: 
-      image: ghcr.io/harshcasper/flint.gcbm-cloud
+      image: ghcr.io/moja-global/rest_api_gcbm:master
       ports:
         - "8080:8080"
     steps:
@@ -26,13 +26,7 @@ jobs:
         id : checkout_gcbm_container_branch
         uses: actions/checkout@v2
         with:
-          ref: gcbm-container
-      - name: Install simplejson
-        id: install_simplejson
-        run: pip install simplejson
-      - name: Install sqlalchemy
-        id: install_sqlalchemy
-        run: pip install sqlalchemy      
+          ref: gcbm-container   
       - name: Run Moja CLI
         id: run_moja_cli
         run: |
