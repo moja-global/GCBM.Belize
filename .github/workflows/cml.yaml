@@ -26,7 +26,13 @@ jobs:
         id : checkout_gcbm_container_branch
         uses: actions/checkout@v2
         with:
-          ref: gcbm-container   
+          ref: gcbm-container
+      - name: Install simplejson
+        id: install_simplejson
+        run: pip install simplejson
+      - name: Install sqlalchemy
+        id: install_sqlalchemy
+        run: pip install sqlalchemy 
       - name: Run Moja CLI
         id: run_moja_cli
         run: |
@@ -36,8 +42,8 @@ jobs:
           echo "[2/3] Run Moja CLI"
           /opt/gcbm/moja.cli --config_file gcbm_config.cfg --config_provider provider_config.json 2> temp.md
           
-#           echo "[3/3] Compile GCBM Results"
-#           python3 ../tools/CompileGCBMResults/compileresults.py sqlite:///output/gcbm_output.db --output_db sqlite:///output/compiled_gcbm_output.db
+          echo "[3/3] Compile GCBM Results"
+          python3 ../tools/CompileGCBMResults/compileresults.py sqlite:///output/gcbm_output.db --output_db sqlite:///output/compiled_gcbm_output.db
 
       - name: CML Upload Report
         id: cml_upload_report
