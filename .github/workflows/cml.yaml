@@ -6,7 +6,7 @@ jobs:
   generate_cml_report:
     runs-on: ubuntu-latest
     container: 
-      image: ghcr.io/moja-global/rest_api_gcbm:master
+      image: ghcr.io/harshcasper/flint.gcbm-cloud
       ports:
         - "8080:8080"
     steps:
