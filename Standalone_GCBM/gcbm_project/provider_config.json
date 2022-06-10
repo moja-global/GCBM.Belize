@@ -7,14 +7,14 @@
         "RasterTiled": {
             "layers": [
                 {
-                    "name": "mean_annual_temperature",
-                    "layer_path": "..\\layers\\tiled\\mean_annual_temperature_moja.tiff",
-                    "layer_prefix": "mean_annual_temperature_moja"
-                },
-                {
                     "name": "LifeZone",
                     "layer_path": "..\\layers\\tiled\\LifeZone_moja.tiff",
                     "layer_prefix": "LifeZone_moja"
+                },
+                {
+                    "name": "mean_annual_temperature",
+                    "layer_path": "..\\layers\\tiled\\mean_annual_temperature_moja.tiff",
+                    "layer_prefix": "mean_annual_temperature_moja"
                 }
             ],
             "blockLonSize": 0.1,

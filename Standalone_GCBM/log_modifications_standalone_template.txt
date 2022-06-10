@@ -1,8 +1,6 @@
 Changes made from the standalone template of the GCBM version 1.0.0
 
 
-Standalone_Belize_V0.0.1:
-
 1. Modify the yield curves (input_database/yield.csv) and create Growth_Curves.csv file using the ForestType, Distrubance and Climate classifiers
 
 2. Run the run_recliner2hcbm_gui tool to get a configuration

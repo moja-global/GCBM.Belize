@@ -19,18 +19,18 @@ if __name__ == "__main__":
         
         logging.info("Changing the spinup parameters")
 
-        # My growth curves have a Red Alter in the species parameter, the id of the red alder is 118, I will replace it with my custom id (8001)
+        # 
         conn.execute(
             """
-            UPDATE growth_curve_component
+            UPDATE spatial_unit
             SET spinup_parameter_id = 7001
             WHERE id IN (36)
             """)
             
             
-        # Create a new species, I will call it "Generic Tropical", ID = 8001, Forest type = 3 (Hardwood) and Genus = 12 (Other broad-leaves species)
+        # 
         conn.execute(
             """
-            INSERT INTO species (id, historic_disturbance_type_id, return_interval, max_rotatios, mean_annual_temperature)
-            VALUES (7001, 172, 10, 30, 25)
+            INSERT INTO spinup_parameter (id, historic_disturbance_type_id, return_interval, max_rotations, mean_annual_temperature)
+            VALUES (7001, 49, 10, 500, 25)
             """)
