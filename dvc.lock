@@ -53,3 +53,13 @@ stages:
     - path: input_database\modify_turnover_parameters.py
       md5: 84825f833a0dba6c65db9aedf94797a2
       size: 1217
+  modify_decay_parameters:
+    cmd: C:\Develop\Python\Python37\python.exe input_database\modify_turnover_parameters.py
+      input_database\gcbm_input.db
+    deps:
+    - path: input_database\gcbm_input.db
+      md5: c49d2c925246bc451c243198a7c8cd66
+      size: 1544192
+    - path: input_database\modify_decay_parameters.py
+      md5: 55588114a0e80fca083fbfd27bda22ae
+      size: 1207
