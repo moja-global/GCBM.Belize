@@ -47,3 +47,16 @@ stages:
     deps:
     - input_database\gcbm_input.db
     - input_database\modify_spinup_parameters.py
+  update_GCBM_configuration:
+    cmd: C:\Develop\Python\Python37\python.exe tools\tiler\update_gcbm_config.py --layer_root
+      layers\tiled --template_path gcbm_project\templates --output_path gcbm_project
+      --input_db_path input_database\gcbm_input.db --start_year 1900 --end_year 2050
+      --log_path logs
+    wdir: Standalone_GCBM
+    deps:
+    - gcbm_project
+    - gcbm_project\templates
+    - input_database\gcbm_input.db
+    - layers\tiled
+    - logs
+    - tools\tiler\update_gcbm_config.py
