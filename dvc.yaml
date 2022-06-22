@@ -26,3 +26,10 @@ stages:
     deps:
     - input_database\gcbm_input.db
     - input_database\modify_root_parameters.py
+  modify_turnover_parameters:
+    cmd: C:\Develop\Python\Python37\python.exe input_database\modify_turnover_parameters.py
+      input_database\gcbm_input.db
+    wdir: Standalone_GCBM
+    deps:
+    - input_database\gcbm_input.db
+    - input_database\modify_turnover_parameters.py

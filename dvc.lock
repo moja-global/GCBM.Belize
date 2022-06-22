@@ -43,3 +43,13 @@ stages:
     - path: input_database\modify_root_parameters.py
       md5: bbb360bcc55ad3bb0aaf4bdac1802a5e
       size: 1031
+  modify_turnover_parameters:
+    cmd: C:\Develop\Python\Python37\python.exe input_database\modify_turnover_parameters.py
+      input_database\gcbm_input.db
+    deps:
+    - path: input_database\gcbm_input.db
+      md5: 48b0749025cd653dcc000c5a9ce35dec
+      size: 1544192
+    - path: input_database\modify_turnover_parameters.py
+      md5: 84825f833a0dba6c65db9aedf94797a2
+      size: 1217
