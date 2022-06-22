@@ -14,3 +14,12 @@ stages:
       md5: f4523151e55fc6ad815778f396d78c7c.dir
       size: 74820
       nfiles: 4
+  recliner2gcbm_x64:
+    cmd: tools\Recliner2GCBM-x64\Recliner2GCBM.exe -c input_database\recliner2gcbm_config.json
+    deps:
+    - path: input_database\gcbm_input.db
+      md5: 4171522604a34a4a6430286b554e3982
+      size: 1544192
+    - path: tools\recliner2gcbm-x64\recliner2gcbm.exe
+      md5: a45c702ad1c9aff92edc6493cff99450
+      size: 6656

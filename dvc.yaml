@@ -6,3 +6,9 @@ stages:
     - ..\..\tools\Tiler\tiler.py
     - ..\raw\environment
     - ..\raw\inventory
+  recliner2gcbm_x64:
+    cmd: tools\Recliner2GCBM-x64\Recliner2GCBM.exe -c input_database\recliner2gcbm_config.json
+    wdir: Standalone_GCBM
+    deps:
+    - input_database\gcbm_input.db
+    - tools\recliner2gcbm-x64\recliner2gcbm.exe
