@@ -33,3 +33,13 @@ stages:
     - path: input_database\gcbm_input.db
       md5: 106a885f18b29417d6cd2efa0093b60a
       size: 1544192
+  modify_root_parameters:
+    cmd: C:\Develop\Python\Python37\python.exe input_database\modify_root_parameters.py
+      input_database\gcbm_input.db
+    deps:
+    - path: input_database\gcbm_input.db
+      md5: 366e839cf0890838c636b9c1ae63c443
+      size: 1544192
+    - path: input_database\modify_root_parameters.py
+      md5: bbb360bcc55ad3bb0aaf4bdac1802a5e
+      size: 1031
