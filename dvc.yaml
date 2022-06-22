@@ -60,3 +60,11 @@ stages:
     - layers\tiled
     - logs
     - tools\tiler\update_gcbm_config.py
+  run_gcbm:
+    cmd: ..\tools\GCBM\moja.cli.exe --config_file gcbm_config.cfg --config_provider
+      provider_config.json
+    wdir: Standalone_GCBM/gcbm_project
+    deps:
+    - ..\tools\GCBM\moja.cli.exe
+    - gcbm_config.cfg
+    - provider_config.json

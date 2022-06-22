@@ -101,3 +101,16 @@ stages:
     - path: tools\tiler\update_gcbm_config.py
       md5: 3e04cbc0ee3588cc13f711750b8cda1e
       size: 18002
+  run_gcbm:
+    cmd: ..\tools\GCBM\moja.cli.exe --config_file gcbm_config.cfg --config_provider
+      provider_config.json
+    deps:
+    - path: ..\tools\GCBM\moja.cli.exe
+      md5: 22ea736fd836612c2d9a8330572cdcff
+      size: 125440
+    - path: gcbm_config.cfg
+      md5: 4ba9c157d6b3d8462bae8be993063fcc
+      size: 176
+    - path: provider_config.json
+      md5: 73ea905de1ec488f940f9fec4a3189c4
+      size: 978
