@@ -12,3 +12,10 @@ stages:
     deps:
     - input_database\gcbm_input.db
     - tools\recliner2gcbm-x64\recliner2gcbm.exe
+  add_species_vol_to_bio:
+    cmd: C:\Develop\Python\Python37\python.exe input_database\add_species_vol_to_bio.py
+      input_database\gcbm_input.db
+    wdir: Standalone_GCBM
+    deps:
+    - input_database\add_species_vol_to_bio.py
+    - input_database\gcbm_input.db

@@ -23,3 +23,13 @@ stages:
     - path: tools\recliner2gcbm-x64\recliner2gcbm.exe
       md5: a45c702ad1c9aff92edc6493cff99450
       size: 6656
+  add_species_vol_to_bio:
+    cmd: C:\Develop\Python\Python37\python.exe input_database\add_species_vol_to_bio.py
+      input_database\gcbm_input.db
+    deps:
+    - path: input_database\add_species_vol_to_bio.py
+      md5: d819622c127ca778f99d2e8eb9e5efc4
+      size: 3012
+    - path: input_database\gcbm_input.db
+      md5: 106a885f18b29417d6cd2efa0093b60a
+      size: 1544192
