@@ -1,0 +1,8 @@
+stages:
+  tiler:
+    cmd: C:\Develop\Python\Python37\python.exe ..\..\tools\Tiler\tiler.py
+    wdir: Standalone_GCBM/layers/tiled
+    deps:
+    - ..\..\tools\Tiler\tiler.py
+    - ..\raw\environment
+    - ..\raw\inventory

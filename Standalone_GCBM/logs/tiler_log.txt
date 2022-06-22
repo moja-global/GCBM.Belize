@@ -1,6 +1,6 @@
-03/20 16:54:12 Processing layers...
-03/20 16:54:13 Processing layer: mean_annual_temperature
-03/20 16:54:13 Processing layer: initial_age
-03/20 16:54:13 initial_age is empty - skipping
-03/20 16:54:13 Layer 'initial_age' is empty - skipping.
-03/20 16:54:13 Processing layer: LifeZone
+06/22 14:50:40 Processing layers...
+06/22 14:50:41 Processing layer: mean_annual_temperature
+06/22 14:50:41 Processing layer: initial_age
+06/22 14:50:41 initial_age is empty - skipping
+06/22 14:50:41 Layer 'initial_age' is empty - skipping.
+06/22 14:50:41 Processing layer: LifeZone
