@@ -34,9 +34,16 @@ stages:
     - input_database\gcbm_input.db
     - input_database\modify_decay_parameters.py
   modify_turnover_parameters:
-      cmd: C:\Develop\Python\Python37\python.exe input_database\modify_turnover_parameters.py
-        input_database\gcbm_input.db
-      wdir: Standalone_GCBM
-      deps:
-      - input_database\gcbm_input.db
-      - input_database\modify_turnover_parameters.py
+    cmd: C:\Develop\Python\Python37\python.exe input_database\modify_turnover_parameters.py
+      input_database\gcbm_input.db
+    wdir: Standalone_GCBM
+    deps:
+    - input_database\gcbm_input.db
+    - input_database\modify_turnover_parameters.py
+  modify_spinup_parameters:
+    cmd: C:\Develop\Python\Python37\python.exe input_database\modify_spinup_parameters.py
+      input_database\gcbm_input.db
+    wdir: Standalone_GCBM
+    deps:
+    - input_database\gcbm_input.db
+    - input_database\modify_spinup_parameters.py

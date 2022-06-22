@@ -63,3 +63,13 @@ stages:
     - path: input_database\modify_decay_parameters.py
       md5: 55588114a0e80fca083fbfd27bda22ae
       size: 1207
+  modify_spinup_parameters:
+    cmd: C:\Develop\Python\Python37\python.exe input_database\modify_spinup_parameters.py
+      input_database\gcbm_input.db
+    deps:
+    - path: input_database\gcbm_input.db
+      md5: 2a45658203681155809bdc92a05038b8
+      size: 1544192
+    - path: input_database\modify_spinup_parameters.py
+      md5: b51a7083a95558aa11726b514fc9db78
+      size: 1158
