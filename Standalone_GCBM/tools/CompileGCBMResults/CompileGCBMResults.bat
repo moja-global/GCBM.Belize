@@ -2,7 +2,7 @@
 
 REM *************************** USER CONFIGURATION ***************************
 REM Set Python path - change this to where Python is installed on your machine.
-set GCBM_PYTHON=C:\Python37
+set GCBM_PYTHON=C:\Develop\Python\Python37
 REM **************************************************************************
 
 set PYTHONPATH=%GCBM_PYTHON%

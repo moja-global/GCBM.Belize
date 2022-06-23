@@ -48,7 +48,7 @@ stages:
       input_database\gcbm_input.db
     deps:
     - path: input_database\gcbm_input.db
-      md5: f8fff14f14bf70dbfd520cea7bce8c48
+      md5: d0d039c30cd495144f4e58e2d3e04cf1
       size: 1544192
     - path: input_database\modify_turnover_parameters.py
       md5: 84825f833a0dba6c65db9aedf94797a2
@@ -114,3 +114,30 @@ stages:
     - path: provider_config.json
       md5: 73ea905de1ec488f940f9fec4a3189c4
       size: 978
+  create_tiffs:
+    cmd: create_tiffs.bat
+    deps:
+    - path: create_tiffs.bat
+      md5: bec4a5fd158f970c52309eaeb6d55c33
+      size: 1034
+    - path: create_tiffs.py
+      md5: 24fe644eb30b67b82ea38f3c6e6211ad
+      size: 5675
+  compile_results:
+    cmd: compileGCBMResults.bat
+    deps:
+    - path: ../../gcbm_project/output/gcbm_output.db
+      md5: 49858ebdab7a6fe62ed7756cdac833ac
+      size: 4575232
+    - path: ../../processed_output/compiled_gcbm_output.db
+      md5: 0650e1265e4e2596ef7e20448308b488
+      size: 3350528
+    - path: compileGCBMResults.bat
+      md5: 9d9372e41d38eac02690ea9104cdaeba
+      size: 551
+    - path: compileresults.json
+      md5: c1664af923128ae8641b521fc330f439
+      size: 17854
+    - path: compileresults.py
+      md5: da1f6e4096059269778566aac39d4c72
+      size: 14135

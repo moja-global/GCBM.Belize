@@ -68,3 +68,18 @@ stages:
     - ..\tools\GCBM\moja.cli.exe
     - gcbm_config.cfg
     - provider_config.json
+  compile_results:
+    cmd: compileGCBMResults.bat
+    wdir: Standalone_GCBM\tools\CompileGCBMResults
+    deps:
+    - compileGCBMResults.bat
+    - compileresults.py
+    - compileresults.json
+    - ../../gcbm_project/output/gcbm_output.db
+    - ../../processed_output/compiled_gcbm_output.db
+  create_tiffs:
+    cmd: create_tiffs.bat
+    wdir: Standalone_GCBM\tools\CompileGCBMSpatialOutput
+    deps:
+    - create_tiffs.bat
+    - create_tiffs.py
