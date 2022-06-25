@@ -1,12 +1,9 @@
 <div align="center">
     <a href="https://moja.global/"><img src="https://github.com/moja-global.png" width="18%" height="18%"></a>
     <h1>GCBM.Belize</h1>
-    <p> GCBM implementation in Belize, initially with a focus on DOM modelling. This project is based on the Standalone Template for the GCBM, downloaded from https://carbon.nfis.org/cbm </p>
-
-    Disclaimer: The calculations performed in this repository are not official and do not represent the Government of Belize in any way.
-    
+    <p> GCBM implementation in Belize, initially with a focus on DOM modelling. This project is based on the Standalone Template for the GCBM, downloaded from https://carbon.nfis.org/cbm </p>    
 </div>
-
+<h3>Disclaimer : The calculations performed in this repository are not official and do not represent the Government of Belize in any way.</h3>
 <hr>
 <details>
   <summary>Table of Contents</summary>
