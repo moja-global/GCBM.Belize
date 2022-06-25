@@ -78,6 +78,9 @@ To run the project (the detailed version):
             From the command prompt in tools\python_3_installer, type:
             install_python
             
+    To install the dependencies required, navigate to the Standalone_GCBM folder and run,
+    pip install -r requirements.txt
+
     If you do not have MS Access installed, you will need to install a driver in
     order to connect to MS Access databases. The driver can be found in:
     tools\python_3_installer\x64\AccessDatabaseEngine_x64.exe
