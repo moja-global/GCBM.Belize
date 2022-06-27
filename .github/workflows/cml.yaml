@@ -1,0 +1,71 @@
+name: Generate CML Report
+ 
+on: [push]
+ 
+jobs:
+  generate_cml_report:
+    runs-on: ubuntu-latest
+    container: 
+      image: ghcr.io/harshcasper/flint.gcbm-cloud
+      ports:
+        - "8080:8080"
+    steps:
+      - name: Remove GCBM output
+        id: remove_gcbm_output
+        run: |
+          rm -rf Standalone_GCBM/gcbm_project/output
+      - name: Setup Node # Need this for the CML setup
+        id: setup_node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14' # Min version 12 is needed
+      - name: Setup CML
+        id: setup_cml
+        uses: iterative/setup-cml@v1
+      - name: Checkout gcbm-container branch
+        id : checkout_gcbm_container_branch
+        uses: actions/checkout@v2
+        with:
+          ref: gcbm-container
+      - name: Install simplejson
+        id: install_simplejson
+        run: pip install simplejson
+      - name: Install sqlalchemy
+        id: install_sqlalchemy
+        run: pip install sqlalchemy
+      - name: Install pandas
+        id: install_pandas
+        run: pip install pandas
+      - name: Install matplotlib
+        id: install_matplotlib
+        run: pip install matplotlib
+      - name: Run Moja CLI
+        id: run_moja_cli
+        run: |
+          echo "[1/4] Change working directory to gcbm_project"
+          cd Standalone_GCBM/gcbm_project
+          
+          echo "[2/4] Run Moja CLI"
+          /opt/gcbm/moja.cli --config_file gcbm_config.cfg --config_provider provider_config.json 2> temp.md
+          
+          echo "[3/4] Compile GCBM Results"
+          python3 ../tools/CompileGCBMResults/compileresults.py sqlite:///output/gcbm_output.db --output_db sqlite:///output/compiled_gcbm_output.db
+          
+          echo "[4/4] Generate Biomass Graph"
+          python3 create_biomass_graph.py
+
+#       - name: CML Upload Report
+#         id: cml_upload_report
+#         env:
+#           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#         run: |
+#           cml-send-comment Standalone_GCBM/gcbm_project/temp.md
+
+      - name: CML Publish Graph
+        id: cml_publish_graph
+        env:
+          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cml publish Standalone_GCBM/gcbm_project/output/total_biomass_mt.png --md >> graph.md
+          cml-send-comment graph.md
+          
