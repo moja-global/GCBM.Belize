@@ -1,17 +1,21 @@
 stages:
   tiler:
     cmd: C:\Develop\Python\Python37\python.exe ..\..\tools\Tiler\tiler.py
-    wdir: Standalone_GCBM/layers/tiled
+    wdir: Standalone_GCBM\layers\tiled
     deps:
     - ..\..\tools\Tiler\tiler.py
     - ..\raw\environment
     - ..\raw\inventory
+    outs:
+    - ..\..\logs\tiler_log.txt
   recliner2gcbm_x64:
     cmd: tools\Recliner2GCBM-x64\Recliner2GCBM.exe -c input_database\recliner2gcbm_config.json
     wdir: Standalone_GCBM
     deps:
     - input_database\gcbm_input.db
     - tools\recliner2gcbm-x64\recliner2gcbm.exe
+    - input_database\Growth_Curves.csv
+    - input_database\recliner2gcbm_config.json
   add_species_vol_to_bio:
     cmd: C:\Develop\Python\Python37\python.exe input_database\add_species_vol_to_bio.py
       input_database\gcbm_input.db
@@ -58,16 +62,29 @@ stages:
     - gcbm_project\templates
     - input_database\gcbm_input.db
     - layers\tiled
-    - logs
     - tools\tiler\update_gcbm_config.py
+    outs:
+    - logs\update_gcbm_config.log
   run_gcbm:
     cmd: ..\tools\GCBM\moja.cli.exe --config_file gcbm_config.cfg --config_provider
       provider_config.json
-    wdir: Standalone_GCBM/gcbm_project
+    wdir: Standalone_GCBM\gcbm_project
     deps:
     - ..\tools\GCBM\moja.cli.exe
     - gcbm_config.cfg
     - provider_config.json
+    outs:
+    - ..\logs\Moja_Debug.log
+  
+  create_tiffs:
+    cmd: create_tiffs.bat
+    wdir: Standalone_GCBM\tools\CompileGCBMSpatialOutput
+    deps:
+    - create_tiffs.bat
+    - create_tiffs.py
+    outs:
+    - ..\..\logs\create_tiffs.log
+    
   compile_results:
     cmd: compileGCBMResults.bat
     wdir: Standalone_GCBM\tools\CompileGCBMResults
@@ -75,11 +92,5 @@ stages:
     - compileGCBMResults.bat
     - compileresults.py
     - compileresults.json
-    - ../../gcbm_project/output/gcbm_output.db
-    - ../../processed_output/compiled_gcbm_output.db
-  create_tiffs:
-    cmd: create_tiffs.bat
-    wdir: Standalone_GCBM\tools\CompileGCBMSpatialOutput
-    deps:
-    - create_tiffs.bat
-    - create_tiffs.py
+    - ..\..\gcbm_project\output\gcbm_output.db
+    - ..\..\processed_output\compiled_gcbm_output.db
