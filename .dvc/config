@@ -1,2 +1,4 @@
 ['remote "gcbm_belize_logs"']
     url = gdrive://1dfden8UbXVOD3NXB1KgLdec0D5OWnD0j
+['remote "processed_output"']
+    url = gdrive://1Q91hL8B4sv6CrC2rqPQWKDDXFaaFjXx3

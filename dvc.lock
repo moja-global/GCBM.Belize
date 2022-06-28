@@ -41,14 +41,14 @@ stages:
       md5: d819622c127ca778f99d2e8eb9e5efc4
       size: 3012
     - path: input_database\gcbm_input.db
-      md5: 106a885f18b29417d6cd2efa0093b60a
+      md5: 2a45658203681155809bdc92a05038b8
       size: 1544192
   modify_root_parameters:
     cmd: C:\Develop\Python\Python37\python.exe input_database\modify_root_parameters.py
       input_database\gcbm_input.db
     deps:
     - path: input_database\gcbm_input.db
-      md5: 366e839cf0890838c636b9c1ae63c443
+      md5: 4fc4c1e8ca34fc4ab4c68e9c05ab6aac
       size: 1544192
     - path: input_database\modify_root_parameters.py
       md5: bbb360bcc55ad3bb0aaf4bdac1802a5e
@@ -58,7 +58,7 @@ stages:
       input_database\gcbm_input.db
     deps:
     - path: input_database\gcbm_input.db
-      md5: fc11d49cacd4dcd22429495479e848f9
+      md5: 11b30542fd45bd6c830b1b3b7fa8cb9a
       size: 1544192
     - path: input_database\modify_turnover_parameters.py
       md5: 84825f833a0dba6c65db9aedf94797a2
@@ -68,7 +68,7 @@ stages:
       input_database\gcbm_input.db
     deps:
     - path: input_database\gcbm_input.db
-      md5: f8fff14f14bf70dbfd520cea7bce8c48
+      md5: 298257484f9bd0d0b6dc8129b65211dc
       size: 1544192
     - path: input_database\modify_decay_parameters.py
       md5: 55588114a0e80fca083fbfd27bda22ae
@@ -78,7 +78,7 @@ stages:
       input_database\gcbm_input.db
     deps:
     - path: input_database\gcbm_input.db
-      md5: 4fc4c1e8ca34fc4ab4c68e9c05ab6aac
+      md5: 4481b6b42bff05c380d4981cc6ce47a5
       size: 1544192
     - path: input_database\modify_spinup_parameters.py
       md5: b51a7083a95558aa11726b514fc9db78
@@ -122,11 +122,11 @@ stages:
       md5: 4ba9c157d6b3d8462bae8be993063fcc
       size: 176
     - path: provider_config.json
-      md5: 5e2d7a51341de83dc259ffecda8d2dcc
+      md5: 73ea905de1ec488f940f9fec4a3189c4
       size: 978
     outs:
     - path: ..\logs\Moja_Debug.log
-      md5: 9dcda74e9c33edd986845e156c2f602c
+      md5: 6a97984d30efc93aedb38a75027c438c
       size: 269719
   create_tiffs:
     cmd: create_tiffs.bat
@@ -139,16 +139,20 @@ stages:
       size: 5675
     outs:
     - path: ..\..\logs\create_tiffs.log
-      md5: 1ad1d72d3e22c0d17637c8e6b21b6edc
+      md5: d64ebfa66c7d8661c723421ccd1df690
       size: 181890
+    - path: ..\..\processed_output\spatial
+      md5: afbd3bbd39b0e2e60eb77d219fc477c3.dir
+      size: 94234693
+      nfiles: 2718
   compile_results:
     cmd: compileGCBMResults.bat
     deps:
     - path: ..\..\gcbm_project\output\gcbm_output.db
-      md5: 657b15248b7aa2cfc3a26226d412525d
+      md5: a75c4fb276b75f500f8d936861b58d83
       size: 4575232
     - path: ..\..\processed_output\compiled_gcbm_output.db
-      md5: 5551359d901e95d04dfcbd989f7420d7
+      md5: fb32b18c4ad4ed17a6a69cc03ec3a10e
       size: 3350528
     - path: compileGCBMResults.bat
       md5: 9d9372e41d38eac02690ea9104cdaeba
