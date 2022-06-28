@@ -84,6 +84,7 @@ stages:
     - create_tiffs.py
     outs:
     - ..\..\logs\create_tiffs.log
+    - ..\..\processed_output\spatial
     
   compile_results:
     cmd: compileGCBMResults.bat
