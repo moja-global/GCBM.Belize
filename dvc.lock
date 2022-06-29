@@ -16,11 +16,14 @@ stages:
       nfiles: 4
     outs:
     - path: ..\..\logs\tiler_log.txt
-      md5: 06800593607640cfc36608b3430b1356
+      md5: b7ad58655d57128417599d7cd4206a43
       size: 289
   recliner2gcbm_x64:
     cmd: tools\Recliner2GCBM-x64\Recliner2GCBM.exe -c input_database\recliner2gcbm_config.json
     deps:
+    - path: input_database\ArchiveIndex_Beta_Install.mdb
+      md5: cd2c5c746b9e58b10625848874852d02
+      size: 3825664
     - path: input_database\Growth_Curves.csv
       md5: da8966db429badd5475f6c78c0bf6e2b
       size: 15236
@@ -48,7 +51,7 @@ stages:
       input_database\gcbm_input.db
     deps:
     - path: input_database\gcbm_input.db
-      md5: 366e839cf0890838c636b9c1ae63c443
+      md5: ba8eee85ce756a04bbcc04d0a71e8811
       size: 1544192
     - path: input_database\modify_root_parameters.py
       md5: bbb360bcc55ad3bb0aaf4bdac1802a5e
@@ -57,8 +60,11 @@ stages:
     cmd: C:\Develop\Python\Python37\python.exe input_database\modify_turnover_parameters.py
       input_database\gcbm_input.db
     deps:
+    - path: input_database\custom_parameters\turnover_parameters.csv
+      md5: 854a070d01b3cedc5a54e00906669ca2
+      size: 1023
     - path: input_database\gcbm_input.db
-      md5: fc11d49cacd4dcd22429495479e848f9
+      md5: f5684861fbebae9c53648b3fed543c6b
       size: 1544192
     - path: input_database\modify_turnover_parameters.py
       md5: 84825f833a0dba6c65db9aedf94797a2
@@ -67,8 +73,11 @@ stages:
     cmd: C:\Develop\Python\Python37\python.exe input_database\modify_turnover_parameters.py
       input_database\gcbm_input.db
     deps:
+    - path: input_database\custom_parameters\decay_parameters.csv
+      md5: 6c21ebbe9e192e5502f5510ddb89542e
+      size: 1496
     - path: input_database\gcbm_input.db
-      md5: f8fff14f14bf70dbfd520cea7bce8c48
+      md5: c49d2c925246bc451c243198a7c8cd66
       size: 1544192
     - path: input_database\modify_decay_parameters.py
       md5: 55588114a0e80fca083fbfd27bda22ae
@@ -112,7 +121,7 @@ stages:
       provider_config.json
     deps:
     - path: ..\input_database\gcbm_input.db
-      md5: 4fc4c1e8ca34fc4ab4c68e9c05ab6aac
+      md5: f5684861fbebae9c53648b3fed543c6b
       size: 1544192
     - path: ..\tools\GCBM\moja.cli.exe
       md5: 22ea736fd836612c2d9a8330572cdcff
@@ -121,18 +130,22 @@ stages:
       md5: 4ba9c157d6b3d8462bae8be993063fcc
       size: 176
     - path: output\gcbm_output.db
-      md5: bd370a237759338387efd0f0627eb0bc
-      size: 1134592
+      md5: 40b24b011fca79bf52b345050689ed66
+      size: 1142784
     - path: provider_config.json
       md5: 73ea905de1ec488f940f9fec4a3189c4
       size: 978
     outs:
     - path: ..\logs\Moja_Debug.log
-      md5: 2a2aa84a0412aed7ae444c49d7d7c039
+      md5: 244b80fbc5a1bbc5bde930b51c548f57
       size: 269719
   create_tiffs:
     cmd: create_tiffs.bat
     deps:
+    - path: ..\..\gcbm_project\output
+      md5: 1e10b3929da64faac3b0cf6fbf3d79e4.dir
+      size: 4583424
+      nfiles: 1
     - path: create_tiffs.bat
       md5: bec4a5fd158f970c52309eaeb6d55c33
       size: 1034
@@ -141,20 +154,20 @@ stages:
       size: 5675
     outs:
     - path: ..\..\logs\create_tiffs.log
-      md5: d64ebfa66c7d8661c723421ccd1df690
-      size: 181890
+      md5: bb0856cc739ba7a8de0cc6aa4ba124ab
+      size: 41
     - path: ..\..\processed_output\spatial
-      md5: afbd3bbd39b0e2e60eb77d219fc477c3.dir
-      size: 94234693
-      nfiles: 2718
+      md5: d751713988987e9331980363e24189ce.dir
+      size: 0
+      nfiles: 0
   compile_results:
     cmd: compileGCBMResults.bat
     deps:
     - path: ..\..\gcbm_project\output\gcbm_output.db
-      md5: 0dc49a281c6fc0f57a2c2d6f8ce87435
-      size: 4575232
+      md5: 7aeb90a05dfdf7f583d9bb8cec134973
+      size: 4583424
     - path: ..\..\processed_output\compiled_gcbm_output.db
-      md5: 3e540a8865e70a8e2d060e45326e976e
+      md5: 8dd17bdf08722e95fd3015c16331c77e
       size: 3350528
     - path: compileGCBMResults.bat
       md5: 9d9372e41d38eac02690ea9104cdaeba

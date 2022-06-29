@@ -16,6 +16,7 @@ stages:
     - tools\recliner2gcbm-x64\recliner2gcbm.exe
     - input_database\Growth_Curves.csv
     - input_database\recliner2gcbm_config.json
+    - input_database\ArchiveIndex_Beta_Install.mdb
   add_species_vol_to_bio:
     cmd: C:\Develop\Python\Python37\python.exe input_database\add_species_vol_to_bio.py
       input_database\gcbm_input.db
@@ -37,6 +38,7 @@ stages:
     deps:
     - input_database\gcbm_input.db
     - input_database\modify_decay_parameters.py
+    - input_database\custom_parameters\decay_parameters.csv
   modify_turnover_parameters:
     cmd: C:\Develop\Python\Python37\python.exe input_database\modify_turnover_parameters.py
       input_database\gcbm_input.db
@@ -44,6 +46,7 @@ stages:
     deps:
     - input_database\gcbm_input.db
     - input_database\modify_turnover_parameters.py
+    - input_database\custom_parameters\turnover_parameters.csv
   modify_spinup_parameters:
     cmd: C:\Develop\Python\Python37\python.exe input_database\modify_spinup_parameters.py
       input_database\gcbm_input.db
@@ -84,7 +87,7 @@ stages:
     deps:
     - create_tiffs.bat
     - create_tiffs.py
-    - ..\..\ gcbm_project\output
+    - ..\..\gcbm_project\output
     outs:
     - ..\..\logs\create_tiffs.log
     - ..\..\processed_output\spatial
