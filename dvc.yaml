@@ -58,7 +58,7 @@ stages:
       --log_path logs
     wdir: Standalone_GCBM
     deps:
-    - gcbm_project
+    # - gcbm_project
     - gcbm_project\templates
     - input_database\gcbm_input.db
     - layers\tiled
@@ -73,6 +73,8 @@ stages:
     - ..\tools\GCBM\moja.cli.exe
     - gcbm_config.cfg
     - provider_config.json
+    - ..\input_database\gcbm_input.db
+    - output\gcbm_output.db
     outs:
     - ..\logs\Moja_Debug.log
   
@@ -82,6 +84,7 @@ stages:
     deps:
     - create_tiffs.bat
     - create_tiffs.py
+    - ..\..\ gcbm_project\output
     outs:
     - ..\..\logs\create_tiffs.log
     - ..\..\processed_output\spatial
