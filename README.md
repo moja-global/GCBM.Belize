@@ -11,8 +11,9 @@
     <li>
         <a href="#technology-stack">Technology Stack</a>
     </li>
-    <li><a href="#installation-and-usage-instructions">Installation and usage instructions</a></li>
+    <li><a href="#installation-and-usage-instructions-on-windows">Installation and usage instructions on Windows</a></li>
     <li><a href='#custom-configuration-for-belize'>Custom configuration for Belize</li>
+    <li><a href='#docker-based-setup'>Docker-based setup</li>
     <li><a href="#postprocessing-and-sensitivity-analysis">Postprocessing and sensitivity analysis</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#faq-and-other-questions">FAQ and Other Questions</a></li>
@@ -29,7 +30,7 @@
 - [R](https://www.r-project.org/)
 
 
-## Installation and usage instructions
+## Installation and usage instructions on Windows
 
 1. Clone the repository
 
@@ -63,9 +64,65 @@ The `Standalone_GCBM\run_all.bat` file includes all the steps that were taken to
 
 Steps 3, 4 and 5 can be enabled/disabled in the run_all.bat file to perform a sensitivity analysis on the DOM pools
 
+## Docker-based setup
+
+1. Clone the `gcbm-container` branch of [GCBM.Belize](https://github.com/moja-global/GCBM.Belize) using the command
+
+      ```git clone -b gcbm-container https://github.com/moja-global/gcbm.belize```
+
+2. Navigate into `GCBM.Belize` 
+
+      ```cd gcbm.belize```
+
+3. Use docker-compose to build the image
+
+      ```docker-compose up -d```
+
+4. Run the container using the command
+
+      ``` docker exec -it gcbm-belize /bin/bash ```
+
+5. Inside the running docker container, run 
+
+      ```cd /server/gcbm_project```
+
+6. Start the simulation using 
+
+    ```/opt/gcbm/moja.cli --config_file gcbm_config.cfg --config_provider provider_config.json``` 
+
+If there are existing images cached on your machine you may need to `docker pull ghcr.io/moja-global/rest_api_gcbm:master` and build the container using `docker-compose -d --force-recreate`
+
+## Docker-based setup
+
+1. Clone the `gcbm-container` branch of [GCBM.Belize](https://github.com/moja-global/GCBM.Belize) using the command
+
+      ```git clone -b gcbm-container https://github.com/moja-global/gcbm.belize```
+
+2. Navigate into `GCBM.Belize` 
+
+      ```cd gcbm.belize```
+
+3. Use docker-compose to build the image
+
+      ```docker-compose up -d```
+
+4. Run the container using the command
+
+      ``` docker exec -it gcbm-belize /bin/bash ```
+
+5. Inside the running docker container, run 
+
+      ```cd /server/gcbm_project```
+
+6. Start the simulation using 
+
+    ```/opt/gcbm/moja.cli --config_file gcbm_config.cfg --config_provider provider_config.json``` 
+
+If there are existing images cached on your machine you may need to `docker pull ghcr.io/moja-global/rest_api_gcbm:master` and build the container using `docker-compose -d --force-recreate`
+
 ## Postprocessing and sensitivity analysis
 
-- Postprocessing codes using R are included in the Postprocessing folder for reference purposes.
+Postprocessing codes using R are included in the Postprocessing folder for reference purposes.
 
 If you are going to use this coded, we recommend to use [Rstudio](https://www.rstudio.com/) and open the `Postprocessing\GCBM_Belize_Sensitivity.Rproj` file, the [renv](https://rstudio.github.io/renv/articles/renv.html) package was used for library management, and a renv.lock file with the required packages is included
 
