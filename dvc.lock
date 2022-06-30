@@ -64,20 +64,20 @@ stages:
       md5: 854a070d01b3cedc5a54e00906669ca2
       size: 1023
     - path: input_database\gcbm_input.db
-      md5: fc11d49cacd4dcd22429495479e848f9
+      md5: fb50dc1cf6ae35aca8aa1adde963583a
       size: 1544192
     - path: input_database\modify_turnover_parameters.py
       md5: 84825f833a0dba6c65db9aedf94797a2
       size: 1217
   modify_decay_parameters:
-    cmd: C:\Develop\Python\Python37\python.exe input_database\modify_turnover_parameters.py
+    cmd: C:\Develop\Python\Python37\python.exe input_database\modify_decay_parameters.py
       input_database\gcbm_input.db
     deps:
     - path: input_database\custom_parameters\decay_parameters.csv
       md5: 6c21ebbe9e192e5502f5510ddb89542e
       size: 1496
     - path: input_database\gcbm_input.db
-      md5: f8fff14f14bf70dbfd520cea7bce8c48
+      md5: 91cb126bd58dfcf6833cebab18371fc0
       size: 1544192
     - path: input_database\modify_decay_parameters.py
       md5: 55588114a0e80fca083fbfd27bda22ae
@@ -87,41 +87,40 @@ stages:
       input_database\gcbm_input.db
     deps:
     - path: input_database\gcbm_input.db
-      md5: 4fc4c1e8ca34fc4ab4c68e9c05ab6aac
+      md5: d9aa6a8ba74a3bf91383d429ef90350e
       size: 1544192
     - path: input_database\modify_spinup_parameters.py
       md5: b51a7083a95558aa11726b514fc9db78
       size: 1158
   update_GCBM_configuration:
-    cmd: C:\Develop\Python\Python37\python.exe tools\tiler\update_gcbm_config.py --layer_root
-      layers\tiled --template_path gcbm_project\templates --output_path gcbm_project
-      --input_db_path input_database\gcbm_input.db --start_year 1900 --end_year 2050
-      --log_path logs
+    cmd: update_gcbm_configuration.bat
     deps:
-    - path: gcbm_project\templates
-      md5: 047934a7ec23802205598f4c06e8ed39.dir
-      size: 115691
-      nfiles: 11
-    - path: input_database\gcbm_input.db
-      md5: 4fc4c1e8ca34fc4ab4c68e9c05ab6aac
+    - path: ..\input_database\gcbm_input.db
+      md5: d9aa6a8ba74a3bf91383d429ef90350e
       size: 1544192
-    - path: layers\tiled
+    - path: ..\layers\tiled
       md5: bd8cdc0961b99a871bedc92b0dcadc89.dir
       size: 44571
       nfiles: 8
-    - path: tools\tiler\update_gcbm_config.py
+    - path: ..\tools\tiler\update_gcbm_config.py
       md5: 3e04cbc0ee3588cc13f711750b8cda1e
       size: 18002
+    - path: templates
+      md5: 047934a7ec23802205598f4c06e8ed39.dir
+      size: 115691
+      nfiles: 11
+    - path: update_gcbm_configuration.bat
+      md5: bc6bf72b76be2aecf7b29ca22e5998f2
+      size: 1038
     outs:
-    - path: logs\update_gcbm_config.log
-      md5: 28feba44182f2183fe8b484f0c2d21f1
+    - path: ..\logs\update_gcbm_config.log
+      md5: b195ec9ca9efc22ac40a46e7e47bcc1d
       size: 586
   run_gcbm:
-    cmd: ..\tools\GCBM\moja.cli.exe --config_file gcbm_config.cfg --config_provider
-      provider_config.json
+    cmd: run_gcbm.bat
     deps:
     - path: ..\input_database\gcbm_input.db
-      md5: 4fc4c1e8ca34fc4ab4c68e9c05ab6aac
+      md5: d9aa6a8ba74a3bf91383d429ef90350e
       size: 1544192
     - path: ..\tools\GCBM\moja.cli.exe
       md5: 22ea736fd836612c2d9a8330572cdcff
@@ -130,22 +129,25 @@ stages:
       md5: 4ba9c157d6b3d8462bae8be993063fcc
       size: 176
     - path: output\gcbm_output.db
-      md5: 50ae5f13bf4a267adebfed3f098b36a4
-      size: 1134592
+      md5: 0809a7ba9171236d8e1d07dba4fb3fd1
+      size: 1138688
     - path: provider_config.json
-      md5: 73ea905de1ec488f940f9fec4a3189c4
+      md5: 5e2d7a51341de83dc259ffecda8d2dcc
       size: 978
+    - path: run_gcbm.bat
+      md5: d850f4fa2697cb2eaa87e00b553768c8
+      size: 789
     outs:
     - path: ..\logs\Moja_Debug.log
-      md5: 15ce86120afc81839a0dac56840e1e2f
+      md5: 227733cbe126b2510ddad5523d8ae88b
       size: 269719
   create_tiffs:
     cmd: create_tiffs.bat
     deps:
     - path: ..\..\gcbm_project\output
-      md5: 3d5abe13f80fce88a75f77a4e3a04fe2.dir
-      size: 1134592
-      nfiles: 1
+      md5: 30f9e67364c2aed97df5c48493d188ac.dir
+      size: 1187333
+      nfiles: 49
     - path: create_tiffs.bat
       md5: bec4a5fd158f970c52309eaeb6d55c33
       size: 1034
@@ -154,20 +156,20 @@ stages:
       size: 5675
     outs:
     - path: ..\..\logs\create_tiffs.log
-      md5: a985aa2627b922a85605f4700f272c39
-      size: 181890
+      md5: 395be9f1608c0e5e368b1c851bee4a25
+      size: 181816
     - path: ..\..\processed_output\spatial
-      md5: afbd3bbd39b0e2e60eb77d219fc477c3.dir
-      size: 94234693
+      md5: 17fc11a957a2469c611dfdcaa9aa2b0f.dir
+      size: 94478268
       nfiles: 2718
   compile_results:
     cmd: compileGCBMResults.bat
     deps:
     - path: ..\..\gcbm_project\output\gcbm_output.db
-      md5: f66091453401677ca4073e74e774ec5e
-      size: 4575232
+      md5: c59b1085e8682d646b2f5e874161504f
+      size: 4579328
     - path: ..\..\processed_output\compiled_gcbm_output.db
-      md5: 50f1fbe47c97cc06fd0000630d487f25
+      md5: 796e0ea84cfa73e7aef4c0ac894773df
       size: 3350528
     - path: compileGCBMResults.bat
       md5: 9d9372e41d38eac02690ea9104cdaeba
@@ -182,25 +184,25 @@ stages:
     cmd: C:\Develop\R-4.1.3\bin\R.exe CMD BATCH Summarize_DOM_Stocks.R
     deps:
     - path: ..\Standalone_GCBM\processed_output\compiled_gcbm_output.db
-      md5: 50f1fbe47c97cc06fd0000630d487f25
+      md5: 796e0ea84cfa73e7aef4c0ac894773df
       size: 3350528
     - path: Rplots.pdf
-      md5: 67b745a9d29aa182c462e5eb35863f94
-      size: 45763
+      md5: cabfb6e0d14f48a6a9c27f2b32a3d856
+      size: 57347
     - path: Summarize_DOM_Stocks.R
       md5: 6e592625d1b1bb030d32767f89214fa5
       size: 5805
     - path: Tables
-      md5: a0c47032513d4617d14dafa889706f92.dir
-      size: 753009
+      md5: 24c024ea4bc5411ae128b9408b1e126d.dir
+      size: 1001663
       nfiles: 17
     outs:
     - path: Figures\Belize_Sensitivity_TropicalDry.png
-      md5: ad0f3c4ff72b2baefa0c4688d5a54784
-      size: 104885
+      md5: d32cc263ace95cc9a32657690d84e25c
+      size: 106765
     - path: Figures\Belize_Sensitivity_TropicalMoist.png
-      md5: 1252042782c66688449feb2cfb753810
-      size: 106807
+      md5: c47498035bd2e06c8768159cbbbbbf33
+      size: 108960
     - path: Figures\Belize_Sensitivity_TropicalPremontane.png
-      md5: a5ba2b16088996d4b4e62cd842aee84e
-      size: 109268
+      md5: bff265b81c51fd288e592b9e53885292
+      size: 110451

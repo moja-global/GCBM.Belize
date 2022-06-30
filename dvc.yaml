@@ -32,7 +32,7 @@ stages:
     - input_database\gcbm_input.db
     - input_database\modify_root_parameters.py
   modify_decay_parameters:
-    cmd: C:\Develop\Python\Python37\python.exe input_database\modify_turnover_parameters.py
+    cmd: C:\Develop\Python\Python37\python.exe input_database\modify_decay_parameters.py
       input_database\gcbm_input.db
     wdir: Standalone_GCBM
     deps:
@@ -55,24 +55,21 @@ stages:
     - input_database\gcbm_input.db
     - input_database\modify_spinup_parameters.py
   update_GCBM_configuration:
-    cmd: C:\Develop\Python\Python37\python.exe tools\tiler\update_gcbm_config.py --layer_root
-      layers\tiled --template_path gcbm_project\templates --output_path gcbm_project
-      --input_db_path input_database\gcbm_input.db --start_year 1900 --end_year 2050
-      --log_path logs
-    wdir: Standalone_GCBM
-    deps:
-    # - gcbm_project
-    - gcbm_project\templates
-    - input_database\gcbm_input.db
-    - layers\tiled
-    - tools\tiler\update_gcbm_config.py
-    outs:
-    - logs\update_gcbm_config.log
-  run_gcbm:
-    cmd: ..\tools\GCBM\moja.cli.exe --config_file gcbm_config.cfg --config_provider
-      provider_config.json
+    cmd: update_gcbm_configuration.bat
     wdir: Standalone_GCBM\gcbm_project
     deps:
+    - update_gcbm_configuration.bat
+    - templates
+    - ..\input_database\gcbm_input.db
+    - ..\layers\tiled
+    - ..\tools\tiler\update_gcbm_config.py
+    outs:
+    - ..\logs\update_gcbm_config.log
+  run_gcbm:
+    cmd: run_gcbm.bat
+    wdir: Standalone_GCBM\gcbm_project
+    deps:
+    - run_gcbm.bat
     - ..\tools\GCBM\moja.cli.exe
     - gcbm_config.cfg
     - provider_config.json
