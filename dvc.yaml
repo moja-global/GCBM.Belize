@@ -108,6 +108,12 @@ stages:
     deps:
     - Summarize_DOM_Stocks.R
     - ..\Standalone_GCBM\processed_output\compiled_gcbm_output.db
-    - Figures
     - Tables
     - Rplots.pdf
+    plots:
+        - Figures\Belize_Sensitivity_TropicalDry.png:
+            cache: false
+        - Figures\Belize_Sensitivity_TropicalMoist.png:
+            cache: false
+        - Figures\Belize_Sensitivity_TropicalPremontane.png:
+            cache: false
