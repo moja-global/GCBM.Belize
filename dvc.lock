@@ -16,7 +16,7 @@ stages:
       nfiles: 4
     outs:
     - path: ..\..\logs\tiler_log.txt
-      md5: b7ad58655d57128417599d7cd4206a43
+      md5: 5256a159dde5d46891f9f04f292abbc7
       size: 289
   recliner2gcbm_x64:
     cmd: tools\Recliner2GCBM-x64\Recliner2GCBM.exe -c input_database\recliner2gcbm_config.json
@@ -51,7 +51,7 @@ stages:
       input_database\gcbm_input.db
     deps:
     - path: input_database\gcbm_input.db
-      md5: ba8eee85ce756a04bbcc04d0a71e8811
+      md5: 366e839cf0890838c636b9c1ae63c443
       size: 1544192
     - path: input_database\modify_root_parameters.py
       md5: bbb360bcc55ad3bb0aaf4bdac1802a5e
@@ -64,7 +64,7 @@ stages:
       md5: 854a070d01b3cedc5a54e00906669ca2
       size: 1023
     - path: input_database\gcbm_input.db
-      md5: f5684861fbebae9c53648b3fed543c6b
+      md5: fc11d49cacd4dcd22429495479e848f9
       size: 1544192
     - path: input_database\modify_turnover_parameters.py
       md5: 84825f833a0dba6c65db9aedf94797a2
@@ -77,7 +77,7 @@ stages:
       md5: 6c21ebbe9e192e5502f5510ddb89542e
       size: 1496
     - path: input_database\gcbm_input.db
-      md5: c49d2c925246bc451c243198a7c8cd66
+      md5: f8fff14f14bf70dbfd520cea7bce8c48
       size: 1544192
     - path: input_database\modify_decay_parameters.py
       md5: 55588114a0e80fca083fbfd27bda22ae
@@ -121,7 +121,7 @@ stages:
       provider_config.json
     deps:
     - path: ..\input_database\gcbm_input.db
-      md5: f5684861fbebae9c53648b3fed543c6b
+      md5: 4fc4c1e8ca34fc4ab4c68e9c05ab6aac
       size: 1544192
     - path: ..\tools\GCBM\moja.cli.exe
       md5: 22ea736fd836612c2d9a8330572cdcff
@@ -130,21 +130,21 @@ stages:
       md5: 4ba9c157d6b3d8462bae8be993063fcc
       size: 176
     - path: output\gcbm_output.db
-      md5: 40b24b011fca79bf52b345050689ed66
-      size: 1142784
+      md5: 50ae5f13bf4a267adebfed3f098b36a4
+      size: 1134592
     - path: provider_config.json
       md5: 73ea905de1ec488f940f9fec4a3189c4
       size: 978
     outs:
     - path: ..\logs\Moja_Debug.log
-      md5: 244b80fbc5a1bbc5bde930b51c548f57
+      md5: 15ce86120afc81839a0dac56840e1e2f
       size: 269719
   create_tiffs:
     cmd: create_tiffs.bat
     deps:
     - path: ..\..\gcbm_project\output
-      md5: 1e10b3929da64faac3b0cf6fbf3d79e4.dir
-      size: 4583424
+      md5: 3d5abe13f80fce88a75f77a4e3a04fe2.dir
+      size: 1134592
       nfiles: 1
     - path: create_tiffs.bat
       md5: bec4a5fd158f970c52309eaeb6d55c33
@@ -154,20 +154,20 @@ stages:
       size: 5675
     outs:
     - path: ..\..\logs\create_tiffs.log
-      md5: bb0856cc739ba7a8de0cc6aa4ba124ab
-      size: 41
+      md5: a985aa2627b922a85605f4700f272c39
+      size: 181890
     - path: ..\..\processed_output\spatial
-      md5: d751713988987e9331980363e24189ce.dir
-      size: 0
-      nfiles: 0
+      md5: afbd3bbd39b0e2e60eb77d219fc477c3.dir
+      size: 94234693
+      nfiles: 2718
   compile_results:
     cmd: compileGCBMResults.bat
     deps:
     - path: ..\..\gcbm_project\output\gcbm_output.db
-      md5: 7aeb90a05dfdf7f583d9bb8cec134973
-      size: 4583424
+      md5: f66091453401677ca4073e74e774ec5e
+      size: 4575232
     - path: ..\..\processed_output\compiled_gcbm_output.db
-      md5: 8dd17bdf08722e95fd3015c16331c77e
+      md5: 50f1fbe47c97cc06fd0000630d487f25
       size: 3350528
     - path: compileGCBMResults.bat
       md5: 9d9372e41d38eac02690ea9104cdaeba
@@ -178,3 +178,23 @@ stages:
     - path: compileresults.py
       md5: da1f6e4096059269778566aac39d4c72
       size: 14135
+  post_processing:
+    cmd: C:\Develop\R-4.1.3\bin\R.exe CMD BATCH Summarize_DOM_Stocks.R
+    deps:
+    - path: ..\Standalone_GCBM\processed_output\compiled_gcbm_output.db
+      md5: 50f1fbe47c97cc06fd0000630d487f25
+      size: 3350528
+    - path: Figures
+      md5: 46585d5f7f499adfd56e779b92a1f819.dir
+      size: 330845
+      nfiles: 3
+    - path: Rplots.pdf
+      md5: 77d0d64f9c70fc59f9290f1955362a58
+      size: 33970
+    - path: Summarize_DOM_Stocks.R
+      md5: 6e592625d1b1bb030d32767f89214fa5
+      size: 5805
+    - path: Tables
+      md5: 0673038c39809e8abbc598605d98012f.dir
+      size: 504582
+      nfiles: 17

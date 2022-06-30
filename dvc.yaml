@@ -101,3 +101,13 @@ stages:
     - compileresults.json
     - ..\..\gcbm_project\output\gcbm_output.db
     - ..\..\processed_output\compiled_gcbm_output.db
+
+  post_processing:
+    cmd: C:\Develop\R-4.1.3\bin\R.exe CMD BATCH Summarize_DOM_Stocks.R 
+    wdir: Postprocessing
+    deps:
+    - Summarize_DOM_Stocks.R
+    - ..\Standalone_GCBM\processed_output\compiled_gcbm_output.db
+    - Figures
+    - Tables
+    - Rplots.pdf
