@@ -23,12 +23,10 @@
   </br>
 </details>
 
-
 ## Technology Stack
 
 - [Python](https://www.python.org/)
 - [R](https://www.r-project.org/)
-
 
 ## Installation and usage instructions on Windows
 
@@ -63,34 +61,6 @@ The `Standalone_GCBM\run_all.bat` file includes all the steps that were taken to
 5. The disturbance regime of the spinup procedure was changed to "Generic mortality 40%" every 10 years to reflect the effect of Hurricanes in Belize `input_database\modify_spinup_parameters.py`
 
 Steps 3, 4 and 5 can be enabled/disabled in the run_all.bat file to perform a sensitivity analysis on the DOM pools
-
-## Docker-based setup
-
-1. Clone the `gcbm-container` branch of [GCBM.Belize](https://github.com/moja-global/GCBM.Belize) using the command
-
-      ```git clone -b gcbm-container https://github.com/moja-global/gcbm.belize```
-
-2. Navigate into `GCBM.Belize` 
-
-      ```cd gcbm.belize```
-
-3. Use docker-compose to build the image
-
-      ```docker-compose up -d```
-
-4. Run the container using the command
-
-      ``` docker exec -it gcbm-belize /bin/bash ```
-
-5. Inside the running docker container, run 
-
-      ```cd /server/gcbm_project```
-
-6. Start the simulation using 
-
-    ```/opt/gcbm/moja.cli --config_file gcbm_config.cfg --config_provider provider_config.json``` 
-
-If there are existing images cached on your machine you may need to `docker pull ghcr.io/moja-global/rest_api_gcbm:master` and build the container using `docker-compose -d --force-recreate`
 
 ## Docker-based setup
 
