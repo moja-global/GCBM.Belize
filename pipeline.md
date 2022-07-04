@@ -3,8 +3,11 @@
 
 <p>
 *Reminder : 
-- After you installed the requirements from [README](https://github.com/radistoubalidis/GCBM.Belize/blob/master/README.md "README" ) set your default local python path to your Python37 Installation path* or
-- *change `python` with your local Python37 path in `dvc.yml` 
+- First you need to install [dvc] (https://dvc.org/doc/install/windows)
+  - Setup your default remote storage [(help here)](https://dvc.org/doc/command-reference/remote/add)
+  - In every stage that has an outputs field dvc track the included files (i.e. `logs\tiler_log.txt` in the `tiler` stage) so after the completion of a stage that has outputs run `dvc push` to store the files in your remote
+- After you installed the requirements from [README](https://github.com/radistoubalidis/GCBM.Belize/blob/master/README.md "README" ) set your default local python path to your Python37 Installation path or
+- change `python` with your local Python37 path in `dvc.yml` *
 </p>
 
 #### Tiler
