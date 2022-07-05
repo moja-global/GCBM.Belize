@@ -22,7 +22,7 @@ stages:
     cmd: tools\Recliner2GCBM-x64\Recliner2GCBM.exe -c input_database\recliner2gcbm_config.json
     deps:
     - path: input_database\ArchiveIndex_Beta_Install.mdb
-      md5: 3d35045d441b81251d055cc371c3368b
+      md5: ccd49898148c11e263bebef271f1bee7
       size: 3948544
     - path: input_database\Growth_Curves.csv
       md5: da8966db429badd5475f6c78c0bf6e2b
@@ -129,7 +129,7 @@ stages:
       md5: 4ba9c157d6b3d8462bae8be993063fcc
       size: 176
     - path: output\gcbm_output.db
-      md5: fdd4681338d93b6e03ae37cfa7c6fac6
+      md5: 4e12b8a125c94386b6b3d789b8b0b946
       size: 196608
     - path: provider_config.json
       md5: 5e2d7a51341de83dc259ffecda8d2dcc
@@ -139,15 +139,15 @@ stages:
       size: 789
     outs:
     - path: ..\logs\Moja_Debug.log
-      md5: 8dbad22c42f2e38aeee7381794601b8c
+      md5: f59ac62ffc37162a4565ea5325430c51
       size: 269718
   create_tiffs:
     cmd: create_tiffs.bat
     deps:
     - path: ..\..\gcbm_project\output
-      md5: 199cf0848f9b2b446b0424d9194aeeba.dir
-      size: 371522
-      nfiles: 200
+      md5: 92dbbf8d8af17d1216d3c40edf1e04b7.dir
+      size: 196608
+      nfiles: 1
     - path: create_tiffs.bat
       md5: 7afea9d404dabd2efcd50ef3bde0f962
       size: 1034
@@ -156,8 +156,8 @@ stages:
       size: 5675
     outs:
     - path: ..\..\logs\create_tiffs.log
-      md5: 731a9b95f359484aa44d10bc8869adfd
-      size: 13200
+      md5: bcf53fee8b56bd47c2fa254348d0a9c5
+      size: 13330
     - path: ..\..\processed_output\spatial
       md5: adec720f98be523af9b862f10fb5d4a2.dir
       size: 6637371
@@ -166,10 +166,10 @@ stages:
     cmd: compileGCBMResults.bat
     deps:
     - path: ..\..\gcbm_project\output\gcbm_output.db
-      md5: 9f22ae21dfaf7063bd00ea0c5ddf81d0
+      md5: 9dba2cf84c3d92665291970677cfccd4
       size: 557056
     - path: ..\..\processed_output\compiled_gcbm_output.db
-      md5: 3bfa710cbedd2f7e278ee0cfa3a8e47f
+      md5: 08440f0362fbfdb67141e496d89c2257
       size: 3350528
     - path: compileGCBMResults.bat
       md5: 9d9372e41d38eac02690ea9104cdaeba
