@@ -16,14 +16,14 @@ stages:
       nfiles: 4
     outs:
     - path: ..\..\logs\tiler_log.txt
-      md5: 5256a159dde5d46891f9f04f292abbc7
+      md5: 64c7689ad54507ef3d9b434305ff676e
       size: 289
   recliner2gcbm_x64:
     cmd: tools\Recliner2GCBM-x64\Recliner2GCBM.exe -c input_database\recliner2gcbm_config.json
     deps:
     - path: input_database\ArchiveIndex_Beta_Install.mdb
-      md5: cd2c5c746b9e58b10625848874852d02
-      size: 3825664
+      md5: 3d35045d441b81251d055cc371c3368b
+      size: 3948544
     - path: input_database\Growth_Curves.csv
       md5: da8966db429badd5475f6c78c0bf6e2b
       size: 15236
@@ -110,11 +110,11 @@ stages:
       size: 115691
       nfiles: 11
     - path: update_gcbm_configuration.bat
-      md5: bc6bf72b76be2aecf7b29ca22e5998f2
+      md5: fdf70bd20ab1709935d11a647152efc7
       size: 1038
     outs:
     - path: ..\logs\update_gcbm_config.log
-      md5: b195ec9ca9efc22ac40a46e7e47bcc1d
+      md5: 6c3ecc8de9dfe94ce8b9054aedf28e6a
       size: 586
   run_gcbm:
     cmd: run_gcbm.bat
@@ -129,8 +129,8 @@ stages:
       md5: 4ba9c157d6b3d8462bae8be993063fcc
       size: 176
     - path: output\gcbm_output.db
-      md5: 0809a7ba9171236d8e1d07dba4fb3fd1
-      size: 1138688
+      md5: fdd4681338d93b6e03ae37cfa7c6fac6
+      size: 196608
     - path: provider_config.json
       md5: 5e2d7a51341de83dc259ffecda8d2dcc
       size: 978
@@ -139,37 +139,37 @@ stages:
       size: 789
     outs:
     - path: ..\logs\Moja_Debug.log
-      md5: 227733cbe126b2510ddad5523d8ae88b
-      size: 269719
+      md5: 8dbad22c42f2e38aeee7381794601b8c
+      size: 269718
   create_tiffs:
     cmd: create_tiffs.bat
     deps:
     - path: ..\..\gcbm_project\output
-      md5: 30f9e67364c2aed97df5c48493d188ac.dir
-      size: 1187333
-      nfiles: 49
+      md5: 199cf0848f9b2b446b0424d9194aeeba.dir
+      size: 371522
+      nfiles: 200
     - path: create_tiffs.bat
-      md5: bec4a5fd158f970c52309eaeb6d55c33
+      md5: 7afea9d404dabd2efcd50ef3bde0f962
       size: 1034
     - path: create_tiffs.py
       md5: 24fe644eb30b67b82ea38f3c6e6211ad
       size: 5675
     outs:
     - path: ..\..\logs\create_tiffs.log
-      md5: 395be9f1608c0e5e368b1c851bee4a25
-      size: 181816
+      md5: 731a9b95f359484aa44d10bc8869adfd
+      size: 13200
     - path: ..\..\processed_output\spatial
-      md5: 17fc11a957a2469c611dfdcaa9aa2b0f.dir
-      size: 94478268
-      nfiles: 2718
+      md5: adec720f98be523af9b862f10fb5d4a2.dir
+      size: 6637371
+      nfiles: 198
   compile_results:
     cmd: compileGCBMResults.bat
     deps:
     - path: ..\..\gcbm_project\output\gcbm_output.db
-      md5: c59b1085e8682d646b2f5e874161504f
-      size: 4579328
+      md5: 9f22ae21dfaf7063bd00ea0c5ddf81d0
+      size: 557056
     - path: ..\..\processed_output\compiled_gcbm_output.db
-      md5: 796e0ea84cfa73e7aef4c0ac894773df
+      md5: 3bfa710cbedd2f7e278ee0cfa3a8e47f
       size: 3350528
     - path: compileGCBMResults.bat
       md5: 9d9372e41d38eac02690ea9104cdaeba
@@ -184,25 +184,25 @@ stages:
     cmd: C:\Develop\R-4.1.3\bin\R.exe CMD BATCH Summarize_DOM_Stocks.R
     deps:
     - path: ..\Standalone_GCBM\processed_output\compiled_gcbm_output.db
-      md5: 796e0ea84cfa73e7aef4c0ac894773df
+      md5: 3bfa710cbedd2f7e278ee0cfa3a8e47f
       size: 3350528
     - path: Rplots.pdf
-      md5: cabfb6e0d14f48a6a9c27f2b32a3d856
-      size: 57347
+      md5: 5766e3e451a41a30c71d96cc8d7c57d8
+      size: 104810
     - path: Summarize_DOM_Stocks.R
       md5: 6e592625d1b1bb030d32767f89214fa5
       size: 5805
     - path: Tables
-      md5: 24c024ea4bc5411ae128b9408b1e126d.dir
-      size: 1001663
+      md5: d65a7d0d0d1edae3444aed8a60df8994.dir
+      size: 2014347
       nfiles: 17
     outs:
     - path: Figures\Belize_Sensitivity_TropicalDry.png
-      md5: d32cc263ace95cc9a32657690d84e25c
-      size: 106765
+      md5: e5cc83929756cea0500db3df04367b8f
+      size: 105377
     - path: Figures\Belize_Sensitivity_TropicalMoist.png
-      md5: c47498035bd2e06c8768159cbbbbbf33
-      size: 108960
+      md5: ae32efd84b56336270125ca8ffadb4c0
+      size: 102721
     - path: Figures\Belize_Sensitivity_TropicalPremontane.png
-      md5: bff265b81c51fd288e592b9e53885292
-      size: 110451
+      md5: f616fc174018549b4787db812dad43cd
+      size: 105072

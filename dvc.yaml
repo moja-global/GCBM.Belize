@@ -1,6 +1,9 @@
+vars:
+  - python_path: C:\Develop\Python\Python37\python.exe
+
 stages:
   tiler:
-    cmd: C:\Develop\Python\Python37\python.exe ..\..\tools\Tiler\tiler.py
+    cmd: ${python_path} ..\..\tools\Tiler\tiler.py
     wdir: Standalone_GCBM\layers\tiled
     deps:
     - ..\..\tools\Tiler\tiler.py
@@ -18,21 +21,21 @@ stages:
     - input_database\recliner2gcbm_config.json
     - input_database\ArchiveIndex_Beta_Install.mdb
   add_species_vol_to_bio:
-    cmd: C:\Develop\Python\Python37\python.exe input_database\add_species_vol_to_bio.py
+    cmd: ${python_path} input_database\add_species_vol_to_bio.py
       input_database\gcbm_input.db
     wdir: Standalone_GCBM
     deps:
     - input_database\add_species_vol_to_bio.py
     - input_database\gcbm_input.db
   modify_root_parameters:
-    cmd: C:\Develop\Python\Python37\python.exe input_database\modify_root_parameters.py
+    cmd: ${python_path} input_database\modify_root_parameters.py
       input_database\gcbm_input.db
     wdir: Standalone_GCBM
     deps:
     - input_database\gcbm_input.db
     - input_database\modify_root_parameters.py
   modify_decay_parameters:
-    cmd: C:\Develop\Python\Python37\python.exe input_database\modify_decay_parameters.py
+    cmd: ${python_path} input_database\modify_decay_parameters.py
       input_database\gcbm_input.db
     wdir: Standalone_GCBM
     deps:
@@ -40,7 +43,7 @@ stages:
     - input_database\modify_decay_parameters.py
     - input_database\custom_parameters\decay_parameters.csv
   modify_turnover_parameters:
-    cmd: C:\Develop\Python\Python37\python.exe input_database\modify_turnover_parameters.py
+    cmd: ${python_path} input_database\modify_turnover_parameters.py
       input_database\gcbm_input.db
     wdir: Standalone_GCBM
     deps:
@@ -48,7 +51,7 @@ stages:
     - input_database\modify_turnover_parameters.py
     - input_database\custom_parameters\turnover_parameters.csv
   modify_spinup_parameters:
-    cmd: C:\Develop\Python\Python37\python.exe input_database\modify_spinup_parameters.py
+    cmd: ${python_path} input_database\modify_spinup_parameters.py
       input_database\gcbm_input.db
     wdir: Standalone_GCBM
     deps:
