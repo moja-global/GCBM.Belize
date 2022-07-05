@@ -2,10 +2,10 @@
 
 REM *************************** USER CONFIGURATION ***************************
 REM Set simulation start year.
-set SIMULATION_START_YEAR=1900
+set SIMULATION_START_YEAR=2010
 
 REM Set Python path - change this to your Python installation directory.
-set GCBM_PYTHON=C:\Develop\Python\Python37
+set GCBM_PYTHON=C:\Python37
 REM **************************************************************************
 
 REM Set GDAL library paths.
