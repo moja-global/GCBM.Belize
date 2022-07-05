@@ -2,12 +2,13 @@
 ### Stages
 
 
-*Reminder : 
+Reminder : 
 - First you need to install [dvc](https://dvc.org/doc/install/windows)
   - Setup your default remote storage [(help here)](https://dvc.org/doc/command-reference/remote/add)
-  - In every stage that has an outputs field dvc track the included files (i.e. `logs\tiler_log.txt` in the `tiler` stage) so after the completion of a stage that has outputs run `dvc push` to store the files in your remote
-- After you installed the requirements from [README](https://github.com/radistoubalidis/GCBM.Belize/blob/master/README.md "README" ) set your default local python path to your Python37 Installation path or
-- change `python` with your local Python37 path in `dvc.yml` *
+  - In `dvc.yaml` line 2 refactor :`python.path:<your_local_python37_path>`
+  - In every stage that has an outputs field dvc tracks the included files (i.e. `logs\tiler_log.txt` in the `tiler` stage) so after the completion of a stage that has outputs run `dvc push` to store the files in your deafult remote
+- After you installed the requirements from [README](https://github.com/radistoubalidis/GCBM.Belize/blob/master/README.md "README" ) you can test the pipeline with :
+  - `dvc repro` or `dvc exp run`
 
 #### Tiler
 > Working Directory: `Standalone_GCBM\layers\tiled`
