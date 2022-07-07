@@ -7,9 +7,9 @@ def calc_metrics(period,ind_type,data):
     for zone in lifezones:
         zone_data = data[data['LifeZone'] == zone]
         metrics = {
-            'pool_tc_sum_mean' : format(zone_data['pool_tc_sum'].mean(),'.2f'),
-            'area_sum_mean' : format(zone_data['area_sum'].mean(),'.2f'),
-            'pool_tc_per_ha_mean': format(zone_data['pool_tc_per_ha'].mean(),'.2f')            
+            'pool_tc_sum_mean' : float(zone_data['pool_tc_sum'].mean()),
+            'area_sum_mean' : float(zone_data['area_sum'].mean()),
+            'pool_tc_per_ha_mean': float(zone_data['pool_tc_per_ha'].mean())            
         }
         formatted_zone = zone.replace(' ','_')
         formatted_name = f"{period}_{ind_type}_{formatted_zone}.json"
