@@ -181,28 +181,138 @@ stages:
       md5: da1f6e4096059269778566aac39d4c72
       size: 14135
   post_processing:
-    cmd: C:\Develop\R-4.1.3\bin\R.exe CMD BATCH Summarize_DOM_Stocks.R
+    cmd:
+    - C:\Develop\R-4.1.3\bin\R.exe CMD BATCH Summarize_DOM_Stocks.R
+    - C:\Develop\Python\Python37\python.exe analyze.py
     deps:
     - path: ..\Standalone_GCBM\processed_output\compiled_gcbm_output.db
-      md5: 3bfa710cbedd2f7e278ee0cfa3a8e47f
+      md5: 08440f0362fbfdb67141e496d89c2257
       size: 3350528
     - path: Rplots.pdf
-      md5: 5766e3e451a41a30c71d96cc8d7c57d8
-      size: 104810
+      md5: ccb56f9f0d1cac07c14eb7dc1f8486b2
+      size: 105469
     - path: Summarize_DOM_Stocks.R
       md5: 6e592625d1b1bb030d32767f89214fa5
       size: 5805
     - path: Tables
-      md5: d65a7d0d0d1edae3444aed8a60df8994.dir
-      size: 2014347
+      md5: c7be53653ae48765af8040ecf7c22ee9.dir
+      size: 2032404
       nfiles: 17
     outs:
     - path: Figures\Belize_Sensitivity_TropicalDry.png
-      md5: e5cc83929756cea0500db3df04367b8f
-      size: 105377
+      md5: eea5e730437122385c9f1becf711a4d1
+      size: 105156
     - path: Figures\Belize_Sensitivity_TropicalMoist.png
-      md5: ae32efd84b56336270125ca8ffadb4c0
-      size: 102721
+      md5: 58e665a32a50e29414ade7e4b041a5d9
+      size: 102725
     - path: Figures\Belize_Sensitivity_TropicalPremontane.png
-      md5: f616fc174018549b4787db812dad43cd
-      size: 105072
+      md5: 7428975dbea40d1544c5404e8fce7096
+      size: 107224
+    - path: metrics\1900-1950_Deadwood_Tropical_Dry.json
+      md5: 2c2720f4cf6796a1d3ee4de006133c79
+      size: 115
+    - path: metrics\1900-1950_Deadwood_Tropical_Moist.json
+      md5: da5c71d031638a7a9ab386706a6dcd8c
+      size: 115
+    - path: metrics\1900-1950_Deadwood_Tropical_Premontane_Wet.json
+      md5: 537952326a21381dd7d27f5b019a7fd5
+      size: 115
+    - path: metrics\1900-1950_Litter_Tropical_Dry.json
+      md5: 747648c101e20511c592acacb88d5408
+      size: 114
+    - path: metrics\1900-1950_Litter_Tropical_Moist.json
+      md5: 0a523fb701849ddc6d66953484ee6db4
+      size: 114
+    - path: metrics\1900-1950_Litter_Tropical_Premontane_Wet.json
+      md5: f3cf091f787b7e8b7f4c60eb9382a8ca
+      size: 114
+    - path: metrics\1900-1950_Soil Carbon_Tropical_Dry.json
+      md5: b95b745578c8793b43c4bec48d29ddb0
+      size: 116
+    - path: metrics\1900-1950_Soil Carbon_Tropical_Moist.json
+      md5: 177f8f9f05081a76fac54e7d2a214fcd
+      size: 115
+    - path: metrics\1900-1950_Soil Carbon_Tropical_Premontane_Wet.json
+      md5: e5c059f99d13f7dfac265d36bc55b39d
+      size: 115
+    - path: metrics\1900-1950_Total Biomass_Tropical_Dry.json
+      md5: 01938fc50f46101928ba5fabbf32794e
+      size: 116
+    - path: metrics\1900-1950_Total Biomass_Tropical_Moist.json
+      md5: 754785980260462909c897eaef69c7fc
+      size: 116
+    - path: metrics\1900-1950_Total Biomass_Tropical_Premontane_Wet.json
+      md5: a90f8c837982728df9e8cc0f9cd4eec7
+      size: 116
+    - path: metrics\1951-2000_Deadwood_Tropical_Dry.json
+      md5: 5dea82ea31384e7fa3778a09ae32d8e6
+      size: 116
+    - path: metrics\1951-2000_Deadwood_Tropical_Moist.json
+      md5: 101a0f947bcae87a824d7f1c992e16e8
+      size: 115
+    - path: metrics\1951-2000_Deadwood_Tropical_Premontane_Wet.json
+      md5: 5279ec7f97b1860cbec54e0eb9fc87a7
+      size: 115
+    - path: metrics\1951-2000_Litter_Tropical_Dry.json
+      md5: 11894e1f9d1c5470e8b78edc6ff617dc
+      size: 116
+    - path: metrics\1951-2000_Litter_Tropical_Moist.json
+      md5: bbca384a446bcf974fee6147f1ae4fb2
+      size: 115
+    - path: metrics\1951-2000_Litter_Tropical_Premontane_Wet.json
+      md5: beebf61aef6c065d1679e5ed94f41497
+      size: 115
+    - path: metrics\1951-2000_Soil Carbon_Tropical_Dry.json
+      md5: e2c0656740637c24fe34b37338fb574a
+      size: 116
+    - path: metrics\1951-2000_Soil Carbon_Tropical_Moist.json
+      md5: 883415cd012846ab6903a6a39a1d0995
+      size: 115
+    - path: metrics\1951-2000_Soil Carbon_Tropical_Premontane_Wet.json
+      md5: 47dc5b082c9729a35f4bed57937132a0
+      size: 115
+    - path: metrics\1951-2000_Total Biomass_Tropical_Dry.json
+      md5: 0d3d602842c650ca64d2643ca97ba306
+      size: 118
+    - path: metrics\1951-2000_Total Biomass_Tropical_Moist.json
+      md5: 9783042cb03b8a412f6ca267963da984
+      size: 117
+    - path: metrics\1951-2000_Total Biomass_Tropical_Premontane_Wet.json
+      md5: ca2b8e1d8a2317913a8199bdac44fe16
+      size: 116
+    - path: metrics\2001-2050_Deadwood_Tropical_Dry.json
+      md5: 956b597dd0348cf928b7f865465c32da
+      size: 116
+    - path: metrics\2001-2050_Deadwood_Tropical_Moist.json
+      md5: 6929567932be656efee16b0232264735
+      size: 115
+    - path: metrics\2001-2050_Deadwood_Tropical_Premontane_Wet.json
+      md5: c170ffe497c6af30521edeb5c081d980
+      size: 115
+    - path: metrics\2001-2050_Litter_Tropical_Dry.json
+      md5: 819ad999b3561e2ce6a02f2db75d02ea
+      size: 116
+    - path: metrics\2001-2050_Litter_Tropical_Moist.json
+      md5: a692017001e375574c7fd28d38ed037a
+      size: 115
+    - path: metrics\2001-2050_Litter_Tropical_Premontane_Wet.json
+      md5: c8321be30a8c7551e277ace9e432a221
+      size: 115
+    - path: metrics\2001-2050_Soil Carbon_Tropical_Dry.json
+      md5: dee514c89052ecb9ef2b7076944059d6
+      size: 116
+    - path: metrics\2001-2050_Soil Carbon_Tropical_Moist.json
+      md5: d4be77bfc9fbe5c758b0c28be0f51335
+      size: 115
+    - path: metrics\2001-2050_Soil Carbon_Tropical_Premontane_Wet.json
+      md5: e38e419b1d3a65299dd57002989b17bf
+      size: 115
+    - path: metrics\2001-2050_Total Biomass_Tropical_Dry.json
+      md5: b0f0d783e0489e50326757069bae7239
+      size: 118
+    - path: metrics\2001-2050_Total Biomass_Tropical_Moist.json
+      md5: 904e100cdd7633a386b8185b580af839
+      size: 117
+    - path: metrics\2001-2050_Total Biomass_Tropical_Premontane_Wet.json
+      md5: b38fbd6b16b02df9b069a8c1140bb535
+      size: 116

@@ -120,9 +120,75 @@ stages:
         - Figures\Belize_Sensitivity_TropicalPremontane.png:
             cache: false
     metrics:
-        - metrics\1900-1950.json:
+        - metrics\1900-1950_Deadwood_Tropical_Dry.json:
             cache: false
-        - metrics\1951-2000.json:
+        - metrics\1900-1950_Deadwood_Tropical_Moist.json:
             cache: false
-        - metrics\2001-2050.json:
+        - metrics\1900-1950_Deadwood_Tropical_Premontane_Wet.json:
+            cache: false
+        - metrics\1900-1950_Litter_Tropical_Dry.json:
+            cache: false
+        - metrics\1900-1950_Litter_Tropical_Moist.json:
+            cache: false
+        - metrics\1900-1950_Litter_Tropical_Premontane_Wet.json:
+            cache: false
+        - metrics\1900-1950_Soil Carbon_Tropical_Dry.json:
+            cache: false
+        - metrics\1900-1950_Soil Carbon_Tropical_Moist.json:
+            cache: false
+        - metrics\1900-1950_Soil Carbon_Tropical_Premontane_Wet.json:
+            cache: false
+        - metrics\1900-1950_Total Biomass_Tropical_Dry.json:
+            cache: false
+        - metrics\1900-1950_Total Biomass_Tropical_Moist.json:
+            cache: false
+        - metrics\1900-1950_Total Biomass_Tropical_Premontane_Wet.json:
+            cache: false
+        - metrics\1951-2000_Deadwood_Tropical_Dry.json:
+            cache: false
+        - metrics\1951-2000_Deadwood_Tropical_Moist.json:
+            cache: false
+        - metrics\1951-2000_Deadwood_Tropical_Premontane_Wet.json:
+            cache: false
+        - metrics\1951-2000_Litter_Tropical_Dry.json:
+            cache: false
+        - metrics\1951-2000_Litter_Tropical_Moist.json:
+            cache: false
+        - metrics\1951-2000_Litter_Tropical_Premontane_Wet.json:
+            cache: false
+        - metrics\1951-2000_Soil Carbon_Tropical_Dry.json:
+            cache: false
+        - metrics\1951-2000_Soil Carbon_Tropical_Moist.json:
+            cache: false
+        - metrics\1951-2000_Soil Carbon_Tropical_Premontane_Wet.json:
+            cache: false
+        - metrics\1951-2000_Total Biomass_Tropical_Dry.json:
+            cache: false
+        - metrics\1951-2000_Total Biomass_Tropical_Moist.json:
+            cache: false
+        - metrics\1951-2000_Total Biomass_Tropical_Premontane_Wet.json:
+            cache: false
+        - metrics\2001-2050_Deadwood_Tropical_Dry.json:
+            cache: false
+        - metrics\2001-2050_Deadwood_Tropical_Moist.json:
+            cache: false
+        - metrics\2001-2050_Deadwood_Tropical_Premontane_Wet.json:
+            cache: false
+        - metrics\2001-2050_Litter_Tropical_Dry.json:
+            cache: false
+        - metrics\2001-2050_Litter_Tropical_Moist.json:
+            cache: false
+        - metrics\2001-2050_Litter_Tropical_Premontane_Wet.json:
+            cache: false
+        - metrics\2001-2050_Soil Carbon_Tropical_Dry.json:
+            cache: false
+        - metrics\2001-2050_Soil Carbon_Tropical_Moist.json:
+            cache: false
+        - metrics\2001-2050_Soil Carbon_Tropical_Premontane_Wet.json:
+            cache: false
+        - metrics\2001-2050_Total Biomass_Tropical_Dry.json:
+            cache: false
+        - metrics\2001-2050_Total Biomass_Tropical_Moist.json:
+            cache: false
+        - metrics\2001-2050_Total Biomass_Tropical_Premontane_Wet.json:
             cache: false
