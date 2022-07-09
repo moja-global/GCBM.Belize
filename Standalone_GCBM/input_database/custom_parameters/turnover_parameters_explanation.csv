@@ -1,0 +1,11 @@
+﻿Parameter_ID,name,Source_pool,Receiving_pool,Explanation
+T1,foliage,HardwoodFoliage or SoftwoodFoliage,AboveGroundVeryFastSoil,Transfer from foliage to foliar litter (Litterfall)
+T2,stem,HardwoodMerch or SoftwoodMerch,HardwoodStemSnag or SoftwoodStemSnag,Transfer from merchantanble stems to Dead standing stemwood of merchantable size (Mortality)
+T3,branch,HardwoodOther or SoftwoodOther,HardwoodBranchSnag or SoftwoodBranchSnag / AboveGroundFastSoil,"Transfer from branches to Dead branches, stumps and small trees or Fine and small woody debris, the percentage going into the snag branches vs the Fine and small woody debris (AG Fast) is determined by the branch_snag_split parameter"
+T4,stem_snag,,,
+T5,branch_snag,,,
+T6,coarse_root,HardwoodCoarseRoots or SoftwoodCoarseRoots,AboveGroundFastSoil / BelowGroundFastSoil,Transfer from Coarse roots to Dead coarse roots in the mineral soil. The percentage going into the AG Fast vs the BG Fast is determined by the coarse_ag_split parameter
+T7,fine_root,HardwoodFineRoots or SoftwoodFineRoots,AboveGroundVeryFastSoil / BelowGroundVeryFastSoil,Transfer from Fine roots to Dead fine roots in the mineral soil. the percentage going into the AG Very Fast vs the BG Very fast is determined by the coarse_ag_split parameter
+T8,branch_snag_split,N/A,N/A,"Percentage of the branches biomass that will go to snag branches, the rest will go into AG Fast"
+T9,coarse_ag_split,N/A,N/A,"Percentage of the coarse root biomass that will go to AG very fast, the rest will go into BG very fast"
+T10,fine_ag_split,N/A,N/A,"Percentage of the fine root biomass that will go to AG very fast, the rest will go into BG very fast"

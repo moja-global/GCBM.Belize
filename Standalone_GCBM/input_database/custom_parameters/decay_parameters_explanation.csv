@@ -1,0 +1,12 @@
+﻿Parameter_ID,Source_Pool,Receiving_Pool,Explanation
+D1,AboveGroundFastSoil,AboveGroundSlowSoil,"Fine woody debris to F, H and O Horizons and to atmosphere"
+D2,AboveGroundSlowSoil,N/A (All to atmosphere),"F, H and O Horizons to the atmosphere"
+D3,AboveGroundVeryFastSoil,AboveGroundSlowSoil,"Foliar litter to F, H and O Horizons and to atmosphere"
+D4,BelowGroundFastSoil,BelowGroundSlowSoil,Dead coarse roots to humified organic matter in soil and to atmosphere
+D5,BelowGroundSlowSoil,N/A (All to atmosphere),Humified organic matter in soil to atmosphere
+D6,BelowGroundVeryFastSoil,BelowGroundSlowSoil,Dead fine roots to to humified organic matter in soil and to atmosphere
+D7,HardwoodBranchSnag,AboveGroundSlowSoil,"Dead branches, stumps and small trees to F, H and O horizons and to atmosphere"
+D8,HardwoodStemSnag,AboveGroundSlowSoil,"Dead standing stemwood of merchantable size to F, H and O horizons and to atmosphere"
+D9,MediumSoil,AboveGroundSlowSoil,"Coarse Woody Debris to F, H and O horizons and to atmosphere"
+D10,SoftwoodBranchSnag,AboveGroundSlowSoil,"Dead branches, stumps and small trees to F, H and O horizons and to atmosphere"
+D11,SoftwoodStemSnag,AboveGroundSlowSoil,"Dead standing stemwood of merchantable size to F, H and O horizons and to atmosphere"
