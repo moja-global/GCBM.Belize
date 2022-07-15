@@ -3,12 +3,15 @@
 
 
 Reminder : 
-- First you need to install [dvc](https://dvc.org/doc/install/windows)
-  - Setup your default remote storage [(help here)](https://dvc.org/doc/command-reference/remote/add)
-  - In `dvc.yaml` line 2 refactor :`python.path:<your_local_python37_path>`
-  - In every stage that has an outputs field dvc tracks the included files (i.e. `logs\tiler_log.txt` in the `tiler` stage) so after the completion of a stage that has outputs run `dvc push` to store the files in your deafult remote
-- After you installed the requirements from [README](https://github.com/radistoubalidis/GCBM.Belize/blob/master/README.md "README" ) you can test the pipeline with :
+- First you need to install [dvc](https://dvc.org/doc/install/windows) along with the driver for the remote storage you wish to upload your files (e.g. google drive)
+- Setup your default remote storage [(help here)](https://dvc.org/doc/command-reference/remote/add)
+- In `dvc.yaml` in the `vars` field refactor :`python.path:<your_local_python37_path>` , and `R_path:<your_local_R_path>`
+- After you installed the requirements from [README](https://github.com/radistoubalidis/GCBM.Belize/blob/master/README.md "README" ) you can test the pipeline by running :
   - `dvc repro` or `dvc exp run`
+    - Dvc as a default does not define an order in the pipeline stages , it does it only if for each `i-th` stage with output `x` its next one `i+1-th` has `x` as a dependency.By creating a log file for each stage and adding it as a dependency for the next stage we achieve pipeline execution in order.
+  - you can see the metrics created in `post_processing` stage from the `analyze.py` script by running `dvc metrics show`
+- After the pipeline is executed and you have setup your remote storage you can run `dvc push` and for every stage, the files that are included in the `outs` field are going to be pushed in your remote storage.
+- There is a demonstration video and a Jupyter Notebook that iterates the compiled Spatial output and displays an example [here](http://https://drive.google.com/drive/folders/1p4PzaacNU6rddXWuljtaO1_G1LIoiw-2?usp=sharing "here")
 
 #### Tiler
 > Working Directory: `Standalone_GCBM\layers\tiled`
@@ -26,14 +29,17 @@ Reminder :
 #### recliner2gcbm_x64
 > Working Directory: `Standalone_GCBM`
 
->Command: `tools\Recliner2GCBM-x64\Recliner2GCBM.exe -c input_database\recliner2gcbm_config.json`
+>Command: `tools\Recliner2GCBM-x64\Recliner2GCBM.exe -c input_database\recliner2gcbm_config.json >> logs\reclner_log.txt`
 
 >Dependencies(Relative paths):
+ - `logs\tiler_log.txt`
  - `input_database\gcbm_input.db`
  - `tools\recliner2gcbm-x64\recliner2gcbm.exe`
  - `input_database\Growth_Curves.csv`
  - `input_database\recliner2gcbm_config.json`
  - `input_database\ArchiveIndex_Beta_Install.mdb`
+>Outputs:
+ - `logs\recliner_log.txt`
 
 #### add_species_vol_to_bio
 > Working Directory: `Standalone_GCBM`
@@ -41,8 +47,11 @@ Reminder :
 >Command: `python input_database\add_species_vol_to_bio.py input_database\gcbm_input.db`
 
 >Dependencies(Relative paths):
+- `logs\recliner_log.txt`
 - `input_database\add_species_vol_to_bio.py`
 - `input_database\gcbm_input.db`
+>Outputs:
+- `logs\add_species_vol_to_bio.log`
 
 #### modify_root_parameters
 > Working Directory: `Standalone_GCBM`
@@ -50,8 +59,11 @@ Reminder :
 >Command: `python input_database\modify_root_parameters.py input_database\gcbm_input.db`
 
 >Dependencies(Relative paths):
+- `logs\add_species_vol_to_bio.log`
 - `input_database\modify_root_parameters.py`
 - `input_database\gcbm_input.db`
+>Outputs:
+- `logs\modify_root_parameters.log`
 
 #### modify_decay_parameters
 > Working Directory: `Standalone_GCBM`
@@ -59,8 +71,12 @@ Reminder :
 >Command: `python input_database\modify_decay_parameters.py input_database\gcbm_input.db`
 
 >Dependencies(Relative paths):
+- `logs\modify_root_parameters.log`
 - `input_database\modify_decay_parameters.py`
 - `input_database\gcbm_input.db`
+
+>Outputs:
+- `logs\modify_decay_parameters.log`
 
 #### modify_turnover_parameters
 > Working Directory:`Standalone_GCBM`
@@ -68,8 +84,12 @@ Reminder :
 >Command: `python input_database\modify_turnover_parameters.py input_database\gcbm_input.db`
 
 >Dependencies(Relative paths):
+- `logs\modify_decay_parameters.log`
 - `input_database\modify_turnover_parameters.py`
 - `input_database\gcbm_input.db`
+
+>Outputs:
+- `logs\modify_turnover_parameters.log`
 
 #### modify_spinup_parameters
 > Working Directory:`Standalone_GCBM`
@@ -77,8 +97,12 @@ Reminder :
 >Command: `python input_database\modify_spinup_parameters.py input_database\gcbm_input.db`
 
 >Dependencies(Relative paths):
+- `logs\modify_turnover_parameters.log`
 - `input_database\modify_spinup_parameters.py`
 - `input_database\gcbm_input.db`
+
+>Outputs:
+- `logs\modify_spinup_parameters.log`
 
 #### update_GCBM_Configuration
 > Working Directory: `Standalone_GCBM\gcbm_project`
@@ -101,6 +125,7 @@ Reminder :
 >Command: `run_gcbm.bat`
 
 >Dependencies(Relative paths):
+- `..\logs\update_gcbm_config.log`
 - `run_gcbm.bat`
 - `..\tools\GCBM\moja.cli.exe`
 - `gcbm_config.cfg`
@@ -116,6 +141,7 @@ Reminder :
 >Command: `create_tiffs.bat`
 
 >Dependencies(Relative paths):
+- `..\..\logs\Moja_Debug.log`
 - `create_tiffs.bat`
 - `create_tiffs.py`
 - `..\..\gcbm_project\output`
@@ -130,21 +156,30 @@ Reminder :
 >Command: `compileGCBMResults.bat`
 
 >Dependencies(Relative paths):
+- `..\..\logs\create_tiffs.log`
 - `compileGCBMResults.bat`
 - `compileresults.py`
 - `compileresults.json`
 - `..\..\gcbm_project\output\gcbm_output.db`
 - `..\..\processed_output\compiled_gcbm_output.db`
 
+>Outputs:
+- `..\..\logs\compile_results.log`
+
 #### post_processing
 >Working Directory: `Postprocessing`
 
->Command: `C:\Develop\R-4.1.3\bin\R.exe CMD BATCH Summarize_DOM_Stocks.R`
+>Commands:
+- `${R_path} CMD BATCH Summarize_DOM_Stocks.R`
+- `${python_path} analyze.py`
 
 >Dependencies(Relative paths):
+- `..\Standalone_GCBM\logs\compile_results.log`
 - `Summarize_DOM_Stocks.R`
 - `..\Standalone_GCBM\processed_output\compiled_gcbm_output.db`
 - `Tables`
 - `Rplots.pdf`
 
->Output Plots: `./Figures`
+>Outputs:
+- Plots: `Postprocessing\Figures`
+- metrics: `PostProcessing\Metrics`
