@@ -1,0 +1,380 @@
+schema: '2.0'
+stages:
+  tiler:
+    cmd: C:\Develop\Python\Python37\python.exe ..\..\tools\Tiler\tiler.py
+    deps:
+    - path: ..\..\tools\Tiler\tiler.py
+      md5: b21cfbbc447f607bf9a41b4b95e79fce
+      size: 4322
+    - path: ..\raw\environment
+      md5: b875a0fb313e75c382028e53c0df9437.dir
+      size: 171018
+      nfiles: 2
+    - path: ..\raw\inventory
+      md5: f4523151e55fc6ad815778f396d78c7c.dir
+      size: 74820
+      nfiles: 4
+    outs:
+    - path: ..\..\logs\tiler_log.txt
+      md5: 5895b8a080ecf3d588bd8c49047947c8
+      size: 289
+  recliner2gcbm_x64:
+    cmd: tools\Recliner2GCBM-x64\Recliner2GCBM.exe -c input_database\recliner2gcbm_config.json
+      >> logs\recliner_log.txt
+    deps:
+    - path: input_database\ArchiveIndex_Beta_Install.mdb
+      md5: ccd49898148c11e263bebef271f1bee7
+      size: 3948544
+    - path: input_database\Growth_Curves.csv
+      md5: da8966db429badd5475f6c78c0bf6e2b
+      size: 15236
+    - path: input_database\gcbm_input.db
+      md5: 4171522604a34a4a6430286b554e3982
+      size: 1544192
+    - path: input_database\recliner2gcbm_config.json
+      md5: 2330cdd4e564c0fb85cd49cef2961ec2
+      size: 6251
+    - path: logs\tiler_log.txt
+      md5: 5895b8a080ecf3d588bd8c49047947c8
+      size: 289
+    - path: tools\recliner2gcbm-x64\recliner2gcbm.exe
+      md5: a45c702ad1c9aff92edc6493cff99450
+      size: 6656
+    outs:
+    - path: logs\recliner_log.txt
+      md5: 575f44e3235e469da7e2ff1671b932b3
+      size: 1425
+  add_species_vol_to_bio:
+    cmd: C:\Develop\Python\Python37\python.exe input_database\add_species_vol_to_bio.py
+      input_database\gcbm_input.db
+    deps:
+    - path: input_database\add_species_vol_to_bio.py
+      md5: 7cb79bb8cde4695d9d51299f84c033ff
+      size: 3206
+    - path: input_database\gcbm_input.db
+      md5: 106a885f18b29417d6cd2efa0093b60a
+      size: 1544192
+    - path: logs\recliner_log.txt
+      md5: 575f44e3235e469da7e2ff1671b932b3
+      size: 1425
+    outs:
+    - path: logs\add_species_vol_to_bio.log
+      md5: fe307d5fba61060ad02a673a37efd3f7
+      size: 65
+  modify_root_parameters:
+    cmd: C:\Develop\Python\Python37\python.exe input_database\modify_root_parameters.py
+      input_database\gcbm_input.db
+    deps:
+    - path: input_database\gcbm_input.db
+      md5: 366e839cf0890838c636b9c1ae63c443
+      size: 1544192
+    - path: input_database\modify_root_parameters.py
+      md5: 1aa64069c5cf7cf22c403900b087b389
+      size: 1221
+    - path: logs\add_species_vol_to_bio.log
+      md5: fe307d5fba61060ad02a673a37efd3f7
+      size: 65
+    outs:
+    - path: logs\modify_root_parameters.log
+      md5: 92f7cce8bc443ac4ce24a728549d67d1
+      size: 38
+  modify_turnover_parameters:
+    cmd: C:\Develop\Python\Python37\python.exe input_database\modify_turnover_parameters.py
+      input_database\gcbm_input.db
+    deps:
+    - path: input_database\custom_parameters\turnover_parameters.csv
+      md5: 854a070d01b3cedc5a54e00906669ca2
+      size: 1023
+    - path: input_database\gcbm_input.db
+      md5: fb50dc1cf6ae35aca8aa1adde963583a
+      size: 1544192
+    - path: input_database\modify_turnover_parameters.py
+      md5: e694416c308a969230b52e2bbb8adde4
+      size: 1408
+    - path: logs\modify_decay_parameters.log
+      md5: 8df8b297f0a3d3c1bc8c789a1d635eae
+      size: 74
+    outs:
+    - path: logs\modify_turnover_parameters.log
+      md5: 45c435ee5d044ef2176952ef852124b6
+      size: 77
+  modify_decay_parameters:
+    cmd: C:\Develop\Python\Python37\python.exe input_database\modify_decay_parameters.py
+      input_database\gcbm_input.db
+    deps:
+    - path: input_database\custom_parameters\decay_parameters.csv
+      md5: 6c21ebbe9e192e5502f5510ddb89542e
+      size: 1496
+    - path: input_database\gcbm_input.db
+      md5: 91cb126bd58dfcf6833cebab18371fc0
+      size: 1544192
+    - path: input_database\modify_decay_parameters.py
+      md5: a496d9c549abb72c1cab19b218bc0ec2
+      size: 1395
+    - path: logs\modify_root_parameters.log
+      md5: 92f7cce8bc443ac4ce24a728549d67d1
+      size: 38
+    outs:
+    - path: logs\modify_decay_parameters.log
+      md5: 8df8b297f0a3d3c1bc8c789a1d635eae
+      size: 74
+  modify_spinup_parameters:
+    cmd: C:\Develop\Python\Python37\python.exe input_database\modify_spinup_parameters.py
+      input_database\gcbm_input.db
+    deps:
+    - path: input_database\gcbm_input.db
+      md5: d9aa6a8ba74a3bf91383d429ef90350e
+      size: 1544192
+    - path: input_database\modify_spinup_parameters.py
+      md5: 5da9d1790729e1a97352321fb7ba9f65
+      size: 1349
+    - path: logs\modify_turnover_parameters.log
+      md5: 45c435ee5d044ef2176952ef852124b6
+      size: 77
+    outs:
+    - path: logs\modify_spinup_parameters.log
+      md5: c422efacc5b4b98b6b37ceaa5f5b5b9a
+      size: 32
+  update_GCBM_configuration:
+    cmd: update_gcbm_configuration.bat
+    deps:
+    - path: ..\input_database\gcbm_input.db
+      md5: d9aa6a8ba74a3bf91383d429ef90350e
+      size: 1544192
+    - path: ..\layers\tiled
+      md5: bd8cdc0961b99a871bedc92b0dcadc89.dir
+      size: 44571
+      nfiles: 8
+    - path: ..\logs\modify_spinup_parameters.log
+      md5: c422efacc5b4b98b6b37ceaa5f5b5b9a
+      size: 32
+    - path: ..\tools\tiler\update_gcbm_config.py
+      md5: 3e04cbc0ee3588cc13f711750b8cda1e
+      size: 18002
+    - path: templates
+      md5: 047934a7ec23802205598f4c06e8ed39.dir
+      size: 115691
+      nfiles: 11
+    - path: update_gcbm_configuration.bat
+      md5: bc6bf72b76be2aecf7b29ca22e5998f2
+      size: 1038
+    outs:
+    - path: ..\logs\update_gcbm_config.log
+      md5: 28feba44182f2183fe8b484f0c2d21f1
+      size: 586
+  run_gcbm:
+    cmd: run_gcbm.bat
+    deps:
+    - path: ..\input_database\gcbm_input.db
+      md5: d9aa6a8ba74a3bf91383d429ef90350e
+      size: 1544192
+    - path: ..\logs\update_gcbm_config.log
+      md5: 28feba44182f2183fe8b484f0c2d21f1
+      size: 586
+    - path: ..\tools\GCBM\moja.cli.exe
+      md5: 22ea736fd836612c2d9a8330572cdcff
+      size: 125440
+    - path: gcbm_config.cfg
+      md5: 4ba9c157d6b3d8462bae8be993063fcc
+      size: 176
+    - path: output\gcbm_output.db
+      md5: c4d433c0e138f19681473ffd74318d2d
+      size: 1138688
+    - path: provider_config.json
+      md5: 73ea905de1ec488f940f9fec4a3189c4
+      size: 978
+    - path: run_gcbm.bat
+      md5: d850f4fa2697cb2eaa87e00b553768c8
+      size: 789
+    outs:
+    - path: ..\logs\Moja_Debug.log
+      md5: d1473fcdc154cc078b421f41a5d0b1e4
+      size: 269719
+  create_tiffs:
+    cmd: create_tiffs.bat
+    deps:
+    - path: ..\..\gcbm_project\output
+      md5: e5471f3495d06b284dc59ccf1d74bdf1.dir
+      size: 1747870
+      nfiles: 672
+    - path: ..\..\logs\Moja_Debug.log
+      md5: d1473fcdc154cc078b421f41a5d0b1e4
+      size: 269719
+    - path: create_tiffs.bat
+      md5: 7afea9d404dabd2efcd50ef3bde0f962
+      size: 1034
+    - path: create_tiffs.py
+      md5: 24fe644eb30b67b82ea38f3c6e6211ad
+      size: 5675
+    outs:
+    - path: ..\..\logs\create_tiffs.log
+      md5: 78ca07aef1a59ec10525bac3471ea63a
+      size: 181626
+    - path: ..\..\processed_output\spatial
+      md5: fa8f2741a21fe864eb16dc976e94ea69.dir
+      size: 94478268
+      nfiles: 2718
+  compile_results:
+    cmd: compileGCBMResults.bat
+    deps:
+    - path: ..\..\gcbm_project\output\gcbm_output.db
+      md5: 8b6e9247c75b267ae9044331aa4ce01a
+      size: 4579328
+    - path: ..\..\logs\create_tiffs.log
+      md5: 78ca07aef1a59ec10525bac3471ea63a
+      size: 181626
+    - path: ..\..\processed_output\compiled_gcbm_output.db
+      md5: f4e5696e9a4c5fd75fb4254f10626dd0
+      size: 3350528
+    - path: compileGCBMResults.bat
+      md5: 9d9372e41d38eac02690ea9104cdaeba
+      size: 551
+    - path: compileresults.json
+      md5: c1664af923128ae8641b521fc330f439
+      size: 17854
+    - path: compileresults.py
+      md5: 6c44c7a85c0eaa6ba68a30b78bad22d6
+      size: 14329
+    outs:
+    - path: ..\..\logs\compile_results.log
+      md5: be023cf95336cdebe1201cb7c510e40b
+      size: 1131
+  post_processing:
+    cmd:
+    - C:\Develop\R-4.1.3\bin\R.exe CMD BATCH Summarize_DOM_Stocks.R
+    - C:\Develop\Python\Python37\python.exe analyze.py
+    deps:
+    - path: ..\Standalone_GCBM\logs\compile_results.log
+      md5: be023cf95336cdebe1201cb7c510e40b
+      size: 1131
+    - path: ..\Standalone_GCBM\processed_output\compiled_gcbm_output.db
+      md5: f4e5696e9a4c5fd75fb4254f10626dd0
+      size: 3350528
+    - path: Summarize_DOM_Stocks.R
+      md5: 6e592625d1b1bb030d32767f89214fa5
+      size: 5805
+    - path: Tables
+      md5: 14a98c6a0297d61829e8a26c8b9d0548.dir
+      size: 2406994
+      nfiles: 17
+    - path: analyze.py
+      md5: 122d881287c6bb7837fbcfebbded2798
+      size: 1300
+    outs:
+    - path: Figures\Belize_Sensitivity_TropicalDry.png
+      md5: a61e5e20e38ddab30635a5c56e5e96d2
+      size: 97257
+    - path: Figures\Belize_Sensitivity_TropicalMoist.png
+      md5: 05c3217316783d830a9ad447cad5daef
+      size: 96721
+    - path: Figures\Belize_Sensitivity_TropicalPremontane.png
+      md5: 8144013781d458faa70bc1e53726a7a1
+      size: 98841
+    - path: metrics\1900-1950_Deadwood_Tropical_Dry.json
+      md5: 51cc4ccd356d7b90a0106e029683a0a2
+      size: 119
+    - path: metrics\1900-1950_Deadwood_Tropical_Moist.json
+      md5: 37c737b4c48aadead3dd1eb1b5240ba9
+      size: 118
+    - path: metrics\1900-1950_Deadwood_Tropical_Premontane_Wet.json
+      md5: 298c5f6ecef1b9f9abe1542df341db31
+      size: 118
+    - path: metrics\1900-1950_Litter_Tropical_Dry.json
+      md5: 7947c007d8169311226153f1c946f84b
+      size: 117
+    - path: metrics\1900-1950_Litter_Tropical_Moist.json
+      md5: f144991fe523cf82efc339f9944f13b8
+      size: 118
+    - path: metrics\1900-1950_Litter_Tropical_Premontane_Wet.json
+      md5: 782280f5e17eb504c2b7e8f3a712677e
+      size: 117
+    - path: metrics\1900-1950_Soil Carbon_Tropical_Dry.json
+      md5: 1fa0cb790b887ff8199357f816a2b4e0
+      size: 119
+    - path: metrics\1900-1950_Soil Carbon_Tropical_Moist.json
+      md5: afc413fa5365f5667dc023657fb3595d
+      size: 118
+    - path: metrics\1900-1950_Soil Carbon_Tropical_Premontane_Wet.json
+      md5: 1530729d730787f537306c19ee5ea42b
+      size: 117
+    - path: metrics\1900-1950_Total Biomass_Tropical_Dry.json
+      md5: 0d1276bc41bc2785dea1618c7cf87b10
+      size: 118
+    - path: metrics\1900-1950_Total Biomass_Tropical_Moist.json
+      md5: 27e065726369df04ef69c6a93e72bcde
+      size: 115
+    - path: metrics\1900-1950_Total Biomass_Tropical_Premontane_Wet.json
+      md5: 285e9a1489797ed2c37e63d10210c752
+      size: 118
+    - path: metrics\1951-2000_Deadwood_Tropical_Dry.json
+      md5: c59ba5ae1d7edd5f3b2dd78e99dc5ba6
+      size: 120
+    - path: metrics\1951-2000_Deadwood_Tropical_Moist.json
+      md5: 3a6997b4011430fae3022406b8248db9
+      size: 119
+    - path: metrics\1951-2000_Deadwood_Tropical_Premontane_Wet.json
+      md5: 4b74839e2ccc662461b9b552deefb170
+      size: 119
+    - path: metrics\1951-2000_Litter_Tropical_Dry.json
+      md5: 8453c022e45086c8bbde7665b391a985
+      size: 119
+    - path: metrics\1951-2000_Litter_Tropical_Moist.json
+      md5: 8ca7b96a44ebcc208ac8628281ac6a65
+      size: 119
+    - path: metrics\1951-2000_Litter_Tropical_Premontane_Wet.json
+      md5: 8e7e112ead18318c1348d05c061deaf0
+      size: 118
+    - path: metrics\1951-2000_Soil Carbon_Tropical_Dry.json
+      md5: 07d8f8eed2d33ca7002774619c0d6fa4
+      size: 120
+    - path: metrics\1951-2000_Soil Carbon_Tropical_Moist.json
+      md5: 68bf02c7452cffb1c91d612562462e8d
+      size: 117
+    - path: metrics\1951-2000_Soil Carbon_Tropical_Premontane_Wet.json
+      md5: e49c424e924dc8950265db9f13504986
+      size: 117
+    - path: metrics\1951-2000_Total Biomass_Tropical_Dry.json
+      md5: 72b8a01a4b05dcfacdc4a8071076529e
+      size: 120
+    - path: metrics\1951-2000_Total Biomass_Tropical_Moist.json
+      md5: eda557f13869eb0d865e1f8d716d47f6
+      size: 118
+    - path: metrics\1951-2000_Total Biomass_Tropical_Premontane_Wet.json
+      md5: ff4a9421f12827854525a58a45063fb0
+      size: 118
+    - path: metrics\2001-2050_Deadwood_Tropical_Dry.json
+      md5: c3ecd8ec1f575a442121801b4bdfd0a6
+      size: 117
+    - path: metrics\2001-2050_Deadwood_Tropical_Moist.json
+      md5: 5b815b86ea41f7d50105b1ba2e3bec78
+      size: 117
+    - path: metrics\2001-2050_Deadwood_Tropical_Premontane_Wet.json
+      md5: 723340cc54e8f09e4745a807853961e3
+      size: 117
+    - path: metrics\2001-2050_Litter_Tropical_Dry.json
+      md5: 3147cb7bfd81cbe1fff6f2b95e9f2e63
+      size: 120
+    - path: metrics\2001-2050_Litter_Tropical_Moist.json
+      md5: 4d90d491c22545243bd0c20f89ca3da6
+      size: 118
+    - path: metrics\2001-2050_Litter_Tropical_Premontane_Wet.json
+      md5: 6b3ecdd22d679562b3049b33b35963e3
+      size: 118
+    - path: metrics\2001-2050_Soil Carbon_Tropical_Dry.json
+      md5: 8236847a82a7ccbab56f61dcf9a5f833
+      size: 118
+    - path: metrics\2001-2050_Soil Carbon_Tropical_Moist.json
+      md5: 098561949ce5bc0838ff02c892b3c30d
+      size: 117
+    - path: metrics\2001-2050_Soil Carbon_Tropical_Premontane_Wet.json
+      md5: d68ec8566f3f589f42765d7666982cb1
+      size: 117
+    - path: metrics\2001-2050_Total Biomass_Tropical_Dry.json
+      md5: 6dbe6ddea0b29c545758d4a1717b48a8
+      size: 119
+    - path: metrics\2001-2050_Total Biomass_Tropical_Moist.json
+      md5: 88eb429923b74651a65a7d4a3a3c259d
+      size: 118
+    - path: metrics\2001-2050_Total Biomass_Tropical_Premontane_Wet.json
+      md5: 26ec990d964d6c23d4a0fff17ec4ac3d
+      size: 118

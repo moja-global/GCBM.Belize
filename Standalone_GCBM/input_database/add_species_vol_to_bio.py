@@ -1,3 +1,5 @@
+from asyncio.log import logger
+from cmath import log
 import logging
 import os
 import sqlite3
@@ -14,10 +16,13 @@ if __name__ == "__main__":
     if not os.path.exists(args.input_db_path):
         sys.exit("File not found: {}".format(args.input_db_path))
     
+    logger = logging.getLogger()
+    handler = logging.FileHandler(os.path.join('logs', 'add_species_vol_to_bio.log'))
+    logger.addHandler(handler)
+
     with sqlite3.connect(args.input_db_path) as conn:
-            
         
-        logging.info("Adding a generic tropical species")
+        logger.info("Adding a generic tropical species")
         # Create a new species, I will call it "Generic Tropical", ID = 8001, Forest type = 3 (Hardwood) and Genus = 12 (Other broad-leaves species)
         conn.execute(
             """
@@ -43,7 +48,7 @@ if __name__ == "__main__":
         # we have 70% (0.75) stemwood and a density of 0.47, so our a factor is 0.329
         # non merchantable and sampling factors set to zero
         # 
-        logging.info("Adding Vol to Bio parameters")
+        logger.info("Adding Vol to Bio parameters")
         conn.execute(
             """
             INSERT INTO vol_to_bio_factor

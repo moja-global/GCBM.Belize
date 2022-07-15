@@ -11,12 +11,17 @@ if __name__ == "__main__":
     parser.add_argument("input_db_path", help="GCBM input database path", type=os.path.abspath)
     args = parser.parse_args()
     
+    # set logger to write to file
+    logger = logging.getLogger()
+    handler = logging.FileHandler(os.path.join('logs', 'modify_decay_parameters.log'))
+    logger.addHandler(handler)
+
     if not os.path.exists(args.input_db_path):
         sys.exit("File not found: {}".format(args.input_db_path))
     
     with sqlite3.connect(args.input_db_path) as conn:
             
-        logging.info("Modifying decay parameters")
+        logger.info("Modifying decay parameters")
         
         # Replace current decay parameters with new ones (tropical environment)
         df = pandas.read_csv("input_database/custom_parameters/decay_parameters.csv")
@@ -26,6 +31,6 @@ if __name__ == "__main__":
         
         df.to_sql("decay_parameter", conn, if_exists='replace', index=False)
 
-        logging.info("Succesfully modified decay parameters")
+        logger.info("Succesfully modified decay parameters")
         
-        logging.info("Done!")
+        logger.info("Done!")

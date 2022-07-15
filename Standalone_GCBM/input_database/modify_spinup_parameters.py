@@ -10,6 +10,11 @@ if __name__ == "__main__":
     parser = ArgumentParser(description="Change the spinup parameters")
     parser.add_argument("input_db_path", help="GCBM input database path", type=os.path.abspath)
     args = parser.parse_args()
+
+    # set logger to write to file
+    logger = logging.getLogger()
+    handler = logging.FileHandler(os.path.join('logs', 'modify_spinup_parameters.log'))
+    logger.addHandler(handler)
     
     if not os.path.exists(args.input_db_path):
         sys.exit("File not found: {}".format(args.input_db_path))
@@ -17,7 +22,7 @@ if __name__ == "__main__":
     with sqlite3.connect(args.input_db_path) as conn:
             
         
-        logging.info("Changing the spinup parameters")
+        logger.info("Changing the spinup parameters")
 
         # 
         conn.execute(
