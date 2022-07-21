@@ -14,15 +14,14 @@ if __name__ == "__main__":
         sys.exit("File not found: {}".format(args.input_db_path))
     
     with sqlite3.connect(args.input_db_path) as conn:
-            
+        cursor = conn.cursor()    
         logging.info("Modifying the root parameters")
         # Modify the root parameters for Belize, the last 3 parameters are left as default
-        conn.execute(
-            """
-            UPDATE root_parameter
-            SET hw_a = 0.37, sw_a = 0.37, hw_b = 1, frp_a = 0.072, frp_b = 0.354, frp_c = -0.060211946105009635
-            WHERE id = 1
-            """)
+         with open('root_parameter.csv','r') as fin1: # `with` statement available in 2.5+
+        # csv.DictReader uses first line in file for column headings by default
+        dr1 = csv.DictReader(fin1) # comma is default delimiter
+        to_db1 = [(i['hw_a'], i['sw_a'], i['hw_b'], i['frp_a'], i['frp_b'], i['frp_c'], i['id']) for i in dr1]
+        cursor.executemany("UPDATE root_parameter SET hw_a = ?, sw_a = ?, hw_b = ?, frp_a = ?, frp_b = ?, frp_c = ? WHERE id = ?, to_db1)
         logging.info("Done!")
         
         
