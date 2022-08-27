@@ -8,4 +8,7 @@ GCBM Belize
 
 This is the official documentation of the GCBM Belize project.
 
+.. toctree::
+   :hidden:
 
+   run_simulation/index.rst
