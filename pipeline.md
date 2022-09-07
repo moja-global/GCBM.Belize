@@ -11,7 +11,7 @@ Reminder :
     - Dvc as a default does not define an order in the pipeline stages , it does it only if for each `i-th` stage with output `x` its next one `i+1-th` has `x` as a dependency.By creating a log file for each stage and adding it as a dependency for the next stage we achieve pipeline execution in order.
   - you can see the metrics created in `post_processing` stage from the `analyze.py` script by running `dvc metrics show`
 - After the pipeline is executed and you have setup your remote storage you can run `dvc push` and for every stage, the files that are included in the `outs` field are going to be pushed in your remote storage.
-- There is a demonstration video and a Jupyter Notebook that iterates the compiled Spatial output and displays an example [here](http://https://drive.google.com/drive/folders/1p4PzaacNU6rddXWuljtaO1_G1LIoiw-2?usp=sharing "here")
+- There is a demonstration video of the pipeline execution with only one command [here](https://drive.google.com/file/d/14yS4d7IXVUto8MmrEQ8y9fv-58e_jVCT/view)
 
 #### Tiler
 > Working Directory: `Standalone_GCBM\layers\tiled`
