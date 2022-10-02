@@ -17,9 +17,10 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -U sphinx
+          cd docs
           pip install -r requirements.txt
       
-      - name: Build Handbook
+      - name: Build Belize docs
         uses: ammaraskar/sphinx-action@master
         with:
           docs-folder: "."
@@ -29,7 +30,7 @@ jobs:
         with:
           node-version: "10.x"
           
-      - name: Deploy Handbook
+      - name: Deploy Belize docs
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
