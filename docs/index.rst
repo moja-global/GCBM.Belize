@@ -11,4 +11,6 @@ This is the official documentation of the GCBM Belize project.
 .. toctree::
    :hidden:
 
+   about_belize/index.rst
    run_simulation/index.rst
+   postprocessing/index.rst
