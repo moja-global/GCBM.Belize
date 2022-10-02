@@ -23,7 +23,7 @@ jobs:
       - name: Build Belize docs
         uses: ammaraskar/sphinx-action@master
         with:
-          docs-folder: "."
+          docs-folder: "docs/"
         
       - name: Set-up Node
         uses: actions/setup-node@v1
