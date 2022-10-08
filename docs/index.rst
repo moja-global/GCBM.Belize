@@ -6,7 +6,10 @@
 GCBM Belize
 ===========
 
-This is the official documentation of the GCBM Belize project.
+This is the official documentation of the GCBM Belize project. 
+This project is based on the `Standalone Template for the GCBM <https://carbon.nfis.org/cbm>`_ 
+
+**Disclaimer : The calculations performed in this repository are not official and do not represent the Government of Belize in any way.**
 
 .. toctree::
    :hidden:
