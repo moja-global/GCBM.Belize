@@ -22,12 +22,13 @@ community include:
 * Giving and gracefully accepting constructive feedback
 * Accepting responsibility and apologizing to those affected by our mistakes,
   and learning from the experience
-* Focusing on what is best not just for us as individuals, but for the
+Focusing on what is best not just for us as individuals but for the overall community
   overall community
 
 Examples of unacceptable behavior include:
 
-* The use of sexualized language or imagery, and sexual attention or
+* The use of sexualized language or imagery and sexual attention or
+
   advances of any kind
 * Trolling, insulting or derogatory comments, and personal or political attacks
 * Public or private harassment
@@ -39,16 +40,23 @@ Examples of unacceptable behavior include:
 ## Enforcement Responsibilities
 
 Community leaders are responsible for clarifying and enforcing our standards of
-acceptable behavior and will take appropriate and fair corrective action in
+acceptable behavior. They will take appropriate and fair corrective action in
+
 response to any behavior that they deem inappropriate, threatening, offensive,
 or harmful.
 
 Community leaders have the right and responsibility to remove, edit, or reject
 comments, commits, code, wiki edits, issues, and other contributions that are
-not aligned to this Code of Conduct, and will communicate reasons for moderation
+not aligned with this Code of Conduct, and will communicate reasons for moderation
+
 decisions when appropriate.
 
 ## Scope
+This Code of Conduct applies within all community spaces and when an individual officially represents the community in public spaces. Representing our community includes:
+- Using an official e-mail address.
+- Posting via an official social media account.
+- Acting as an appointed representative at an online or offline event.
+
 
 This Code of Conduct applies within all community spaces, and also applies when
 an individual is officially representing the community in public spaces.

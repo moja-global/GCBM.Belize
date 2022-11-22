@@ -11,4 +11,4 @@ After the simulation is complete, either by running the **run_all.bat** script o
 
 This generates the plots `Figures\\Belize_Sensitivity_TropicalDry.png`, `Figures\\Belize_Sensitivity_TropicalMoist.png` and `Figures\\Belize_Sensitivity_TropicalPremontane.png`
 
-4. The logs are written into Summarize_DOM_Stocks.Rout, missing R packages, if any, can be installed by following the steps mentioned here: https://www.datacamp.com/tutorial/r-packages-guide
+4. The logs are written into **Summarize_DOM_Stocks.Rout**, missing R packages, if any, can be installed by following the steps mentioned here: https://www.datacamp.com/tutorial/r-packages-guide

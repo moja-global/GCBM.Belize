@@ -1,9 +1,8 @@
 On Windows 
-=====================
+==========
 
 Prerequisites
 +++++++++++++
-
 
 1. Clone the `GCBM Belize <https://github.com/moja-global/GCBM.Belize>`_ repository
 
@@ -18,7 +17,7 @@ The configuration is **strictly for Python3.7**, it will not work with other ver
 
 
 Running the simulation (short version)
--------------------------------------
+--------------------------------------
 
 Navigate to `Standalone_GCBM\`, edit `run_all.bat` and set the `GCBM_PYTHON path` and `PLATFORM`` variables in the `USER CONFIGURATION` section near the top to the correct values for your system
 
@@ -128,7 +127,7 @@ Description : Modify spinup parameters
 Step 8
 ------
 
-Working directory : **Standalone_GCBM\gcbm_project**
+Working directory : **Standalone_GCBM\\gcbm_project**
 
 ..  code-block:: bash
     :caption: Command
@@ -148,7 +147,7 @@ Output :  Logs generated in `Standalone_GCBM\\logs\\update_gcbm_config.log`
 
 Step 9
 ------
-Working directory : **Standalone_GCBM\gcbm_project**
+Working directory : **Standalone_GCBM\\gcbm_project**
 
 ..  code-block:: bash
     :caption: Command
@@ -166,7 +165,7 @@ Description :
 Step 10
 -------
 
-Working directory : **Standalone_GCBM\tools\CompileGCBMSpatialOutput**
+Working directory : **Standalone_GCBM\\tools\\CompileGCBMSpatialOutput**
 
 ..  code-block:: bash
     :caption: Command
@@ -181,12 +180,12 @@ Description :
 Output : 
 
 1. A tiff layer per indicator and timestep in `processed_output\\spatial`
-2. Logs written into `Standalone_GCBM\\logs\\create_tiffs.log``
+2. Logs written into `Standalone_GCBM\\logs\\create_tiffs.log`
 
 Step 11
 -------
 
-Working directory : **Standalone_GCBM\tools\CompileGCBMResults**
+Working directory : **Standalone_GCBM\\tools\\CompileGCBMResults**
 
 ..  code-block:: bash
     :caption: Command
