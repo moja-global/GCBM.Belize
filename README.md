@@ -94,7 +94,7 @@ If there are existing images cached on your machine you may need to `docker pull
 
 Postprocessing codes using R are included in the Postprocessing folder for reference purposes.
 
-If you are going to use this coded, we recommend to use [Rstudio](https://www.rstudio.com/) and open the `Postprocessing\GCBM_Belize_Sensitivity.Rproj` file, the [renv](https://rstudio.github.io/renv/articles/renv.html) package was used for library management, and a renv.lock file with the required packages is included
+If you are going to use this coded, we recommend to use [R](https://cran.r-project.org/) version 4.1.2 and further install [Rstudio](https://www.rstudio.com/). Now open the `Postprocessing\GCBM_Belize_Sensitivity.Rproj` file, the [renv](https://rstudio.github.io/renv/articles/renv.html) package was used for library management, and a renv.lock file with the required packages is included
 
 In order to perform sensitivity analysis, the Standalone_GCBM folder can be duplicated with another name (e.g. Standalone_GCBM_decaymod) and the run_all.bat can me modified and run. Then, the `Postprocessing\Summarize_DOM_Stocks.R` code has to be modified to generate graphs and tables with this new configuration (instructions in the code)
 
