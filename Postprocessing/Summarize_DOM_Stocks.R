@@ -5,7 +5,7 @@
 #------------------------------------------------------
 # Library management
 
-# Necesary libraries
+# Necessary libraries
 library(ggplot2) # produce figures
 library(readr) # Read data
 library(tidyr) # Data cleaning
@@ -45,14 +45,12 @@ for (run in runs) {
   
   # Pool indicators
   pool_ind<-dbGetQuery(conn, "SELECT * FROM v_pool_indicators")
-
   
   # Calculate the pools total carbon for forests per lifezone and year
   pools_run<-pool_ind %>% filter(indicator %in% c("Total Biomass","Deadwood","Litter","Soil Carbon")) %>% 
     group_by(year,indicator,LifeZone) %>% 
-    summarize(pool_tc_sum=sum(pool_tc))
-  
-  
+    summarize(pool_tc_sum=sum(pool_tc)) 
+
   # Get the areas for each lifezone
   age_ind<-dbGetQuery(conn, "SELECT * FROM v_age_indicators")
   areas_run<-age_ind %>%  
@@ -65,11 +63,19 @@ for (run in runs) {
   pools_run_area <- mutate(pools_run_area, pool_tc_per_ha = pool_tc_sum/area_sum)
   pools_run_area$run <- run
   
+  # Recode the runs 
+  pools_run_area$run <- as.character(recode(pools_run_area$run, !!!names_runs))
+  
+  # Change the name of the lifezone to be simpler
+  pools_run_area$LifeZone <- as.character(recode(pools_run_area$LifeZone,
+                                             "Tropical Premontane Wet, Transition to Basal - Atlantic" = "Tropical Premontane Wet"))
+  
+  
   # Make a compiled database
   if(exists("pools_full")){
-    pools_full <- rbind(pools_full,pools_run_area)
+    pools_full <- unique(rbind(pools_full,pools_run_area))
   } else {
-    pools_full <- pools_run_area
+    pools_full <- pools_run_area 
   }
   
   print(run)
@@ -78,16 +84,6 @@ for (run in runs) {
 
 }
 
-unique(pools_full$run)
-
-# Change the name of the lifezone for simpler figures
-pools_full$LifeZone <- as.character(recode(pools_full$LifeZone,
-                                          "Tropical Premontane Wet, Transition to Basal - Atlantic" = "Tropical Premontane Wet"))
-
-
-
-# Recode the runs to put prettier names in the figures
-pools_full$run <- as.character(recode(pools_full$run, !!!names_runs))
 
 # Check the recoding
 unique(pools_full$run)
@@ -99,7 +95,8 @@ write_csv(pools_full,"./Tables/Pools_DOM_Sensitivity_full.csv")
 # Make a Table with the DOM stocks every 10 years, from 0 to 150 years old
 pools_summary <- pools_full %>% 
   filter(year %in% seq(1900,2050,by=10)) %>% 
-  mutate(Age = year - 1900)
+  mutate(Age = year - 1900) 
+
 
 for (ag in unique(pools_summary$Age)) {
   
@@ -114,49 +111,48 @@ for (ag in unique(pools_summary$Age)) {
 
 }
 
+
 # Make figures for each life zone in Belize
 
 # Tropical dry
-p <- ggplot(filter(pools_full,LifeZone=="Tropical Dry"),aes(x=year,y=pool_tc_per_ha,fill=indicator))+
+p <- ggplot(filter(pools_full, LifeZone=="Tropical Dry"), aes(x = year, y = pool_tc_per_ha, fill = indicator))+
   geom_area() +
-  facet_grid(indicator~run,labeller = label_wrap_gen(width=7)) +
+  facet_grid(indicator~run,labeller = label_wrap_gen(width = 7)) +
   ylab("Carbon Stock (ton C / ha)") +
-  scale_fill_manual(values=c("darkgoldenrod4","chartreuse3","gray14","forestgreen")) +
+  scale_fill_manual(values = c("darkgoldenrod4","chartreuse3","gray14","forestgreen")) +
   ggtitle("Carbon Stocks of Tropical Dry Forests (Belize) - GCBM Sensitivity analysis") +
   theme_bw(14) +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
 
 p
 
-ggsave(file=paste0("Figures/Belize_Sensitivity_TropicalDry.png"), width=300,height=180,units="mm",dpi=300)
+ggsave(file=paste0("Figures/Belize_Sensitivity_TropicalDry.png"), width = 300, height = 180, units = "mm", dpi = 300)
 
 # Tropical Moist
-p <- ggplot(filter(pools_full,LifeZone=="Tropical Moist"),aes(x=year,y=pool_tc_per_ha,fill=indicator))+
+p <- ggplot(filter(pools_full, LifeZone=="Tropical Moist"), aes(x = year, y = pool_tc_per_ha, fill = indicator))+
   geom_area() +
-  facet_grid(indicator~run,labeller = label_wrap_gen(width=7)) +
+  facet_grid(indicator~run,labeller = label_wrap_gen(width = 7)) +
   ylab("Carbon Stock (ton C / ha)") +
-  scale_fill_manual(values=c("darkgoldenrod4","chartreuse3","gray14","forestgreen")) +
+  scale_fill_manual(values = c("darkgoldenrod4","chartreuse3","gray14","forestgreen")) +
   ggtitle("Carbon Stocks of Tropical Moist Forests (Belize) - GCBM Sensitivity analysis") +
   theme_bw(14) +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
 
 p
 
-ggsave(file=paste0("Figures/Belize_Sensitivity_TropicalMoist.png"), width=300,height=180,units="mm",dpi=300)
+ggsave(file = paste0("Figures/Belize_Sensitivity_TropicalMoist.png"), width = 300, height = 180, units = "mm", dpi = 300)
 
 # Tropical Premontane wet
-p <- ggplot(filter(pools_full,LifeZone=="Tropical Premontane Wet"),aes(x=year,y=pool_tc_per_ha,fill=indicator))+
+p <- ggplot(filter(pools_full, LifeZone=="Tropical Premontane Wet"), aes(x = year, y = pool_tc_per_ha, fill = indicator))+
   geom_area() +
-  facet_grid(indicator~run,labeller = label_wrap_gen(width=7)) +
+  facet_grid(indicator~run,labeller = label_wrap_gen(width = 7)) +
   ylab("Carbon Stock (ton C / ha)") +
-  scale_fill_manual(values=c("darkgoldenrod4","chartreuse3","gray14","forestgreen")) +
+  scale_fill_manual(values = c("darkgoldenrod4","chartreuse3","gray14","forestgreen")) +
   ggtitle("Carbon Stocks of Tropical Premontane Wet Forests (Belize) - GCBM Sensitivity analysis") +
   theme_bw(14) +
-theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
 
 p
 
-ggsave(file=paste0("Figures/Belize_Sensitivity_TropicalPremontane.png"), width=300,height=180,units="mm",dpi=300)
+ggsave(file = paste0("Figures/Belize_Sensitivity_TropicalPremontane.png"), width = 300, height = 180, units = "mm", dpi = 300)
                   
-
-
