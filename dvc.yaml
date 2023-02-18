@@ -1,0 +1,220 @@
+vars:
+  - python_path: C:\Develop\Python\Python37\python.exe
+  - R_path: C:\Develop\R-4.1.3\bin\R.exe
+
+stages:
+  tiler:
+    cmd: ${python_path} ..\..\tools\Tiler\tiler.py
+    wdir: Standalone_GCBM\layers\tiled
+    deps:
+    - ..\..\tools\Tiler\tiler.py
+    - ..\raw\environment
+    - ..\raw\inventory
+    outs:
+    - ..\..\logs\tiler_log.txt
+  recliner2gcbm_x64:
+    cmd: tools\Recliner2GCBM-x64\Recliner2GCBM.exe -c input_database\recliner2gcbm_config.json >> logs\recliner_log.txt
+    wdir: Standalone_GCBM
+    deps:
+    - logs\tiler_log.txt
+    - tools\recliner2gcbm-x64\recliner2gcbm.exe
+    - input_database\Growth_Curves.csv
+    - input_database\recliner2gcbm_config.json
+    - input_database\ArchiveIndex_Beta_Install.mdb
+    - input_database\gcbm_input.db
+    outs:
+    - logs\recliner_log.txt
+  add_species_vol_to_bio:
+    cmd: ${python_path} input_database\add_species_vol_to_bio.py
+      input_database\gcbm_input.db
+    wdir: Standalone_GCBM
+    deps:
+    - logs\recliner_log.txt
+    - input_database\add_species_vol_to_bio.py
+    - input_database\gcbm_input.db
+    outs:
+    - logs\add_species_vol_to_bio.log
+  modify_root_parameters:
+    cmd: ${python_path} input_database\modify_root_parameters.py
+      input_database\gcbm_input.db
+    wdir: Standalone_GCBM
+    deps:
+    - logs\add_species_vol_to_bio.log
+    - input_database\gcbm_input.db
+    - input_database\modify_root_parameters.py
+    outs:
+    - logs\modify_root_parameters.log
+  modify_decay_parameters:
+    cmd: ${python_path} input_database\modify_decay_parameters.py
+      input_database\gcbm_input.db
+    wdir: Standalone_GCBM
+    deps:
+    - logs\modify_root_parameters.log
+    - input_database\gcbm_input.db
+    - input_database\modify_decay_parameters.py
+    - input_database\custom_parameters\decay_parameters.csv
+    outs:
+    - logs\modify_decay_parameters.log
+  modify_turnover_parameters:
+    cmd: ${python_path} input_database\modify_turnover_parameters.py
+      input_database\gcbm_input.db
+    wdir: Standalone_GCBM
+    deps:
+    - logs\modify_decay_parameters.log
+    - input_database\gcbm_input.db
+    - input_database\modify_turnover_parameters.py
+    - input_database\custom_parameters\turnover_parameters.csv
+    outs:
+    - logs\modify_turnover_parameters.log
+  modify_spinup_parameters:
+    cmd: ${python_path} input_database\modify_spinup_parameters.py
+      input_database\gcbm_input.db
+    wdir: Standalone_GCBM
+    deps:
+    - logs\modify_turnover_parameters.log
+    - input_database\gcbm_input.db
+    - input_database\modify_spinup_parameters.py
+    outs:
+    - logs\modify_spinup_parameters.log
+  update_GCBM_configuration:
+    cmd: update_gcbm_configuration.bat
+    wdir: Standalone_GCBM\gcbm_project
+    deps:
+    - ..\logs\modify_spinup_parameters.log
+    - update_gcbm_configuration.bat
+    - templates
+    - ..\input_database\gcbm_input.db
+    - ..\layers\tiled
+    - ..\tools\tiler\update_gcbm_config.py
+    outs:
+    - ..\logs\update_gcbm_config.log
+  run_gcbm:
+    cmd: run_gcbm.bat
+    wdir: Standalone_GCBM\gcbm_project
+    deps:
+    - ..\logs\update_gcbm_config.log
+    - run_gcbm.bat
+    - ..\tools\GCBM\moja.cli.exe
+    - gcbm_config.cfg
+    - provider_config.json
+    - ..\input_database\gcbm_input.db
+    - output\gcbm_output.db
+    outs:
+    - ..\logs\Moja_Debug.log
+  
+  create_tiffs:
+    cmd: create_tiffs.bat
+    wdir: Standalone_GCBM\tools\CompileGCBMSpatialOutput
+    deps:
+    - ..\..\logs\Moja_Debug.log
+    - create_tiffs.bat
+    - create_tiffs.py
+    - ..\..\gcbm_project\output
+    outs:
+    - ..\..\logs\create_tiffs.log
+    - ..\..\processed_output\spatial
+    
+  compile_results:
+    cmd: compileGCBMResults.bat
+    wdir: Standalone_GCBM\tools\CompileGCBMResults
+    deps:
+    - ..\..\logs\create_tiffs.log
+    - compileGCBMResults.bat
+    - compileresults.py
+    - compileresults.json
+    - ..\..\gcbm_project\output\gcbm_output.db
+    - ..\..\processed_output\compiled_gcbm_output.db
+    outs:
+    - ..\..\logs\compile_results.log
+
+  post_processing:
+    cmd: 
+    - ${R_path} CMD BATCH Summarize_DOM_Stocks.R 
+    - ${python_path} analyze.py
+    wdir: Postprocessing
+    deps:
+    - ..\Standalone_GCBM\logs\compile_results.log
+    - ..\Standalone_GCBM\processed_output\compiled_gcbm_output.db
+    - Tables
+    - analyze.py
+    - Summarize_DOM_Stocks.R 
+    plots:
+        - Figures\Belize_Sensitivity_TropicalDry.png:
+            cache: false
+        - Figures\Belize_Sensitivity_TropicalMoist.png:
+            cache: false
+        - Figures\Belize_Sensitivity_TropicalPremontane.png:
+            cache: false
+    metrics:
+        - metrics\1900-1950_Deadwood_Tropical_Dry.json:
+            cache: false
+        - metrics\1900-1950_Deadwood_Tropical_Moist.json:
+            cache: false
+        - metrics\1900-1950_Deadwood_Tropical_Premontane_Wet.json:
+            cache: false
+        - metrics\1900-1950_Litter_Tropical_Dry.json:
+            cache: false
+        - metrics\1900-1950_Litter_Tropical_Moist.json:
+            cache: false
+        - metrics\1900-1950_Litter_Tropical_Premontane_Wet.json:
+            cache: false
+        - metrics\1900-1950_Soil Carbon_Tropical_Dry.json:
+            cache: false
+        - metrics\1900-1950_Soil Carbon_Tropical_Moist.json:
+            cache: false
+        - metrics\1900-1950_Soil Carbon_Tropical_Premontane_Wet.json:
+            cache: false
+        - metrics\1900-1950_Total Biomass_Tropical_Dry.json:
+            cache: false
+        - metrics\1900-1950_Total Biomass_Tropical_Moist.json:
+            cache: false
+        - metrics\1900-1950_Total Biomass_Tropical_Premontane_Wet.json:
+            cache: false
+        - metrics\1951-2000_Deadwood_Tropical_Dry.json:
+            cache: false
+        - metrics\1951-2000_Deadwood_Tropical_Moist.json:
+            cache: false
+        - metrics\1951-2000_Deadwood_Tropical_Premontane_Wet.json:
+            cache: false
+        - metrics\1951-2000_Litter_Tropical_Dry.json:
+            cache: false
+        - metrics\1951-2000_Litter_Tropical_Moist.json:
+            cache: false
+        - metrics\1951-2000_Litter_Tropical_Premontane_Wet.json:
+            cache: false
+        - metrics\1951-2000_Soil Carbon_Tropical_Dry.json:
+            cache: false
+        - metrics\1951-2000_Soil Carbon_Tropical_Moist.json:
+            cache: false
+        - metrics\1951-2000_Soil Carbon_Tropical_Premontane_Wet.json:
+            cache: false
+        - metrics\1951-2000_Total Biomass_Tropical_Dry.json:
+            cache: false
+        - metrics\1951-2000_Total Biomass_Tropical_Moist.json:
+            cache: false
+        - metrics\1951-2000_Total Biomass_Tropical_Premontane_Wet.json:
+            cache: false
+        - metrics\2001-2050_Deadwood_Tropical_Dry.json:
+            cache: false
+        - metrics\2001-2050_Deadwood_Tropical_Moist.json:
+            cache: false
+        - metrics\2001-2050_Deadwood_Tropical_Premontane_Wet.json:
+            cache: false
+        - metrics\2001-2050_Litter_Tropical_Dry.json:
+            cache: false
+        - metrics\2001-2050_Litter_Tropical_Moist.json:
+            cache: false
+        - metrics\2001-2050_Litter_Tropical_Premontane_Wet.json:
+            cache: false
+        - metrics\2001-2050_Soil Carbon_Tropical_Dry.json:
+            cache: false
+        - metrics\2001-2050_Soil Carbon_Tropical_Moist.json:
+            cache: false
+        - metrics\2001-2050_Soil Carbon_Tropical_Premontane_Wet.json:
+            cache: false
+        - metrics\2001-2050_Total Biomass_Tropical_Dry.json:
+            cache: false
+        - metrics\2001-2050_Total Biomass_Tropical_Moist.json:
+            cache: false
+        - metrics\2001-2050_Total Biomass_Tropical_Premontane_Wet.json:
+            cache: false

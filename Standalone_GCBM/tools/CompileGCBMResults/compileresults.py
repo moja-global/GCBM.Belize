@@ -21,7 +21,7 @@ def load_sql(name, db_type, classifiers, batch=None):
     of 00_setup.sql for Postgres databases), and adds the simulation classifier columns in one of
     several different formats for queries that need them.
     '''
-    logging.info(f"  {name}")
+    logger.info(f"  {name}")
     sql_dir = os.path.join(os.path.dirname(__file__), "sql")
     for filename in (os.path.join(sql_dir, f"{name}_{db_type}.sql"),
                      os.path.join(sql_dir, f"{name}.sql")):
@@ -79,7 +79,7 @@ def executemany(conn, queries, values):
         conn.execute(stmt, values)
         
 def compile_results(conn, db_type, indicators, batch=None, cleanup=False):
-    logging.info("Compiling results tables...")
+    logger.info("Compiling results tables...")
 
     # Get the classifier columns used by the simulation - varies by project.
     classifiers = find_project_classifiers(conn, batch)
@@ -200,7 +200,7 @@ def compile_results(conn, db_type, indicators, batch=None, cleanup=False):
                 conn.execute(text(sql.format(table_suffix)))
                 
 def copy_reporting_tables(from_conn, from_schema, to_conn, to_schema=None):
-    logging.info("Copying reporting tables to output database...")
+    logger.info("Copying reporting tables to output database...")
     md = MetaData()
     md.reflect(bind=from_conn, schema=from_schema, views=True,
                only=lambda table_name, _: table_name.startswith("v_"))
@@ -208,7 +208,7 @@ def copy_reporting_tables(from_conn, from_schema, to_conn, to_schema=None):
     output_md = MetaData(bind=to_conn, schema=to_schema)
     with to_conn.begin():
         for fqn, table in md.tables.items():
-            logging.info(f"  {fqn}")
+            logger.info(f"  {fqn}")
             table.tometadata(output_md, schema=None)
             
             output_table = Table(table.name, output_md)
@@ -228,6 +228,11 @@ def copy_reporting_tables(from_conn, from_schema, to_conn, to_schema=None):
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO, stream=sys.stdout, format="%(asctime)s %(message)s",
                         datefmt="%m/%d %H:%M:%S")
+    
+     # set logger to write to file
+    logger = logging.getLogger()
+    handler = logging.FileHandler(os.path.join('..','..','logs', 'compile_results.log'))
+    logger.addHandler(handler)
 
     parser = ArgumentParser(description="Produce reporting tables from raw GCBM results. For connection strings, "
                                         "see https://docs.sqlalchemy.org/en/latest/core/engines.html#database-urls")
