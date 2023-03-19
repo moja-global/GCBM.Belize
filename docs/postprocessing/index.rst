@@ -5,7 +5,7 @@ After the simulation is complete, either by running the **run_all.bat** script o
 
 1. Install `R <https://www.r-project.org/>`_ based on the OS
 
-2. Get the path to the R executable, e.g. **c:\\"Program Files"\R\R-4.2.1\bin\R.exe**, on Windows
+2. Get the `path <https://support.posit.co/hc/en-us/articles/200486138-Changing-R-versions-for-the-RStudio-Desktop-IDE#:~:text=When%20R%20is%20installed%20from,bin%2FR%20(MacPorts)>`_ to the R executable, e.g. **c:\\"Program Files"\R\R-4.2.1\bin\R.exe**, on Windows
 
 3. Navigate to the `Standalone_GCBM\\Postprocessing` and execute **c:\\"Program Files"\\R\\R-4.2.1\\bin\\R.exe CMD BATCH Summarize_DOM_Stocks.R** .
 
