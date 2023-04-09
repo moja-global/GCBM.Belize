@@ -160,7 +160,7 @@ Description :
 2. Project configuration is split between multiple files listed in `gcbm_project\\gcbm_config.cfg`
 3. Data source configuration (spatial layers + SQLite) is in `gcbm_project\\provider_config.json`
 
-- Output : Logs generated in `Standalone_GCBM\\logs\\Moja_Debug.log`
+Output : Logs generated in `Standalone_GCBM\\logs\\Moja_Debug.log`
 
 Step 10
 -------
