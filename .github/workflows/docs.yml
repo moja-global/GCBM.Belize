@@ -1,0 +1,37 @@
+name: GCBM Belize Docs
+
+on:
+  push:
+    branches: [ sphinx-website ]
+  pull_request:
+    branches: [ sphinx-website ]
+
+jobs:
+  build-deploy-belize-docs:
+    runs-on: ubuntu-latest  
+    name: Build & Deploy Belize docs
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: |
+          pip install -U sphinx
+          cd docs
+          pip install -r requirements.txt
+      
+      - name: Build Belize docs
+        uses: ammaraskar/sphinx-action@master
+        with:
+          docs-folder: "docs/"
+        
+      - name: Set-up Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: "10.x"
+          
+      - name: Deploy Belize docs
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: docs/_build/html
